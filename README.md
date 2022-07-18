@@ -82,11 +82,18 @@ pip3 install --no-deps -e .
 Replace `performance.ini` with `speed.ini` or `storage.ini` if you want, and adapt the dataset paths - examples are given for the Pittsburgh30k dataset (simply replace `pitts30k` with `tokyo247` or `nordland` for these datasets).
 
 ```bash
+# must have nordland folder (and two subfolders such as summar and winter)
+python feature_extract.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_file_path=nordland_imageNames_index.txt \
+  --dataset_root_dir=/mnt/ssd/usman_ws/datasets/maqbool-datasets/datasets-place-recognition \          
+  --output_features_dir patchnetvlad/output_features/nordland_index
+
 python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=pitts30k_imageNames_index.txt \
   --dataset_root_dir=/path/to/your/pitts/dataset \
-  --output_features_dir patchnetvlad/output_features/pitts30k_index
+  --output_features_dir patchnetvlad/output_features/pitts30k_index  
 ```
 
 Repeat for the query images by replacing `_index` with `_query`. Note that you have to adapt `dataset_root_dir`.

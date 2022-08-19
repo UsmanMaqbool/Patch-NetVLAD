@@ -1,4 +1,66 @@
 # Patch-NetVLAD: Multi-Scale Fusion of Locally-Global Descriptors for Place Recognition
+
+## Training
+We use Pitts as the training set - see Section 4.1 of our paper: "We train the underlying vanilla NetVLAD feature extractor [3] on two datasets: Pittsburgh 30k [80] for urban imagery (Pittsburgh and Tokyo datasets), and Mapillary Street Level Sequences [82] for all other conditions."
+
+=> Two Trainings (pittsburge and Mappillary datasets)
+
+`mapillary` , `pitts30k` with `tokyo247` or `nordland` for these datasets).
+
+ StephenHausler commented on 1 Nov 2021
+
+Hi @DonMuv, we resize all our images to a uniform size of 640x480 (width by height), including Tokyo247 query images. This resizing happens as part of the Pytorch transforms part of the dataloader.
+### Pittsburg 30K test NetVLAD
+use original nannes codes
+```bash
+
+python train.py \
+--config_path patchnetvlad/configs/train.ini \
+--cache_path=/mnt/ssd/usman_ws/datasets/patch_netvlad_cache/cache \
+--save_path=/mnt/ssd/usman_ws/datasets/patch_netvlad_cache/save_path \
+--dataset_root_dir=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k
+```
+
+### Mapillary 
+```bash
+python train.py \
+--config_path patchnetvlad/configs/train.ini \
+--cache_path=/mnt/ssd/usman_ws/datasets/patch_netvlad_cache/cache \
+--save_path=/mnt/ssd/usman_ws/datasets/patch_netvlad_cache/save_path \
+--dataset_root_dir=/media/leo/2C737A9872F69ECF/datasets/mapillary/
+```
+
+
+
+```bash
+python train.py \
+--config_path patchnetvlad/configs/train.ini \
+--cache_path=/path/to/your/desired/cache/folder \
+--save_path=/path/to/your/desired/checkpoint/save/folder \
+--dataset_root_dir=/path/to/your/mapillary/dataset
+```
+
+To begin, request, download and unzip the Mapillary Street-level Sequences dataset (https://github.com/mapillary/mapillary_sls).
+The provided script will train a new network from scratch, to resume training add --resume_path and set to a full path, filename and extension to an existing checkpoint file. Note to resume our provided models, first remove the WPCA layers.
+
+After training a model, PCA can be added using add_pca.py.
+
+```bash
+python add_pca.py \
+--config_path patchnetvlad/configs/train.ini \
+--resume_path=full/path/with/extension/to/your/saved/checkpoint \
+--dataset_root_dir=/path/to/your/mapillary/dataset
+```
+
+This will add an additional checkpoint file to the same folder as resume_path, except including a WPCA layer.
+#### Tensorboard
+
+```**sh**
+tensorboard --logdir patch_netvlad_cache/save_path
+
+
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![stars](https://img.shields.io/github/stars/QVPR/Patch-NetVLAD.svg?style=flat-square)](https://github.com/QVPR/Patch-NetVLAD/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/QVPR/Patch-NetVLAD.svg?style=flat-square)](https://github.com/QVPR/Patch-NetVLAD/issues)
@@ -86,8 +148,9 @@ Replace `performance.ini` with `speed.ini` or `storage.ini` if you want, and ada
 python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=nordland_imageNames_index.txt \
-  --dataset_root_dir=/mnt/ssd/usman_ws/datasets/maqbool-datasets/datasets-place-recognition \          
+  --dataset_root_dir=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition \
   --output_features_dir patchnetvlad/output_features/nordland_index
+
 
 python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
@@ -100,6 +163,17 @@ Repeat for the query images by replacing `_index` with `_query`. Note that you h
 
 ### Feature matching (dataset)
 ```bash
+python feature_match.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_root_dir=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition \
+  --query_file_path=nordland_imageNames_query.txt \
+  --index_file_path=nordland_imageNames_index.txt \
+  --query_input_features_dir patchnetvlad/output_features/nordland_query \
+  --index_input_features_dir patchnetvlad/output_features/nordland_index \
+  --ground_truth_path patchnetvlad/dataset_gt_files/nordland.npz \
+  --result_save_folder patchnetvlad/results/nordland
+
+
 python feature_match.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_root_dir=/path/to/your/pitts/dataset \
@@ -130,28 +204,8 @@ We provide the `match_two.py` script which computes the Patch-NetVLAD features f
 
 The script will print a score value as an output, where a larger score indicates more similar images and a lower score means dissimilar images. The function also outputs a matching figure, showing the patch correspondances (after RANSAC) between the two images. The figure is saved as `results/patchMatchings.png`.
 
-### Training
-```bash
-python train.py \
---config_path patchnetvlad/configs/train.ini \
---cache_path=/path/to/your/desired/cache/folder \
---save_path=/path/to/your/desired/checkpoint/save/folder \
---dataset_root_dir=/path/to/your/mapillary/dataset
+
 ```
-
-To begin, request, download and unzip the Mapillary Street-level Sequences dataset (https://github.com/mapillary/mapillary_sls).
-The provided script will train a new network from scratch, to resume training add --resume_path and set to a full path, filename and extension to an existing checkpoint file. Note to resume our provided models, first remove the WPCA layers.
-
-After training a model, PCA can be added using add_pca.py.
-```bash
-python add_pca.py \
---config_path patchnetvlad/configs/train.ini \
---resume_path=full/path/with/extension/to/your/saved/checkpoint \
---dataset_root_dir=/path/to/your/mapillary/dataset
-```
-
-This will add an additional checkpoint file to the same folder as resume_path, except including a WPCA layer.
-
 ## FAQ
 ![Patch-NetVLAD qualitative results](./assets/patch_netvlad_qualitative_results.jpg)
 

@@ -78,7 +78,7 @@ if __name__ == "__main__":
                         help='Full path and name (with extension) to load checkpoint from, for resuming training.')
     parser.add_argument('--cluster_path', type=str, default='',
                         help='Full path and name (with extension) to load cluster data from, for resuming training.')
-    parser.add_argument('--dataset_root_dir', type=str, default='/work/qvpr/data/raw/Mapillary_Street_Level_Sequences',
+    parser.add_argument('--dataset_root_dir', type=str, default='/media/leo/2C737A9872F69ECF/datasets/mapillary/',
                         help='Root directory of dataset')
     parser.add_argument('--identifier', type=str, default='mapillary_nopanos',
                         help='Description of this model, e.g. mapillary_nopanos_vgg16_netvlad')

@@ -1,5 +1,9 @@
 # Patch-NetVLAD: Multi-Scale Fusion of Locally-Global Descriptors for Place Recognition
 
+
+## Make the code for NetVLAD only
+
+
 ## Training
 We use Pitts as the training set - see Section 4.1 of our paper: "We train the underlying vanilla NetVLAD feature extractor [3] on two datasets: Pittsburgh 30k [80] for urban imagery (Pittsburgh and Tokyo datasets), and Mapillary Street Level Sequences [82] for all other conditions."
 

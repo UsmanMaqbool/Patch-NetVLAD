@@ -140,12 +140,11 @@ def feature_match(eval_set, device, opt, config):
             # noinspection PyArgumentList
             _, predictions = faiss_index.search(qFeat, min(len(qFeat), max(n_values)))
 
-    reranked_predictions = local_matcher(predictions, eval_set, input_query_local_features_prefix,
-                                         input_index_local_features_prefix, config, device)
+    # reranked_predictions = local_matcher(predictions, eval_set, input_query_local_features_prefix,                                         input_index_local_features_prefix, config, device)
 
     # save predictions to files - Kapture Output
     write_kapture_output(opt, eval_set, predictions, 'NetVLAD_predictions.txt')
-    write_kapture_output(opt, eval_set, reranked_predictions, 'PatchNetVLAD_predictions.txt')
+    # write_kapture_output(opt, eval_set, reranked_predictions, 'PatchNetVLAD_predictions.txt')
 
     print('Finished matching features.')
 
@@ -155,7 +154,7 @@ def feature_match(eval_set, device, opt, config):
         gt = eval_set.get_positives()
 
         global_recalls = compute_recall(gt, predictions, eval_set.numQ, n_values, 'NetVLAD')
-        local_recalls = compute_recall(gt, reranked_predictions, eval_set.numQ, n_values, 'PatchNetVLAD')
+        local_recalls = compute_recall(gt, predictions, eval_set.numQ, n_values, 'NotPNetVLAD')
 
         write_recalls_output(opt, global_recalls, local_recalls, n_values)
     else:
@@ -166,19 +165,24 @@ def main():
     parser = argparse.ArgumentParser(description='Patch-NetVLAD-Feature-Match')
     parser.add_argument('--config_path', type=str, default=join(PATCHNETVLAD_ROOT_DIR, 'configs/performance.ini'),
                         help='File name (with extension) to an ini file that stores most of the configuration data for patch-netvlad')
-    parser.add_argument('--dataset_root_dir', type=str, default='',
+    parser.add_argument('--dataset_root_dir', type=str, default='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/',
                         help='If the files in query_file_path and index_file_path are relative, use dataset_root_dir as prefix.')
-    parser.add_argument('--query_file_path', type=str, required=True,
+    parser.add_argument('--query_file_path', type=str, 
+                        default='pitts30k_imageNames_query.txt', 
                         help='Path (with extension) to a text file that stores the save location and name of all query images in the dataset')
-    parser.add_argument('--index_file_path', type=str, required=True,
+    parser.add_argument('--index_file_path', type=str, 
+                        default='pitts30k_imageNames_index.txt', 
                         help='Path (with extension) to a text file that stores the save location and name of all database images in the dataset')
-    parser.add_argument('--query_input_features_dir', type=str, required=True,
+    parser.add_argument('--query_input_features_dir', type=str, 
+                        default='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/pitts30k_query',
                         help='Path to load all query patch-netvlad features')
-    parser.add_argument('--index_input_features_dir', type=str, required=True,
+    parser.add_argument('--index_input_features_dir', type=str, 
+                        default='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/pitts30k_index',
                         help='Path to load all database patch-netvlad features')
-    parser.add_argument('--ground_truth_path', type=str, default=None,
+    parser.add_argument('--ground_truth_path', type=str, 
+                        default='patchnetvlad/dataset_gt_files/pitts30k_test.npz',
                         help='Path (with extension) to a file that stores the ground-truth data')
-    parser.add_argument('--result_save_folder', type=str, default='results')
+    parser.add_argument('--result_save_folder', type=str, default='results/pitts30k')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
 
     opt = parser.parse_args()

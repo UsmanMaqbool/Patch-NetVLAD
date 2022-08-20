@@ -105,11 +105,11 @@ def main():
     parser = argparse.ArgumentParser(description='Patch-NetVLAD-Feature-Extract')
     parser.add_argument('--config_path', type=str, default=join(PATCHNETVLAD_ROOT_DIR, 'configs/performance.ini'),
                         help='File name (with extension) to an ini file that stores most of the configuration data for patch-netvlad')
-    parser.add_argument('--dataset_file_path', type=str, required=True,
+    parser.add_argument('--dataset_file_path', type=str, default='patchnetvlad/dataset_imagenames/mapillarycph_imageNames_index.txt',
                         help='Full path (with extension) to a text file that stores the save location and name of all images in the dataset folder')
-    parser.add_argument('--dataset_root_dir', type=str, default='',
+    parser.add_argument('--dataset_root_dir', type=str, default='/media/leo/2C737A9872F69ECF/datasets',
                         help='If the files in dataset_file_path are relative, use dataset_root_dir as prefix.')
-    parser.add_argument('--output_features_dir', type=str, default=join(PATCHNETVLAD_ROOT_DIR, 'output_features'),
+    parser.add_argument('--output_features_dir', type=str, default='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/mapillary_index',
                         help='Path to store all patch-netvlad features')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
 

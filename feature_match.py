@@ -180,7 +180,7 @@ def main():
                         default='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/pitts30k_index',
                         help='Path to load all database patch-netvlad features')
     parser.add_argument('--ground_truth_path', type=str, 
-                        default='patchnetvlad/dataset_gt_files/pitts30k_test.npz',
+                        default=None,
                         help='Path (with extension) to a file that stores the ground-truth data')
     parser.add_argument('--result_save_folder', type=str, default='results/pitts30k')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')

@@ -11,7 +11,7 @@ import kapture.io.csv as csv
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='use pairsfiles and kaptures for pose estimation using image retrieval')
     parser.add_argument('-p', '--pairsfile-path', type=str, default='patchnetvlad/results/robotcarseason2/NetVLAD_predictions.txt', required=False, help='path to pairsfile')
-    parser.add_argument('-m', '--mapping-path', type=str, default='/media/leo/2C737A9872F69ECF/datasets/kapture-RobotCar-Seasons-v2/', required=False, help='path to mapping kapture')
+    parser.add_argument('-m', '--mapping-path', type=str, default='/media/leo/2C737A9872F69ECF/datasets/kapture-RobotCar-Seasons-v2/mapping/', required=False, help='path to mapping kapture')
     parser.add_argument('-o', '--output-path', type=str, default='patchnetvlad/results/robotcarseason2/NetVLAD_robotcarpredictions_submission.txt', required=False, help='path to output LTVL challenge file')
     parser.add_argument('-d', '--decreasing', action='store_true', help='set if descending scores indicate a better match')
     parser.add_argument('-i', '--inverse', action='store_true', help='invert poses before recording them down in output file')

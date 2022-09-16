@@ -51,7 +51,7 @@ def get_pca_encoding(model, vlad_encoding):
 
 def get_backend():
     enc_dim = 512
-    enc = models.vgg16(pretrained=True)
+    enc = models.vgg16(weights='IMAGENET1K_V1')
     layers = list(enc.features.children())[:-2]
     # only train conv5_1, conv5_2, and conv5_3 (leave rest same as Imagenet trained weights)
     for layer in layers[:-5]:
@@ -78,7 +78,7 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
     elif config['pooling'].lower() == 'max':
         global_pool = nn.AdaptiveMaxPool2d((1, 1))
         nn_model.add_module('pool', nn.Sequential(*[global_pool, Flatten(), L2Norm()]))
-    elif config['pooling'].pooling.lower() == 'avg':
+    elif config['pooling'].lower() == 'avg':
         global_pool = nn.AdaptiveAvgPool2d((1, 1))
         nn_model.add_module('pool', nn.Sequential(*[global_pool, Flatten(), L2Norm()]))
     else:

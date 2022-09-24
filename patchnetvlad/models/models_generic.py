@@ -51,7 +51,8 @@ def get_pca_encoding(model, vlad_encoding):
 
 def get_backend():
     enc_dim = 512
-    enc = models.vgg16(weights='IMAGENET1K_V1')
+    # enc = models.vgg16(weights='IMAGENET1K_V1')
+    enc = models.vgg16(pretrained=True)
     layers = list(enc.features.children())[:-2]
     # only train conv5_1, conv5_2, and conv5_3 (leave rest same as Imagenet trained weights)
     for layer in layers[:-5]:

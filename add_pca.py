@@ -63,7 +63,7 @@ if __name__ == "__main__":
                         help='Root directory of dataset')
     parser.add_argument('--dataset_choice', type=str, default='mapillary', help='choice of mapillary or pitts, for PCA',
                         choices=['mapillary', 'pitts'])
-    parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
+    parser.add_argument('--threads', type=int, default=1, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
 
 

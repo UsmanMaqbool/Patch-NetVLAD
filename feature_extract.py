@@ -72,7 +72,9 @@ def feature_extract(eval_set, model, device, opt, config):
                 enumerate(tqdm(test_data_loader, position=1, leave=False, desc='Test Iter'.rjust(15)), 1):
             indices_np = indices.detach().numpy()
             input_data = input_data.to(device)
-            image_encoding = model.encoder(input_data)
+            
+            # image_encoding = model.encoder(input_data)
+            _, vlad_global = model(input_data)
             if config['global_params']['pooling'].lower() == 'patchnetvlad':
                 vlad_local, vlad_global = model.pool(image_encoding)
 
@@ -94,7 +96,7 @@ def feature_extract(eval_set, model, device, opt, config):
                         filename = output_local_features_prefix + '_' + 'psize{}_'.format(this_patch_size) + image_name + '.npy'
                         np.save(filename, db_feat_patches[i, :, :])
             else:
-                vlad_global = model.pool(image_encoding)
+                # vlad_global = model.pool(image_encoding)
                 vlad_global_pca = get_pca_encoding(model, vlad_global)
                 db_feat[indices_np, :] = vlad_global_pca.detach().cpu().numpy()
 
@@ -112,6 +114,8 @@ def main():
     parser.add_argument('--output_features_dir', type=str, default=join(PATCHNETVLAD_ROOT_DIR, 'output_features'),
                         help='Path to store all patch-netvlad features')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
+    parser.add_argument('--resume_path', type=str, required=False,
+                        help='resume path of the saved checkpoints')
 
     opt = parser.parse_args()
     print(opt)
@@ -136,24 +140,29 @@ def main():
 
     # must resume to do extraction
     if config['global_params']['num_pcs'] != '0':
-        resume_ckpt = config['global_params']['resumePath'] + config['global_params']['num_pcs'] + '.pth.tar'
+        resume_ckpt =  str(opt.resume_path) + config['global_params']['num_pcs'] + '.pth.tar'
+        
     else:
-        resume_ckpt = config['global_params']['resumePath'] + '.pth.tar'
-
+        resume_ckpt =  str(opt.resume_path) + '.pth.tar'
+    print("***")
+    print(resume_ckpt)
+    print("***")
     # backup: try whether resume_ckpt is relative to PATCHNETVLAD_ROOT_DIR
     if not isfile(resume_ckpt):
         resume_ckpt = join(PATCHNETVLAD_ROOT_DIR, resume_ckpt)
         if not isfile(resume_ckpt):
-            from download_models import download_all_models
-            download_all_models(ask_for_permission=True)
+            # from download_models import download_all_models
+            # download_all_models(ask_for_permission=True)
+            print('No checkpoint found!!!')
+            exit()
 
     if isfile(resume_ckpt):
         print("=> loading checkpoint '{}'".format(resume_ckpt))
         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)
         if config['global_params']['num_pcs'] != '0':
             assert checkpoint['state_dict']['WPCA.0.bias'].shape[0] == int(config['global_params']['num_pcs'])
-        config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])
 
+        config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
         if config['global_params']['num_pcs'] != '0':
             use_pca = True
         else:

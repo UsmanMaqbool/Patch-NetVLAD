@@ -90,13 +90,23 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
+    # encoder_dim, encoder = get_backend() # encoder_dim = 52 and encodes is simply VGG 
     encoder_dim, encoder = get_backend()
+    
+    # opt.arch = 'vgg16'
+    # opt.matconvnet = '/media/leo/2C737A9872F69ECF/models/netvlad-official/vd16_offtheshelf_conv5_3_max.pth'
+    # opt.mode.lower() 
+    # opt.dataPath
+    # opt.num_clusters = int(config['num_clusters'])
+    
 
     if opt.resume_path: # must resume for PCA
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)
-            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])
+            # for key in checkpoint['state_dict']:
+            #     print(key)
+            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
 
             model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
 
@@ -163,14 +173,15 @@ if __name__ == "__main__":
 
         for iteration, (input_data, indices) in enumerate(tqdm(data_loader)):
             input_data = input_data.to(device)
-            image_encoding = model.encoder(input_data)
-            vlad_encoding = model.pool(image_encoding)
+            # image_encoding = model.encoder(input_data)
+            # vlad_encoding = model.pool(image_encoding)
+            _, vlad_encoding = model(input_data)
             out_vectors = vlad_encoding.detach().cpu().numpy()
             # this allows for randomly shuffled inputs
             for idx, out_vector in enumerate(out_vectors):
                 dbFeat[iteration * data_loader.batch_size + idx, :] = out_vector
 
-            del input_data, image_encoding, vlad_encoding
+            del input_data, vlad_encoding
 
     print('===> Compute PCA, takes a while')
     num_pcs = int(config['global_params']['num_pcs'])

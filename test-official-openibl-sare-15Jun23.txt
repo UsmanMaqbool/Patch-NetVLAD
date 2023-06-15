@@ -1,0 +1,47 @@
+/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/*.tar
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best.pth.tar'
+/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best_WPCA
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best_WPCA4096.pth.tar
+***
+No checkpoint found!!!
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/model_best_WPCA4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8401
+====> Recall NetVLAD@5: 0.9252
+====> Recall NetVLAD@10: 0.9428
+====> Recall NetVLAD@20: 0.9567
+====> Recall NetVLAD@50: 0.9711
+====> Recall NetVLAD@100: 0.9802
+====> Recall PatchNetVLAD@1: 0.8401
+====> Recall PatchNetVLAD@5: 0.9252
+====> Recall PatchNetVLAD@10: 0.9428
+====> Recall PatchNetVLAD@20: 0.9567
+====> Recall PatchNetVLAD@50: 0.9711
+====> Recall PatchNetVLAD@100: 0.9802
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done

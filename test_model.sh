@@ -5,7 +5,7 @@ PYTHON=${PYTHON:-"python3"}
 
 DATASET=tokyo
 
-BASEDir="/media/leo/2C737A9872F69ECF/models/openibl/official-sare/conv5-sare_ind-lr0.001-tuple4/"
+BASEDir="/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-triplet-lr0.0001-01-Jul-1401/checkpoints/"
 FILES="${BASEDir}*.tar"
 echo "${FILES}"
 

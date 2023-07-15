@@ -1,0 +1,1332 @@
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/*.tar
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8351
+====> Recall NetVLAD@5: 0.9184
+====> Recall NetVLAD@10: 0.9362
+====> Recall NetVLAD@20: 0.9542
+====> Recall NetVLAD@50: 0.9698
+====> Recall NetVLAD@100: 0.9805
+====> Recall PatchNetVLAD@1: 0.8351
+====> Recall PatchNetVLAD@5: 0.9184
+====> Recall PatchNetVLAD@10: 0.9362
+====> Recall PatchNetVLAD@20: 0.9542
+====> Recall PatchNetVLAD@50: 0.9698
+====> Recall PatchNetVLAD@100: 0.9805
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0000
+====> Recall NetVLAD@5: 0.0063
+====> Recall NetVLAD@10: 0.0222
+====> Recall NetVLAD@20: 0.0349
+====> Recall NetVLAD@50: 0.0952
+====> Recall NetVLAD@100: 0.1651
+====> Recall PatchNetVLAD@1: 0.0000
+====> Recall PatchNetVLAD@5: 0.0063
+====> Recall PatchNetVLAD@10: 0.0222
+====> Recall PatchNetVLAD@20: 0.0349
+====> Recall PatchNetVLAD@50: 0.0952
+====> Recall PatchNetVLAD@100: 0.1651
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8504
+====> Recall NetVLAD@5: 0.9258
+====> Recall NetVLAD@10: 0.9442
+====> Recall NetVLAD@20: 0.9576
+====> Recall NetVLAD@50: 0.9724
+====> Recall NetVLAD@100: 0.9802
+====> Recall PatchNetVLAD@1: 0.8504
+====> Recall PatchNetVLAD@5: 0.9258
+====> Recall PatchNetVLAD@10: 0.9442
+====> Recall PatchNetVLAD@20: 0.9576
+====> Recall PatchNetVLAD@50: 0.9724
+====> Recall PatchNetVLAD@100: 0.9802
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_10_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0000
+====> Recall NetVLAD@5: 0.0032
+====> Recall NetVLAD@10: 0.0127
+====> Recall NetVLAD@20: 0.0190
+====> Recall NetVLAD@50: 0.0952
+====> Recall NetVLAD@100: 0.1429
+====> Recall PatchNetVLAD@1: 0.0000
+====> Recall PatchNetVLAD@5: 0.0032
+====> Recall PatchNetVLAD@10: 0.0127
+====> Recall PatchNetVLAD@20: 0.0190
+====> Recall PatchNetVLAD@50: 0.0952
+====> Recall PatchNetVLAD@100: 0.1429
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8423
+====> Recall NetVLAD@5: 0.9225
+====> Recall NetVLAD@10: 0.9407
+====> Recall NetVLAD@20: 0.9532
+====> Recall NetVLAD@50: 0.9702
+====> Recall NetVLAD@100: 0.9786
+====> Recall PatchNetVLAD@1: 0.8423
+====> Recall PatchNetVLAD@5: 0.9225
+====> Recall PatchNetVLAD@10: 0.9407
+====> Recall PatchNetVLAD@20: 0.9532
+====> Recall PatchNetVLAD@50: 0.9702
+====> Recall PatchNetVLAD@100: 0.9786
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0032
+====> Recall NetVLAD@5: 0.0095
+====> Recall NetVLAD@10: 0.0127
+====> Recall NetVLAD@20: 0.0190
+====> Recall NetVLAD@50: 0.0762
+====> Recall NetVLAD@100: 0.1524
+====> Recall PatchNetVLAD@1: 0.0032
+====> Recall PatchNetVLAD@5: 0.0095
+====> Recall PatchNetVLAD@10: 0.0127
+====> Recall PatchNetVLAD@20: 0.0190
+====> Recall PatchNetVLAD@50: 0.0762
+====> Recall PatchNetVLAD@100: 0.1524
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8474
+====> Recall NetVLAD@5: 0.9234
+====> Recall NetVLAD@10: 0.9418
+====> Recall NetVLAD@20: 0.9567
+====> Recall NetVLAD@50: 0.9704
+====> Recall NetVLAD@100: 0.9799
+====> Recall PatchNetVLAD@1: 0.8474
+====> Recall PatchNetVLAD@5: 0.9234
+====> Recall PatchNetVLAD@10: 0.9418
+====> Recall PatchNetVLAD@20: 0.9567
+====> Recall PatchNetVLAD@50: 0.9704
+====> Recall PatchNetVLAD@100: 0.9799
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_3_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0032
+====> Recall NetVLAD@5: 0.0095
+====> Recall NetVLAD@10: 0.0159
+====> Recall NetVLAD@20: 0.0317
+====> Recall NetVLAD@50: 0.0825
+====> Recall NetVLAD@100: 0.1587
+====> Recall PatchNetVLAD@1: 0.0032
+====> Recall PatchNetVLAD@5: 0.0095
+====> Recall PatchNetVLAD@10: 0.0159
+====> Recall PatchNetVLAD@20: 0.0317
+====> Recall PatchNetVLAD@50: 0.0825
+====> Recall PatchNetVLAD@100: 0.1587
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8465
+====> Recall NetVLAD@5: 0.9236
+====> Recall NetVLAD@10: 0.9425
+====> Recall NetVLAD@20: 0.9569
+====> Recall NetVLAD@50: 0.9727
+====> Recall NetVLAD@100: 0.9790
+====> Recall PatchNetVLAD@1: 0.8465
+====> Recall PatchNetVLAD@5: 0.9236
+====> Recall PatchNetVLAD@10: 0.9425
+====> Recall PatchNetVLAD@20: 0.9569
+====> Recall PatchNetVLAD@50: 0.9727
+====> Recall PatchNetVLAD@100: 0.9790
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0000
+====> Recall NetVLAD@5: 0.0032
+====> Recall NetVLAD@10: 0.0159
+====> Recall NetVLAD@20: 0.0254
+====> Recall NetVLAD@50: 0.0667
+====> Recall NetVLAD@100: 0.1111
+====> Recall PatchNetVLAD@1: 0.0000
+====> Recall PatchNetVLAD@5: 0.0032
+====> Recall PatchNetVLAD@10: 0.0159
+====> Recall PatchNetVLAD@20: 0.0254
+====> Recall PatchNetVLAD@50: 0.0667
+====> Recall PatchNetVLAD@100: 0.1111
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8446
+====> Recall NetVLAD@5: 0.9253
+====> Recall NetVLAD@10: 0.9441
+====> Recall NetVLAD@20: 0.9575
+====> Recall NetVLAD@50: 0.9707
+====> Recall NetVLAD@100: 0.9799
+====> Recall PatchNetVLAD@1: 0.8446
+====> Recall PatchNetVLAD@5: 0.9253
+====> Recall PatchNetVLAD@10: 0.9441
+====> Recall PatchNetVLAD@20: 0.9575
+====> Recall PatchNetVLAD@50: 0.9707
+====> Recall PatchNetVLAD@100: 0.9799
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_5_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0032
+====> Recall NetVLAD@5: 0.0063
+====> Recall NetVLAD@10: 0.0159
+====> Recall NetVLAD@20: 0.0254
+====> Recall NetVLAD@50: 0.0667
+====> Recall NetVLAD@100: 0.1143
+====> Recall PatchNetVLAD@1: 0.0032
+====> Recall PatchNetVLAD@5: 0.0063
+====> Recall PatchNetVLAD@10: 0.0159
+====> Recall PatchNetVLAD@20: 0.0254
+====> Recall PatchNetVLAD@50: 0.0667
+====> Recall PatchNetVLAD@100: 0.1143
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8484
+====> Recall NetVLAD@5: 0.9265
+====> Recall NetVLAD@10: 0.9435
+====> Recall NetVLAD@20: 0.9573
+====> Recall NetVLAD@50: 0.9699
+====> Recall NetVLAD@100: 0.9798
+====> Recall PatchNetVLAD@1: 0.8484
+====> Recall PatchNetVLAD@5: 0.9265
+====> Recall PatchNetVLAD@10: 0.9435
+====> Recall PatchNetVLAD@20: 0.9573
+====> Recall PatchNetVLAD@50: 0.9699
+====> Recall PatchNetVLAD@100: 0.9798
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_6_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0000
+====> Recall NetVLAD@5: 0.0032
+====> Recall NetVLAD@10: 0.0127
+====> Recall NetVLAD@20: 0.0381
+====> Recall NetVLAD@50: 0.0762
+====> Recall NetVLAD@100: 0.1460
+====> Recall PatchNetVLAD@1: 0.0000
+====> Recall PatchNetVLAD@5: 0.0032
+====> Recall PatchNetVLAD@10: 0.0127
+====> Recall PatchNetVLAD@20: 0.0381
+====> Recall PatchNetVLAD@50: 0.0762
+====> Recall PatchNetVLAD@100: 0.1460
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8496
+====> Recall NetVLAD@5: 0.9269
+====> Recall NetVLAD@10: 0.9441
+====> Recall NetVLAD@20: 0.9598
+====> Recall NetVLAD@50: 0.9718
+====> Recall NetVLAD@100: 0.9800
+====> Recall PatchNetVLAD@1: 0.8496
+====> Recall PatchNetVLAD@5: 0.9269
+====> Recall PatchNetVLAD@10: 0.9441
+====> Recall PatchNetVLAD@20: 0.9598
+====> Recall PatchNetVLAD@50: 0.9718
+====> Recall PatchNetVLAD@100: 0.9800
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_7_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0000
+====> Recall NetVLAD@5: 0.0127
+====> Recall NetVLAD@10: 0.0254
+====> Recall NetVLAD@20: 0.0413
+====> Recall NetVLAD@50: 0.0508
+====> Recall NetVLAD@100: 0.1111
+====> Recall PatchNetVLAD@1: 0.0000
+====> Recall PatchNetVLAD@5: 0.0127
+====> Recall PatchNetVLAD@10: 0.0254
+====> Recall PatchNetVLAD@20: 0.0413
+====> Recall PatchNetVLAD@50: 0.0508
+====> Recall PatchNetVLAD@100: 0.1111
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8504
+====> Recall NetVLAD@5: 0.9259
+====> Recall NetVLAD@10: 0.9450
+====> Recall NetVLAD@20: 0.9585
+====> Recall NetVLAD@50: 0.9721
+====> Recall NetVLAD@100: 0.9808
+====> Recall PatchNetVLAD@1: 0.8504
+====> Recall PatchNetVLAD@5: 0.9259
+====> Recall PatchNetVLAD@10: 0.9450
+====> Recall PatchNetVLAD@20: 0.9585
+====> Recall PatchNetVLAD@50: 0.9721
+====> Recall PatchNetVLAD@100: 0.9808
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_8_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0032
+====> Recall NetVLAD@5: 0.0159
+====> Recall NetVLAD@10: 0.0159
+====> Recall NetVLAD@20: 0.0413
+====> Recall NetVLAD@50: 0.0635
+====> Recall NetVLAD@100: 0.1333
+====> Recall PatchNetVLAD@1: 0.0032
+====> Recall PatchNetVLAD@5: 0.0159
+====> Recall PatchNetVLAD@10: 0.0159
+====> Recall PatchNetVLAD@20: 0.0413
+====> Recall PatchNetVLAD@50: 0.0635
+====> Recall PatchNetVLAD@100: 0.1333
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8495
+====> Recall NetVLAD@5: 0.9262
+====> Recall NetVLAD@10: 0.9444
+====> Recall NetVLAD@20: 0.9589
+====> Recall NetVLAD@50: 0.9717
+====> Recall NetVLAD@100: 0.9796
+====> Recall PatchNetVLAD@1: 0.8495
+====> Recall PatchNetVLAD@5: 0.9262
+====> Recall PatchNetVLAD@10: 0.9444
+====> Recall PatchNetVLAD@20: 0.9589
+====> Recall PatchNetVLAD@50: 0.9717
+====> Recall PatchNetVLAD@100: 0.9796
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/checkpoint_9_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0000
+====> Recall NetVLAD@5: 0.0063
+====> Recall NetVLAD@10: 0.0127
+====> Recall NetVLAD@20: 0.0286
+====> Recall NetVLAD@50: 0.0603
+====> Recall NetVLAD@100: 0.1206
+====> Recall PatchNetVLAD@1: 0.0000
+====> Recall PatchNetVLAD@5: 0.0063
+====> Recall PatchNetVLAD@10: 0.0127
+====> Recall PatchNetVLAD@20: 0.0286
+====> Recall PatchNetVLAD@50: 0.0603
+====> Recall PatchNetVLAD@100: 0.1206
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done
+Building PCA Model of /media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best.pth.tar file...
+Namespace(config_path='patchnetvlad/configs/train-pitts.ini', dataset_choice='pitts', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k', nocuda=False, resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best.pth.tar', threads=1)
+===> Building model
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best.pth.tar'
+===> Loading PCA dataset(s)
+Parsing dataset...
+Done! Found 10000 images
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 32768 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA
+===================================
+============Pittsburgh Testing=====
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA')
+Parsing dataset...
+Done! Found 10000 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='pitts30k_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', nocuda=False, output_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA')
+Parsing dataset...
+Done! Found 6816 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='=/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/', ground_truth_path='./patchnetvlad/dataset_gt_files/pitts30k_test.npz', index_file_path='pitts30k_imageNames_index.txt', index_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_index', nocuda=False, query_file_path='pitts30k_imageNames_query.txt', query_input_features_dir='/media/leo/2C737A9872F69ECF/why-so-deepv2-data/pittsburgh/patch-netvlad-features/pitts30k_query', result_save_folder='./patchnetvlad/results/pitts30k-pytorchnetvlad')
+Parsing dataset...
+Done! Found 6816 images
+Parsing dataset...
+Done! Found 10000 images
+Parsing ground truth data file...
+====> Building faiss index
+Writing results to ./patchnetvlad/results/pitts30k-pytorchnetvlad/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.8423
+====> Recall NetVLAD@5: 0.9225
+====> Recall NetVLAD@10: 0.9407
+====> Recall NetVLAD@20: 0.9532
+====> Recall NetVLAD@50: 0.9702
+====> Recall NetVLAD@100: 0.9786
+====> Recall PatchNetVLAD@1: 0.8423
+====> Recall PatchNetVLAD@5: 0.9225
+====> Recall PatchNetVLAD@10: 0.9407
+====> Recall PatchNetVLAD@20: 0.9532
+====> Recall PatchNetVLAD@50: 0.9702
+====> Recall PatchNetVLAD@100: 0.9786
+Writing recalls to ./patchnetvlad/results/pitts30k-pytorchnetvlad/recalls.txt
+Done
+===================================
+============Toyko 247 Testing======
+===================================
+Extracting Features of Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_index.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', resume_path='/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA')
+Parsing dataset...
+Done! Found 75984 images
+***
+/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar
+***
+=> loading checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar'
+=> loaded checkpoint '/media/leo/2C737A9872F69ECF/models/graphnetvlad/pytorch-netvlad/pittsburgh-sare_ind-lr0.0001-10-Jul-1412/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='tokyo247_imageNames_query.txt', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', nocuda=False, output_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', resume_path=None)
+Parsing dataset...
+Done! Found 315 images
+***
+None4096.pth.tar
+***
+No checkpoint found!!!
+Performing Features Matching and Recall Result
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_247_Tokyo_GSV/', ground_truth_path='patchnetvlad/dataset_gt_files/tokyo247.npz', index_file_path='tokyo247_imageNames_index.txt', index_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_index', nocuda=False, query_file_path='tokyo247_imageNames_query.txt', query_input_features_dir='/mnt/ssd/usman_ws/datasets/patch-netvlad-features/tokyo247_query', result_save_folder='patchnetvlad/results/tokyo247')
+Parsing dataset...
+Done! Found 315 images
+Parsing dataset...
+Done! Found 75984 images
+Parsing ground truth data file...
+====> Building faiss index
+Tokyo24/7: Selecting only one of the 12 cutouts per panorama
+Writing results to patchnetvlad/results/tokyo247/NetVLAD_predictions.txt
+Finished matching features.
+Calculating recalls using ground truth.
+====> Recall NetVLAD@1: 0.0032
+====> Recall NetVLAD@5: 0.0095
+====> Recall NetVLAD@10: 0.0127
+====> Recall NetVLAD@20: 0.0190
+====> Recall NetVLAD@50: 0.0762
+====> Recall NetVLAD@100: 0.1524
+====> Recall PatchNetVLAD@1: 0.0032
+====> Recall PatchNetVLAD@5: 0.0095
+====> Recall PatchNetVLAD@10: 0.0127
+====> Recall PatchNetVLAD@20: 0.0190
+====> Recall PatchNetVLAD@50: 0.0762
+====> Recall PatchNetVLAD@100: 0.1524
+Writing recalls to patchnetvlad/results/tokyo247/recalls.txt
+Done

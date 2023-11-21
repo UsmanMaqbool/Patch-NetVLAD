@@ -68,30 +68,7 @@ class NeighborAggregator(nn.Module):
     
 #F.pre PReLU
 # prelu
-class SageGCN(nn.Module):
-    def __init__(self, input_dim, hidden_dim,
-                 activation=F.gelu,
-                 aggr_neighbor_method="sum",
-                 aggr_hidden_method="concat"):
-        """SageGCN layer definition
-        # firstworking with mean and concat
-        Args:
-            input_dim: the dimension of the input feature
-            hidden_dim: dimension of hidden layer features,
-                When aggr_hidden_method=sum, the output dimension is hidden_dim
-                When aggr_hidden_method=concat, the output dimension is hidden_dim*2
-            activation: activation function
-            aggr_neighbor_method: neighbor feature aggregation method, ["mean", "sum", "max"]
-            aggr_hidden_method: update method of node features, ["sum", "concat"]
-        """
-        super(SageGCN, self).__init__()
-        assert aggr_neighbor_method in ["mean", "sum", "max"]
-        assert aggr_hidden_method in ["sum", "concat"]
-        self.input_dim = input_dim
-        self.hidden_dim = hidden_dim
-        self.aggr_neighbor_method = aggr_neighbor_method
-        self.aggr_hidden_method = aggr_hidden_method
-        self.activation = activation
+class SageGCN(24Aug23ctivation = activation
         self.aggregator = NeighborAggregator(input_dim, hidden_dim,
                                              aggr_method=aggr_neighbor_method)
         self.weight = nn.Parameter(torch.Tensor(input_dim, hidden_dim))

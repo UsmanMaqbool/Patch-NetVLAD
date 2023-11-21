@@ -131,7 +131,7 @@ def feature_match(eval_set, device, opt, config):
             _, predictions = faiss_index.search(qFeat, max(n_values) * 12)  # 12 cutouts per panorama
             predictions_new = []
             for qIx, pred in enumerate(predictions):
-                _, idx = np.unique(np.floor(pred / 12).astype(np.int), return_index=True)
+                _, idx = np.unique(np.floor(pred / 12).astype(int), return_index=True)
                 pred = pred[np.sort(idx)]
                 pred = pred[:max(n_values)]
                 predictions_new.append(pred)

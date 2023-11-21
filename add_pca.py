@@ -106,7 +106,10 @@ if __name__ == "__main__":
             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)
             # for key in checkpoint['state_dict']:
             #     print(key)
+            # print("Number of Clusters= '{}'".format(num_clusters, ))
             config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
+            print("Number of Clusters= '{}'".format(str(checkpoint['state_dict']['net_vlad.centroids'].shape[0]), ))
+
 
             model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
 

@@ -53,7 +53,7 @@ def get_pca_encoding(model, vlad_encoding):
 def get_backend():
     enc_dim = 512
     arch = 'vgg16'
-    matconvnet_path = '/media/leo/2C737A9872F69ECF/models/netvlad-official/vd16_offtheshelf_conv5_3_max.pth'
+    matconvnet_path = '/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth'
     # enc = models.vgg16(weights='IMAGENET1K_V1')
     # enc = models.vgg16(pretrained=True)
     # layers = list(enc.features.children())[:-2]
@@ -72,8 +72,8 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
     # nn_model.add_module('encoder', encoder)
 
     if config['pooling'].lower() == 'netvlad':
-        pool_layer = models.create('netvlad', dim=encoder_dim)
-        nn_model = models.create('embednet', encoder, pool_layer)
+        nn_model = models.create('netvlad', dim=encoder_dim)
+        # nn_model = models.create('embednet', encoder, pool)
         # net_vlad = NetVLAD(num_clusters=int(config['num_clusters']), dim=encoder_dim, vladv2=config.getboolean('vladv2'))
         # nn_model.add_module('pool', net_vlad)
     elif config['pooling'].lower() == 'patchnetvlad':
@@ -99,4 +99,8 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
         pca_conv = nn.Conv2d(netvlad_output_dim, num_pcs, kernel_size=(1, 1), stride=1, padding=0)
         nn_model.add_module('WPCA', nn.Sequential(*[pca_conv, Flatten(), L2Norm(dim=-1)]))
 
+    return nn_model
+
+def combine_model(encoder, pool_layer):
+    nn_model = models.create('embednet', encoder, pool_layer)
     return nn_model

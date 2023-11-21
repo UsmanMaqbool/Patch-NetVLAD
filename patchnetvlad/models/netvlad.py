@@ -79,7 +79,7 @@ class EmbedNet(nn.Module):
         vlad_x = vlad_x.view(x.size(0), -1)  # flatten
         vlad_x = F.normalize(vlad_x, p=2, dim=1)  # L2 normalize
 
-        return pool_x, vlad_x
+        return vlad_x
 
 class EmbedNetPCA(nn.Module):
     def __init__(self, base_model, net_vlad, dim=4096):

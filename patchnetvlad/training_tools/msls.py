@@ -282,6 +282,15 @@ class MSLS(Dataset):
             sys.exit()
 
         # cast to np.arrays for indexing during training
+        # print(self.qIdx.shape)
+        # print(self.qImages.shape)
+        # print(self.pIdx.shape)
+        # print(self.nonNegIdx.shape)
+        # print(self.dbImages.shape)
+        # print(self.sideways.shape)
+        # print(self.night.shape)
+
+        
         self.qIdx = np.asarray(self.qIdx)
         self.qImages = np.asarray(self.qImages)
         self.pIdx = np.asarray(self.pIdx)
@@ -489,24 +498,29 @@ class MSLS(Dataset):
             for i, batch in tqdm(enumerate(qloader), desc='compute query descriptors', total=len(qidxs) // bs,
                                  position=2, leave=False):
                 X, y = batch
-                image_encoding = net.encoder(X.to(self.device))
-                vlad_encoding = net.pool(image_encoding)
+                # image_encoding = net.encoder(X.to(self.device))
+                # vlad_encoding = net.pool(image_encoding)
+                vlad_encoding =  net(X.to(self.device))
                 qvecs[i * bs:(i + 1) * bs, :] = vlad_encoding
             for i, batch in tqdm(enumerate(ploader), desc='compute positive descriptors', total=len(pidxs) // bs,
                                  position=2, leave=False):
                 X, y = batch
-                image_encoding = net.encoder(X.to(self.device))
-                vlad_encoding = net.pool(image_encoding)
+                # image_encoding = net.encoder(X.to(self.device))
+                # vlad_encoding = net.pool(image_encoding)
+                vlad_encoding =  net(X.to(self.device))
                 pvecs[i * bs:(i + 1) * bs, :] = vlad_encoding
             for i, batch in tqdm(enumerate(nloader), desc='compute negative descriptors', total=len(nidxs) // bs,
                                  position=2, leave=False):
                 X, y = batch
-                image_encoding = net.encoder(X.to(self.device))
-                vlad_encoding = net.pool(image_encoding)
+                # image_encoding = net.encoder(X.to(self.device))
+                # vlad_encoding = net.pool(image_encoding)
+                vlad_encoding =  net(X.to(self.device))
                 nvecs[i * bs:(i + 1) * bs, :] = vlad_encoding
 
         tqdm.write('>> Searching for hard negatives...')
         # compute dot product scores and ranks on GPU
+        # print(qvecs.shape)
+        # print(pvecs.shape)
         pScores = torch.mm(qvecs, pvecs.t())
         pScores, pRanks = torch.sort(pScores, dim=1, descending=True)
 

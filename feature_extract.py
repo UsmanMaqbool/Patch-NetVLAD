@@ -161,8 +161,14 @@ def main():
         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)
         if config['global_params']['num_pcs'] != '0':
             assert checkpoint['state_dict']['WPCA.0.bias'].shape[0] == int(config['global_params']['num_pcs'])
+            
+        print("Number of Clusters=",config['global_params']['num_clusters'])
 
         config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
+        
+        print("Number of Clusters=",config['global_params']['num_clusters'])
+
+        
         if config['global_params']['num_pcs'] != '0':
             use_pca = True
         else:

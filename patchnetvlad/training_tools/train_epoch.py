@@ -34,6 +34,58 @@ from tqdm.auto import trange, tqdm
 from torch.utils.data import DataLoader
 from patchnetvlad.training_tools.tools import humanbytes
 from patchnetvlad.training_tools.msls import MSLS
+import torch.nn.functional as F
+
+
+def get_loss(outputs, loss_type, B, N):
+    outputs = outputs.view(B, N, -1)
+    L = outputs.size(-1)
+
+    output_negatives = outputs[:, 2:]
+    output_anchors = outputs[:, 0]
+    output_positives = outputs[:, 1]
+
+    if (loss_type=='triplet'):
+        output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
+        output_positives = output_positives.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
+        output_negatives = output_negatives.contiguous().view(-1, L)
+        loss = F.triplet_margin_loss(output_anchors, output_positives, output_negatives,
+                                        margin=0.1**0.5, p=2, reduction='mean')
+
+    elif (loss_type=='sare_joint'):
+        ### original version: euclidean distance
+        dist_pos = ((output_anchors - output_positives)**2).sum(1)
+        dist_pos = dist_pos.view(B, 1)
+
+        output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
+        output_negatives = output_negatives.contiguous().view(-1, L)
+        dist_neg = ((output_anchors - output_negatives)**2).sum(1)
+        dist_neg = dist_neg.view(B, -1)
+
+        dist = - torch.cat((dist_pos, dist_neg), 1)
+        dist = F.log_softmax(dist, 1)
+        loss = (- dist[:, 0]).mean()
+
+    elif (loss_type=='sare_ind'):
+        ### original version: euclidean distance
+        dist_pos = ((output_anchors - output_positives)**2).sum(1)
+        dist_pos = dist_pos.view(B, 1)
+
+        output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
+        output_negatives = output_negatives.contiguous().view(-1, L)
+        dist_neg = ((output_anchors - output_negatives)**2).sum(1)
+        dist_neg = dist_neg.view(B, -1)
+
+        dist_neg = dist_neg.unsqueeze(2)
+        dist_pos = dist_pos.view(B, 1, 1).expand_as(dist_neg)
+        dist = - torch.cat((dist_pos, dist_neg), 2).view(-1, 2)
+        dist = F.log_softmax(dist, 1)
+        loss = (- dist[:, 0]).mean()
+
+    else:
+        assert ("Unknown loss function")
+
+    return loss
 
 
 def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device, epoch_num, opt, config, writer):
@@ -75,27 +127,35 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             nNeg = torch.sum(negCounts)
             data_input = torch.cat([query, positives, negatives])
 
-            data_input = data_input.to(device)
-            image_encoding = model.encoder(data_input)
-            vlad_encoding = model.pool(image_encoding)
+            # data_input = data_input.to(device)
+            # image_encoding = model.encoder(data_input)
+            # vlad_encoding = model.pool(image_encoding)
 
-            vladQ, vladP, vladN = torch.split(vlad_encoding, [B, B, nNeg])
+            vlad_encoding = model(data_input.to(device))
 
+            
+            # vladQ, vladP, vladN = torch.split(vlad_encoding, [B, B, nNeg])
+
+            
             optimizer.zero_grad()
 
             # calculate loss for each Query, Positive, Negative triplet
             # due to potential difference in number of negatives have to
             # do it per query, per negative
             loss = 0
-            for i, negCount in enumerate(negCounts):
-                for n in range(negCount):
-                    negIx = (torch.sum(negCounts[:i]) + n).item()
-                    loss += criterion(vladQ[i: i + 1], vladP[i: i + 1], vladN[negIx:negIx + 1])
+            # for i, negCount in enumerate(negCounts):
+            #     for n in range(negCount):
+            #         negIx = (torch.sum(negCounts[:i]) + n).item()
+            #         loss += criterion(vladQ[i: i + 1], vladP[i: i + 1], vladN[negIx:negIx + 1])
+
+            N = int(1 + 1 + nNeg)
+            loss = get_loss(vlad_encoding, criterion, B, N).to(device)
+
 
             loss /= nNeg.float().to(device)  # normalise by actual number of negatives
             loss.backward()
             optimizer.step()
-            del data_input, image_encoding, vlad_encoding, vladQ, vladP, vladN
+            del data_input, vlad_encoding #, image_encoding, vladQ, vladP, vladN
             del query, positives, negatives
 
             batch_loss = loss.item()

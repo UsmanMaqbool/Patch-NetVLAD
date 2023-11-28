@@ -45,6 +45,9 @@ $PYTHON train.py \
 --threads=2 \
 --cluster_path=/home/leo/usman_ws/datasets/2015netVLAD/official/vgg16_pitts_64_desc_cen.hdf5 \
 --loss-type ${LOSS} 
+
+
+
 # $PYTHON -m torch.distributed.launch --nproc_per_node=$GPUS --master_port=$PORT --use_env \
 # examples/netvlad_img.py --launcher pytorch --tcp-port ${PORT} \
 #   -d ${DATASET} --scale ${SCALE} \

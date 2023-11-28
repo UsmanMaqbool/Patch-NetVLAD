@@ -1,0 +1,11 @@
+/home/leo/usman_ws/models/patchnetvlad/official-vgg16/triplet-22-Nov
+
+After 3 epoch
+
+
+====> Recall@1: 0.1770                                                                                                                                                                                             
+====> Recall@5: 0.3189                                                                                                                                                                                             
+====> Recall@10: 0.4027                                                                                                                                                                                            
+====> Recall@20: 0.4878                                                                                                                                                                                            
+====> Recall@50: 0.6365                                                                                                                                                                                            
+====> Recall@100: 0.7378   

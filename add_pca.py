@@ -43,7 +43,7 @@ import numpy as np
 
 from patchnetvlad.training_tools.tools import pca
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, Flatten, L2Norm
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, Flatten, L2Norm
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import tqdm
@@ -111,7 +111,9 @@ if __name__ == "__main__":
             print("Number of Clusters= '{}'".format(str(checkpoint['state_dict']['net_vlad.centroids'].shape[0]), ))
 
 
-            model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+            pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+            model = combine_model(encoder, pool_layer)
+
 
             model.load_state_dict(checkpoint['state_dict'])
             opt.start_epoch = checkpoint['epoch']
@@ -128,6 +130,9 @@ if __name__ == "__main__":
         model.pool = nn.DataParallel(model.pool)
         isParallel = True
 
+    model.load_state_dict(checkpoint['state_dict'])
+    opt.start_epoch = checkpoint['epoch']
+    
     model = model.to(device)
 
     pool_size = encoder_dim
@@ -178,7 +183,7 @@ if __name__ == "__main__":
             input_data = input_data.to(device)
             # image_encoding = model.encoder(input_data)
             # vlad_encoding = model.pool(image_encoding)
-            _, vlad_encoding = model(input_data)
+            vlad_encoding = model(input_data)
             out_vectors = vlad_encoding.detach().cpu().numpy()
             # this allows for randomly shuffled inputs
             for idx, out_vector in enumerate(out_vectors):

@@ -50,7 +50,7 @@ def get_loss(outputs, loss_type, B, N):
         output_positives = output_positives.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
         output_negatives = output_negatives.contiguous().view(-1, L)
         loss = F.triplet_margin_loss(output_anchors, output_positives, output_negatives,
-                                        margin=0.1**0.5, p=2, reduction='mean')
+                                        margin=0.1, p=2, reduction='mean')
 
     elif (loss_type=='sare_joint'):
         ### original version: euclidean distance

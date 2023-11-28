@@ -145,7 +145,8 @@ if __name__ == "__main__":
         if opt.cluster_path:
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:
-                    shutil.copyfile(opt.cluster_path, initcache)
+                    # shutil.copyfile(opt.cluster_path, initcache)
+                    initcache = opt.cluster_path
                     print('===> Loading Cluster Centroids')
 
             else:

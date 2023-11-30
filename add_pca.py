@@ -51,6 +51,10 @@ from tqdm.auto import tqdm
 from patchnetvlad.training_tools.msls import MSLS, ImagesFromList
 from patchnetvlad.tools.datasets import PlaceDataset
 
+from pca import PCA
+
+
+import code
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Patch-NetVLAD-add-pca')
@@ -125,10 +129,10 @@ if __name__ == "__main__":
         raise ValueError("Need an existing checkpoint in order to run PCA")
 
     isParallel = False
-    if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:
-        model.encoder = nn.DataParallel(model.encoder)
-        model.pool = nn.DataParallel(model.pool)
-        isParallel = True
+    # if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:
+    #     model.encoder = nn.DataParallel(model.encoder)
+    #     model.pool = nn.DataParallel(model.pool)
+    #     isParallel = True
 
     model.load_state_dict(checkpoint['state_dict'])
     opt.start_epoch = checkpoint['epoch']
@@ -193,16 +197,24 @@ if __name__ == "__main__":
 
     print('===> Compute PCA, takes a while')
     num_pcs = int(config['global_params']['num_pcs'])
-    u, lams, mu = pca(dbFeat, num_pcs)
+    # code.interact(local=locals())
+    # dbFeat = list(dbFeat)
+    dbFeat = torch.from_numpy(dbFeat)
+    pca = PCA(pca_n_components= num_pcs, pca_whitening = True)
+    # dbFeat = torch.stack(dbFeat)
+    utmu, u = pca.train(dbFeat)
+    
+    # # 
+    # u, lams, mu = pca(dbFeat, num_pcs)
 
-    u = u[:, :num_pcs]
-    lams = lams[:num_pcs]
+    # u = u[:, :num_pcs]
+    # lams = lams[:num_pcs]
 
-    print('===> Add PCA Whiten')
-    u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
+    # print('===> Add PCA Whiten')
+    # u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
     pca_str = 'WPCA'
 
-    utmu = np.matmul(u.T, mu)
+    # utmu = np.matmul(u.T, mu)
 
     pca_conv = nn.Conv2d(pool_size, num_pcs, kernel_size=(1, 1), stride=1, padding=0)
     # noinspection PyArgumentList

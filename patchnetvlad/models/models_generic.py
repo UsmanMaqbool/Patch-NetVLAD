@@ -104,3 +104,8 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
 def combine_model(encoder, pool_layer):
     nn_model = models.create('embednet', encoder, pool_layer)
     return nn_model
+
+def combine_model_with_PCA(encoder, pool_layer):
+    nn_model = models.create('embednetpca', encoder, pool_layer)
+    return nn_model
+

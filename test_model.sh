@@ -31,12 +31,12 @@ do
   
   
   echo "Extracting Features of Index Images"
-  PCA_RESUME="${BASEDir}{$filename}_WPCA"
+  # PCA_RESUME="${BASEDir}{$filename}_WPCA"
 
   python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=pitts30k_imageNames_index.txt \
-  --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/ \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k\
   --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
   --resume_path=${PCA_RESUME}
 
@@ -46,7 +46,7 @@ do
   python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=pitts30k_imageNames_query.txt \
-  --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/ \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
   --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
   --resume_path=${PCA_RESUME}
   echo "Performing Features Matching and Recall Result"

@@ -46,7 +46,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 
 from patchnetvlad.tools.datasets import PlaceDataset
-from patchnetvlad.models.models_generic import get_backend, get_model, get_pca_encoding
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, combine_model_with_PCA, get_pca_encoding
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 
@@ -74,7 +74,7 @@ def feature_extract(eval_set, model, device, opt, config):
             input_data = input_data.to(device)
             
             # image_encoding = model.encoder(input_data)
-            _, vlad_global = model(input_data)
+            vlad_global = model(input_data)
             if config['global_params']['pooling'].lower() == 'patchnetvlad':
                 vlad_local, vlad_global = model.pool(image_encoding)
 
@@ -97,7 +97,8 @@ def feature_extract(eval_set, model, device, opt, config):
                         np.save(filename, db_feat_patches[i, :, :])
             else:
                 # vlad_global = model.pool(image_encoding)
-                vlad_global_pca = get_pca_encoding(model, vlad_global)
+                # vlad_global_pca = get_pca_encoding(model, vlad_global)
+                vlad_global_pca = vlad_global
                 db_feat[indices_np, :] = vlad_global_pca.detach().cpu().numpy()
 
     np.save(output_global_features_filename, db_feat)
@@ -119,7 +120,7 @@ def main():
 
     opt = parser.parse_args()
     print(opt)
-
+    print(opt.resume_path)
     configfile = opt.config_path
     assert os.path.isfile(configfile)
     config = configparser.ConfigParser()
@@ -162,8 +163,6 @@ def main():
         if config['global_params']['num_pcs'] != '0':
             assert checkpoint['state_dict']['WPCA.0.bias'].shape[0] == int(config['global_params']['num_pcs'])
             
-        print("Number of Clusters=",config['global_params']['num_clusters'])
-
         config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
         
         print("Number of Clusters=",config['global_params']['num_clusters'])
@@ -173,7 +172,27 @@ def main():
             use_pca = True
         else:
             use_pca = False
-        model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=use_pca)
+            
+        pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+        model = combine_model_with_PCA(encoder, pool_layer)
+        
+        
+        # Rename the keys in the state_dict to match the current model architecture
+        new_state_dict = {}
+        for key, value in checkpoint['state_dict'].items():
+            # Rename keys if they don't match the expected naming convention
+            if key == 'WPCA.0.weight':
+                new_state_dict['pca_layer.weight'] = value
+            elif key == 'WPCA.0.bias':
+                new_state_dict['pca_layer.bias'] = value.squeeze()
+            else:
+                new_state_dict[key] = value
+
+        # Update the state_dict in the checkpoint with the renamed keys
+        checkpoint['state_dict'] = new_state_dict
+        
+        
+               
         model.load_state_dict(checkpoint['state_dict'])
         
         if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

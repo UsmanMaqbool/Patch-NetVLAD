@@ -5,7 +5,7 @@ PYTHON=${PYTHON:-"python3"}
 
 DATASET=tokyo
 
-BASEDir="/home/leo/usman_ws/models/patchnetvlad/official-vgg16/triplet-25-Nov/Nov25_11-19-02_mapillary_nopanos/checkpoints/"
+BASEDir="/home/leo/usman_ws/models/patchnetvlad/official-vgg16/triplet-30-Nov/Nov30_15-51-35_mapillary_nopanos/checkpoints/"
 FILES="${BASEDir}*.tar"
 echo "${FILES}"
 
@@ -24,9 +24,10 @@ do
   PCA_RESUME="${BASEDir}${filename}"
   PCA_RESUME="${PCA_RESUME}_WPCA"
   echo $PCA_RESUME
-  
+
+
   echo "==================================="
-  echo "============Pittsburgh Testing====="
+  echo "============Mappilary Testing====="
   echo "==================================="
   
   
@@ -35,9 +36,9 @@ do
 
   python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
-  --dataset_file_path=pitts30k_imageNames_index.txt \
-  --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k\
-  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
+  --dataset_file_path=mapillarysf_imageNames_index.txt \
+  --dataset_root_dir=--dataset_root_dir=/home/leo/usman_ws/datasets/mapillary_sls/ \
+  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
   --resume_path=${PCA_RESUME}
 
   
@@ -45,21 +46,59 @@ do
 
   python feature_extract.py \
   --config_path patchnetvlad/configs/performance.ini \
-  --dataset_file_path=pitts30k_imageNames_query.txt \
-  --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
-  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
+  --dataset_file_path=mapillarysf_imageNames_query.txt \
+  --dataset_root_dir=--dataset_root_dir=/home/leo/usman_ws/datasets/mapillary_sls/ \
+  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
   --resume_path=${PCA_RESUME}
   echo "Performing Features Matching and Recall Result"
 
   python feature_match.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_root_dir==/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/ \
-  --query_file_path=pitts30k_imageNames_query.txt \
-  --index_file_path=pitts30k_imageNames_index.txt \
-  --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
-  --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
-  --result_save_folder=./patchnetvlad/results/pitts30k-pytorchnetvlad \
-  --ground_truth_path=./patchnetvlad/dataset_gt_files/pitts30k_test.npz
+  --query_file_path=mapillarysf_imageNames_query.txt \
+  --index_file_path=mapillarysf_imageNames_index.txt \
+  --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
+  --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
+  --result_save_folder=./patchnetvlad/results/mapillarysf-pytorchnetvlad \
+  --ground_truth_path=./patchnetvlad/dataset_gt_files/mapillarysf_test.npz
+
+
+
+  # echo "==================================="
+  # echo "============Pittsburgh Testing====="
+  # echo "==================================="
+  
+  
+  # echo "Extracting Features of Index Images"
+  # # PCA_RESUME="${BASEDir}{$filename}_WPCA"
+
+  # python feature_extract.py \
+  # --config_path patchnetvlad/configs/performance.ini \
+  # --dataset_file_path=pitts30k_imageNames_index.txt \
+  # --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
+  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
+  # --resume_path=${PCA_RESUME}
+
+  
+  # echo "Extracting Features of Query Images"
+
+  # python feature_extract.py \
+  # --config_path patchnetvlad/configs/performance.ini \
+  # --dataset_file_path=pitts30k_imageNames_query.txt \
+  # --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
+  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
+  # --resume_path=${PCA_RESUME}
+  # echo "Performing Features Matching and Recall Result"
+
+  # python feature_match.py \
+  # --config_path patchnetvlad/configs/performance.ini \
+  # --dataset_root_dir==/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/ \
+  # --query_file_path=pitts30k_imageNames_query.txt \
+  # --index_file_path=pitts30k_imageNames_index.txt \
+  # --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
+  # --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
+  # --result_save_folder=./patchnetvlad/results/pitts30k-pytorchnetvlad \
+  # --ground_truth_path=./patchnetvlad/dataset_gt_files/pitts30k_test.npz
 
   # echo "==================================="
   # echo "============Toyko 247 Testing======"

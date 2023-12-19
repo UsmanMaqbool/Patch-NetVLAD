@@ -1,4 +1,52 @@
 # Patch-NetVLAD: Multi-Scale Fusion of Locally-Global Descriptors for Place Recognition
+
+## Training
+### Todo
+- multiple checkpoints save
+- train.ini parameters
+- check if the file already exists, than no need to calculate again
+
+
+## Testing
+change the dataset path `dataset_root_dir` in `test.sh` file.
+### Testing on Local PC
+```sh
+# checkpoints
+test.sh DATASET CHECKPOINTS_PATH
+## example
+test.sh mapillary /home/leo/usman_ws/models/patchnetvlad/official-vgg16/triplet-13-Dec/Dec13_14-38-27_mapillary_nopanos/checkpoints/
+```
+
+
+
+
+
+
+
+
+
+
+### Official Trained Model
+
+```sh
+cd /blue/hmedeiros/m.maqboolbhutta/models/official-models
+wget -O mapillary_WPCA4096.pth.tar https://cloudstor.aarnet.edu.au/plus/s/ZgW7DMEpeS47ELI/download
+## or copy using trained local
+rsync -ah --progress -e 'ssh -p 2222' /home/leo/usman_ws/models/patchnetvlad/official-vgg16/triplet-13-Dec/  m.maqboolbhutta@hpg.rc.ufl.edu:/blue/hmedeiros/m.maqboolbhutta/models/patch-netvlad/trained
+```
+
+Set the dataset root path in `test_model.sh`
+
+```sh
+## sbatch launch-slurm-test.sh DATASET CHECKPOINTS_PATH
+sbatch launch-slurm-test.sh mappillary /blue/hmedeiros/m.maqboolbhutta/models/patch-netvlad/trained/Dec13_14-38-27_mapillary_nopanos/checkpoints
+
+```
+
+
+
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![stars](https://img.shields.io/github/stars/QVPR/Patch-NetVLAD.svg?style=flat-square)](https://github.com/QVPR/Patch-NetVLAD/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/QVPR/Patch-NetVLAD.svg?style=flat-square)](https://github.com/QVPR/Patch-NetVLAD/issues)

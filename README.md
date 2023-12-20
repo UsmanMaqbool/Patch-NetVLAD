@@ -4,9 +4,13 @@
 ### Todo
 - multiple checkpoints save
 - train.ini parameters
-- check if the file already exists, than no need to calculate again
+- 
+- [PCA]check if the file already exists, than no need to calculate again
 
+```sh
+sbatch train-slurm.sh
 
+```
 ## Testing
 change the dataset path `dataset_root_dir` in `test.sh` file.
 ### Testing on Local PC

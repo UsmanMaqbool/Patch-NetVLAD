@@ -1,10 +1,20 @@
 # Patch-NetVLAD: Multi-Scale Fusion of Locally-Global Descriptors for Place Recognition
 
+## Slurm
+
+```sh
+scontrol show job 18826669
+srun --jobid=18826669 nvidia-smi
+scancel 18826669
+```
+
+
 ## Training
 ### Todo
 - multiple checkpoints save
 - train.ini parameters
-- 
+- slurm log file folder
+- check all resouces used - adjust batchsize
 - [PCA]check if the file already exists, than no need to calculate again
 
 ```sh

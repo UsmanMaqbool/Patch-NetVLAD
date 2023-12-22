@@ -25,12 +25,11 @@ echo "==========Starting Training============="
 echo "Saving checkpoints at ${FILES}"
 echo "========================================"
 
-$PYTHON -u train.py \
+$PYTHON -u train.py --save_every_epoch \
   --config_path=patchnetvlad/configs/train.ini \
   --cache_path=${CASHE_PATH} \
   --save_path=$FILES \
-  --dataset_root_dir=${DATASET_DIR} \
-  --save_every_epoch 
+  --dataset_root_dir=${DATASET_DIR} 
 
 
 #  --cluster_path=/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vgg16_pitts_64_desc_cen.hdf5 \

@@ -2,14 +2,14 @@
 PYTHON=${PYTHON:-"python3"}
 
 #GPUS=1
-DATE=$(date '+%d-%b') 
+# DATE=$(date '+%d-%b') 
+LOSS=$1
 
 
-
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
     # echo "Arguments error: <LOSS_TYPE (triplet|sare_ind|sare_joint)>"
     # exit 1
-    FILES="/home/leo/usman_ws/models/patchnetvlad/official-triplet-${DATE}"
+    FILES="/home/leo/usman_ws/models/patchnetvlad/loss-openibl"
     DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/leo/usman_ws/models/patchnetvlad/cache"
     CONFIG="patchnetvlad/configs/train.ini"
@@ -29,7 +29,8 @@ $PYTHON -u train.py --save_every_epoch \
   --config_path=patchnetvlad/configs/train.ini \
   --cache_path=${CASHE_PATH} \
   --save_path=$FILES \
-  --dataset_root_dir=${DATASET_DIR} 
+  --dataset_root_dir=${DATASET_DIR} \
+  --loss=${LOSS}
 
 
 #  --cluster_path=/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vgg16_pitts_64_desc_cen.hdf5 \

@@ -32,9 +32,10 @@ test.sh mapillary /home/leo/usman_ws/models/patchnetvlad/official-vgg16/triplet-
 ```
 
 
+## Tensorboard
+/home/m.maqboolbhutta/usman_ws/models/patch-netvlad/trained
 
-
-
+sbatch --export=logdir="/home/m.maqboolbhutta/usman_ws/models/patch-netvlad/trained",port=16006 tensorboard.sh
 
 
 

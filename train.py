@@ -88,6 +88,7 @@ if __name__ == "__main__":
     parser.add_argument('--save_every_epoch', action='store_true', help='Flag to set a separate checkpoint file for each new epoch')
     parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
+    parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
 
 
     opt = parser.parse_args()
@@ -189,8 +190,8 @@ if __name__ == "__main__":
     else:
         raise ValueError('Unknown optimizer: ' + config['train']['optim'])
 
-    criterion = nn.TripletMarginLoss(margin=float(config['train']['margin']) ** 0.5, p=2, reduction='sum').to(device)
-
+    # criterion = nn.TripletMarginLoss(margin=float(config['train']['margin']) ** 0.5, p=2, reduction='sum').to(device)
+    criterion = opt.loss
     model = model.to(device)
 
     if opt.resume_path:

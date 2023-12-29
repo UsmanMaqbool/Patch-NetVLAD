@@ -44,6 +44,7 @@ def get_loss(outputs, config, loss_type, B, N):
     output_negatives = outputs[:, 2:]
     output_anchors = outputs[:, 0]
     output_positives = outputs[:, 1]
+    
 
     if (loss_type=='triplet'):
         output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
@@ -53,34 +54,65 @@ def get_loss(outputs, config, loss_type, B, N):
                                         margin=float(config['train']['margin']) ** 0.5, p=2, reduction='sum')
 
     elif (loss_type=='sare_joint'):
-        ### original version: euclidean distance
-        dist_pos = ((output_anchors - output_positives)**2).sum(1)
+        dist_pos = torch.mm(output_anchors, output_positives.transpose(0,1)) # B*B
+        dist_pos = dist_pos.diagonal(0)
         dist_pos = dist_pos.view(B, 1)
-
+            
         output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
         output_negatives = output_negatives.contiguous().view(-1, L)
-        dist_neg = ((output_anchors - output_negatives)**2).sum(1)
+        dist_neg = torch.mm(output_anchors, output_negatives.transpose(0,1)) # B*B
+        dist_neg = dist_neg.diagonal(0)
         dist_neg = dist_neg.view(B, -1)
-
-        dist = - torch.cat((dist_pos, dist_neg), 1)
+            
+        dist = torch.cat((dist_pos, dist_neg), 1)/0.07
         dist = F.log_softmax(dist, 1)
         loss = (- dist[:, 0]).mean()
+
+        ### original version: euclidean distance
+        # dist_pos = ((output_anchors - output_positives)**2).sum(1)
+        # dist_pos = dist_pos.view(B, 1)
+
+        # output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
+        # output_negatives = output_negatives.contiguous().view(-1, L)
+        # dist_neg = ((output_anchors - output_negatives)**2).sum(1)
+        # dist_neg = dist_neg.view(B, -1)
+
+        # dist = - torch.cat((dist_pos, dist_neg), 1)
+        # dist = F.log_softmax(dist, 1)
+        # loss = (- dist[:, 0]).mean()
 
     elif (loss_type=='sare_ind'):
-        ### original version: euclidean distance
-        dist_pos = ((output_anchors - output_positives)**2).sum(1)
+        ### new version: dot product
+        dist_pos = torch.mm(output_anchors, output_positives.transpose(0,1)) # B*B
+        dist_pos = dist_pos.diagonal(0)
         dist_pos = dist_pos.view(B, 1)
-
+            
         output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
         output_negatives = output_negatives.contiguous().view(-1, L)
-        dist_neg = ((output_anchors - output_negatives)**2).sum(1)
+        dist_neg = torch.mm(output_anchors, output_negatives.transpose(0,1)) # B*B
+        dist_neg = dist_neg.diagonal(0)
         dist_neg = dist_neg.view(B, -1)
-
+            
         dist_neg = dist_neg.unsqueeze(2)
         dist_pos = dist_pos.view(B, 1, 1).expand_as(dist_neg)
-        dist = - torch.cat((dist_pos, dist_neg), 2).view(-1, 2)
+        dist = torch.cat((dist_pos, dist_neg), 2).view(-1, 2)/self.temp
         dist = F.log_softmax(dist, 1)
         loss = (- dist[:, 0]).mean()
+
+        # ### original version: euclidean distance
+        # dist_pos = ((output_anchors - output_positives)**2).sum(1)
+        # dist_pos = dist_pos.view(B, 1)
+
+        # output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
+        # output_negatives = output_negatives.contiguous().view(-1, L)
+        # dist_neg = ((output_anchors - output_negatives)**2).sum(1)
+        # dist_neg = dist_neg.view(B, -1)
+
+        # dist_neg = dist_neg.unsqueeze(2)
+        # dist_pos = dist_pos.view(B, 1, 1).expand_as(dist_neg)
+        # dist = - torch.cat((dist_pos, dist_neg), 2).view(-1, 2)
+        # dist = F.log_softmax(dist, 1)
+        # loss = (- dist[:, 0]).mean()
 
     else:
         assert ("Unknown loss function")
@@ -131,7 +163,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             image_encoding = model.encoder(data_input)
             vlad_encoding = model.pool(image_encoding)
 
-            vladQ, vladP, vladN = torch.split(vlad_encoding, [B, B, nNeg])
+            # vladQ, vladP, vladN = torch.split(vlad_encoding, [B, B, nNeg])
 
             optimizer.zero_grad()
 
@@ -146,7 +178,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             loss /= nNeg.float().to(device)  # normalise by actual number of negatives
             loss.backward()
             optimizer.step()
-            del data_input, image_encoding, vlad_encoding, vladQ, vladP, vladN
+            del data_input, image_encoding, vlad_encoding #, vladQ, vladP, vladN
             del query, positives, negatives
 
             batch_loss = loss.item()

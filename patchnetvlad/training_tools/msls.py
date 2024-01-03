@@ -489,20 +489,17 @@ class MSLS(Dataset):
             for i, batch in tqdm(enumerate(qloader), desc='compute query descriptors', total=len(qidxs) // bs,
                                  position=2, leave=False):
                 X, y = batch
-                image_encoding = net.encoder(X.to(self.device))
-                vlad_encoding = net.pool(image_encoding)
+                vlad_encoding =  net(X.to(self.device))
                 qvecs[i * bs:(i + 1) * bs, :] = vlad_encoding
             for i, batch in tqdm(enumerate(ploader), desc='compute positive descriptors', total=len(pidxs) // bs,
                                  position=2, leave=False):
                 X, y = batch
-                image_encoding = net.encoder(X.to(self.device))
-                vlad_encoding = net.pool(image_encoding)
+                vlad_encoding =  net(X.to(self.device))
                 pvecs[i * bs:(i + 1) * bs, :] = vlad_encoding
             for i, batch in tqdm(enumerate(nloader), desc='compute negative descriptors', total=len(nidxs) // bs,
                                  position=2, leave=False):
                 X, y = batch
-                image_encoding = net.encoder(X.to(self.device))
-                vlad_encoding = net.pool(image_encoding)
+                vlad_encoding =  net(X.to(self.device))
                 nvecs[i * bs:(i + 1) * bs, :] = vlad_encoding
 
         tqdm.write('>> Searching for hard negatives...')

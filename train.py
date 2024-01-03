@@ -57,7 +57,7 @@ from patchnetvlad.training_tools.val import val
 from patchnetvlad.training_tools.get_clusters import get_clusters
 from patchnetvlad.training_tools.tools import save_checkpoint
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import trange
@@ -89,7 +89,8 @@ if __name__ == "__main__":
     parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
-
+    parser.add_argument('--vd16_offtheshelf_path', type=str, default='',
+                        help='NetVLAD Off the Shelf VGG Weights.')
 
     opt = parser.parse_args()
     print(opt)
@@ -117,7 +118,7 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
 
     if opt.resume_path: # if already started training earlier and continuing
         if isfile(opt.resume_path):
@@ -137,8 +138,8 @@ if __name__ == "__main__":
         print('===> Loading model')
         config['global_params']['num_clusters'] = config['train']['num_clusters']
 
-        model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-
+        pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
+        
         initcache = join(opt.cache_path, 'centroids', 'vgg16_' + 'mapillary_' + config['train'][
                                       'num_clusters'] + '_desc_cen.hdf5')
 
@@ -146,6 +147,7 @@ if __name__ == "__main__":
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:
                     shutil.copyfile(opt.cluster_path, initcache)
+                    print('===> Loading Cluster Centroids')
             else:
                 raise FileNotFoundError("=> no cluster data found at '{}'".format(opt.cluster_path))
         else:
@@ -155,20 +157,28 @@ if __name__ == "__main__":
             train_dataset = MSLS(opt.dataset_root_dir, mode='test', cities='train', transform=input_transform(),
                                  bs=int(config['train']['cachebatchsize']), threads=opt.threads,
                                  margin=float(config['train']['margin']))
+            # model = combine_model(encoder, pool_layer)
+            encoder = encoder.to(device)
 
-            model = model.to(device)
-
+            
             print('===> Calculating descriptors and clusters')
-            get_clusters(train_dataset, model, encoder_dim, device, opt, config)
+            get_clusters(train_dataset, encoder, encoder_dim, device, opt, config)
 
             # a little hacky, but needed to easily run init_params
-            model = model.to(device="cpu")
+            # model = model.to(device="cpu")
 
         with h5py.File(initcache, mode='r') as h5:
+            
+            # pool_layer.clsts = h5.get("centroids")[...]
+            # pool_layer.traindescs = h5.get("descriptors")[...]
+            # pool_layer._init_params()
+
             clsts = h5.get("centroids")[...]
             traindescs = h5.get("descriptors")[...]
-            model.pool.init_params(clsts, traindescs)
+            pool_layer.init_params(clsts, traindescs)
             del clsts, traindescs
+            
+            model = combine_model(encoder, pool_layer)
 
     isParallel = False
     if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

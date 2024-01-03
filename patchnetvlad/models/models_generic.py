@@ -25,7 +25,9 @@ SOFTWARE.
 
 from packaging.version import parse as parse_version
 import torchvision
-import torchvision.models as models
+from patchnetvlad import models
+#import torchvision.models as models
+
 import torch.nn as nn
 import torch.nn.functional as F
 from patchnetvlad.models.netvlad import NetVLAD
@@ -51,21 +53,12 @@ def get_pca_encoding(model, vlad_encoding):
     return pca_encoding
 
 
-def get_backend():
+def get_backend(matconvnet_path):
     enc_dim = 512
-    if parse_version(torchvision.__version__) >= parse_version('0.13'):
-        enc = models.vgg16(weights='IMAGENET1K_V1')
-    else:
-        enc = models.vgg16(pretrained=True)
-
-    layers = list(enc.features.children())[:-2]
-    # only train conv5_1, conv5_2, and conv5_3 (leave rest same as Imagenet trained weights)
-    for layer in layers[:-5]:
-        for p in layer.parameters():
-            p.requires_grad = False
-    enc = nn.Sequential(*layers)
+    arch = 'vgg16'
+    # matconvnet_path = '/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth'
+    enc = models.create(arch, train_layers='conv5', matconvnet=matconvnet_path, cut_at_pooling=True)
     return enc_dim, enc
-
 
 def get_model(encoder, encoder_dim, config, append_pca_layer=False):
     # config['global_params'] is passed as config
@@ -73,9 +66,10 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
     nn_model.add_module('encoder', encoder)
 
     if config['pooling'].lower() == 'netvlad':
-        net_vlad = NetVLAD(num_clusters=int(config['num_clusters']), dim=encoder_dim,
-                           vladv2=config.getboolean('vladv2'))
-        nn_model.add_module('pool', net_vlad)
+        nn_model = models.create('netvlad', num_clusters=int(config['num_clusters']), dim=encoder_dim, vladv2=config.getboolean('vladv2'))
+        # net_vlad = NetVLAD(num_clusters=int(config['num_clusters']), dim=encoder_dim,
+        #                    vladv2=config.getboolean('vladv2'))
+        # nn_model.add_module('pool', net_vlad)
     elif config['pooling'].lower() == 'patchnetvlad':
         net_vlad = PatchNetVLAD(num_clusters=int(config['num_clusters']), dim=encoder_dim,
                                 vladv2=config.getboolean('vladv2'),
@@ -99,4 +93,8 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
         pca_conv = nn.Conv2d(netvlad_output_dim, num_pcs, kernel_size=(1, 1), stride=1, padding=0)
         nn_model.add_module('WPCA', nn.Sequential(*[pca_conv, Flatten(), L2Norm(dim=-1)]))
 
+    return nn_model
+
+def combine_model(encoder, pool_layer):
+    nn_model = models.create('embednet', encoder, pool_layer)
     return nn_model

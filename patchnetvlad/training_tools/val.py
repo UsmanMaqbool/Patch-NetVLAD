@@ -65,12 +65,10 @@ def val(eval_set, model, encoder_dim, device, opt, config, writer, epoch_num=0, 
             for iteration, (input_data, indices) in \
                     enumerate(tqdm(test_data_loader, position=pbar_position, leave=False, desc='Test Iter'.rjust(15)), 1):
                 input_data = input_data.to(device)
-                image_encoding = model.encoder(input_data)
-
-                vlad_encoding = model.pool(image_encoding)
+                vlad_encoding = model(input_data.to(device))
                 feat[indices.detach().numpy(), :] = vlad_encoding.detach().cpu().numpy()
 
-                del input_data, image_encoding, vlad_encoding
+                del input_data, vlad_encoding
 
     del test_data_loader_queries, test_data_loader_dbs
 

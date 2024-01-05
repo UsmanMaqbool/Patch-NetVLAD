@@ -20,12 +20,18 @@
 #SBATCH --error=PatchNetvlad_%j.err
 
 
-# PYTHON SCRIPT
-#==============
+allowed_arguments_list1=("netvlad" "graphvlad")
+allowed_arguments_list2=("triplet" "sare_ind" "sare_joint")
 
-#This is the python script to run in the pytorch environment
-LOSS="triplet"
-METHOD="official"
+if [ "$#" -ne 2 ]; then
+    echo "Arguments error: <METHOD (netvlad|graphvlad>"
+    echo "Arguments error: <LOSS_TYPE (triplet|sare_ind|sare_joint)>"
+    exit 1
+fi
+
+METHOD="$1"
+LOSS="$2"
+
 
 # LOAD PYTORCH SOFTWARE ENVIRONMENT
 #==================================
@@ -45,13 +51,8 @@ NODES=$(scontrol show hostnames | grep -v $HOST | tr '\n' ' ')
 echo "Host: $HOST" 
 echo "Other nodes: $NODES"
 
-#LR=0.001
-DATE=$(date '+%d-%b') 
-FILES="/home/m.maqboolbhutta/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
-echo ${FILES}
 
-# LAUNCH
-#=======
-
+# PYTHON SCRIPT
+#==============
 echo "Starting $SLURM_GPUS_PER_TASK process(es) on each node..."
-bash train.sh ${FILES}
+bash train.sh ${METHOD} ${LOSS} Slurm

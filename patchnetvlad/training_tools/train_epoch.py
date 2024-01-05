@@ -40,7 +40,7 @@ import torch.nn.functional as F
 def get_loss(outputs, config, loss_type, B, N):
     outputs = outputs.view(B, N, -1)
     L = outputs.size(-1)
-
+    temp = 0.07
     output_negatives = outputs[:, 2:]
     output_anchors = outputs[:, 0]
     output_positives = outputs[:, 1]
@@ -64,7 +64,7 @@ def get_loss(outputs, config, loss_type, B, N):
         dist_neg = dist_neg.diagonal(0)
         dist_neg = dist_neg.view(B, -1)
             
-        dist = torch.cat((dist_pos, dist_neg), 1)/0.07
+        dist = torch.cat((dist_pos, dist_neg), 1)/temp
         dist = F.log_softmax(dist, 1)
         loss = (- dist[:, 0]).mean()
 
@@ -95,7 +95,7 @@ def get_loss(outputs, config, loss_type, B, N):
             
         dist_neg = dist_neg.unsqueeze(2)
         dist_pos = dist_pos.view(B, 1, 1).expand_as(dist_neg)
-        dist = torch.cat((dist_pos, dist_neg), 2).view(-1, 2)/self.temp
+        dist = torch.cat((dist_pos, dist_neg), 2).view(-1, 2)/temp
         dist = F.log_softmax(dist, 1)
         loss = (- dist[:, 0]).mean()
 

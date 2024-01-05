@@ -33,6 +33,7 @@ $PYTHON -u train.py --save_every_epoch \
   --save_path=$FILES \
   --dataset_root_dir=${DATASET_DIR} \
   --loss=${LOSS} \
+  --cluster_path=${CLUSTER_PATH} \
   --vd16_offtheshelf_path=${OFFTHESHELF_PATH}
 
 

@@ -43,7 +43,7 @@ import numpy as np
 
 from patchnetvlad.training_tools.tools import pca
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, Flatten, L2Norm
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, Flatten, L2Norm
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import tqdm
@@ -65,7 +65,8 @@ if __name__ == "__main__":
                         choices=['mapillary', 'pitts'])
     parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
-
+    parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
+                        help='NetVLAD Off the Shelf VGG Weights.')
 
     opt = parser.parse_args()
     print(opt)
@@ -90,16 +91,17 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
+      
 
     if opt.resume_path: # must resume for PCA
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
-            checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)
-            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])
+            checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)            
+            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
 
-            model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-
+            pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False) 
+            model = combine_model(encoder, pool_layer)
             model.load_state_dict(checkpoint['state_dict'])
             opt.start_epoch = checkpoint['epoch']
 
@@ -163,14 +165,13 @@ if __name__ == "__main__":
 
         for iteration, (input_data, indices) in enumerate(tqdm(data_loader)):
             input_data = input_data.to(device)
-            image_encoding = model.encoder(input_data)
-            vlad_encoding = model.pool(image_encoding)
+            vlad_encoding = model(input_data.to(device))
             out_vectors = vlad_encoding.detach().cpu().numpy()
             # this allows for randomly shuffled inputs
             for idx, out_vector in enumerate(out_vectors):
                 dbFeat[iteration * data_loader.batch_size + idx, :] = out_vector
 
-            del input_data, image_encoding, vlad_encoding
+            del input_data, vlad_encoding
 
     print('===> Compute PCA, takes a while')
     num_pcs = int(config['global_params']['num_pcs'])

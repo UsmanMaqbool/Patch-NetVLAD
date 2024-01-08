@@ -6,9 +6,9 @@ FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar")
 # echo "${FILES}"
 
 ## Dataset path [Change according to yours]
-if [ "$dataset" = "mapillary" ]; then
+if [ "$DATASET" = "mapillary" ]; then
   dataset_root_dir=/home/leo/usman_ws/datasets/mapillary_sls/
-elif [ "$dataset" = "pitts" ]; then
+elif [ "$DATASET" = "pitts" ]; then
   dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k/
 else
     echo "Invalid dataset choice"
@@ -33,7 +33,7 @@ do
       --config_path=patchnetvlad/configs/train.ini \
       --resume_path=$RESUME \
       --dataset_root_dir=$dataset_root_dir \
-      --dataset_choice=$dataset
+      --dataset_choice=$DATASET
   fi
 
 

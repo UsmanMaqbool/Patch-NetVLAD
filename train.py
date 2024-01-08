@@ -140,14 +140,12 @@ if __name__ == "__main__":
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
         
-        initcache = join(opt.cache_path, 'centroids', 'vgg16_' + 'mapillary_' + config['train'][
-                                      'num_clusters'] + '_desc_cen.hdf5')
-
+        initcache = join(opt.cache_path, 'vgg16_' + 'pitts_' + config['train']['num_clusters'] + '_desc_cen.hdf5')
         if opt.cluster_path:
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:
                     shutil.copyfile(opt.cluster_path, initcache)
-                    print('===> Loading Cluster Centroids')
+                    print(f'===> Loading Cluster Centroids from {initcache}')
             else:
                 raise FileNotFoundError("=> no cluster data found at '{}'".format(opt.cluster_path))
         else:
@@ -157,22 +155,12 @@ if __name__ == "__main__":
             train_dataset = MSLS(opt.dataset_root_dir, mode='test', cities='train', transform=input_transform(),
                                  bs=int(config['train']['cachebatchsize']), threads=opt.threads,
                                  margin=float(config['train']['margin']))
-            # model = combine_model(encoder, pool_layer)
             encoder = encoder.to(device)
-
-            
             print('===> Calculating descriptors and clusters')
             get_clusters(train_dataset, encoder, encoder_dim, device, opt, config)
 
-            # a little hacky, but needed to easily run init_params
-            # model = model.to(device="cpu")
-
         with h5py.File(initcache, mode='r') as h5:
             
-            # pool_layer.clsts = h5.get("centroids")[...]
-            # pool_layer.traindescs = h5.get("descriptors")[...]
-            # pool_layer._init_params()
-
             clsts = h5.get("centroids")[...]
             traindescs = h5.get("descriptors")[...]
             pool_layer.init_params(clsts, traindescs)
@@ -182,8 +170,7 @@ if __name__ == "__main__":
 
     isParallel = False
     if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:
-        model.encoder = nn.DataParallel(model.encoder)
-        model.pool = nn.DataParallel(model.pool)
+        model = nn.DataParallel(model)
         isParallel = True
 
     if config['train']['optim'] == 'ADAM':

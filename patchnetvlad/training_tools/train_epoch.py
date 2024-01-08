@@ -38,6 +38,7 @@ import torch.nn.functional as F
 
 
 def get_loss(outputs, config, loss_type, B, N):
+    #Take from https://github.com/yxgeee/OpenIBL
     outputs = outputs.view(B, N, -1)
     L = outputs.size(-1)
     temp = 0.07
@@ -68,19 +69,6 @@ def get_loss(outputs, config, loss_type, B, N):
         dist = F.log_softmax(dist, 1)
         loss = (- dist[:, 0]).mean()
 
-        ### original version: euclidean distance
-        # dist_pos = ((output_anchors - output_positives)**2).sum(1)
-        # dist_pos = dist_pos.view(B, 1)
-
-        # output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
-        # output_negatives = output_negatives.contiguous().view(-1, L)
-        # dist_neg = ((output_anchors - output_negatives)**2).sum(1)
-        # dist_neg = dist_neg.view(B, -1)
-
-        # dist = - torch.cat((dist_pos, dist_neg), 1)
-        # dist = F.log_softmax(dist, 1)
-        # loss = (- dist[:, 0]).mean()
-
     elif (loss_type=='sare_ind'):
         ### new version: dot product
         dist_pos = torch.mm(output_anchors, output_positives.transpose(0,1)) # B*B
@@ -98,21 +86,6 @@ def get_loss(outputs, config, loss_type, B, N):
         dist = torch.cat((dist_pos, dist_neg), 2).view(-1, 2)/temp
         dist = F.log_softmax(dist, 1)
         loss = (- dist[:, 0]).mean()
-
-        # ### original version: euclidean distance
-        # dist_pos = ((output_anchors - output_positives)**2).sum(1)
-        # dist_pos = dist_pos.view(B, 1)
-
-        # output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
-        # output_negatives = output_negatives.contiguous().view(-1, L)
-        # dist_neg = ((output_anchors - output_negatives)**2).sum(1)
-        # dist_neg = dist_neg.view(B, -1)
-
-        # dist_neg = dist_neg.unsqueeze(2)
-        # dist_pos = dist_pos.view(B, 1, 1).expand_as(dist_neg)
-        # dist = - torch.cat((dist_pos, dist_neg), 2).view(-1, 2)
-        # dist = F.log_softmax(dist, 1)
-        # loss = (- dist[:, 0]).mean()
 
     else:
         assert ("Unknown loss function")
@@ -151,7 +124,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
         for iteration, (query, positives, negatives, negCounts, indices) in \
                 enumerate(tqdm(training_data_loader, position=2, leave=False, desc='Train Iter'.rjust(15)), startIter):
             # some reshaping to put query, pos, negs in a single (N, 3, H, W) tensor
-            # where N = batchSize * (nQuery + nPos + nNeg)
+            # where N = (nQuery + nPos + nNeg)
             if query is None:
                 continue  # in case we get an empty batch
 
@@ -168,7 +141,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             # due to potential difference in number of negatives have to
             # do it per query, per negative
             loss = 0
-            N = int(1 + 1 + nNeg)
+            N = int(1 + 1 + int(config['train']['nNeg']))
             loss = get_loss(vlad_encoding, config, criterion, B, N).to(device)
 
 

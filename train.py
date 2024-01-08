@@ -145,7 +145,7 @@ if __name__ == "__main__":
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:
                     shutil.copyfile(opt.cluster_path, initcache)
-                    print(f'===> Loading Cluster Centroids from {initcache}')
+                    print("===> Loading Cluster Centroids from '{}'".format(opt.cluster_path))
             else:
                 raise FileNotFoundError("=> no cluster data found at '{}'".format(opt.cluster_path))
         else:

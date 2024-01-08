@@ -16,7 +16,8 @@
 #SBATCH --time=48:30:00
 #SBATCH --partition=gpu
 #SBATCH --constraint=
-
+#SBATCH --output=R-%x.%j.out
+#SBATCH --error=R-%x.%j.err
 
 
 allowed_arguments_list1=("netvlad" "graphvlad")
@@ -31,8 +32,6 @@ fi
 METHOD="$1"
 LOSS="$2"
 
-#SBATCH --output=$1_$2_%j.out
-#SBATCH --error=$1_$2_%j.err
 
 # LOAD PYTORCH SOFTWARE ENVIRONMENT
 #==================================

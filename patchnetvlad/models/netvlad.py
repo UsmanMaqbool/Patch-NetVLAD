@@ -165,14 +165,15 @@ class EmbedNetPCA(nn.Module):
         super(EmbedNetPCA, self).__init__()
         self.base_model = base_model
         self.net_vlad = net_vlad
-        self.pca_layer = nn.Conv2d(net_vlad.num_clusters*net_vlad.dim, dim, 1, stride=1, padding=0)
+        self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
 
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()
 
     def forward(self, x):
-        _, x = self.base_model(x)
+        # _, x = self.base_model(x)
+        x = self.base_model(x)
         vlad_x = self.net_vlad(x)
 
         # [IMPORTANT] normalize

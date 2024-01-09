@@ -51,6 +51,11 @@ from tqdm.auto import tqdm
 from patchnetvlad.training_tools.msls import MSLS, ImagesFromList
 from patchnetvlad.tools.datasets import PlaceDataset
 
+# taken from 
+# https://github.com/UsmanMaqbool/OpenIBL
+from pca import PCA
+import code
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Patch-NetVLAD-add-pca')
@@ -91,7 +96,7 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
+    encoder_dim, encoder = get_backend(None)
       
 
     if opt.resume_path: # must resume for PCA
@@ -175,24 +180,40 @@ if __name__ == "__main__":
 
     print('===> Compute PCA, takes a while')
     num_pcs = int(config['global_params']['num_pcs'])
-    u, lams, mu = pca(dbFeat, num_pcs)
 
-    u = u[:, :num_pcs]
-    lams = lams[:num_pcs]
+    dbFeat = torch.from_numpy(dbFeat)
+    dbFeat = list(dbFeat)
+    if (len(dbFeat)>10000):
+        dbFeat = random.sample(dbFeat, 10000)
+    pca = PCA(pca_n_components= num_pcs, pca_whitening = True)
+    dbFeat = torch.stack(dbFeat)
+    u, lams, mu, utmu = pca.train(dbFeat)
+    
+    print("till here")
+    # num_pcs = int(config['global_params']['num_pcs'])
+    # u, lams, mu = pca(dbFeat, num_pcs)
 
-    print('===> Add PCA Whiten')
-    u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
-    pca_str = 'WPCA'
+    # u = u[:, :num_pcs]
+    # lams = lams[:num_pcs]
 
-    utmu = np.matmul(u.T, mu)
-
+    # print('===> Add PCA Whiten')
+    # u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
+   
+    # utmu = np.matmul(u.T, mu)
+        
     pca_conv = nn.Conv2d(pool_size, num_pcs, kernel_size=(1, 1), stride=1, padding=0)
     # noinspection PyArgumentList
+    
     pca_conv.weight = nn.Parameter(torch.from_numpy(np.expand_dims(np.expand_dims(u.T, -1), -1)))
     # noinspection PyArgumentList
-    pca_conv.bias = nn.Parameter(torch.from_numpy(-utmu))
-
-    model.add_module(pca_str, nn.Sequential(*[pca_conv, Flatten(), L2Norm(dim=-1)]))
+    pca_conv.bias = nn.Parameter(torch.from_numpy(-utmu).squeeze())
+    # aa = torch.from_numpy(np.expand_dims(np.expand_dims(u.T, -1), -1)[0])
+    # bb = torch.from_numpy(-utmu)
+    # code.interact(local=locals())
+    pca_str = 'pca_layer'
+    model.add_module(pca_str, pca_conv)  # Naming the convolutional layer directly
+    model.add_module(pca_str + '_flatten', Flatten())
+    model.add_module(pca_str + '_l2norm', L2Norm(dim=-1))
 
     save_path = opt.resume_path.replace(".pth.tar", "_WPCA" + str(num_pcs) + ".pth.tar")
 

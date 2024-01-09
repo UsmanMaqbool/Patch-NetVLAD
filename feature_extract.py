@@ -46,7 +46,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 
 from patchnetvlad.tools.datasets import PlaceDataset
-from patchnetvlad.models.models_generic import get_backend, get_model, get_pca_encoding
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, combine_model_pca, get_pca_encoding
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 
@@ -72,8 +72,9 @@ def feature_extract(eval_set, model, device, opt, config):
                 enumerate(tqdm(test_data_loader, position=1, leave=False, desc='Test Iter'.rjust(15)), 1):
             indices_np = indices.detach().numpy()
             input_data = input_data.to(device)
-            image_encoding = model.encoder(input_data)
+            
             if config['global_params']['pooling'].lower() == 'patchnetvlad':
+                image_encoding = model.encoder(input_data)
                 vlad_local, vlad_global = model.pool(image_encoding)
 
                 vlad_global_pca = get_pca_encoding(model, vlad_global)
@@ -94,8 +95,7 @@ def feature_extract(eval_set, model, device, opt, config):
                         filename = output_local_features_prefix + '_' + 'psize{}_'.format(this_patch_size) + image_name + '.npy'
                         np.save(filename, db_feat_patches[i, :, :])
             else:
-                vlad_global = model.pool(image_encoding)
-                vlad_global_pca = get_pca_encoding(model, vlad_global)
+                vlad_global_pca = model(input_data)
                 db_feat[indices_np, :] = vlad_global_pca.detach().cpu().numpy()
 
     np.save(output_global_features_filename, db_feat)
@@ -112,6 +112,8 @@ def main():
     parser.add_argument('--output_features_dir', type=str, default=join(PATCHNETVLAD_ROOT_DIR, 'output_features'),
                         help='Path to store all patch-netvlad features')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
+    parser.add_argument('--resume_path', type=str, default='',
+                        help='Full path and name (with extension) to load checkpoint from, for resuming training.')
 
     opt = parser.parse_args()
     print(opt)
@@ -127,7 +129,7 @@ def main():
 
     device = torch.device("cuda" if cuda else "cpu")
 
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(None)
 
     if not os.path.isfile(opt.dataset_file_path):
         opt.dataset_file_path = join(PATCHNETVLAD_ROOT_DIR, 'dataset_imagenames', opt.dataset_file_path)
@@ -135,11 +137,8 @@ def main():
     dataset = PlaceDataset(None, opt.dataset_file_path, opt.dataset_root_dir, None, config['feature_extract'])
 
     # must resume to do extraction
-    if config['global_params']['num_pcs'] != '0':
-        resume_ckpt = config['global_params']['resumePath'] + config['global_params']['num_pcs'] + '.pth.tar'
-    else:
-        resume_ckpt = config['global_params']['resumePath'] + '.pth.tar'
-
+    resume_ckpt = opt.resume_path
+    
     # backup: try whether resume_ckpt is relative to PATCHNETVLAD_ROOT_DIR
     if not isfile(resume_ckpt):
         resume_ckpt = join(PATCHNETVLAD_ROOT_DIR, resume_ckpt)
@@ -150,21 +149,24 @@ def main():
     if isfile(resume_ckpt):
         print("=> loading checkpoint '{}'".format(resume_ckpt))
         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)
+
         if config['global_params']['num_pcs'] != '0':
-            assert checkpoint['state_dict']['WPCA.0.bias'].shape[0] == int(config['global_params']['num_pcs'])
-        config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])
+            assert checkpoint['state_dict']['pca_layer.bias'].shape[0] == int(config['global_params']['num_pcs'])
+        
+        config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
 
         if config['global_params']['num_pcs'] != '0':
             use_pca = True
         else:
             use_pca = False
-        model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=use_pca)
+
+        pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+        model = combine_model_pca(encoder, pool_layer)
+
         model.load_state_dict(checkpoint['state_dict'])
         
         if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:
-            model.encoder = nn.DataParallel(model.encoder)
-            # if opt.mode.lower() != 'cluster':
-            model.pool = nn.DataParallel(model.pool)
+            model = nn.DataParallel(model)            
        
         model = model.to(device)
         print("=> loaded checkpoint '{}'".format(resume_ckpt, ))

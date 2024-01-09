@@ -2,7 +2,7 @@
 PYTHON=${PYTHON:-"python3"}
 DATASET=$1
 BASEDir=$2
-FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar")
+FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
 # echo "${FILES}"
 
 ## Dataset path [Change according to yours]
@@ -23,30 +23,26 @@ do
 
   filename=$(basename $RESUME .pth.tar)
   PCA_RESUME="${BASEDir}${filename}"
-  PCA_RESUME="${PCA_RESUME}_WPCA"
-  
-  if [ -f "$FILE" ]; then
-      echo ""Skipping the addition of the PCA layer as $PCA_RESUME already exists.""
-  else
-      echo "Adding PCA Layer"
-      python add_pca.py \
-      --config_path=patchnetvlad/configs/train.ini \
-      --resume_path=$RESUME \
-      --dataset_root_dir=$dataset_root_dir \
-      --dataset_choice=$DATASET
-  fi
+  PCA_RESUME="${PCA_RESUME}_WPCA4096.pth.tar"
 
+  # if [ -f "$PCA_RESUME" ]; then
+  #     echo ""Skipping the addition of the PCA layer as $PCA_RESUME already exists.""
+  # else
+  #     echo "Adding PCA Layer"
+  #     python add_pca.py \
+  #     --config_path=patchnetvlad/configs/train.ini \
+  #     --resume_path=$RESUME \
+  #     --dataset_root_dir=$dataset_root_dir \
+  #     --dataset_choice=$DATASET
+  # fi
 
-
-  
   
   # echo "Extracting Features of Index Images"
-  # # PCA_RESUME="${BASEDir}{$filename}_WPCA"
 
   # python feature_extract.py \
   # --config_path patchnetvlad/configs/performance.ini \
   # --dataset_file_path=mapillarysf_imageNames_index.txt \
-  # --dataset_root_dir=--dataset_root_dir=/home/leo/usman_ws/datasets/mapillary_sls/ \
+  # --dataset_root_dir=/home/leo/usman_ws/datasets/ \
   # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
   # --resume_path=${PCA_RESUME}
 
@@ -56,20 +52,20 @@ do
   # python feature_extract.py \
   # --config_path patchnetvlad/configs/performance.ini \
   # --dataset_file_path=mapillarysf_imageNames_query.txt \
-  # --dataset_root_dir=--dataset_root_dir=/home/leo/usman_ws/datasets/mapillary_sls/ \
+  # --dataset_root_dir=/home/leo/usman_ws/datasets/ \
   # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
   # --resume_path=${PCA_RESUME}
   # echo "Performing Features Matching and Recall Result"
 
-  # python feature_match.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_root_dir==/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/ \
-  # --query_file_path=mapillarysf_imageNames_query.txt \
-  # --index_file_path=mapillarysf_imageNames_index.txt \
-  # --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
-  # --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
-  # --result_save_folder=./patchnetvlad/results/mapillarysf-pytorchnetvlad \
-  # --ground_truth_path=./patchnetvlad/dataset_gt_files/mapillarysf_test.npz
+  python feature_match.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/ \
+  --query_file_path=mapillarysf_imageNames_query.txt \
+  --index_file_path=mapillarysf_imageNames_index.txt \
+  --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
+  --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
+  --result_save_folder=./patchnetvlad/results/mapillarysf-pytorchnetvlad \
+  --ground_truth_path=./patchnetvlad/dataset_gt_files/mapillarysf_test.npz
 
 
 

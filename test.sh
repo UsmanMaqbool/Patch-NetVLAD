@@ -25,38 +25,51 @@ do
   PCA_RESUME="${BASEDir}${filename}"
   PCA_RESUME="${PCA_RESUME}_WPCA4096.pth.tar"
 
-  # if [ -f "$PCA_RESUME" ]; then
-  #     echo ""Skipping the addition of the PCA layer as $PCA_RESUME already exists.""
-  # else
-  #     echo "Adding PCA Layer"
-  #     python add_pca.py \
-  #     --config_path=patchnetvlad/configs/train.ini \
-  #     --resume_path=$RESUME \
-  #     --dataset_root_dir=$dataset_root_dir \
-  #     --dataset_choice=$DATASET
-  # fi
+  echo "$PCA_RESUME"
+
+  # Extracting the directory and filename without extension
+  dir=$(dirname "$RESUME")
+  filename=$(basename "$RESUME" .pth.tar)
+
+  # Extracting the date and identifier from the path
+  date_and_identifier=$(basename "$(dirname "$dir")")
+  echo "$filename"
+
+  # Generating the new filename
+  SAVEFILENAME="${date_and_identifier}-${filename}"
+
+  if [ -f "$PCA_RESUME" ]; then
+      echo ""Skipping the addition of the PCA layer as $PCA_RESUME already exists.""
+  else
+      echo "Adding PCA Layer"
+      python add_pca.py \
+      --config_path=patchnetvlad/configs/train.ini \
+      --resume_path=$RESUME \
+      --dataset_root_dir=$dataset_root_dir \
+      --dataset_choice=$DATASET
+  fi
 
   
-  # echo "Extracting Features of Index Images"
+  echo "Extracting Features of mapillarysf Index Images"
 
-  # python feature_extract.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_file_path=mapillarysf_imageNames_index.txt \
-  # --dataset_root_dir=/home/leo/usman_ws/datasets/ \
-  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
-  # --resume_path=${PCA_RESUME}
+  python feature_extract.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_file_path=mapillarysf_imageNames_index.txt \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/ \
+  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
+  --resume_path=${PCA_RESUME}
 
   
-  # echo "Extracting Features of Query Images"
+  echo "Extracting Features of mapillarysf Query Images"
 
-  # python feature_extract.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_file_path=mapillarysf_imageNames_query.txt \
-  # --dataset_root_dir=/home/leo/usman_ws/datasets/ \
-  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
-  # --resume_path=${PCA_RESUME}
-  # echo "Performing Features Matching and Recall Result"
-
+  python feature_extract.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_file_path=mapillarysf_imageNames_query.txt \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/ \
+  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
+  --resume_path=${PCA_RESUME}
+  
+  echo "Performing Features Matching and Recall Result of mapillarysf"
   python feature_match.py \
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
@@ -64,79 +77,42 @@ do
   --index_file_path=mapillarysf_imageNames_index.txt \
   --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
   --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
-  --result_save_folder=./patchnetvlad/results/mapillarysf-pytorchnetvlad \
-  --ground_truth_path=./patchnetvlad/dataset_gt_files/mapillarysf_test.npz
+  --result_save_folder=./patchnetvlad/results/mapillarysf
 
+  echo "Extracting Features of mapillarycph Index Images"
 
-
-  # echo "==================================="
-  # echo "============Pittsburgh Testing====="
-  # echo "==================================="
-  
-  
-  # echo "Extracting Features of Index Images"
-  # # PCA_RESUME="${BASEDir}{$filename}_WPCA"
-
-  # python feature_extract.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_file_path=pitts30k_imageNames_index.txt \
-  # --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
-  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
-  # --resume_path=${PCA_RESUME}
+  python feature_extract.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_file_path=mapillarycph_imageNames_index.txt \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/ \
+  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index \
+  --resume_path=${PCA_RESUME}
 
   
-  # echo "Extracting Features of Query Images"
+  echo "Extracting Features of mapillarycph Query Images"
 
-  # python feature_extract.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_file_path=pitts30k_imageNames_query.txt \
-  # --dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
-  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
-  # --resume_path=${PCA_RESUME}
-  # echo "Performing Features Matching and Recall Result"
+  python feature_extract.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_file_path=mapillarycph_imageNames_query.txt \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/ \
+  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query \
+  --resume_path=${PCA_RESUME}
 
-  # python feature_match.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_root_dir==/media/leo/2C737A9872F69ECF/datasets/maqbool-datasets/datasets-place-recognition/Test_Pitts250k/ \
-  # --query_file_path=pitts30k_imageNames_query.txt \
-  # --index_file_path=pitts30k_imageNames_index.txt \
-  # --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/pitts30k_query \
-  # --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/pitts30k_index \
-  # --result_save_folder=./patchnetvlad/results/pitts30k-pytorchnetvlad \
-  # --ground_truth_path=./patchnetvlad/dataset_gt_files/pitts30k_test.npz
+  echo "Performing Features Matching and Recall Result of mapillarycph"
+  python feature_match.py \
+  --config_path patchnetvlad/configs/performance.ini \
+  --dataset_root_dir=/home/leo/usman_ws/datasets/ \
+  --query_file_path=mapillarycph_imageNames_query.txt \
+  --index_file_path=mapillarycph_imageNames_index.txt \
+  --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarycph_query \
+  --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarycph_index \
+  --result_save_folder=./patchnetvlad/results/mapillarycph
 
-  # echo "==================================="
-  # echo "============Toyko 247 Testing======"
-  # echo "==================================="
+cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/results/mapillarysf//NetVLAD_predictions.txt > patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt
 
-  # echo "Extracting Features of Query Images"
-  # python feature_extract.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_file_path=tokyo247_imageNames_query-V3.txt \
-  # --dataset_root_dir /home/leo/usman_ws/datasets/2015netVLAD/ \
-  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/tokyo247_query \
-  # --resume_path=${PCA_RESUME}
+python ./patchnetvlad/training_tools/convert_kapture_to_msls.py patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
-  # echo "Extracting Features of Index Images"
-
-  # python feature_extract.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_file_path=tokyo247_imageNames_index.txt \
-  # --dataset_root_dir /home/leo/usman_ws/datasets/2015netVLAD/ \
-  # --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/tokyo247_index \
-  # --resume_path=${PCA_RESUME}
-
-  # echo "Performing Features Matching and Recall Result"  
-
-  # python feature_match.py \
-  # --config_path patchnetvlad/configs/performance.ini \
-  # --dataset_root_dir /home/leo/usman_ws/datasets/2015netVLAD/ \
-  # --query_file_path=tokyo247_imageNames_query-V3.txt \
-  # --index_file_path=tokyo247_imageNames_index.txt \
-  # --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/tokyo247_query \
-  # --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/tokyo247_index \
-  # --ground_truth_path patchnetvlad/dataset_gt_files/tokyo247.npz \
-  # --result_save_folder patchnetvlad/results/tokyo247
+python /home/leo/usman_ws/codes/mapillary_sls/mapillary_sls/utils/eval.py --msls-root=/path/to/msls/dataset --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
 
 done

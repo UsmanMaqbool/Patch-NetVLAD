@@ -13,7 +13,7 @@ if [ "$#" -lt 2 ]; then
 fi
 
 if [ "$#" -ne 3 ]; then
-    FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
+    FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}-netvlad-triplet-cen-map"
     DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/"
     CONFIG="patchnetvlad/configs/train.ini"
@@ -39,4 +39,5 @@ $PYTHON -u train.py --save_every_epoch \
   --dataset_root_dir=${DATASET_DIR} \
   --loss=${LOSS} \
   --vd16_offtheshelf_path=${OFFTHESHELF_PATH} \
-  --cluster_path=${CLUSTER_PATH} \
+
+#   --cluster_path=${CLUSTER_PATH}

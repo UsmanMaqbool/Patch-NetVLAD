@@ -140,7 +140,8 @@ if __name__ == "__main__":
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
         
-        initcache = join(opt.cache_path, 'vgg16_' + 'pitts_' + config['train']['num_clusters'] + '_desc_cen.hdf5')
+        initcache = join(opt.cache_path, 'centroids', 'vgg16_' + 'mapillary_' + config['train'][
+                                      'num_clusters'] + '_desc_cen.hdf5')
         if opt.cluster_path:
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:

@@ -112,7 +112,8 @@ cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/resul
 
 python ./patchnetvlad/training_tools/convert_kapture_to_msls.py patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
-python /home/leo/usman_ws/codes/mapillary_sls/mapillary_sls/utils/eval.py --msls-root=/path/to/msls/dataset --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
+echo "Recall Results of $PCA_RESUME file..."
+python /home/leo/usman_ws/codes/mapillary_sls/evaluate.py --msls-root=/home/leo/usman_ws/datasets/mapillary_sls/ --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
 
 done

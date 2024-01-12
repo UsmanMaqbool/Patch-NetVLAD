@@ -2,8 +2,8 @@
 PYTHON=${PYTHON:-"python3"}
 DATASET=$1
 BASEDir=$2
-FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
-# echo "${FILES}"
+FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar")
+echo "${FILES}"
 
 ## Dataset path [Change according to yours]
 if [ "$DATASET" = "mapillary" ]; then

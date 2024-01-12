@@ -102,7 +102,8 @@ if __name__ == "__main__":
     if opt.resume_path: # must resume for PCA
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
-            checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)            
+            checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)    
+            print(checkpoint['state_dict']['pool.centroids'].shape[0])   
             config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
 
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False) 

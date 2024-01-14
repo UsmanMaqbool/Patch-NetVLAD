@@ -11,7 +11,7 @@
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=a100:8
 #SBATCH --distribution=cyclic:cyclic
-#SBATCH --mem-per-cpu=4GB
+#SBATCH --mem-per-cpu=8GB
 #SBATCH --cpus-per-gpu=8
 #SBATCH --time=48:30:00
 #SBATCH --partition=gpu

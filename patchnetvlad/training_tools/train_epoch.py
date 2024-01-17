@@ -37,15 +37,26 @@ from patchnetvlad.training_tools.msls import MSLS
 import torch.nn.functional as F
 import code
 
-def get_loss(outputs, config, loss_type, B, N):
+def get_loss(outputss, config, loss_type, B, N):
     #Taken from https://github.com/yxgeee/OpenIBL
-    outputs = outputs.view(B, N, -1)
+    outputs = outputss.view(B, N, -1)
     L = outputs.size(-1)
     temp = 0.07
     output_negatives = outputs[:, 2:]
     output_anchors = outputs[:, 0]
     output_positives = outputs[:, 1]
-    
+    code.interact(local=locals())
+    # >>> outputss.shape
+    # torch.Size([7, 8192])
+    # >>> outputs.shape
+    # torch.Size([1, 7, 8192])
+    # >>> output_negatives.shape
+    # torch.Size([1, 5, 8192])
+    # >>> output_anchors.shape
+    # torch.Size([1, 8192])
+    # >>> output_positives.shape
+    # torch.Size([1, 8192])
+
 
     if (loss_type=='triplet'):
         output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
@@ -144,6 +155,22 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             # do it per query, per negative
             loss = 0
             N = int(1 + 1 + int(config['train']['nNeg']))
+            # >>> B
+            # 10
+            # >>> nNeg
+            # tensor(50)
+            # >>> negCounts
+            # tensor([5, 5, 5, 5, 5, 5, 5, 5, 5, 5])
+            # >>> vlad_encoding.shape
+            # torch.Size([70, 8192])
+            # >>> vladQ.shape
+            # torch.Size([10, 8192])
+            # >>> vladP.shape
+            # torch.Size([10, 8192])
+            # >>> vladN.shape
+            # torch.Size([50, 8192])
+            # >>> N
+            # 7
 
             for i, negCount in enumerate(negCounts):
                 # print(i)

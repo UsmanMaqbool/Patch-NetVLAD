@@ -13,7 +13,7 @@ if [ "$#" -lt 2 ]; then
 fi
 
 if [ "$#" -ne 3 ]; then
-    FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}-netvlad-triplet-cen-map-16-lr0_01"
+    FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}-netvlad-triplet-cen-map-16-lr0_01-test"
     DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/"
     CONFIG="patchnetvlad/configs/train.ini"

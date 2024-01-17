@@ -43,7 +43,7 @@ import numpy as np
 
 from patchnetvlad.training_tools.tools import pca
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, Flatten, L2Norm
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, combine_model_pca, Flatten, L2Norm
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import tqdm
@@ -102,13 +102,17 @@ if __name__ == "__main__":
     if opt.resume_path: # must resume for PCA
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
-            checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)    
-            print(checkpoint['state_dict']['pool.centroids'].shape[0])   
+            checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)            
             config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
 
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False) 
             model = combine_model(encoder, pool_layer)
+            print("Model's state_dict:")
+            for param_tensor in checkpoint:
+                print(param_tensor, "\t")
+
             model.load_state_dict(checkpoint['state_dict'])
+            
             opt.start_epoch = checkpoint['epoch']
 
             print("=> loaded checkpoint '{}'".format(opt.resume_path, ))

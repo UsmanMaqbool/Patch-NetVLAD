@@ -45,7 +45,7 @@ def get_loss(outputss, config, loss_type, B, N):
     output_negatives = outputs[:, 2:]
     output_anchors = outputs[:, 0]
     output_positives = outputs[:, 1]
-    code.interact(local=locals())
+    # code.interact(local=locals())
     # >>> outputss.shape
     # torch.Size([7, 8192])
     # >>> outputs.shape

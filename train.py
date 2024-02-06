@@ -59,7 +59,7 @@ from patchnetvlad.training_tools.tools import save_checkpoint
 from patchnetvlad.tools.datasets import input_transform
 from patchnetvlad.models.models_generic import get_backend, get_model, combine_model
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
-
+from collections import OrderedDict
 from tqdm.auto import trange
 
 from patchnetvlad.training_tools.msls import MSLS
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                         help='manual epoch number (useful on restarts)')
     parser.add_argument('--save_every_epoch', action='store_true', help='Flag to set a separate checkpoint file for each new epoch')
-    parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
+    parser.add_argument('--threads', type=int, default=5, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
     parser.add_argument('--vd16_offtheshelf_path', type=str, default='',
@@ -118,17 +118,32 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
+    encoder_dim, encoder = get_backend()
 
     if opt.resume_path: # if already started training earlier and continuing
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)
-            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])
+            # for i in checkpoint['state_dict']['module.net_vlad.centroids']:
+            #     print(i)
+            
+            # Create a new state_dict without the 'module.' prefix
+            new_state_dict = {}
+            for key, value in checkpoint['state_dict'].items():
+                if key.startswith('module.'):
+                    new_key = key[7:]  # Remove the 'module.' prefix
+                else:
+                    new_key = key
+                new_state_dict[new_key] = value
 
-            model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+            config['global_params']['num_clusters'] = str(new_state_dict['net_vlad.centroids'].shape[0])
+            pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
 
-            model.load_state_dict(checkpoint['state_dict'])
+            # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+            model = combine_model(encoder, pool_layer)
+            
+            # Load the new state_dict into your model
+            model.load_state_dict(new_state_dict)
             opt.start_epoch = checkpoint['epoch']
 
             print("=> loaded checkpoint '{}'".format(opt.resume_path, ))
@@ -146,7 +161,7 @@ if __name__ == "__main__":
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:
                     shutil.copyfile(opt.cluster_path, initcache)
-                    print("===> Loading Cluster Centroids from '{}'".format(opt.cluster_path))
+                    print("===> Loading Saved Cluster Centroids from '{}'".format(opt.cluster_path))
             else:
                 raise FileNotFoundError("=> no cluster data found at '{}'".format(opt.cluster_path))
         else:

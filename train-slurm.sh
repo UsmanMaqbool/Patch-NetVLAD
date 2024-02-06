@@ -6,18 +6,19 @@
 
 #SBATCH --wait-all-nodes=1
 #SBATCH --job-name=
-#SBATCH --mail-type=NONE
-#SBATCH --mail-user=
-#SBATCH --nodes=1
-#SBATCH --gpus-per-node=a100:8
-#SBATCH --distribution=cyclic:cyclic
-#SBATCH --mem-per-cpu=8GB
-#SBATCH --cpus-per-gpu=8
-#SBATCH --time=48:30:00
+#SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=m.maqboolbhutta@ufl.edu
+#SBATCH --time=52:00:00
 #SBATCH --partition=gpu
-#SBATCH --constraint=
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
+#SBATCH --nodes=1 
+#SBATCH --gpus-per-node=a100:8   
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=48    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --constraint=a100
+#SBATCH --mem-per-cpu=4gb
+
 
 
 allowed_arguments_list1=("netvlad" "graphvlad")
@@ -50,7 +51,6 @@ export HOST=$(hostname -s)
 NODES=$(scontrol show hostnames | grep -v $HOST | tr '\n' ' ')
 echo "Host: $HOST" 
 echo "Other nodes: $NODES"
-
 
 # PYTHON SCRIPT
 #==============

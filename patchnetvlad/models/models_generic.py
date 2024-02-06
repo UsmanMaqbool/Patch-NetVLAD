@@ -53,11 +53,10 @@ def get_pca_encoding(model, vlad_encoding):
     return pca_encoding
 
 
-def get_backend(matconvnet_path):
+def get_backend():
     enc_dim = 512
     arch = 'vgg16'
-    # matconvnet_path = '/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth'
-    enc = models.create(arch, train_layers='conv5', matconvnet=matconvnet_path, cut_at_pooling=True)
+    enc = models.create(arch, train_layers='conv5',  pretrained=True, cut_at_pooling=True)
     return enc_dim, enc
 
 def get_model(encoder, encoder_dim, config, append_pca_layer=False):

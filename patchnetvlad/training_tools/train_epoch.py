@@ -45,18 +45,6 @@ def get_loss(outputss, config, loss_type, B, N):
     output_negatives = outputs[:, 2:]
     output_anchors = outputs[:, 0]
     output_positives = outputs[:, 1]
-    # code.interact(local=locals())
-    # >>> outputss.shape
-    # torch.Size([7, 8192])
-    # >>> outputs.shape
-    # torch.Size([1, 7, 8192])
-    # >>> output_negatives.shape
-    # torch.Size([1, 5, 8192])
-    # >>> output_anchors.shape
-    # torch.Size([1, 8192])
-    # >>> output_positives.shape
-    # torch.Size([1, 8192])
-
 
     if (loss_type=='triplet'):
         output_anchors = output_anchors.unsqueeze(1).expand_as(output_negatives).contiguous().view(-1, L)
@@ -148,51 +136,17 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
 
             optimizer.zero_grad()
 
-
             vladQ, vladP, vladN = torch.split(vlad_encoding, [B, B, nNeg])
             # calculate loss for each Query, Positive, Negative triplet
             # due to potential difference in number of negatives have to
             # do it per query, per negative
             loss = 0
             N = int(1 + 1 + int(config['train']['nNeg']))
-            # >>> B
-            # 10
-            # >>> nNeg
-            # tensor(50)
-            # >>> negCounts
-            # tensor([5, 5, 5, 5, 5, 5, 5, 5, 5, 5])
-            # >>> vlad_encoding.shape
-            # torch.Size([70, 8192])
-            # >>> vladQ.shape
-            # torch.Size([10, 8192])
-            # >>> vladP.shape
-            # torch.Size([10, 8192])
-            # >>> vladN.shape
-            # torch.Size([50, 8192])
-            # >>> N
-            # 7
 
             for i, negCount in enumerate(negCounts):
-                # print(i)
-                # print(i+1)
-                # print(i*negCount)
-                # print((i+1)*negCount)
-                
-                # code.interact(local=locals())
+
                 c = torch.cat((vladQ[i: i + 1], vladP[i: i + 1], vladN[i*negCount:(i+1)*negCount]), dim=0)
                 loss += get_loss(c, config, criterion, 1, N).to(device)
-
-                # print(i)
-                # print(i+1)
-                # print(i*negCount)
-                # print((i+1)*negCount)
-                
-                # for n in range(negCount):
-                #     negIx = (torch.sum(negCounts[:i]) + n).item()
-                    
-                #     loss += criterion(vladQ[i: i + 1], vladP[i: i + 1], vladN[negIx:negIx + 1])
-            
-
 
             loss /= nNeg.float().to(device)  # normalise by actual number of negatives
             loss.backward()

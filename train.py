@@ -118,17 +118,34 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
+    # encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
     encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
+
 
     if opt.resume_path: # if already started training earlier and continuing
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)
-            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])
+            # for i in checkpoint['state_dict']['module.net_vlad.centroids']:
+            #     print(i)
+            
+            # Create a new state_dict without the 'module.' prefix
+            new_state_dict = {}
+            for key, value in checkpoint['state_dict'].items():
+                if key.startswith('module.'):
+                    new_key = key[7:]  # Remove the 'module.' prefix
+                else:
+                    new_key = key
+                new_state_dict[new_key] = value
 
-            model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+            config['global_params']['num_clusters'] = str(new_state_dict['net_vlad.centroids'].shape[0])
+            pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
 
-            model.load_state_dict(checkpoint['state_dict'])
+            # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
+            model = combine_model(encoder, pool_layer)
+            
+            # Load the new state_dict into your model
+            model.load_state_dict(new_state_dict)
             opt.start_epoch = checkpoint['epoch']
 
             print("=> loaded checkpoint '{}'".format(opt.resume_path, ))

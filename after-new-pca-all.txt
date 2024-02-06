@@ -1,0 +1,129 @@
+/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Dec28_14-40-39_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Dec28_14-40-39_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Dec28_14-40-39_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Jan04_14-00-33_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Jan04_14-00-33_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Jan04_14-00-33_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Jan03_12-02-14_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Jan03_12-02-14_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/loss-openibl/Jan03_12-02-14_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch7.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch6.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch8.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-29-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan29_13-44-46_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/checkpoint_epoch6.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-13-Jan-netvlad-triplet-cen-map-16-lr0_01/Jan13_14-47-34_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch7.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch16.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch12.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch6.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch8.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch15.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch14.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch11.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch10.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch9.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch13.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hiperagtor-Jan19/checkpoints/checkpoint_epoch17.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-11-Jan-netvlad-triplet-cen-map-16/Jan11_15-47-17_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-11-Jan-netvlad-triplet-cen-map-16/Jan11_15-47-17_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-11-Jan-netvlad-triplet-cen-map-16/Jan11_15-47-17_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/official-triplet-23-Dec/Dec23_11-30-53_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/official-triplet-23-Dec/Dec23_11-30-53_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/official-triplet-23-Dec/Dec23_11-30-53_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/checkpoint_epoch6.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-10-Jan-netvlad-triplet-cen-map/Jan10_15-36-46_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-10-Jan-netvlad-triplet-cen-map/Jan10_15-36-46_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch7.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch12.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch6.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch8.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch15.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch14.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch11.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch10.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch9.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-triplet-17-Jan-netvlad-triplet-cen-map-16-lr0_001/Jan17_10-06-32_mapillary_nopanos/checkpoints/checkpoint_epoch13.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-sare_ind-05-Jan/Jan05_15-53-48_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-sare_ind-05-Jan/Jan05_15-53-48_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-sare_ind-05-Jan/Jan05_15-53-48_mapillary_nopanos/checkpoints/checkpoint_epoch5.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-sare_ind-05-Jan/Jan05_15-53-48_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-sare_ind-05-Jan/Jan05_15-53-48_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/netvlad-sare_ind-05-Jan/Jan05_15-53-48_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-24Jan/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-24Jan/checkpoints/checkpoint_epoch1.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26-netvlad-triplet-epoch3/checkpoints/checkpoint_epoch3.pth.tar
+Building PCA Model of /home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch3.pth.tar file...
+/home/leo/usman_ws/models/patchnetvlad/checkpoint_epoch3_WPCA4096.pth.tar
+checkpoint_epoch3
+Adding PCA Layer
+Namespace(config_path='patchnetvlad/configs/train.ini', resume_path='/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch3.pth.tar', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', dataset_choice='mapillary', threads=6, nocuda=False, vd16_offtheshelf_path=None)
+===> Building model
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch3.pth.tar'
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/checkpoints/checkpoint_epoch3.pth.tar'
+===> Loading PCA dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+Extracting Features of mapillarysf Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/checkpoint_epoch3_WPCA4096.pth.tar')
+Parsing dataset...
+Done! Found 6315 images
+Auto-download pretrained models into /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/pretrained_models (takes around 2GB of space)? Yes/no.

@@ -197,25 +197,29 @@ if __name__ == "__main__":
     print('===> Compute PCA, takes a while')
     num_pcs = int(config['global_params']['num_pcs'])
 
-    dbFeat = torch.from_numpy(dbFeat)
-    dbFeat = list(dbFeat)
-    if (len(dbFeat)>10000):
-        dbFeat = random.sample(dbFeat, 10000)
-    pca = PCA(pca_n_components= num_pcs, pca_whitening = True)
-    dbFeat = torch.stack(dbFeat)
-    u, lams, mu, utmu = pca.train(dbFeat)
-    
-    print("till here")
-    # num_pcs = int(config['global_params']['num_pcs'])
-    # u, lams, mu = pca(dbFeat, num_pcs)
+    # print("till here")
+    num_pcs = int(config['global_params']['num_pcs'])
+    u, lams, mu = pca(dbFeat, num_pcs)
 
-    # u = u[:, :num_pcs]
-    # lams = lams[:num_pcs]
+    u = u[:, :num_pcs]
+    lams = lams[:num_pcs]
 
-    # print('===> Add PCA Whiten')
-    # u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
+    print('===> Add PCA Whiten')
+    u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
    
-    # utmu = np.matmul(u.T, mu)
+    utmu = np.matmul(u.T, mu)
+
+
+
+    ## Mine
+    # dbFeat = torch.from_numpy(dbFeat)
+    # dbFeat = list(dbFeat)
+    # if (len(dbFeat)>10000):
+    #     dbFeat = random.sample(dbFeat, 10000)
+    # pca = PCA(pca_n_components= num_pcs, pca_whitening = True)
+    # dbFeat = torch.stack(dbFeat)
+    # u, lams, mu, utmu = pca.train(dbFeat)
+    
         
     pca_conv = nn.Conv2d(pool_size, num_pcs, kernel_size=(1, 1), stride=1, padding=0)
     # noinspection PyArgumentList

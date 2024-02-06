@@ -3,6 +3,8 @@ PYTHON=${PYTHON:-"python3"}
 DATASET=$1
 BASEDir=$2
 FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
+# FILES=$(find "${BASEDir}" -type f -name "*.tar" ! -name '*WPCA4096*')
+
 echo "${FILES}"
 
 ## Dataset path [Change according to yours]

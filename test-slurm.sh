@@ -6,18 +6,19 @@
 
 #SBATCH --wait-all-nodes=1
 #SBATCH --job-name=
-#SBATCH --mail-type=NONE
-#SBATCH --mail-user=
-#SBATCH --nodes=1
-#SBATCH --gpus-per-node=a100:8
-#SBATCH --distribution=cyclic:cyclic
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --cpus-per-gpu=8
-#SBATCH --time=00:30:00
+#SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=m.maqboolbhutta@ufl.edu
+#SBATCH --time=52:00:00
 #SBATCH --partition=gpu
-#SBATCH --constraint=
-#SBATCH --output=logs/PatchNetvlad_%j.out
-#SBATCH --error=logs/PatchNetvlad_%j.err
+#SBATCH --output=R-%x.%j.out
+#SBATCH --error=R-%x.%j.err
+#SBATCH --nodes=1 
+#SBATCH --gpus-per-node=a100:1   
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --constraint=a100
+#SBATCH --mem-per-cpu=4gb
+
 
 
 # PYTHON SCRIPT
@@ -27,11 +28,6 @@
 
 DATASET=$1
 FILES=$2
-config_path=patchnetvlad/configs/train.ini
---config_path=patchnetvlad/configs/train.ini \
---resume_path=$RESUME \
---dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k \
---dataset_choice=pitts
 
 if [ $# -ne 2 ]
   then
@@ -61,5 +57,10 @@ echo "Other nodes: $NODES"
 #=======
 
 echo "Starting $SLURM_GPUS_PER_TASK process(es) on each node..."
-bash test_model.sh ${DATASET} ${FILES}
+bash test-s.sh ${DATASET} ${FILES}
 
+##TO RUN
+#./test.sh mapillary /home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26_21-46-27_mapillary_nopanos/Jan26_21-46-27_mapillary_nopanos/checkpoints/ | tee 26Jan2146.txt
+
+
+# sbatch --j Feb06_14-07-48-test test-slurm.sh mapillary /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-06-Feb/Feb06_14-07-48_mapillary_nopanos/checkpoints

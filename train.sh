@@ -23,7 +23,7 @@ else
     FILES="/home/m.maqboolbhutta/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
     DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/"
-    CONFIG="patchnetvlad/configs/train-slurm.ini"
+    CONFIG="patchnetvlad/configs/train.ini"
     CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vgg16_pitts_64_desc_cen.hdf5"
     OFFTHESHELF_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vd16_offtheshelf_conv5_3_max.pth"
 fi
@@ -37,7 +37,4 @@ $PYTHON -u train.py --save_every_epoch \
   --cache_path=${CASHE_PATH} \
   --save_path=$FILES \
   --dataset_root_dir=${DATASET_DIR} \
-  --loss=${LOSS} \
-  
-#   --vd16_offtheshelf_path=${OFFTHESHELF_PATH} \
-#   --cluster_path=${CLUSTER_PATH}
+  --loss=${LOSS}

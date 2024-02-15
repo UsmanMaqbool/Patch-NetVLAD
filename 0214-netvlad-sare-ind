@@ -47554,3 +47554,6 @@ Cached:    7.46 GB
 ==> Epoch[2](337000/441280): Loss: 0.0002
 Allocated: 111.65 MB
 Cached:    7.46 GB
+==> Epoch[2](337050/441280): Loss: 0.0000
+Allocated: 111.65 MB
+Cached:    7.46 GB

@@ -24,8 +24,7 @@ else
     DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/"
     CONFIG="patchnetvlad/configs/train.ini"
-    CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vgg16_pitts_64_desc_cen.hdf5"
-    OFFTHESHELF_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vd16_offtheshelf_conv5_3_max.pth"
+    CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
 fi
 
 echo "==========Starting Training============="
@@ -38,3 +37,4 @@ $PYTHON -u train.py --save_every_epoch \
   --save_path=$FILES \
   --dataset_root_dir=${DATASET_DIR} \
   --loss=${LOSS}
+  --cluster_path=${CLUSTER_PATH}

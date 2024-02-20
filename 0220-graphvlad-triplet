@@ -12,3 +12,32 @@ Exclude panoramas: True
 =====> london
 =====> boston
 =====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+#Sideways [21262/441280]; #Night; [4666/441280]
+Forward and Day weighted with 1.0000
+Forward and Night weighted with 95.5735
+Sideways and Day weighted with 21.7544
+Sideways and Night weighted with 116.3279
+Exclude panoramas: True
+=====> cph
+=====> sf
+===> Training query set: 441280
+===> Evaluating on val set, query count: 740
+===> Training model

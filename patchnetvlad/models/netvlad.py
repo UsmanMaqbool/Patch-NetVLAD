@@ -595,7 +595,7 @@ class GraphVLAD(nn.Module):
         
         neighborsFeat = []
         #vlad_x = []
-        
+        vlad_x.shape[1]
         ## Graphsage
         gvlad = self.graph(node_features_list) 
         #torch.Size([4, 32768])
@@ -603,4 +603,4 @@ class GraphVLAD(nn.Module):
 
         # gvlad = F.normalize(gvlad, p=2, dim=1)  # L2 normalize
         
-        return gvlad.view(-1,32768)
+        return gvlad.view(-1,vlad_x.shape[1])

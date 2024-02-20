@@ -43,7 +43,7 @@ import numpy as np
 
 from patchnetvlad.training_tools.tools import pca
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, combine_model_pca, Flatten, L2Norm
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, create_model_pca, Flatten, L2Norm
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import tqdm
@@ -119,7 +119,7 @@ if __name__ == "__main__":
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
 
             # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-            model = combine_model(encoder, pool_layer)
+            model = create_model('embednetpca',encoder, pool_layer)
             
             # Load the new state_dict into your model
             model.load_state_dict(new_state_dict)

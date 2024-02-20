@@ -46,7 +46,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 
 from patchnetvlad.tools.datasets import PlaceDataset
-from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, combine_model_pca, get_pca_encoding
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, create_model_pca, get_pca_encoding
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 
@@ -161,7 +161,7 @@ def main():
             use_pca = False
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-        model = combine_model_pca(encoder, pool_layer)
+        model = create_model_pca(encoder, pool_layer)
 
         model.load_state_dict(checkpoint['state_dict'])
         

@@ -17,7 +17,7 @@ if [ "$#" -ne 3 ]; then
     DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/"
     CONFIG="patchnetvlad/configs/train.ini"
-    CLUSTER_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/vgg16_pitts_64_desc_cen.hdf5"
+    CLUSTER_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
     OFFTHESHELF_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth"
 else
     FILES="/home/m.maqboolbhutta/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
@@ -37,4 +37,5 @@ $PYTHON -u train.py --save_every_epoch \
   --save_path=$FILES \
   --dataset_root_dir=${DATASET_DIR} \
   --loss=${LOSS} \
+  --method=${METHOD} \
   --cluster_path=${CLUSTER_PATH}

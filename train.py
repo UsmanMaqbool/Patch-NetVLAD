@@ -57,7 +57,7 @@ from patchnetvlad.training_tools.val import val
 from patchnetvlad.training_tools.get_clusters import get_clusters
 from patchnetvlad.training_tools.tools import save_checkpoint
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, combine_model
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import trange
@@ -89,8 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
-    parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
-                        help='NetVLAD Off the Shelf VGG Weights.')
+    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')               
 
     opt = parser.parse_args()
     print(opt)
@@ -119,9 +118,18 @@ if __name__ == "__main__":
     print('===> Building model')
 
     # encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
-    encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
+    encoder_dim, encoder = get_backend()
 
-
+    # Set m_name based on the selected method
+    if opt.method == 'graphvlad':
+        m_name = 'graphvlad'
+    else:
+        # Define a default value for m_name when the method is not 'netvlad'
+        m_name = 'embeded'
+    # m_name = 'embednet'
+    # m_name = 'embednetpca'
+    # m_name = 'graphvlad'
+            
     if opt.resume_path: # if already started training earlier and continuing
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
@@ -142,7 +150,10 @@ if __name__ == "__main__":
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
 
             # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-            model = combine_model(encoder, pool_layer)
+            
+
+            
+            model = create_model(m_name, encoder, pool_layer)
             
             # Load the new state_dict into your model
             model.load_state_dict(new_state_dict)
@@ -159,6 +170,8 @@ if __name__ == "__main__":
         
         initcache = join(opt.cache_path, 'centroids', 'vgg16_' + 'mapillary_' + config['train'][
                                       'num_clusters'] + '_desc_cen.hdf5')
+
+        
         if opt.cluster_path:
             if isfile(opt.cluster_path):
                 if opt.cluster_path != initcache:
@@ -184,7 +197,7 @@ if __name__ == "__main__":
             pool_layer.init_params(clsts, traindescs)
             del clsts, traindescs
             
-            model = combine_model(encoder, pool_layer)
+            model = create_model(m_name, encoder, pool_layer)
 
     isParallel = False
     if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

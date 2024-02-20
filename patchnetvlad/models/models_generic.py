@@ -58,10 +58,10 @@ def get_pca_encoding(model, vlad_encoding):
 #     enc = models.create(arch, train_layers='conv5',  pretrained=True, cut_at_pooling=True)
 #     return enc_dim, enc
 
-def get_backend(matconvnet_path):
+def get_backend():
     enc_dim = 512
     arch = 'vgg16'
-    enc = models.create(arch, train_layers='conv5', matconvnet=matconvnet_path, cut_at_pooling=True)
+    enc = models.create(arch, train_layers='conv5', cut_at_pooling=True)
     return enc_dim, enc
 
 def get_model(encoder, encoder_dim, config, append_pca_layer=False):
@@ -99,9 +99,7 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
 
     return nn_model
 
-def combine_model(encoder, pool_layer):
-    nn_model = models.create('embednet', encoder, pool_layer)
-    return nn_model
-def combine_model_pca(encoder, pool_layer):
-    nn_model = models.create('embednetpca', encoder, pool_layer)
+def create_model(name, encoder, pool_layer):
+    print("Creating model %s" % name)
+    nn_model = models.create(name, encoder, pool_layer)
     return nn_model

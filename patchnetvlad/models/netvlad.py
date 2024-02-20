@@ -32,7 +32,6 @@ import torch.nn.functional as F
 from sklearn.neighbors import NearestNeighbors
 import faiss
 import numpy as np
-
 # graphsage
 import torch.nn.init as init
 
@@ -44,7 +43,7 @@ from torchvision.ops import masks_to_boxes
 class NetVLAD(nn.Module):
     """NetVLAD layer implementation"""
 
-    def __init__(self, num_clusters=64, dim=128,
+    def __init__(self, num_clusters=16, dim=128,
                  normalize_input=True, vladv2=False, use_faiss=True):
         """
         Args:
@@ -120,20 +119,25 @@ class NetVLAD(nn.Module):
         # soft-assignment
         soft_assign = self.conv(x).view(N, self.num_clusters, -1)
         soft_assign = F.softmax(soft_assign, dim=1)
-
         x_flatten = x.view(N, C, -1)
 
         # calculate residuals to each clusters
-        vlad = torch.zeros([N, self.num_clusters, C], dtype=x.dtype, layout=x.layout, device=x.device)
-        for C in range(self.num_clusters):  # slower than non-looped, but lower memory usage
-            residual = x_flatten.unsqueeze(0).permute(1, 0, 2, 3) - \
-                self.centroids[C:C + 1, :].expand(x_flatten.size(-1), -1, -1).permute(1, 2, 0).unsqueeze(0)
-            residual *= soft_assign[:, C:C + 1, :].unsqueeze(2)
-            vlad[:, C:C + 1, :] = residual.sum(dim=-1)
+        # vlad = torch.zeros([N, self.num_clusters, C], dtype=x.dtype, layout=x.layout, device=x.device)
+        # for C in range(self.num_clusters):  # slower than non-looped, but lower memory usage
+        #     residual = x_flatten.unsqueeze(0).permute(1, 0, 2, 3) - \
+        #         self.centroids[C:C + 1, :].expand(x_flatten.size(-1), -1, -1).permute(1, 2, 0).unsqueeze(0)
+        #     residual *= soft_assign[:, C:C + 1, :].unsqueeze(2)
+        #     vlad[:, C:C + 1, :] = residual.sum(dim=-1)
 
         # vlad = F.normalize(vlad, p=2, dim=2)  # intra-normalization
         # vlad = vlad.view(x.size(0), -1)  # flatten
         # vlad = F.normalize(vlad, p=2, dim=1)  # L2 normalize
+
+        # calculate residuals to each clusters in one loop
+        residual = x_flatten.expand(self.num_clusters, -1, -1, -1).permute(1, 0, 2, 3) - \
+            self.centroids.expand(x_flatten.size(-1), -1, -1).permute(1, 2, 0).unsqueeze(0)
+        residual *= soft_assign.unsqueeze(2)
+        vlad = residual.sum(dim=-1)
 
         return vlad
 
@@ -347,7 +351,7 @@ class GraphSage(nn.Module):
         )
 class GraphVLAD(nn.Module):
     def __init__(self, base_model, net_vlad):
-        super(EmbedNet, self).__init__()
+        super(GraphVLAD, self).__init__()
         self.base_model = base_model
         self.net_vlad = net_vlad
         
@@ -454,7 +458,7 @@ class GraphVLAD(nn.Module):
         patch_mask = torch.zeros((H, W)).cuda()
         
         # VGG 
-        pool_x, x = self.base_model(x)   
+        x = self.base_model(x)   
         
         N, C, H, W = x.shape
 
@@ -599,4 +603,4 @@ class GraphVLAD(nn.Module):
 
         # gvlad = F.normalize(gvlad, p=2, dim=1)  # L2 normalize
         
-        return pool_x, gvlad.view(-1,32768)
+        return gvlad.view(-1,32768)

@@ -43,7 +43,7 @@ import numpy as np
 
 from patchnetvlad.training_tools.tools import pca
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model, Flatten, L2Norm
+from patchnetvlad.models.models_generic import get_backend, get_model, combine_model, combine_model_pca, Flatten, L2Norm
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import tqdm
@@ -96,33 +96,22 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(None)
       
 
     if opt.resume_path: # must resume for PCA
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)            
-             # for i in checkpoint['state_dict']['module.net_vlad.centroids']:
-            #     print(i)
-            
-            # Create a new state_dict without the 'module.' prefix
-            new_state_dict = {}
-            for key, value in checkpoint['state_dict'].items():
-                if key.startswith('module.'):
-                    new_key = key[7:]  # Remove the 'module.' prefix
-                else:
-                    new_key = key
-                new_state_dict[new_key] = value
+            config['global_params']['num_clusters'] = str(checkpoint['state_dict']['net_vlad.centroids'].shape[0])
 
-            config['global_params']['num_clusters'] = str(new_state_dict['net_vlad.centroids'].shape[0])
-            pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
+            pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False) 
+            model = combine_model(encoder, pool_layer)
+            print("Model's state_dict:")
+            for param_tensor in checkpoint:
+                print(param_tensor, "\t")
 
-            # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-            model = create_model('graphvlad',encoder, pool_layer)
-            
-            # Load the new state_dict into your model
-            model.load_state_dict(new_state_dict)
+            model.load_state_dict(checkpoint['state_dict'])
             
             opt.start_epoch = checkpoint['epoch']
 
@@ -197,29 +186,25 @@ if __name__ == "__main__":
     print('===> Compute PCA, takes a while')
     num_pcs = int(config['global_params']['num_pcs'])
 
-    # print("till here")
-    num_pcs = int(config['global_params']['num_pcs'])
-    u, lams, mu = pca(dbFeat, num_pcs)
-
-    u = u[:, :num_pcs]
-    lams = lams[:num_pcs]
-
-    print('===> Add PCA Whiten')
-    u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
-   
-    utmu = np.matmul(u.T, mu)
-
-
-
-    ## Mine
-    # dbFeat = torch.from_numpy(dbFeat)
-    # dbFeat = list(dbFeat)
-    # if (len(dbFeat)>10000):
-    #     dbFeat = random.sample(dbFeat, 10000)
-    # pca = PCA(pca_n_components= num_pcs, pca_whitening = True)
-    # dbFeat = torch.stack(dbFeat)
-    # u, lams, mu, utmu = pca.train(dbFeat)
+    dbFeat = torch.from_numpy(dbFeat)
+    dbFeat = list(dbFeat)
+    if (len(dbFeat)>10000):
+        dbFeat = random.sample(dbFeat, 10000)
+    pca = PCA(pca_n_components= num_pcs, pca_whitening = True)
+    dbFeat = torch.stack(dbFeat)
+    u, lams, mu, utmu = pca.train(dbFeat)
     
+    print("till here")
+    # num_pcs = int(config['global_params']['num_pcs'])
+    # u, lams, mu = pca(dbFeat, num_pcs)
+
+    # u = u[:, :num_pcs]
+    # lams = lams[:num_pcs]
+
+    # print('===> Add PCA Whiten')
+    # u = np.matmul(u, np.diag(np.divide(1., np.sqrt(lams + 1e-9))))
+   
+    # utmu = np.matmul(u.T, mu)
         
     pca_conv = nn.Conv2d(pool_size, num_pcs, kernel_size=(1, 1), stride=1, padding=0)
     # noinspection PyArgumentList

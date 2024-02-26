@@ -44,9 +44,8 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import numpy as np
-
 from patchnetvlad.tools.datasets import PlaceDataset
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model, create_model_pca, get_pca_encoding
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_pca_encoding
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 
@@ -129,7 +128,7 @@ def main():
 
     device = torch.device("cuda" if cuda else "cpu")
 
-    encoder_dim, encoder = get_backend(None)
+    encoder_dim, encoder = get_backend()
 
     if not os.path.isfile(opt.dataset_file_path):
         opt.dataset_file_path = join(PATCHNETVLAD_ROOT_DIR, 'dataset_imagenames', opt.dataset_file_path)
@@ -161,8 +160,8 @@ def main():
             use_pca = False
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-        model = create_model_pca(encoder, pool_layer)
-
+        
+        model = create_model('graphvladpca', encoder, pool_layer)
         model.load_state_dict(checkpoint['state_dict'])
         
         if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

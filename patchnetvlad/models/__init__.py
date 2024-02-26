@@ -10,6 +10,7 @@ __factory = {
     'embednet': EmbedNet,
     'embednetpca': EmbedNetPCA,
     'graphvlad': GraphVLAD,
+    'graphvladpca': GraphVLADPCA,
 }
 
 

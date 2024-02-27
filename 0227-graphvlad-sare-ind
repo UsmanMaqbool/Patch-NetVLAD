@@ -1,0 +1,284 @@
+==========Starting Training=============
+Saving checkpoints at /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-27-Feb-netvlad-triplet-cen-map-16-lr0_001
+========================================
+Namespace(config_path='patchnetvlad/configs/train.ini', cache_path='/home/leo/usman_ws/datasets/2015netVLAD/official/', save_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-27-Feb-netvlad-triplet-cen-map-16-lr0_001', resume_path='', cluster_path='/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', identifier='mapillary_nopanos', nEpochs=30, start_epoch=0, save_every_epoch=True, threads=6, nocuda=False, loss='sare_ind', method='graphvlad')
+===> Building model
+===> Loading model
+Creating model graphvlad
+Encoder loaded!
+===> Loading dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+#Sideways [21262/441280]; #Night; [4666/441280]
+Forward and Day weighted with 1.0000
+Forward and Night weighted with 95.5735
+Sideways and Day weighted with 21.7544
+Sideways and Night weighted with 116.3279
+Exclude panoramas: True
+=====> cph
+=====> sf
+===> Training query set: 441280
+===> Evaluating on val set, query count: 740
+===> Training model
+>> Searching for hard negatives...
+==> Epoch[1](50/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](100/441280): Loss: 0.7172
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](150/441280): Loss: 0.0053
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](200/441280): Loss: 0.2609
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](250/441280): Loss: 0.0017
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](300/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](350/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](400/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](450/441280): Loss: 0.2194
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](500/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](550/441280): Loss: 0.0011
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](600/441280): Loss: 0.0001
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](650/441280): Loss: 0.1358
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](700/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](750/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](800/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](850/441280): Loss: 0.0806
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](900/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+==> Epoch[1](950/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.71 GB
+>> Searching for hard negatives...
+==> Epoch[1](1000/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1050/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1100/441280): Loss: 0.1155
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1150/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1200/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1250/441280): Loss: 0.0165
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1300/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1350/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1400/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1450/441280): Loss: 0.0002
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1500/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1550/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1600/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1650/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1700/441280): Loss: 0.0490
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1750/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1800/441280): Loss: 0.4405
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1850/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1900/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](1950/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+>> Searching for hard negatives...
+==> Epoch[1](2000/441280): Loss: 0.0191
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2050/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2100/441280): Loss: 0.2855
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2150/441280): Loss: 0.0259
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2200/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2250/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2300/441280): Loss: 0.2722
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2350/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2400/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2450/441280): Loss: 0.0501
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2500/441280): Loss: 0.5575
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2550/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2600/441280): Loss: 0.0146
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2650/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2700/441280): Loss: 0.0004
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2750/441280): Loss: 0.0010
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2800/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2850/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2900/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+==> Epoch[1](2950/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.81 GB
+>> Searching for hard negatives...
+==> Epoch[1](3000/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3050/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3100/441280): Loss: 0.0807
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3150/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3200/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3250/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3300/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3350/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3400/441280): Loss: 0.0001
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3450/441280): Loss: 0.0067
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3500/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3550/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3600/441280): Loss: 0.0010
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3650/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3700/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3750/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3800/441280): Loss: 0.0001
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3850/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3900/441280): Loss: 0.0000
+Allocated: 369.10 MB
+Cached:    8.82 GB
+==> Epoch[1](3950/441280): Loss: 0.0005
+Allocated: 369.10 MB
+Cached:    8.82 GB

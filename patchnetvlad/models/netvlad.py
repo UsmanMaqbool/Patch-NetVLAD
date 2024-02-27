@@ -40,6 +40,9 @@ from torchvision import transforms
 # import espnet as net
 from .espnet import *
 from torchvision.ops import masks_to_boxes
+
+
+
 class NetVLAD(nn.Module):
     """NetVLAD layer implementation"""
 
@@ -349,18 +352,10 @@ class GraphSage(nn.Module):
         return 'in_features={}, num_neighbors_list={}'.format(
             self.input_dim, self.num_neighbors_list
         )
-class GraphVLAD(nn.Module):
-    def __init__(self, base_model, net_vlad):
-        super(GraphVLAD, self).__init__()
-        self.base_model = base_model
-        self.net_vlad = net_vlad
-        
-        # Semantic Segmentation
-        self.classes = 20
-        self.p = 2
-        self.q = 8
-        self.encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
-        self.Espnet = ESPNet(classes=self.classes, p=self.p, q = self.q, encoderFile=self.encoderFile)  # Net.
+
+class applyGNN(nn.Module):
+    def __init__(self):
+        super(applyGNN, self).__init__()
         
         #graph
         self.input_dim = 4096 # 16384# 8192
@@ -370,9 +365,22 @@ class GraphVLAD(nn.Module):
         self.graph = GraphSage(input_dim=self.input_dim, hidden_dim=self.hidden_dim,
                   num_neighbors_list=self.num_neighbors_list)
 
-    def _init_params(self):
-        self.base_model._init_params()
-        self.net_vlad._init_params()
+    def forward(self, x):
+        gvlad = self.graph(x)
+        return gvlad
+        
+
+class SelectRegions(nn.Module):
+    def __init__(self, base_model):
+        super(SelectRegions, self).__init__()
+        self.base_model = base_model
+        # Semantic Segmentation
+        self.classes = 20
+        self.p = 2
+        self.q = 8
+        # self.encoderFile = "/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+        self.encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+        self.Espnet = ESPNet(classes=self.classes, p=self.p, q = self.q, encoderFile=self.encoderFile) 
 
     def forward(self, x):
         
@@ -476,7 +484,6 @@ class GraphVLAD(nn.Module):
             
         # patch_mask = torch.zeros((H, W))
         NB = 5
-        
         graph_nodes = torch.zeros(N,NB,C,H,W).cuda()
         rsizet = transforms.Resize((H,W)) #H W
 
@@ -558,9 +565,7 @@ class GraphVLAD(nn.Module):
             # print("total: ", len(img_nodes))
         # code.interact(local=locals())
         
-        
-        node_features_list = []
-        neighborsFeat = []
+
 
         x_cropped = graph_nodes.view(NB,N,C,H,W)
         # xx = x.unsqueeze(0)
@@ -570,15 +575,36 @@ class GraphVLAD(nn.Module):
         # code.interact(local=locals())
         x_cropped = torch.cat((graph_nodes.view(NB,N,C,H,W), x.unsqueeze(0)))
         # x_call = x_cropped.append(x.unsqueeze(0))
+        del graph_nodes
+
+        return NB, x.size(0), x_cropped
+
+
+class GraphVLAD(nn.Module):
+    def __init__(self, base_model, net_vlad):
+        super(GraphVLAD, self).__init__()
+        self.base_model = base_model
+        self.net_vlad = net_vlad
+        self.SelectRegions = SelectRegions(self.base_model)
+        self.applyGNN = applyGNN()
+
+    def _init_params(self):
+        self.base_model._init_params()
+        self.net_vlad._init_params()
+
+    def forward(self, x):
+        
+                
+        node_features_list = []
+        neighborsFeat = []
+        NB, x_size, x_cropped = self.SelectRegions(x)
          
         for i in range(NB+1):
-            
-            
             vlad_x = self.net_vlad(x_cropped[i])
             
             # [IMPORTANT] normalize
             vlad_x = F.normalize(vlad_x, p=2, dim=2)  # intra-normalization
-            vlad_x = vlad_x.view(x.size(0), -1)  # flatten
+            vlad_x = vlad_x.view(x_size, -1)  # flatten
             vlad_x = F.normalize(vlad_x, p=2, dim=1)  # L2 normalize
             # aa = vlad_x.shape #32, 32768
             #vlad_x = vlad_x.view(-1,8192) # 8192
@@ -590,20 +616,13 @@ class GraphVLAD(nn.Module):
         node_features_list.append(neighborsFeat[NB])
         node_features_list.append(torch.concat(neighborsFeat[0:NB],0))
         # code.interact(local=locals())
-        
-        
-        
         neighborsFeat = []
-        #vlad_x = []
-        vlad_x.shape[1]
-        ## Graphsage
-        gvlad = self.graph(node_features_list) 
-        #torch.Size([4, 32768])
-        gvlad = torch.add(gvlad,vlad_x)
-
-        # gvlad = F.normalize(gvlad, p=2, dim=1)  # L2 normalize
         
+        ## Graphsage
+        gvlad = self.applyGNN(node_features_list)
+        gvlad = torch.add(gvlad,vlad_x)        
         return gvlad.view(-1,vlad_x.shape[1])
+    
     
 class GraphVLADPCA(nn.Module):
     def __init__(self, base_model, net_vlad, dim=4096):
@@ -612,225 +631,20 @@ class GraphVLADPCA(nn.Module):
         self.net_vlad = net_vlad
         self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
 
-        # Semantic Segmentation
-        self.classes = 20
-        self.p = 2
-        self.q = 8
-        self.encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
-        self.Espnet = ESPNet(classes=self.classes, p=self.p, q = self.q, encoderFile=self.encoderFile)  # Net.
         
-        #graph
-        self.input_dim = 4096 # 16384# 8192
-        self.hidden_dim = [2048,4096]#[8192, 8192]
-        self.num_neighbors_list = [5]#,2]
-        
-        self.graph = GraphSage(input_dim=self.input_dim, hidden_dim=self.hidden_dim,
-                  num_neighbors_list=self.num_neighbors_list)
-
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()
 
     def forward(self, x):
         
-        # fixing for Tokyo
-        sizeH = x.shape[2]
-        sizeW = x.shape[3]
-        # print("raw: ", x.shape)
-        
-        # for Tokyo 247 Test
-        
-        if sizeH%2 != 0:
-            x = F.pad(input=x, pad=(0,0,1,2), mode='constant', value=0)
-        if sizeW%2 != 0:
-            x = F.pad(input=x, pad=(1,2), mode='constant', value=0)
-
-        # print("padded:", x.shape)
-        with torch.no_grad():
-            b_out = self.Espnet(x)
-        # b_out = self.Espnet(x)
-        mask = b_out.max(1)[1]   #torch.Size([36, 480, 640])
-        
-        for jj in range(len(mask)):  #batch processing
-            
-            # img_orig = to_tensor(Image.open(image_list[jj]).convert('RGB'))
-            # _, H, W = img_orig.shape
-
-            # bb_x = [[0, 0, round(2*W/3), round(2*H/3)],  [round(W/3),  0,  W, round(2*H/3)], [0, round(H/3), round(2*W/3), H], [round(W/3), round(H/3), W, H]]
                 
-            # patch_mask = torch.zeros((H, W))
-            
-            # rsizet = transforms.Resize((427, 320)) #H W
-            # rsizet = transforms.Resize((round(2*W/3), round(2*H/3))) #H W
-            
-
-             #patch_mask, patch_mask, patch_mask, patch_mask]
-
-            # single_label_mask = relabel_merge(mask[jj])    # single image mask
-            # all the labels to single slides
-            single_label_mask = mask[jj]
-            
-            # obj_ids = torch.unique(single_label_mask)
-            obj_ids, obj_i = single_label_mask.unique(return_counts=True)
-            obj_ids = obj_ids[1:] 
-            obj_i = obj_i[1:]
-            #torch.Size([19])
-            
-            masks = single_label_mask == obj_ids[:, None, None]
-            boxes_t = masks_to_boxes(masks.to(torch.float32))
-            # print ("boxes-lenght:", len(boxes_t))
-
-            # Sort the boxes                
-            # rr = ((bb_x[:, 2])-(bb_x[:, 0]))*((bb_x[:, 3])-(bb_x[:, 1]))
-            # rr_boxes = torch.argsort(rr,descending=True) # (decending order)
-            
-            rr_boxes = torch.argsort(torch.argsort(obj_i,descending=True)) # (decending order)
-
-            
-            # rr_boxes = torch.argsort(rr) # (decending order)
-
-            # boxes = (boxes_t/16).cpu().numpy().astype(int)
-            
-            boxes = boxes_t/16
-        
-        
-        # for jj in range(len(mask)):  #batch processing
-        
-        #     single_label_mask = relabel_merge(mask[jj])    # single image mask
-        #     # single_label_mask = mask[jj]
-        #     obj_ids = torch.unique(single_label_mask)
-        #     obj_ids = obj_ids[1:]      #torch.Size([19])
-        #     masks = single_label_mask == obj_ids[:, None, None]
-        #     boxes = masks_to_boxes(masks.to(torch.float32))
-        #     # boxes = masks_to_boxes(masks.to(torch.float32))/16
-        #     boxes_s = (boxes/16).cpu().numpy().astype(int)
-        #     #append boxes
-        #     print (len(boxes_s))
-        #     code.interact(local=locals())
-
-            
-        _, _, H, W = x.shape
-        # H = sizeH
-        # W = sizeW
-        patch_mask = torch.zeros((H, W)).cuda()
-        
-        # VGG 
-        x = self.base_model(x)   
-        
-        N, C, H, W = x.shape
-
-        
-        # img_orig = to_tensor(Image.open(image_list[jj]).convert('RGB'))
-        # _, H, W = img_orig.shape
-
-        bb_x = [[int(W/4), int(H/4), int(3*W/4),int(3*H/4)],
-                [0, 0, int(W/3),H], 
-                [0, 0, W,int(H/3)], 
-                [int(2*W/3), 0, W,H], 
-                [0, int(2*H/3), W,H]]
-
-        # bb_x = [[0, 0, round(2*W/3), round(2*H/3)],  [round(W/3),  0,  W, round(2*H/3)], [0, round(H/3), round(2*W/3), H], [round(W/3), round(H/3), W, H]]
-            
-        # patch_mask = torch.zeros((H, W))
-        NB = 5
-        
-        graph_nodes = torch.zeros(N,NB,C,H,W).cuda()
-        rsizet = transforms.Resize((H,W)) #H W
-
-        # rsizet = transforms.Resize((427, 320)) #H W
-        # rsizet = transforms.Resize((round(2*W/3), round(2*H/3))) #H W
-        
-        for Nx in range(N):    
-            # img_stk = x[Nx].unsqueeze(0)
-            img_nodes = []
-            # print(Nx)
-            for idx in range(len(boxes)):
-                for b_idx in range(len(rr_boxes)):
-                    # print(idx, " ", b_idx)
-                    # code.interact(local=locals())
-
-                    if idx == rr_boxes[b_idx] and obj_i[b_idx] > 5000 and len(img_nodes) < NB:
-                        # print("found match")
-                        # print(idx, " ", b_idx)
-                        # print (img_nodes.shape)
-                        
-                        patch_mask = patch_mask*0
-
-                        # label obj_ids[rr_boxes[b_idx]]
-                        patch_mask[single_label_mask == obj_ids[b_idx]] = 1
-                        # box boxes[rr_boxes[b_idx]]
-
-                        # patch_mask = patch_mask.unsqueeze(0)
-                        patch_maskr = rsizet(patch_mask.unsqueeze(0))
-                        
-                        patch_maskr = patch_maskr.squeeze(0)
-
-                        boxesd = boxes.to(torch.long)
-                        x_min,y_min,x_max,y_max = boxesd[b_idx]
-                    
-                        # zero_img = patch_maskr[y_min:y_max,x_min:x_max]
-                    
-                        # imgg = img[0].permute(1, 2, 0).numpy().astype(int)
-                        c_img = x[Nx][:, y_min:y_max,x_min:x_max]
-                        
-                        # increase dimension
-                        # mmask = torch.stack((zero_img,)*512, axis=0)
-                        
-
-                        # Multiply arrays
-                        # code.interact(local=locals())
-                        # resultant = rsizet(c_img*mmask)
-                        resultant = rsizet(c_img)
- 
-                        img_nodes.append(resultant.unsqueeze(0))
-                        
-                        
-                        # img_nodes = torch.stack((img_nodes,resultant.unsqueeze(0)), 0)
-                        # code.interact(local=locals())
-                        # img_nodes.append(resultant.unsqueeze(0))
-                        
-
-                        # imgg = torch.permute(resultant, (1, 2, 0)).cpu().numpy()[0]
-                        # aa = img_orig.numpy()
-                        # imgg = to_image(aa)
-                        
-                        # cv2.imwrite(args.savedir + os.sep + 'img_'+str(idx)+'_' + name.replace(args.img_extn, 'png'), aa)
-                        # save_image(resultant, args.savedir + os.sep + 'img_'+str(idx)+'_' + name.replace(args.img_extn, 'png'))
-                        break                    
-            
-            # check the size
-            # print("first: ", len(img_nodes))
-            # code.interact(local=locals())
-            if len(img_nodes) < NB:
-                for i in range(len(bb_x)-len(img_nodes)):
-                    x_cropped =  x[Nx][: ,bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]
-                    img_nodes.append(rsizet(x_cropped.unsqueeze(0)))
-                    
-                
-        
-            aa = torch.stack(img_nodes,1)
-            # code.interact(local=locals())
-            graph_nodes[Nx] = aa[0]
-            # graph_nodes.append(torch.stack(img_nodes,1))
-            # print("total: ", len(img_nodes))
-        # code.interact(local=locals())
-        
-        
         node_features_list = []
         neighborsFeat = []
-
-        x_cropped = graph_nodes.view(NB,N,C,H,W)
-        # xx = x.unsqueeze(0)
-        # Append root node
-        # print(x_cropped.shape)
-        # print(x.unsqueeze(0).shape)
-        # code.interact(local=locals())
-        x_cropped = torch.cat((graph_nodes.view(NB,N,C,H,W), x.unsqueeze(0)))
-        # x_call = x_cropped.append(x.unsqueeze(0))
          
         for i in range(NB+1):
             
-            
+            NB, x_cropped = self.SelectRegions(x)
             vlad_x = self.net_vlad(x_cropped[i])
             
             # [IMPORTANT] normalize
@@ -849,21 +663,16 @@ class GraphVLADPCA(nn.Module):
         # code.interact(local=locals())
         
         neighborsFeat = []
-        #vlad_x = []
-        # vlad_x.shape[1]
+        
         ## Graphsage
-        gvlad = self.graph(node_features_list) 
-        #torch.Size([4, 32768])
-        gvlad = torch.add(gvlad,vlad_x)
+        gvlad = self.applyGNN(node_features_list)
+        gvlad = torch.add(gvlad,vlad_x)        
+        gvlad = gvlad.view(-1,vlad_x.shape[1])
 
         # gvlad = F.normalize(gvlad, p=2, dim=1)  # L2 normalize
-        
-        gvlad = gvlad.view(-1,vlad_x.shape[1])
-        # print(gvlad.shape)
-        # reduction
+         # reduction
         N, D = gvlad.size()
         gvlad = gvlad.view(N, D, 1, 1)
         gvlad = self.pca_layer(gvlad).view(N, -1)
         gvlad = F.normalize(gvlad, p=2, dim=-1)  # L2 normalize
-        
         return gvlad

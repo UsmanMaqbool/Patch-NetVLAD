@@ -1,0 +1,1528 @@
+/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/training_tools/msls.py:292: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  self.pIdx = np.asarray(self.pIdx)
+/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/training_tools/msls.py:293: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  self.nonNegIdx = np.asarray(self.nonNegIdx)
+/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/training_tools/msls.py:292: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  self.pIdx = np.asarray(self.pIdx)
+   Epoch number:   0%|          | 0/30 [00:00<?, ?it/s]
+  Cache refresh:   0%|          | 0/442 [00:00<?, ?it/s][A
+
+compute query descriptors:   0%|          | 0/49 [00:00<?, ?it/s][A[A
+
+compute query descriptors:   2%|▏         | 1/49 [00:01<01:07,  1.42s/it][A[A
+
+compute query descriptors:   4%|▍         | 2/49 [00:01<00:39,  1.18it/s][A[A
+
+compute query descriptors:   6%|▌         | 3/49 [00:02<00:30,  1.50it/s][A[A
+
+compute query descriptors:   8%|▊         | 4/49 [00:02<00:26,  1.71it/s][A[A
+
+compute query descriptors:  10%|█         | 5/49 [00:03<00:23,  1.86it/s][A[A
+
+compute query descriptors:  12%|█▏        | 6/49 [00:03<00:21,  1.96it/s][A[A
+
+compute query descriptors:  14%|█▍        | 7/49 [00:04<00:20,  2.03it/s][A[A
+
+compute query descriptors:  16%|█▋        | 8/49 [00:04<00:19,  2.08it/s][A[A
+
+compute query descriptors:  18%|█▊        | 9/49 [00:05<00:19,  2.10it/s][A[A
+
+compute query descriptors:  20%|██        | 10/49 [00:05<00:18,  2.13it/s][A[A
+
+compute query descriptors:  22%|██▏       | 11/49 [00:05<00:17,  2.15it/s][A[A
+
+compute query descriptors:  24%|██▍       | 12/49 [00:06<00:17,  2.17it/s][A[A
+
+compute query descriptors:  27%|██▋       | 13/49 [00:06<00:16,  2.18it/s][A[A
+
+compute query descriptors:  29%|██▊       | 14/49 [00:07<00:16,  2.18it/s][A[A
+
+compute query descriptors:  31%|███       | 15/49 [00:07<00:15,  2.18it/s][A[A
+
+compute query descriptors:  33%|███▎      | 16/49 [00:08<00:15,  2.20it/s][A[A
+
+compute query descriptors:  35%|███▍      | 17/49 [00:08<00:14,  2.20it/s][A[A
+
+compute query descriptors:  37%|███▋      | 18/49 [00:09<00:14,  2.20it/s][A[A
+
+compute query descriptors:  39%|███▉      | 19/49 [00:09<00:13,  2.19it/s][A[A
+
+compute query descriptors:  41%|████      | 20/49 [00:10<00:13,  2.19it/s][A[A
+
+compute query descriptors:  43%|████▎     | 21/49 [00:10<00:12,  2.20it/s][A[A
+
+compute query descriptors:  45%|████▍     | 22/49 [00:10<00:12,  2.20it/s][A[A
+
+compute query descriptors:  47%|████▋     | 23/49 [00:11<00:11,  2.18it/s][A[A
+
+compute query descriptors:  49%|████▉     | 24/49 [00:11<00:11,  2.19it/s][A[A
+
+compute query descriptors:  51%|█████     | 25/49 [00:12<00:10,  2.20it/s][A[A
+
+compute query descriptors:  53%|█████▎    | 26/49 [00:12<00:10,  2.19it/s][A[A
+
+compute query descriptors:  55%|█████▌    | 27/49 [00:13<00:10,  2.19it/s][A[A
+
+compute query descriptors:  57%|█████▋    | 28/49 [00:13<00:09,  2.20it/s][A[A
+
+compute query descriptors:  59%|█████▉    | 29/49 [00:14<00:09,  2.20it/s][A[A
+
+compute query descriptors:  61%|██████    | 30/49 [00:14<00:08,  2.19it/s][A[A
+
+compute query descriptors:  63%|██████▎   | 31/49 [00:15<00:08,  2.19it/s][A[A
+
+compute query descriptors:  65%|██████▌   | 32/49 [00:15<00:07,  2.19it/s][A[A
+
+compute query descriptors:  67%|██████▋   | 33/49 [00:15<00:07,  2.19it/s][A[A
+
+compute query descriptors:  69%|██████▉   | 34/49 [00:16<00:06,  2.19it/s][A[A
+
+compute query descriptors:  71%|███████▏  | 35/49 [00:16<00:06,  2.19it/s][A[A
+
+compute query descriptors:  73%|███████▎  | 36/49 [00:17<00:05,  2.20it/s][A[A
+
+compute query descriptors:  76%|███████▌  | 37/49 [00:17<00:05,  2.18it/s][A[A
+
+compute query descriptors:  78%|███████▊  | 38/49 [00:18<00:05,  2.19it/s][A[A
+
+compute query descriptors:  80%|███████▉  | 39/49 [00:18<00:04,  2.20it/s][A[A
+
+compute query descriptors:  82%|████████▏ | 40/49 [00:19<00:04,  2.21it/s][A[A
+
+compute query descriptors:  84%|████████▎ | 41/49 [00:19<00:03,  2.22it/s][A[A
+
+compute query descriptors:  86%|████████▌ | 42/49 [00:20<00:03,  2.23it/s][A[A
+
+compute query descriptors:  88%|████████▊ | 43/49 [00:20<00:02,  2.23it/s][A[A
+
+compute query descriptors:  90%|████████▉ | 44/49 [00:20<00:02,  2.23it/s][A[A
+
+compute query descriptors:  92%|█████████▏| 45/49 [00:21<00:01,  2.24it/s][A[A
+
+compute query descriptors:  94%|█████████▍| 46/49 [00:21<00:01,  2.24it/s][A[A
+
+compute query descriptors:  96%|█████████▌| 47/49 [00:22<00:00,  2.24it/s][A[A
+
+compute query descriptors:  98%|█████████▊| 48/49 [00:22<00:00,  2.24it/s][A[A
+
+compute query descriptors: 100%|██████████| 49/49 [00:23<00:00,  2.24it/s][A[A
+
+compute query descriptors: 50it [00:23,  2.27it/s]                        [A[A
+
+                                                  [A[A
+
+compute positive descriptors:   0%|          | 0/244 [00:00<?, ?it/s][A[A
+
+compute positive descriptors:   0%|          | 1/244 [00:00<03:32,  1.14it/s][A[A
+
+compute positive descriptors:   1%|          | 2/244 [00:01<02:31,  1.60it/s][A[A
+
+compute positive descriptors:   1%|          | 3/244 [00:01<02:11,  1.83it/s][A[A
+
+compute positive descriptors:   2%|▏         | 4/244 [00:02<02:01,  1.97it/s][A[A
+
+compute positive descriptors:   2%|▏         | 5/244 [00:02<01:55,  2.06it/s][A[A
+
+compute positive descriptors:   2%|▏         | 6/244 [00:03<01:52,  2.11it/s][A[A
+
+compute positive descriptors:   3%|▎         | 7/244 [00:03<01:51,  2.12it/s][A[A
+
+compute positive descriptors:   3%|▎         | 8/244 [00:04<01:49,  2.15it/s][A[A
+
+compute positive descriptors:   4%|▎         | 9/244 [00:04<01:48,  2.16it/s][A[A
+
+compute positive descriptors:   4%|▍         | 10/244 [00:04<01:47,  2.18it/s][A[A
+
+compute positive descriptors:   5%|▍         | 11/244 [00:05<01:45,  2.20it/s][A[A
+
+compute positive descriptors:   5%|▍         | 12/244 [00:05<01:44,  2.21it/s][A[A
+
+compute positive descriptors:   5%|▌         | 13/244 [00:06<01:43,  2.22it/s][A[A
+
+compute positive descriptors:   6%|▌         | 14/244 [00:06<01:43,  2.23it/s][A[A
+
+compute positive descriptors:   6%|▌         | 15/244 [00:07<01:43,  2.20it/s][A[A
+
+compute positive descriptors:   7%|▋         | 16/244 [00:07<01:43,  2.20it/s][A[A
+
+compute positive descriptors:   7%|▋         | 17/244 [00:08<01:42,  2.20it/s][A[A
+
+compute positive descriptors:   7%|▋         | 18/244 [00:08<01:42,  2.21it/s][A[A
+
+compute positive descriptors:   8%|▊         | 19/244 [00:09<01:42,  2.20it/s][A[A
+
+compute positive descriptors:   8%|▊         | 20/244 [00:09<01:42,  2.20it/s][A[A
+
+compute positive descriptors:   9%|▊         | 21/244 [00:09<01:41,  2.20it/s][A[A
+
+compute positive descriptors:   9%|▉         | 22/244 [00:10<01:40,  2.21it/s][A[A
+
+compute positive descriptors:   9%|▉         | 23/244 [00:10<01:41,  2.18it/s][A[A
+
+compute positive descriptors:  10%|▉         | 24/244 [00:11<01:40,  2.19it/s][A[A
+
+compute positive descriptors:  10%|█         | 25/244 [00:11<01:40,  2.19it/s][A[A
+
+compute positive descriptors:  11%|█         | 26/244 [00:12<01:39,  2.19it/s][A[A
+
+compute positive descriptors:  11%|█         | 27/244 [00:12<01:38,  2.20it/s][A[A
+
+compute positive descriptors:  11%|█▏        | 28/244 [00:13<01:37,  2.21it/s][A[A
+
+compute positive descriptors:  12%|█▏        | 29/244 [00:13<01:37,  2.21it/s][A[A
+
+compute positive descriptors:  12%|█▏        | 30/244 [00:14<01:36,  2.21it/s][A[A
+
+compute positive descriptors:  13%|█▎        | 31/244 [00:14<01:36,  2.21it/s][A[A
+
+compute positive descriptors:  13%|█▎        | 32/244 [00:14<01:36,  2.20it/s][A[A
+
+compute positive descriptors:  14%|█▎        | 33/244 [00:15<01:36,  2.20it/s][A[A
+
+compute positive descriptors:  14%|█▍        | 34/244 [00:15<01:35,  2.20it/s][A[A
+
+compute positive descriptors:  14%|█▍        | 35/244 [00:16<01:35,  2.20it/s][A[A
+
+compute positive descriptors:  15%|█▍        | 36/244 [00:16<01:34,  2.20it/s][A[A
+
+compute positive descriptors:  15%|█▌        | 37/244 [00:17<01:34,  2.20it/s][A[A
+
+compute positive descriptors:  16%|█▌        | 38/244 [00:17<01:33,  2.20it/s][A[A
+
+compute positive descriptors:  16%|█▌        | 39/244 [00:18<01:33,  2.20it/s][A[A
+
+compute positive descriptors:  16%|█▋        | 40/244 [00:18<01:32,  2.21it/s][A[A
+
+compute positive descriptors:  17%|█▋        | 41/244 [00:18<01:31,  2.22it/s][A[A
+
+compute positive descriptors:  17%|█▋        | 42/244 [00:19<01:30,  2.22it/s][A[A
+
+compute positive descriptors:  18%|█▊        | 43/244 [00:19<01:30,  2.22it/s][A[A
+
+compute positive descriptors:  18%|█▊        | 44/244 [00:20<01:30,  2.21it/s][A[A
+
+compute positive descriptors:  18%|█▊        | 45/244 [00:20<01:30,  2.21it/s][A[A
+
+compute positive descriptors:  19%|█▉        | 46/244 [00:21<01:29,  2.21it/s][A[A
+
+compute positive descriptors:  19%|█▉        | 47/244 [00:21<01:29,  2.20it/s][A[A
+
+compute positive descriptors:  20%|█▉        | 48/244 [00:22<01:29,  2.20it/s][A[A
+
+compute positive descriptors:  20%|██        | 49/244 [00:22<01:29,  2.19it/s][A[A
+
+compute positive descriptors:  20%|██        | 50/244 [00:23<01:28,  2.20it/s][A[A
+
+compute positive descriptors:  21%|██        | 51/244 [00:23<01:28,  2.19it/s][A[A
+
+compute positive descriptors:  21%|██▏       | 52/244 [00:24<01:28,  2.18it/s][A[A
+
+compute positive descriptors:  22%|██▏       | 53/244 [00:24<01:27,  2.18it/s][A[A
+
+compute positive descriptors:  22%|██▏       | 54/244 [00:24<01:26,  2.19it/s][A[A
+
+compute positive descriptors:  23%|██▎       | 55/244 [00:25<01:26,  2.20it/s][A[A
+
+compute positive descriptors:  23%|██▎       | 56/244 [00:25<01:25,  2.20it/s][A[A
+
+compute positive descriptors:  23%|██▎       | 57/244 [00:26<01:24,  2.20it/s][A[A
+
+compute positive descriptors:  24%|██▍       | 58/244 [00:26<01:24,  2.21it/s][A[A
+
+compute positive descriptors:  24%|██▍       | 59/244 [00:27<01:23,  2.21it/s][A[A
+
+compute positive descriptors:  25%|██▍       | 60/244 [00:27<01:23,  2.21it/s][A[A
+
+compute positive descriptors:  25%|██▌       | 61/244 [00:28<01:22,  2.21it/s][A[A
+
+compute positive descriptors:  25%|██▌       | 62/244 [00:28<01:22,  2.20it/s][A[A
+
+compute positive descriptors:  26%|██▌       | 63/244 [00:29<01:22,  2.20it/s][A[A
+
+compute positive descriptors:  26%|██▌       | 64/244 [00:29<01:21,  2.20it/s][A[A
+
+compute positive descriptors:  27%|██▋       | 65/244 [00:29<01:21,  2.21it/s][A[A
+
+compute positive descriptors:  27%|██▋       | 66/244 [00:30<01:20,  2.21it/s][A[A
+
+compute positive descriptors:  27%|██▋       | 67/244 [00:30<01:20,  2.21it/s][A[A
+
+compute positive descriptors:  28%|██▊       | 68/244 [00:31<01:20,  2.19it/s][A[A
+
+compute positive descriptors:  28%|██▊       | 69/244 [00:31<01:19,  2.19it/s][A[A
+
+compute positive descriptors:  29%|██▊       | 70/244 [00:32<01:18,  2.21it/s][A[A
+
+compute positive descriptors:  29%|██▉       | 71/244 [00:32<01:18,  2.21it/s][A[A
+
+compute positive descriptors:  30%|██▉       | 72/244 [00:33<01:17,  2.21it/s][A[A
+
+compute positive descriptors:  30%|██▉       | 73/244 [00:33<01:17,  2.22it/s][A[A
+
+compute positive descriptors:  30%|███       | 74/244 [00:33<01:16,  2.22it/s][A[A
+
+compute positive descriptors:  31%|███       | 75/244 [00:34<01:16,  2.22it/s][A[A
+
+compute positive descriptors:  31%|███       | 76/244 [00:34<01:15,  2.22it/s][A[A
+
+compute positive descriptors:  32%|███▏      | 77/244 [00:35<01:15,  2.21it/s][A[A
+
+compute positive descriptors:  32%|███▏      | 78/244 [00:35<01:15,  2.21it/s][A[A
+
+compute positive descriptors:  32%|███▏      | 79/244 [00:36<01:14,  2.21it/s][A[A
+
+compute positive descriptors:  33%|███▎      | 80/244 [00:36<01:14,  2.22it/s][A[A
+
+compute positive descriptors:  33%|███▎      | 81/244 [00:37<01:13,  2.22it/s][A[A
+
+compute positive descriptors:  34%|███▎      | 82/244 [00:37<01:13,  2.22it/s][A[A
+
+compute positive descriptors:  34%|███▍      | 83/244 [00:38<01:12,  2.22it/s][A[A
+
+compute positive descriptors:  34%|███▍      | 84/244 [00:38<01:12,  2.22it/s][A[A
+
+compute positive descriptors:  35%|███▍      | 85/244 [00:38<01:11,  2.22it/s][A[A
+
+compute positive descriptors:  35%|███▌      | 86/244 [00:39<01:11,  2.22it/s][A[A
+
+compute positive descriptors:  36%|███▌      | 87/244 [00:39<01:10,  2.22it/s][A[A
+
+compute positive descriptors:  36%|███▌      | 88/244 [00:40<01:10,  2.22it/s][A[A
+
+compute positive descriptors:  36%|███▋      | 89/244 [00:40<01:09,  2.22it/s][A[A
+
+compute positive descriptors:  37%|███▋      | 90/244 [00:41<01:09,  2.21it/s][A[A
+
+compute positive descriptors:  37%|███▋      | 91/244 [00:41<01:09,  2.22it/s][A[A
+
+compute positive descriptors:  38%|███▊      | 92/244 [00:42<01:08,  2.22it/s][A[A
+
+compute positive descriptors:  38%|███▊      | 93/244 [00:42<01:08,  2.21it/s][A[A
+
+compute positive descriptors:  39%|███▊      | 94/244 [00:43<01:07,  2.22it/s][A[A
+
+compute positive descriptors:  39%|███▉      | 95/244 [00:43<01:07,  2.22it/s][A[A
+
+compute positive descriptors:  39%|███▉      | 96/244 [00:43<01:06,  2.21it/s][A[A
+
+compute positive descriptors:  40%|███▉      | 97/244 [00:44<01:06,  2.20it/s][A[A
+
+compute positive descriptors:  40%|████      | 98/244 [00:44<01:06,  2.20it/s][A[A
+
+compute positive descriptors:  41%|████      | 99/244 [00:45<01:09,  2.09it/s][A[A
+
+compute positive descriptors:  41%|████      | 100/244 [00:45<01:07,  2.13it/s][A[A
+
+compute positive descriptors:  41%|████▏     | 101/244 [00:46<01:06,  2.15it/s][A[A
+
+compute positive descriptors:  42%|████▏     | 102/244 [00:46<01:05,  2.18it/s][A[A
+
+compute positive descriptors:  42%|████▏     | 103/244 [00:47<01:04,  2.19it/s][A[A
+
+compute positive descriptors:  43%|████▎     | 104/244 [00:47<01:03,  2.20it/s][A[A
+
+compute positive descriptors:  43%|████▎     | 105/244 [00:48<01:03,  2.20it/s][A[A
+
+compute positive descriptors:  43%|████▎     | 106/244 [00:48<01:02,  2.21it/s][A[A
+
+compute positive descriptors:  44%|████▍     | 107/244 [00:48<01:01,  2.21it/s][A[A
+
+compute positive descriptors:  44%|████▍     | 108/244 [00:49<01:01,  2.22it/s][A[A
+
+compute positive descriptors:  45%|████▍     | 109/244 [00:49<01:01,  2.19it/s][A[A
+
+compute positive descriptors:  45%|████▌     | 110/244 [00:50<01:01,  2.18it/s][A[A
+
+compute positive descriptors:  45%|████▌     | 111/244 [00:50<01:01,  2.17it/s][A[A
+
+compute positive descriptors:  46%|████▌     | 112/244 [00:51<01:00,  2.18it/s][A[A
+
+compute positive descriptors:  46%|████▋     | 113/244 [00:51<00:59,  2.18it/s][A[A
+
+compute positive descriptors:  47%|████▋     | 114/244 [00:52<00:59,  2.19it/s][A[A
+
+compute positive descriptors:  47%|████▋     | 115/244 [00:52<00:59,  2.19it/s][A[A
+
+compute positive descriptors:  48%|████▊     | 116/244 [00:53<00:58,  2.19it/s][A[A
+
+compute positive descriptors:  48%|████▊     | 117/244 [00:53<00:57,  2.19it/s][A[A
+
+compute positive descriptors:  48%|████▊     | 118/244 [00:53<00:57,  2.20it/s][A[A
+
+compute positive descriptors:  49%|████▉     | 119/244 [00:54<00:57,  2.19it/s][A[A
+
+compute positive descriptors:  49%|████▉     | 120/244 [00:54<00:56,  2.20it/s][A[A
+
+compute positive descriptors:  50%|████▉     | 121/244 [00:55<00:55,  2.20it/s][A[A
+
+compute positive descriptors:  50%|█████     | 122/244 [00:55<00:55,  2.20it/s][A[A
+
+compute positive descriptors:  50%|█████     | 123/244 [00:56<00:54,  2.20it/s][A[A
+
+compute positive descriptors:  51%|█████     | 124/244 [00:56<00:54,  2.20it/s][A[A
+
+compute positive descriptors:  51%|█████     | 125/244 [00:57<00:53,  2.21it/s][A[A
+
+compute positive descriptors:  52%|█████▏    | 126/244 [00:57<00:53,  2.20it/s][A[A
+
+compute positive descriptors:  52%|█████▏    | 127/244 [00:58<00:53,  2.19it/s][A[A
+
+compute positive descriptors:  52%|█████▏    | 128/244 [00:58<00:52,  2.20it/s][A[A
+
+compute positive descriptors:  53%|█████▎    | 129/244 [00:58<00:52,  2.20it/s][A[A
+
+compute positive descriptors:  53%|█████▎    | 130/244 [00:59<00:51,  2.20it/s][A[A
+
+compute positive descriptors:  54%|█████▎    | 131/244 [00:59<00:51,  2.20it/s][A[A
+
+compute positive descriptors:  54%|█████▍    | 132/244 [01:00<00:50,  2.20it/s][A[A
+
+compute positive descriptors:  55%|█████▍    | 133/244 [01:00<00:50,  2.20it/s][A[A
+
+compute positive descriptors:  55%|█████▍    | 134/244 [01:01<00:50,  2.20it/s][A[A
+
+compute positive descriptors:  55%|█████▌    | 135/244 [01:01<00:49,  2.19it/s][A[A
+
+compute positive descriptors:  56%|█████▌    | 136/244 [01:02<00:49,  2.18it/s][A[A
+
+compute positive descriptors:  56%|█████▌    | 137/244 [01:02<00:48,  2.19it/s][A[A
+
+compute positive descriptors:  57%|█████▋    | 138/244 [01:03<00:48,  2.19it/s][A[A
+
+compute positive descriptors:  57%|█████▋    | 139/244 [01:03<00:47,  2.19it/s][A[A
+
+compute positive descriptors:  57%|█████▋    | 140/244 [01:04<00:47,  2.20it/s][A[A
+
+compute positive descriptors:  58%|█████▊    | 141/244 [01:04<00:46,  2.21it/s][A[A
+
+compute positive descriptors:  58%|█████▊    | 142/244 [01:04<00:46,  2.21it/s][A[A
+
+compute positive descriptors:  59%|█████▊    | 143/244 [01:05<00:45,  2.20it/s][A[A
+
+compute positive descriptors:  59%|█████▉    | 144/244 [01:05<00:45,  2.20it/s][A[A
+
+compute positive descriptors:  59%|█████▉    | 145/244 [01:06<00:45,  2.20it/s][A[A
+
+compute positive descriptors:  60%|█████▉    | 146/244 [01:06<00:44,  2.20it/s][A[A
+
+compute positive descriptors:  60%|██████    | 147/244 [01:07<00:44,  2.19it/s][A[A
+
+compute positive descriptors:  61%|██████    | 148/244 [01:07<00:43,  2.21it/s][A[A
+
+compute positive descriptors:  61%|██████    | 149/244 [01:08<00:42,  2.23it/s][A[A
+
+compute positive descriptors:  61%|██████▏   | 150/244 [01:08<00:42,  2.22it/s][A[A
+
+compute positive descriptors:  62%|██████▏   | 151/244 [01:08<00:41,  2.22it/s][A[A
+
+compute positive descriptors:  62%|██████▏   | 152/244 [01:09<00:41,  2.22it/s][A[A
+
+compute positive descriptors:  63%|██████▎   | 153/244 [01:09<00:41,  2.21it/s][A[A
+
+compute positive descriptors:  63%|██████▎   | 154/244 [01:10<00:40,  2.21it/s][A[A
+
+compute positive descriptors:  64%|██████▎   | 155/244 [01:10<00:40,  2.21it/s][A[A
+
+compute positive descriptors:  64%|██████▍   | 156/244 [01:11<00:39,  2.21it/s][A[A
+
+compute positive descriptors:  64%|██████▍   | 157/244 [01:11<00:39,  2.21it/s][A[A
+
+compute positive descriptors:  65%|██████▍   | 158/244 [01:12<00:38,  2.21it/s][A[A
+
+compute positive descriptors:  65%|██████▌   | 159/244 [01:12<00:38,  2.21it/s][A[A
+
+compute positive descriptors:  66%|██████▌   | 160/244 [01:13<00:38,  2.21it/s][A[A
+
+compute positive descriptors:  66%|██████▌   | 161/244 [01:13<00:37,  2.20it/s][A[A
+
+compute positive descriptors:  66%|██████▋   | 162/244 [01:13<00:37,  2.20it/s][A[A
+
+compute positive descriptors:  67%|██████▋   | 163/244 [01:14<00:36,  2.20it/s][A[A
+
+compute positive descriptors:  67%|██████▋   | 164/244 [01:14<00:36,  2.19it/s][A[A
+
+compute positive descriptors:  68%|██████▊   | 165/244 [01:15<00:35,  2.21it/s][A[A
+
+compute positive descriptors:  68%|██████▊   | 166/244 [01:15<00:35,  2.22it/s][A[A
+
+compute positive descriptors:  68%|██████▊   | 167/244 [01:16<00:34,  2.23it/s][A[A
+
+compute positive descriptors:  69%|██████▉   | 168/244 [01:16<00:34,  2.22it/s][A[A
+
+compute positive descriptors:  69%|██████▉   | 169/244 [01:17<00:34,  2.21it/s][A[A
+
+compute positive descriptors:  70%|██████▉   | 170/244 [01:17<00:33,  2.20it/s][A[A
+
+compute positive descriptors:  70%|███████   | 171/244 [01:18<00:33,  2.20it/s][A[A
+
+compute positive descriptors:  70%|███████   | 172/244 [01:18<00:32,  2.21it/s][A[A
+
+compute positive descriptors:  71%|███████   | 173/244 [01:18<00:31,  2.22it/s][A[A
+
+compute positive descriptors:  71%|███████▏  | 174/244 [01:19<00:31,  2.22it/s][A[A
+
+compute positive descriptors:  72%|███████▏  | 175/244 [01:19<00:31,  2.22it/s][A[A
+
+compute positive descriptors:  72%|███████▏  | 176/244 [01:20<00:30,  2.20it/s][A[A
+
+compute positive descriptors:  73%|███████▎  | 177/244 [01:20<00:30,  2.21it/s][A[A
+
+compute positive descriptors:  73%|███████▎  | 178/244 [01:21<00:29,  2.21it/s][A[A
+
+compute positive descriptors:  73%|███████▎  | 179/244 [01:21<00:29,  2.21it/s][A[A
+
+compute positive descriptors:  74%|███████▍  | 180/244 [01:22<00:29,  2.21it/s][A[A
+
+compute positive descriptors:  74%|███████▍  | 181/244 [01:22<00:28,  2.20it/s][A[A
+
+compute positive descriptors:  75%|███████▍  | 182/244 [01:23<00:28,  2.20it/s][A[A
+
+compute positive descriptors:  75%|███████▌  | 183/244 [01:23<00:27,  2.20it/s][A[A
+
+compute positive descriptors:  75%|███████▌  | 184/244 [01:23<00:27,  2.19it/s][A[A
+
+compute positive descriptors:  76%|███████▌  | 185/244 [01:24<00:29,  2.02it/s][A[A
+
+compute positive descriptors:  76%|███████▌  | 186/244 [01:24<00:28,  2.06it/s][A[A
+
+compute positive descriptors:  77%|███████▋  | 187/244 [01:25<00:27,  2.09it/s][A[A
+
+compute positive descriptors:  77%|███████▋  | 188/244 [01:25<00:27,  2.04it/s][A[A
+
+compute positive descriptors:  77%|███████▋  | 189/244 [01:26<00:26,  2.08it/s][A[A
+
+compute positive descriptors:  78%|███████▊  | 190/244 [01:26<00:25,  2.12it/s][A[A
+
+compute positive descriptors:  78%|███████▊  | 191/244 [01:27<00:24,  2.14it/s][A[A
+
+compute positive descriptors:  79%|███████▊  | 192/244 [01:27<00:24,  2.16it/s][A[A
+
+compute positive descriptors:  79%|███████▉  | 193/244 [01:28<00:23,  2.18it/s][A[A
+
+compute positive descriptors:  80%|███████▉  | 194/244 [01:28<00:23,  2.17it/s][A[A
+
+compute positive descriptors:  80%|███████▉  | 195/244 [01:29<00:22,  2.18it/s][A[A
+
+compute positive descriptors:  80%|████████  | 196/244 [01:29<00:21,  2.19it/s][A[A
+
+compute positive descriptors:  81%|████████  | 197/244 [01:30<00:21,  2.19it/s][A[A
+
+compute positive descriptors:  81%|████████  | 198/244 [01:30<00:20,  2.20it/s][A[A
+
+compute positive descriptors:  82%|████████▏ | 199/244 [01:30<00:20,  2.21it/s][A[A
+
+compute positive descriptors:  82%|████████▏ | 200/244 [01:31<00:19,  2.20it/s][A[A
+
+compute positive descriptors:  82%|████████▏ | 201/244 [01:31<00:19,  2.20it/s][A[A
+
+compute positive descriptors:  83%|████████▎ | 202/244 [01:32<00:19,  2.20it/s][A[A
+
+compute positive descriptors:  83%|████████▎ | 203/244 [01:32<00:18,  2.22it/s][A[A
+
+compute positive descriptors:  84%|████████▎ | 204/244 [01:33<00:18,  2.21it/s][A[A
+
+compute positive descriptors:  84%|████████▍ | 205/244 [01:33<00:17,  2.20it/s][A[A
+
+compute positive descriptors:  84%|████████▍ | 206/244 [01:34<00:17,  2.20it/s][A[A
+
+compute positive descriptors:  85%|████████▍ | 207/244 [01:34<00:16,  2.20it/s][A[A
+
+compute positive descriptors:  85%|████████▌ | 208/244 [01:35<00:16,  2.20it/s][A[A
+
+compute positive descriptors:  86%|████████▌ | 209/244 [01:35<00:15,  2.19it/s][A[A
+
+compute positive descriptors:  86%|████████▌ | 210/244 [01:35<00:15,  2.20it/s][A[A
+
+compute positive descriptors:  86%|████████▋ | 211/244 [01:36<00:15,  2.18it/s][A[A
+
+compute positive descriptors:  87%|████████▋ | 212/244 [01:36<00:14,  2.19it/s][A[A
+
+compute positive descriptors:  87%|████████▋ | 213/244 [01:37<00:14,  2.19it/s][A[A
+
+compute positive descriptors:  88%|████████▊ | 214/244 [01:37<00:13,  2.19it/s][A[A
+
+compute positive descriptors:  88%|████████▊ | 215/244 [01:38<00:13,  2.19it/s][A[A
+
+compute positive descriptors:  89%|████████▊ | 216/244 [01:38<00:12,  2.19it/s][A[A
+
+compute positive descriptors:  89%|████████▉ | 217/244 [01:39<00:12,  2.19it/s][A[A
+
+compute positive descriptors:  89%|████████▉ | 218/244 [01:39<00:11,  2.20it/s][A[A
+
+compute positive descriptors:  90%|████████▉ | 219/244 [01:40<00:11,  2.19it/s][A[A
+
+compute positive descriptors:  90%|█████████ | 220/244 [01:40<00:11,  2.18it/s][A[A
+
+compute positive descriptors:  91%|█████████ | 221/244 [01:40<00:10,  2.19it/s][A[A
+
+compute positive descriptors:  91%|█████████ | 222/244 [01:41<00:10,  2.18it/s][A[A
+
+compute positive descriptors:  91%|█████████▏| 223/244 [01:41<00:09,  2.19it/s][A[A
+
+compute positive descriptors:  92%|█████████▏| 224/244 [01:42<00:09,  2.19it/s][A[A
+
+compute positive descriptors:  92%|█████████▏| 225/244 [01:42<00:08,  2.19it/s][A[A
+
+compute positive descriptors:  93%|█████████▎| 226/244 [01:43<00:08,  2.19it/s][A[A
+
+compute positive descriptors:  93%|█████████▎| 227/244 [01:43<00:07,  2.19it/s][A[A
+
+compute positive descriptors:  93%|█████████▎| 228/244 [01:44<00:07,  2.19it/s][A[A
+
+compute positive descriptors:  94%|█████████▍| 229/244 [01:44<00:06,  2.19it/s][A[A
+
+compute positive descriptors:  94%|█████████▍| 230/244 [01:45<00:06,  2.19it/s][A[A
+
+compute positive descriptors:  95%|█████████▍| 231/244 [01:45<00:05,  2.19it/s][A[A
+
+compute positive descriptors:  95%|█████████▌| 232/244 [01:46<00:05,  2.19it/s][A[A
+
+compute positive descriptors:  95%|█████████▌| 233/244 [01:46<00:05,  2.20it/s][A[A
+
+compute positive descriptors:  96%|█████████▌| 234/244 [01:46<00:04,  2.21it/s][A[A
+
+compute positive descriptors:  96%|█████████▋| 235/244 [01:47<00:04,  2.22it/s][A[A
+
+compute positive descriptors:  97%|█████████▋| 236/244 [01:47<00:03,  2.23it/s][A[A
+
+compute positive descriptors:  97%|█████████▋| 237/244 [01:48<00:03,  2.23it/s][A[A
+
+compute positive descriptors:  98%|█████████▊| 238/244 [01:48<00:02,  2.23it/s][A[A
+
+compute positive descriptors:  98%|█████████▊| 239/244 [01:49<00:02,  2.24it/s][A[A
+
+compute positive descriptors:  98%|█████████▊| 240/244 [01:49<00:01,  2.24it/s][A[A
+
+compute positive descriptors:  99%|█████████▉| 241/244 [01:50<00:01,  2.24it/s][A[A
+
+compute positive descriptors:  99%|█████████▉| 242/244 [01:50<00:00,  2.24it/s][A[A
+
+compute positive descriptors: 100%|█████████▉| 243/244 [01:50<00:00,  2.24it/s][A[A
+
+compute positive descriptors: 100%|██████████| 244/244 [01:51<00:00,  2.25it/s][A[A
+
+compute positive descriptors: 245it [01:51,  2.42it/s]                         [A[A
+
+                                                      [A[A
+
+compute negative descriptors:   0%|          | 0/49 [00:00<?, ?it/s][A[A
+
+compute negative descriptors:   2%|▏         | 1/49 [00:00<00:40,  1.18it/s][A[A
+
+compute negative descriptors:   4%|▍         | 2/49 [00:01<00:28,  1.63it/s][A[A
+
+compute negative descriptors:   6%|▌         | 3/49 [00:01<00:25,  1.84it/s][A[A
+
+compute negative descriptors:   8%|▊         | 4/49 [00:02<00:22,  1.97it/s][A[A
+
+compute negative descriptors:  10%|█         | 5/49 [00:02<00:21,  2.05it/s][A[A
+
+compute negative descriptors:  12%|█▏        | 6/49 [00:03<00:20,  2.10it/s][A[A
+
+compute negative descriptors:  14%|█▍        | 7/49 [00:03<00:19,  2.14it/s][A[A
+
+compute negative descriptors:  16%|█▋        | 8/49 [00:04<00:18,  2.17it/s][A[A
+
+compute negative descriptors:  18%|█▊        | 9/49 [00:04<00:18,  2.17it/s][A[A
+
+compute negative descriptors:  20%|██        | 10/49 [00:04<00:17,  2.18it/s][A[A
+
+compute negative descriptors:  22%|██▏       | 11/49 [00:05<00:17,  2.19it/s][A[A
+
+compute negative descriptors:  24%|██▍       | 12/49 [00:05<00:16,  2.19it/s][A[A
+
+compute negative descriptors:  27%|██▋       | 13/49 [00:06<00:16,  2.19it/s][A[A
+
+compute negative descriptors:  29%|██▊       | 14/49 [00:06<00:15,  2.19it/s][A[A
+
+compute negative descriptors:  31%|███       | 15/49 [00:07<00:15,  2.19it/s][A[A
+
+compute negative descriptors:  33%|███▎      | 16/49 [00:07<00:15,  2.19it/s][A[A
+
+compute negative descriptors:  35%|███▍      | 17/49 [00:08<00:14,  2.19it/s][A[A
+
+compute negative descriptors:  37%|███▋      | 18/49 [00:08<00:14,  2.18it/s][A[A
+
+compute negative descriptors:  39%|███▉      | 19/49 [00:09<00:13,  2.18it/s][A[A
+
+compute negative descriptors:  41%|████      | 20/49 [00:09<00:13,  2.19it/s][A[A
+
+compute negative descriptors:  43%|████▎     | 21/49 [00:09<00:12,  2.19it/s][A[A
+
+compute negative descriptors:  45%|████▍     | 22/49 [00:10<00:12,  2.18it/s][A[A
+
+compute negative descriptors:  47%|████▋     | 23/49 [00:10<00:11,  2.18it/s][A[A
+
+compute negative descriptors:  49%|████▉     | 24/49 [00:11<00:11,  2.17it/s][A[A
+
+compute negative descriptors:  51%|█████     | 25/49 [00:11<00:11,  2.18it/s][A[A
+
+compute negative descriptors:  53%|█████▎    | 26/49 [00:12<00:10,  2.19it/s][A[A
+
+compute negative descriptors:  55%|█████▌    | 27/49 [00:12<00:10,  2.18it/s][A[A
+
+compute negative descriptors:  57%|█████▋    | 28/49 [00:13<00:09,  2.18it/s][A[A
+
+compute negative descriptors:  59%|█████▉    | 29/49 [00:13<00:09,  2.19it/s][A[A
+
+compute negative descriptors:  61%|██████    | 30/49 [00:14<00:08,  2.19it/s][A[A
+
+compute negative descriptors:  63%|██████▎   | 31/49 [00:14<00:08,  2.19it/s][A[A
+
+compute negative descriptors:  65%|██████▌   | 32/49 [00:14<00:07,  2.19it/s][A[A
+
+compute negative descriptors:  67%|██████▋   | 33/49 [00:15<00:07,  2.20it/s][A[A
+
+compute negative descriptors:  69%|██████▉   | 34/49 [00:15<00:06,  2.20it/s][A[A
+
+compute negative descriptors:  71%|███████▏  | 35/49 [00:16<00:06,  2.19it/s][A[A
+
+compute negative descriptors:  73%|███████▎  | 36/49 [00:16<00:05,  2.19it/s][A[A
+
+compute negative descriptors:  76%|███████▌  | 37/49 [00:17<00:05,  2.19it/s][A[A
+
+compute negative descriptors:  78%|███████▊  | 38/49 [00:17<00:05,  2.19it/s][A[A
+
+compute negative descriptors:  80%|███████▉  | 39/49 [00:18<00:04,  2.21it/s][A[A
+
+compute negative descriptors:  82%|████████▏ | 40/49 [00:18<00:04,  2.22it/s][A[A
+
+compute negative descriptors:  84%|████████▎ | 41/49 [00:19<00:03,  2.23it/s][A[A
+
+compute negative descriptors:  86%|████████▌ | 42/49 [00:19<00:03,  2.24it/s][A[A
+
+compute negative descriptors:  88%|████████▊ | 43/49 [00:19<00:02,  2.23it/s][A[A
+
+compute negative descriptors:  90%|████████▉ | 44/49 [00:20<00:02,  2.24it/s][A[A
+
+compute negative descriptors:  92%|█████████▏| 45/49 [00:20<00:01,  2.24it/s][A[A
+
+compute negative descriptors:  94%|█████████▍| 46/49 [00:21<00:01,  2.24it/s][A[A
+
+compute negative descriptors:  96%|█████████▌| 47/49 [00:21<00:00,  2.24it/s][A[A
+
+compute negative descriptors:  98%|█████████▊| 48/49 [00:22<00:00,  2.25it/s][A[A
+
+compute negative descriptors: 100%|██████████| 49/49 [00:22<00:00,  2.25it/s][A[A
+
+compute negative descriptors: 50it [00:22,  2.57it/s]                        [A[A
+
+                                                     [A[A                                                       
+                                                        [A   Epoch number:   0%|          | 0/30 [02:41<?, ?it/s]
+  Cache refresh:   0%|          | 0/442 [02:40<?, ?it/s][A
+
+     Train Iter:   0%|          | 0/50 [00:00<?, ?it/s][A[A
+
+     Train Iter:   2%|▏         | 1/50 [00:15<12:38, 15.49s/it][A[A
+
+     Train Iter:   4%|▍         | 2/50 [00:20<07:16,  9.08s/it][A[A
+
+     Train Iter:   6%|▌         | 3/50 [00:24<05:29,  7.02s/it][A[A
+
+     Train Iter:   8%|▊         | 4/50 [00:29<04:37,  6.04s/it][A[A
+
+     Train Iter:  10%|█         | 5/50 [00:33<04:06,  5.49s/it][A[A
+
+     Train Iter:  12%|█▏        | 6/50 [00:38<03:47,  5.17s/it][A[A
+
+     Train Iter:  14%|█▍        | 7/50 [00:42<03:33,  4.96s/it][A[A
+
+     Train Iter:  16%|█▌        | 8/50 [00:47<03:23,  4.83s/it][A[A
+
+     Train Iter:  18%|█▊        | 9/50 [00:51<03:14,  4.74s/it][A[A
+
+     Train Iter:  20%|██        | 10/50 [00:56<03:06,  4.67s/it][A[A
+
+     Train Iter:  22%|██▏       | 11/50 [01:00<03:00,  4.63s/it][A[A
+
+     Train Iter:  24%|██▍       | 12/50 [01:05<02:55,  4.61s/it][A[A
+
+     Train Iter:  26%|██▌       | 13/50 [01:10<02:50,  4.60s/it][A[A
+
+     Train Iter:  28%|██▊       | 14/50 [01:14<02:44,  4.58s/it][A[A
+
+     Train Iter:  30%|███       | 15/50 [01:19<02:39,  4.57s/it][A[A
+
+     Train Iter:  32%|███▏      | 16/50 [01:23<02:34,  4.56s/it][A[A
+
+     Train Iter:  34%|███▍      | 17/50 [01:28<02:30,  4.55s/it][A[A
+
+     Train Iter:  36%|███▌      | 18/50 [01:32<02:25,  4.53s/it][A[A
+
+     Train Iter:  38%|███▊      | 19/50 [01:37<02:20,  4.52s/it][A[A
+
+     Train Iter:  40%|████      | 20/50 [01:41<02:15,  4.53s/it][A[A
+
+     Train Iter:  42%|████▏     | 21/50 [01:46<02:11,  4.53s/it][A[A
+
+     Train Iter:  44%|████▍     | 22/50 [01:50<02:06,  4.53s/it][A[A
+
+     Train Iter:  46%|████▌     | 23/50 [01:55<02:02,  4.52s/it][A[A
+
+     Train Iter:  48%|████▊     | 24/50 [01:59<01:58,  4.56s/it][A[A
+
+     Train Iter:  50%|█████     | 25/50 [02:04<01:53,  4.54s/it][A[A
+
+     Train Iter:  52%|█████▏    | 26/50 [02:08<01:48,  4.53s/it][A[A
+
+     Train Iter:  54%|█████▍    | 27/50 [02:13<01:44,  4.53s/it][A[A
+
+     Train Iter:  56%|█████▌    | 28/50 [02:17<01:39,  4.52s/it][A[A
+
+     Train Iter:  58%|█████▊    | 29/50 [02:22<01:34,  4.52s/it][A[A
+
+     Train Iter:  60%|██████    | 30/50 [02:27<01:30,  4.52s/it][A[A
+
+     Train Iter:  62%|██████▏   | 31/50 [02:31<01:25,  4.52s/it][A[A
+
+     Train Iter:  64%|██████▍   | 32/50 [02:36<01:21,  4.55s/it][A[A
+
+     Train Iter:  66%|██████▌   | 33/50 [02:40<01:17,  4.54s/it][A[A
+
+     Train Iter:  68%|██████▊   | 34/50 [02:45<01:12,  4.54s/it][A[A
+
+     Train Iter:  70%|███████   | 35/50 [02:49<01:07,  4.53s/it][A[A
+
+     Train Iter:  72%|███████▏  | 36/50 [02:54<01:03,  4.52s/it][A[A
+
+     Train Iter:  74%|███████▍  | 37/50 [02:58<00:58,  4.52s/it][A[A
+
+     Train Iter:  76%|███████▌  | 38/50 [03:03<00:54,  4.52s/it][A[A
+
+     Train Iter:  78%|███████▊  | 39/50 [03:07<00:49,  4.52s/it][A[A
+
+     Train Iter:  80%|████████  | 40/50 [03:12<00:45,  4.51s/it][A[A
+
+     Train Iter:  82%|████████▏ | 41/50 [03:16<00:40,  4.51s/it][A[A
+
+     Train Iter:  84%|████████▍ | 42/50 [03:21<00:36,  4.50s/it][A[A
+
+     Train Iter:  86%|████████▌ | 43/50 [03:25<00:31,  4.50s/it][A[A
+
+     Train Iter:  88%|████████▊ | 44/50 [03:30<00:26,  4.49s/it][A[A
+
+     Train Iter:  90%|█████████ | 45/50 [03:34<00:22,  4.49s/it][A[A
+
+     Train Iter:  92%|█████████▏| 46/50 [03:39<00:17,  4.49s/it][A[A
+
+     Train Iter:  94%|█████████▍| 47/50 [03:43<00:13,  4.49s/it][A[A
+
+     Train Iter:  96%|█████████▌| 48/50 [03:48<00:08,  4.49s/it][A[A
+
+     Train Iter:  98%|█████████▊| 49/50 [03:52<00:04,  4.49s/it][A[A                                                       
+
+                                                                [A[A
+                                                        [A   Epoch number:   0%|          | 0/30 [06:37<?, ?it/s]
+
+     Train Iter:  98%|█████████▊| 49/50 [03:56<00:04,  4.49s/it][A[A
+  Cache refresh:   0%|          | 0/442 [06:37<?, ?it/s][A                                                       
+
+                                                                [A[A
+                                                        [A   Epoch number:   0%|          | 0/30 [06:37<?, ?it/s]
+
+     Train Iter:  98%|█████████▊| 49/50 [03:56<00:04,  4.49s/it][A[A
+  Cache refresh:   0%|          | 0/442 [06:37<?, ?it/s][A/home/m.maqboolbhutta/.conda/envs/patchnetvlad/lib/python3.8/site-packages/torch/cuda/memory.py:384: FutureWarning: torch.cuda.memory_cached has been renamed to torch.cuda.memory_reserved
+  warnings.warn(
+                                                       
+
+                                                                [A[A
+                                                        [A   Epoch number:   0%|          | 0/30 [06:37<?, ?it/s]
+
+     Train Iter:  98%|█████████▊| 49/50 [03:56<00:04,  4.49s/it][A[A
+  Cache refresh:   0%|          | 0/442 [06:37<?, ?it/s][A
+
+     Train Iter: 100%|██████████| 50/50 [03:56<00:00,  4.34s/it][A[A
+
+                                                                [A[A
+  Cache refresh:   0%|          | 1/442 [06:37<48:43:12, 397.72s/it][A
+
+compute query descriptors:   0%|          | 0/49 [00:00<?, ?it/s][A[A
+
+compute query descriptors:   2%|▏         | 1/49 [00:00<00:46,  1.02it/s][A[A
+
+compute query descriptors:   4%|▍         | 2/49 [00:01<00:34,  1.35it/s][A[A
+
+compute query descriptors:   6%|▌         | 3/49 [00:02<00:27,  1.65it/s][A[A
+
+compute query descriptors:   8%|▊         | 4/49 [00:02<00:24,  1.84it/s][A[A
+
+compute query descriptors:  10%|█         | 5/49 [00:02<00:22,  1.94it/s][A[A
+
+compute query descriptors:  12%|█▏        | 6/49 [00:03<00:21,  2.01it/s][A[A
+
+compute query descriptors:  14%|█▍        | 7/49 [00:03<00:20,  2.06it/s][A[A
+
+compute query descriptors:  16%|█▋        | 8/49 [00:04<00:19,  2.10it/s][A[A
+
+compute query descriptors:  18%|█▊        | 9/49 [00:04<00:18,  2.13it/s][A[A
+
+compute query descriptors:  20%|██        | 10/49 [00:05<00:18,  2.16it/s][A[A
+
+compute query descriptors:  22%|██▏       | 11/49 [00:05<00:17,  2.17it/s][A[A
+
+compute query descriptors:  24%|██▍       | 12/49 [00:06<00:16,  2.19it/s][A[A
+
+compute query descriptors:  27%|██▋       | 13/49 [00:06<00:16,  2.20it/s][A[A
+
+compute query descriptors:  29%|██▊       | 14/49 [00:07<00:15,  2.19it/s][A[A
+
+compute query descriptors:  31%|███       | 15/49 [00:07<00:15,  2.20it/s][A[A
+
+compute query descriptors:  33%|███▎      | 16/49 [00:07<00:14,  2.21it/s][A[A
+
+compute query descriptors:  35%|███▍      | 17/49 [00:08<00:14,  2.19it/s][A[A
+
+compute query descriptors:  37%|███▋      | 18/49 [00:08<00:14,  2.19it/s][A[A
+
+compute query descriptors:  39%|███▉      | 19/49 [00:09<00:13,  2.20it/s][A[A
+
+compute query descriptors:  41%|████      | 20/49 [00:09<00:13,  2.20it/s][A[A
+
+compute query descriptors:  43%|████▎     | 21/49 [00:10<00:12,  2.19it/s][A[A
+
+compute query descriptors:  45%|████▍     | 22/49 [00:10<00:12,  2.18it/s][A[A
+
+compute query descriptors:  47%|████▋     | 23/49 [00:11<00:11,  2.18it/s][A[A
+
+compute query descriptors:  49%|████▉     | 24/49 [00:11<00:11,  2.18it/s][A[A
+
+compute query descriptors:  51%|█████     | 25/49 [00:12<00:10,  2.18it/s][A[A
+
+compute query descriptors:  53%|█████▎    | 26/49 [00:12<00:10,  2.19it/s][A[A
+
+compute query descriptors:  55%|█████▌    | 27/49 [00:12<00:10,  2.20it/s][A[A
+
+compute query descriptors:  57%|█████▋    | 28/49 [00:13<00:09,  2.20it/s][A[A
+
+compute query descriptors:  59%|█████▉    | 29/49 [00:13<00:09,  2.20it/s][A[A
+
+compute query descriptors:  61%|██████    | 30/49 [00:14<00:08,  2.18it/s][A[A
+
+compute query descriptors:  63%|██████▎   | 31/49 [00:14<00:08,  2.18it/s][A[A
+
+compute query descriptors:  65%|██████▌   | 32/49 [00:15<00:07,  2.19it/s][A[A
+
+compute query descriptors:  67%|██████▋   | 33/49 [00:15<00:07,  2.20it/s][A[A
+
+compute query descriptors:  69%|██████▉   | 34/49 [00:16<00:06,  2.20it/s][A[A
+
+compute query descriptors:  71%|███████▏  | 35/49 [00:16<00:06,  2.21it/s][A[A
+
+compute query descriptors:  73%|███████▎  | 36/49 [00:17<00:05,  2.21it/s][A[A
+
+compute query descriptors:  76%|███████▌  | 37/49 [00:17<00:05,  2.20it/s][A[A
+
+compute query descriptors:  78%|███████▊  | 38/49 [00:17<00:05,  2.19it/s][A[A
+
+compute query descriptors:  80%|███████▉  | 39/49 [00:18<00:04,  2.21it/s][A[A
+
+compute query descriptors:  82%|████████▏ | 40/49 [00:18<00:04,  2.22it/s][A[A
+
+compute query descriptors:  84%|████████▎ | 41/49 [00:19<00:03,  2.23it/s][A[A
+
+compute query descriptors:  86%|████████▌ | 42/49 [00:19<00:03,  2.22it/s][A[A
+
+compute query descriptors:  88%|████████▊ | 43/49 [00:20<00:02,  2.23it/s][A[A
+
+compute query descriptors:  90%|████████▉ | 44/49 [00:20<00:02,  2.22it/s][A[A
+
+compute query descriptors:  92%|█████████▏| 45/49 [00:21<00:01,  2.23it/s][A[A
+
+compute query descriptors:  94%|█████████▍| 46/49 [00:21<00:01,  2.24it/s][A[A
+
+compute query descriptors:  96%|█████████▌| 47/49 [00:21<00:00,  2.24it/s][A[A
+
+compute query descriptors:  98%|█████████▊| 48/49 [00:22<00:00,  2.25it/s][A[A
+
+compute query descriptors: 100%|██████████| 49/49 [00:22<00:00,  2.25it/s][A[A
+
+compute query descriptors: 50it [00:23,  2.28it/s]                        [A[A
+
+                                                  [A[A
+
+compute positive descriptors:   0%|          | 0/227 [00:00<?, ?it/s][A[A
+
+compute positive descriptors:   0%|          | 1/227 [00:00<03:15,  1.15it/s][A[A
+
+compute positive descriptors:   1%|          | 2/227 [00:01<02:20,  1.60it/s][A[A
+
+compute positive descriptors:   1%|▏         | 3/227 [00:01<02:01,  1.84it/s][A[A
+
+compute positive descriptors:   2%|▏         | 4/227 [00:02<01:52,  1.98it/s][A[A
+
+compute positive descriptors:   2%|▏         | 5/227 [00:02<01:47,  2.06it/s][A[A
+
+compute positive descriptors:   3%|▎         | 6/227 [00:03<01:44,  2.11it/s][A[A
+
+compute positive descriptors:   3%|▎         | 7/227 [00:03<01:43,  2.13it/s][A[A
+
+compute positive descriptors:   4%|▎         | 8/227 [00:04<01:41,  2.16it/s][A[A
+
+compute positive descriptors:   4%|▍         | 9/227 [00:04<01:39,  2.18it/s][A[A
+
+compute positive descriptors:   4%|▍         | 10/227 [00:04<01:38,  2.20it/s][A[A
+
+compute positive descriptors:   5%|▍         | 11/227 [00:05<01:37,  2.21it/s][A[A
+
+compute positive descriptors:   5%|▌         | 12/227 [00:05<01:37,  2.21it/s][A[A
+
+compute positive descriptors:   6%|▌         | 13/227 [00:06<01:36,  2.22it/s][A[A
+
+compute positive descriptors:   6%|▌         | 14/227 [00:06<01:35,  2.22it/s][A[A
+
+compute positive descriptors:   7%|▋         | 15/227 [00:07<01:35,  2.22it/s][A[A
+
+compute positive descriptors:   7%|▋         | 16/227 [00:07<01:34,  2.23it/s][A[A
+
+compute positive descriptors:   7%|▋         | 17/227 [00:08<01:34,  2.23it/s][A[A
+
+compute positive descriptors:   8%|▊         | 18/227 [00:08<01:34,  2.22it/s][A[A
+
+compute positive descriptors:   8%|▊         | 19/227 [00:08<01:33,  2.23it/s][A[A
+
+compute positive descriptors:   9%|▉         | 20/227 [00:09<01:33,  2.21it/s][A[A
+
+compute positive descriptors:   9%|▉         | 21/227 [00:09<01:33,  2.21it/s][A[A
+
+compute positive descriptors:  10%|▉         | 22/227 [00:10<01:32,  2.21it/s][A[A
+
+compute positive descriptors:  10%|█         | 23/227 [00:10<01:32,  2.21it/s][A[A
+
+compute positive descriptors:  11%|█         | 24/227 [00:11<01:31,  2.21it/s][A[A
+
+compute positive descriptors:  11%|█         | 25/227 [00:11<01:31,  2.22it/s][A[A
+
+compute positive descriptors:  11%|█▏        | 26/227 [00:12<01:30,  2.23it/s][A[A
+
+compute positive descriptors:  12%|█▏        | 27/227 [00:12<01:30,  2.21it/s][A[A
+
+compute positive descriptors:  12%|█▏        | 28/227 [00:13<01:29,  2.21it/s][A[A
+
+compute positive descriptors:  13%|█▎        | 29/227 [00:13<01:29,  2.21it/s][A[A
+
+compute positive descriptors:  13%|█▎        | 30/227 [00:13<01:28,  2.21it/s][A[A
+
+compute positive descriptors:  14%|█▎        | 31/227 [00:14<01:28,  2.21it/s][A[A
+
+compute positive descriptors:  14%|█▍        | 32/227 [00:14<01:28,  2.21it/s][A[A
+
+compute positive descriptors:  15%|█▍        | 33/227 [00:15<01:27,  2.21it/s][A[A
+
+compute positive descriptors:  15%|█▍        | 34/227 [00:15<01:27,  2.20it/s][A[A
+
+compute positive descriptors:  15%|█▌        | 35/227 [00:16<01:27,  2.19it/s][A[A
+
+compute positive descriptors:  16%|█▌        | 36/227 [00:16<01:26,  2.21it/s][A[A
+
+compute positive descriptors:  16%|█▋        | 37/227 [00:17<01:26,  2.20it/s][A[A
+
+compute positive descriptors:  17%|█▋        | 38/227 [00:17<01:25,  2.21it/s][A[A
+
+compute positive descriptors:  17%|█▋        | 39/227 [00:18<01:25,  2.21it/s][A[A
+
+compute positive descriptors:  18%|█▊        | 40/227 [00:18<01:24,  2.20it/s][A[A
+
+compute positive descriptors:  18%|█▊        | 41/227 [00:18<01:24,  2.20it/s][A[A
+
+compute positive descriptors:  19%|█▊        | 42/227 [00:19<01:23,  2.21it/s][A[A
+
+compute positive descriptors:  19%|█▉        | 43/227 [00:19<01:23,  2.20it/s][A[A
+
+compute positive descriptors:  19%|█▉        | 44/227 [00:20<01:23,  2.19it/s][A[A
+
+compute positive descriptors:  20%|█▉        | 45/227 [00:20<01:22,  2.20it/s][A[A
+
+compute positive descriptors:  20%|██        | 46/227 [00:21<01:21,  2.22it/s][A[A
+
+compute positive descriptors:  21%|██        | 47/227 [00:21<01:21,  2.22it/s][A[A
+
+compute positive descriptors:  21%|██        | 48/227 [00:22<01:20,  2.21it/s][A[A
+
+compute positive descriptors:  22%|██▏       | 49/227 [00:22<01:20,  2.20it/s][A[A
+
+compute positive descriptors:  22%|██▏       | 50/227 [00:23<01:20,  2.21it/s][A[A
+
+compute positive descriptors:  22%|██▏       | 51/227 [00:23<01:19,  2.21it/s][A[A
+
+compute positive descriptors:  23%|██▎       | 52/227 [00:23<01:18,  2.23it/s][A[A
+
+compute positive descriptors:  23%|██▎       | 53/227 [00:24<01:18,  2.22it/s][A[A
+
+compute positive descriptors:  24%|██▍       | 54/227 [00:24<01:18,  2.21it/s][A[A
+
+compute positive descriptors:  24%|██▍       | 55/227 [00:25<01:17,  2.22it/s][A[A
+
+compute positive descriptors:  25%|██▍       | 56/227 [00:25<01:17,  2.22it/s][A[A
+
+compute positive descriptors:  25%|██▌       | 57/227 [00:26<01:16,  2.23it/s][A[A
+
+compute positive descriptors:  26%|██▌       | 58/227 [00:26<01:16,  2.21it/s][A[A
+
+compute positive descriptors:  26%|██▌       | 59/227 [00:27<01:16,  2.20it/s][A[A
+
+compute positive descriptors:  26%|██▋       | 60/227 [00:27<01:15,  2.20it/s][A[A
+
+compute positive descriptors:  27%|██▋       | 61/227 [00:27<01:15,  2.21it/s][A[A
+
+compute positive descriptors:  27%|██▋       | 62/227 [00:28<01:15,  2.20it/s][A[A
+
+compute positive descriptors:  28%|██▊       | 63/227 [00:28<01:17,  2.12it/s][A[A
+
+compute positive descriptors:  28%|██▊       | 64/227 [00:29<01:16,  2.14it/s][A[A
+
+compute positive descriptors:  29%|██▊       | 65/227 [00:29<01:15,  2.16it/s][A[A
+
+compute positive descriptors:  29%|██▉       | 66/227 [00:30<01:13,  2.18it/s][A[A
+
+compute positive descriptors:  30%|██▉       | 67/227 [00:30<01:12,  2.19it/s][A[A
+
+compute positive descriptors:  30%|██▉       | 68/227 [00:31<01:12,  2.20it/s][A[A
+
+compute positive descriptors:  30%|███       | 69/227 [00:31<01:11,  2.21it/s][A[A
+
+compute positive descriptors:  31%|███       | 70/227 [00:32<01:10,  2.21it/s][A[A
+
+compute positive descriptors:  31%|███▏      | 71/227 [00:32<01:10,  2.22it/s][A[A
+
+compute positive descriptors:  32%|███▏      | 72/227 [00:32<01:09,  2.22it/s][A[A
+
+compute positive descriptors:  32%|███▏      | 73/227 [00:33<01:09,  2.23it/s][A[A
+
+compute positive descriptors:  33%|███▎      | 74/227 [00:33<01:08,  2.23it/s][A[A
+
+compute positive descriptors:  33%|███▎      | 75/227 [00:34<01:08,  2.22it/s][A[A
+
+compute positive descriptors:  33%|███▎      | 76/227 [00:34<01:07,  2.24it/s][A[A
+
+compute positive descriptors:  34%|███▍      | 77/227 [00:35<01:07,  2.23it/s][A[A
+
+compute positive descriptors:  34%|███▍      | 78/227 [00:35<01:06,  2.24it/s][A[A
+
+compute positive descriptors:  35%|███▍      | 79/227 [00:36<01:05,  2.25it/s][A[A
+
+compute positive descriptors:  35%|███▌      | 80/227 [00:36<01:05,  2.24it/s][A[A
+
+compute positive descriptors:  36%|███▌      | 81/227 [00:37<01:05,  2.23it/s][A[A
+
+compute positive descriptors:  36%|███▌      | 82/227 [00:37<01:05,  2.22it/s][A[A
+
+compute positive descriptors:  37%|███▋      | 83/227 [00:37<01:04,  2.22it/s][A[A
+
+compute positive descriptors:  37%|███▋      | 84/227 [00:38<01:04,  2.23it/s][A[A
+
+compute positive descriptors:  37%|███▋      | 85/227 [00:38<01:04,  2.22it/s][A[A
+
+compute positive descriptors:  38%|███▊      | 86/227 [00:39<01:03,  2.22it/s][A[A
+
+compute positive descriptors:  38%|███▊      | 87/227 [00:39<01:03,  2.22it/s][A[A
+
+compute positive descriptors:  39%|███▉      | 88/227 [00:40<01:02,  2.23it/s][A[A
+
+compute positive descriptors:  39%|███▉      | 89/227 [00:40<01:02,  2.22it/s][A[A
+
+compute positive descriptors:  40%|███▉      | 90/227 [00:41<01:01,  2.22it/s][A[A
+
+compute positive descriptors:  40%|████      | 91/227 [00:41<01:01,  2.22it/s][A[A
+
+compute positive descriptors:  41%|████      | 92/227 [00:41<01:00,  2.22it/s][A[A
+
+compute positive descriptors:  41%|████      | 93/227 [00:42<01:00,  2.22it/s][A[A
+
+compute positive descriptors:  41%|████▏     | 94/227 [00:42<00:59,  2.22it/s][A[A
+
+compute positive descriptors:  42%|████▏     | 95/227 [00:43<00:59,  2.22it/s][A[A
+
+compute positive descriptors:  42%|████▏     | 96/227 [00:43<00:58,  2.22it/s][A[A
+
+compute positive descriptors:  43%|████▎     | 97/227 [00:44<00:58,  2.23it/s][A[A
+
+compute positive descriptors:  43%|████▎     | 98/227 [00:44<00:58,  2.21it/s][A[A
+
+compute positive descriptors:  44%|████▎     | 99/227 [00:45<00:57,  2.21it/s][A[A
+
+compute positive descriptors:  44%|████▍     | 100/227 [00:45<00:57,  2.22it/s][A[A
+
+compute positive descriptors:  44%|████▍     | 101/227 [00:46<00:56,  2.21it/s][A[A
+
+compute positive descriptors:  45%|████▍     | 102/227 [00:46<00:56,  2.22it/s][A[A
+
+compute positive descriptors:  45%|████▌     | 103/227 [00:46<00:55,  2.22it/s][A[A
+
+compute positive descriptors:  46%|████▌     | 104/227 [00:47<00:55,  2.20it/s][A[A
+
+compute positive descriptors:  46%|████▋     | 105/227 [00:47<00:55,  2.21it/s][A[A
+
+compute positive descriptors:  47%|████▋     | 106/227 [00:48<00:54,  2.22it/s][A[A
+
+compute positive descriptors:  47%|████▋     | 107/227 [00:48<00:54,  2.22it/s][A[A
+
+compute positive descriptors:  48%|████▊     | 108/227 [00:49<00:53,  2.23it/s][A[A
+
+compute positive descriptors:  48%|████▊     | 109/227 [00:49<00:53,  2.21it/s][A[A
+
+compute positive descriptors:  48%|████▊     | 110/227 [00:50<00:53,  2.20it/s][A[A
+
+compute positive descriptors:  49%|████▉     | 111/227 [00:50<00:52,  2.20it/s][A[A
+
+compute positive descriptors:  49%|████▉     | 112/227 [00:51<00:52,  2.20it/s][A[A
+
+compute positive descriptors:  50%|████▉     | 113/227 [00:51<00:52,  2.19it/s][A[A
+
+compute positive descriptors:  50%|█████     | 114/227 [00:51<00:51,  2.19it/s][A[A
+
+compute positive descriptors:  51%|█████     | 115/227 [00:52<00:51,  2.19it/s][A[A
+
+compute positive descriptors:  51%|█████     | 116/227 [00:52<00:50,  2.20it/s][A[A
+
+compute positive descriptors:  52%|█████▏    | 117/227 [00:53<00:49,  2.20it/s][A[A
+
+compute positive descriptors:  52%|█████▏    | 118/227 [00:53<00:49,  2.20it/s][A[A
+
+compute positive descriptors:  52%|█████▏    | 119/227 [00:54<00:49,  2.20it/s][A[A
+
+compute positive descriptors:  53%|█████▎    | 120/227 [00:54<00:48,  2.20it/s][A[A
+
+compute positive descriptors:  53%|█████▎    | 121/227 [00:55<00:48,  2.21it/s][A[A
+
+compute positive descriptors:  54%|█████▎    | 122/227 [00:55<00:47,  2.21it/s][A[A
+
+compute positive descriptors:  54%|█████▍    | 123/227 [00:56<00:47,  2.21it/s][A[A
+
+compute positive descriptors:  55%|█████▍    | 124/227 [00:56<00:46,  2.21it/s][A[A
+
+compute positive descriptors:  55%|█████▌    | 125/227 [00:56<00:46,  2.20it/s][A[A
+
+compute positive descriptors:  56%|█████▌    | 126/227 [00:57<00:45,  2.21it/s][A[A
+
+compute positive descriptors:  56%|█████▌    | 127/227 [00:57<00:45,  2.21it/s][A[A
+
+compute positive descriptors:  56%|█████▋    | 128/227 [00:58<00:44,  2.21it/s][A[A
+
+compute positive descriptors:  57%|█████▋    | 129/227 [00:58<00:44,  2.21it/s][A[A
+
+compute positive descriptors:  57%|█████▋    | 130/227 [00:59<00:43,  2.22it/s][A[A
+
+compute positive descriptors:  58%|█████▊    | 131/227 [00:59<00:43,  2.21it/s][A[A
+
+compute positive descriptors:  58%|█████▊    | 132/227 [01:00<00:42,  2.21it/s][A[A
+
+compute positive descriptors:  59%|█████▊    | 133/227 [01:00<00:42,  2.21it/s][A[A
+
+compute positive descriptors:  59%|█████▉    | 134/227 [01:00<00:42,  2.21it/s][A[A
+
+compute positive descriptors:  59%|█████▉    | 135/227 [01:01<00:41,  2.22it/s][A[A
+
+compute positive descriptors:  60%|█████▉    | 136/227 [01:01<00:40,  2.22it/s][A[A
+
+compute positive descriptors:  60%|██████    | 137/227 [01:02<00:40,  2.21it/s][A[A
+
+compute positive descriptors:  61%|██████    | 138/227 [01:02<00:43,  2.07it/s][A[A
+
+compute positive descriptors:  61%|██████    | 139/227 [01:03<00:41,  2.10it/s][A[A
+
+compute positive descriptors:  62%|██████▏   | 140/227 [01:03<00:40,  2.12it/s][A[A
+
+compute positive descriptors:  62%|██████▏   | 141/227 [01:04<00:39,  2.15it/s][A[A
+
+compute positive descriptors:  63%|██████▎   | 142/227 [01:04<00:39,  2.15it/s][A[A
+
+compute positive descriptors:  63%|██████▎   | 143/227 [01:05<00:38,  2.17it/s][A[A
+
+compute positive descriptors:  63%|██████▎   | 144/227 [01:05<00:37,  2.19it/s][A[A
+
+compute positive descriptors:  64%|██████▍   | 145/227 [01:06<00:37,  2.20it/s][A[A
+
+compute positive descriptors:  64%|██████▍   | 146/227 [01:06<00:36,  2.20it/s][A[A
+
+compute positive descriptors:  65%|██████▍   | 147/227 [01:06<00:36,  2.21it/s][A[A
+
+compute positive descriptors:  65%|██████▌   | 148/227 [01:07<00:35,  2.22it/s][A[A
+
+compute positive descriptors:  66%|██████▌   | 149/227 [01:07<00:35,  2.22it/s][A[A
+
+compute positive descriptors:  66%|██████▌   | 150/227 [01:08<00:34,  2.22it/s][A[A
+
+compute positive descriptors:  67%|██████▋   | 151/227 [01:08<00:34,  2.22it/s][A[A
+
+compute positive descriptors:  67%|██████▋   | 152/227 [01:09<00:33,  2.22it/s][A[A
+
+compute positive descriptors:  67%|██████▋   | 153/227 [01:09<00:33,  2.21it/s][A[A
+
+compute positive descriptors:  68%|██████▊   | 154/227 [01:10<00:32,  2.22it/s][A[A
+
+compute positive descriptors:  68%|██████▊   | 155/227 [01:10<00:32,  2.22it/s][A[A
+
+compute positive descriptors:  69%|██████▊   | 156/227 [01:11<00:31,  2.23it/s][A[A
+
+compute positive descriptors:  69%|██████▉   | 157/227 [01:11<00:31,  2.23it/s][A[A
+
+compute positive descriptors:  70%|██████▉   | 158/227 [01:11<00:31,  2.21it/s][A[A
+
+compute positive descriptors:  70%|███████   | 159/227 [01:12<00:30,  2.20it/s][A[A
+
+compute positive descriptors:  70%|███████   | 160/227 [01:12<00:30,  2.20it/s][A[A
+
+compute positive descriptors:  71%|███████   | 161/227 [01:13<00:29,  2.21it/s][A[A
+
+compute positive descriptors:  71%|███████▏  | 162/227 [01:13<00:29,  2.19it/s][A[A
+
+compute positive descriptors:  72%|███████▏  | 163/227 [01:14<00:29,  2.20it/s][A[A
+
+compute positive descriptors:  72%|███████▏  | 164/227 [01:14<00:28,  2.19it/s][A[A
+
+compute positive descriptors:  73%|███████▎  | 165/227 [01:15<00:28,  2.19it/s][A[A
+
+compute positive descriptors:  73%|███████▎  | 166/227 [01:15<00:27,  2.20it/s][A[A
+
+compute positive descriptors:  74%|███████▎  | 167/227 [01:16<00:27,  2.20it/s][A[A
+
+compute positive descriptors:  74%|███████▍  | 168/227 [01:16<00:26,  2.20it/s][A[A
+
+compute positive descriptors:  74%|███████▍  | 169/227 [01:16<00:26,  2.20it/s][A[A
+
+compute positive descriptors:  75%|███████▍  | 170/227 [01:17<00:25,  2.20it/s][A[A
+
+compute positive descriptors:  75%|███████▌  | 171/227 [01:17<00:25,  2.20it/s][A[A
+
+compute positive descriptors:  76%|███████▌  | 172/227 [01:18<00:25,  2.20it/s][A[A
+
+compute positive descriptors:  76%|███████▌  | 173/227 [01:18<00:24,  2.19it/s][A[A
+
+compute positive descriptors:  77%|███████▋  | 174/227 [01:19<00:24,  2.20it/s][A[A
+
+compute positive descriptors:  77%|███████▋  | 175/227 [01:19<00:23,  2.21it/s][A[A
+
+compute positive descriptors:  78%|███████▊  | 176/227 [01:20<00:23,  2.20it/s][A[A
+
+compute positive descriptors:  78%|███████▊  | 177/227 [01:20<00:22,  2.19it/s][A[A
+
+compute positive descriptors:  78%|███████▊  | 178/227 [01:21<00:22,  2.19it/s][A[A
+
+compute positive descriptors:  79%|███████▉  | 179/227 [01:21<00:21,  2.19it/s][A[A
+
+compute positive descriptors:  79%|███████▉  | 180/227 [01:21<00:21,  2.18it/s][A[A
+
+compute positive descriptors:  80%|███████▉  | 181/227 [01:22<00:21,  2.19it/s][A[A
+
+compute positive descriptors:  80%|████████  | 182/227 [01:22<00:20,  2.19it/s][A[A
+
+compute positive descriptors:  81%|████████  | 183/227 [01:23<00:20,  2.19it/s][A[A
+
+compute positive descriptors:  81%|████████  | 184/227 [01:23<00:19,  2.19it/s][A[A
+
+compute positive descriptors:  81%|████████▏ | 185/227 [01:24<00:19,  2.19it/s][A[A
+
+compute positive descriptors:  82%|████████▏ | 186/227 [01:24<00:18,  2.18it/s][A[A
+
+compute positive descriptors:  82%|████████▏ | 187/227 [01:25<00:18,  2.18it/s][A[A
+
+compute positive descriptors:  83%|████████▎ | 188/227 [01:25<00:17,  2.19it/s][A[A
+
+compute positive descriptors:  83%|████████▎ | 189/227 [01:26<00:17,  2.17it/s][A[A
+
+compute positive descriptors:  84%|████████▎ | 190/227 [01:26<00:16,  2.18it/s][A[A
+
+compute positive descriptors:  84%|████████▍ | 191/227 [01:26<00:16,  2.19it/s][A[A
+
+compute positive descriptors:  85%|████████▍ | 192/227 [01:27<00:15,  2.20it/s][A[A
+
+compute positive descriptors:  85%|████████▌ | 193/227 [01:27<00:15,  2.19it/s][A[A
+
+compute positive descriptors:  85%|████████▌ | 194/227 [01:28<00:15,  2.19it/s][A[A
+
+compute positive descriptors:  86%|████████▌ | 195/227 [01:28<00:14,  2.19it/s][A[A
+
+compute positive descriptors:  86%|████████▋ | 196/227 [01:29<00:14,  2.20it/s][A[A
+
+compute positive descriptors:  87%|████████▋ | 197/227 [01:29<00:13,  2.20it/s][A[A
+
+compute positive descriptors:  87%|████████▋ | 198/227 [01:30<00:13,  2.20it/s][A[A
+
+compute positive descriptors:  88%|████████▊ | 199/227 [01:30<00:12,  2.20it/s][A[A
+
+compute positive descriptors:  88%|████████▊ | 200/227 [01:31<00:12,  2.20it/s][A[A
+
+compute positive descriptors:  89%|████████▊ | 201/227 [01:31<00:11,  2.20it/s][A[A
+
+compute positive descriptors:  89%|████████▉ | 202/227 [01:31<00:11,  2.21it/s][A[A
+
+compute positive descriptors:  89%|████████▉ | 203/227 [01:32<00:10,  2.21it/s][A[A
+
+compute positive descriptors:  90%|████████▉ | 204/227 [01:32<00:10,  2.21it/s][A[A
+
+compute positive descriptors:  90%|█████████ | 205/227 [01:33<00:10,  2.19it/s][A[A
+
+compute positive descriptors:  91%|█████████ | 206/227 [01:33<00:09,  2.19it/s][A[A
+
+compute positive descriptors:  91%|█████████ | 207/227 [01:34<00:09,  2.19it/s][A[A
+
+compute positive descriptors:  92%|█████████▏| 208/227 [01:34<00:08,  2.20it/s][A[A
+
+compute positive descriptors:  92%|█████████▏| 209/227 [01:35<00:08,  2.19it/s][A[A
+
+compute positive descriptors:  93%|█████████▎| 210/227 [01:35<00:07,  2.20it/s][A[A
+
+compute positive descriptors:  93%|█████████▎| 211/227 [01:36<00:07,  2.20it/s][A[A
+
+compute positive descriptors:  93%|█████████▎| 212/227 [01:36<00:06,  2.20it/s][A[A
+
+compute positive descriptors:  94%|█████████▍| 213/227 [01:37<00:06,  2.11it/s][A[A
+
+compute positive descriptors:  94%|█████████▍| 214/227 [01:37<00:06,  2.13it/s][A[A
+
+compute positive descriptors:  95%|█████████▍| 215/227 [01:37<00:05,  2.15it/s][A[A
+
+compute positive descriptors:  95%|█████████▌| 216/227 [01:38<00:05,  2.18it/s][A[A
+
+compute positive descriptors:  96%|█████████▌| 217/227 [01:38<00:04,  2.20it/s][A[A
+
+compute positive descriptors:  96%|█████████▌| 218/227 [01:39<00:04,  2.22it/s][A[A
+
+compute positive descriptors:  96%|█████████▋| 219/227 [01:39<00:03,  2.23it/s][A[A
+
+compute positive descriptors:  97%|█████████▋| 220/227 [01:40<00:03,  2.24it/s][A[A
+
+compute positive descriptors:  97%|█████████▋| 221/227 [01:40<00:02,  2.24it/s][A[A
+
+compute positive descriptors:  98%|█████████▊| 222/227 [01:41<00:02,  2.24it/s][A[A
+
+compute positive descriptors:  98%|█████████▊| 223/227 [01:41<00:01,  2.25it/s][A[A
+
+compute positive descriptors:  99%|█████████▊| 224/227 [01:41<00:01,  2.25it/s][A[A
+
+compute positive descriptors:  99%|█████████▉| 225/227 [01:42<00:00,  2.24it/s][A[A
+
+compute positive descriptors: 100%|█████████▉| 226/227 [01:42<00:00,  2.23it/s][A[A
+
+compute positive descriptors: 100%|██████████| 227/227 [01:43<00:00,  2.22it/s][A[A
+
+compute positive descriptors: 228it [01:43,  2.49it/s]                         [A[A
+
+                                                      [A[A
+
+compute negative descriptors:   0%|          | 0/49 [00:00<?, ?it/s][A[A
+
+compute negative descriptors:   2%|▏         | 1/49 [00:00<00:41,  1.15it/s][A[A
+
+compute negative descriptors:   4%|▍         | 2/49 [00:01<00:29,  1.60it/s][A[A
+
+compute negative descriptors:   6%|▌         | 3/49 [00:01<00:25,  1.84it/s][A[A
+
+compute negative descriptors:   8%|▊         | 4/49 [00:02<00:22,  1.96it/s][A[A
+
+compute negative descriptors:  10%|█         | 5/49 [00:02<00:21,  2.04it/s][A[A
+
+compute negative descriptors:  12%|█▏        | 6/49 [00:03<00:20,  2.11it/s][A[A
+
+compute negative descriptors:  14%|█▍        | 7/49 [00:03<00:19,  2.12it/s][A[A
+
+compute negative descriptors:  16%|█▋        | 8/49 [00:04<00:19,  2.15it/s][A[A
+
+compute negative descriptors:  18%|█▊        | 9/49 [00:04<00:18,  2.16it/s][A[A
+
+compute negative descriptors:  20%|██        | 10/49 [00:04<00:17,  2.19it/s][A[A
+
+compute negative descriptors:  22%|██▏       | 11/49 [00:05<00:17,  2.18it/s][A[A
+
+compute negative descriptors:  24%|██▍       | 12/49 [00:05<00:16,  2.20it/s][A[A
+
+compute negative descriptors:  27%|██▋       | 13/49 [00:06<00:16,  2.20it/s][A[A
+
+compute negative descriptors:  29%|██▊       | 14/49 [00:06<00:15,  2.19it/s][A[A
+
+compute negative descriptors:  31%|███       | 15/49 [00:07<00:15,  2.19it/s][A[A
+
+compute negative descriptors:  33%|███▎      | 16/49 [00:07<00:15,  2.19it/s][A[A
+
+compute negative descriptors:  35%|███▍      | 17/49 [00:08<00:14,  2.18it/s][A[A
+
+compute negative descriptors:  37%|███▋      | 18/49 [00:08<00:14,  2.19it/s][A[A
+
+compute negative descriptors:  39%|███▉      | 19/49 [00:09<00:13,  2.19it/s][A[A
+
+compute negative descriptors:  41%|████      | 20/49 [00:09<00:13,  2.19it/s][A[A
+
+compute negative descriptors:  43%|████▎     | 21/49 [00:09<00:12,  2.19it/s][A[A
+
+compute negative descriptors:  45%|████▍     | 22/49 [00:10<00:12,  2.18it/s][A[A
+
+compute negative descriptors:  47%|████▋     | 23/49 [00:10<00:11,  2.17it/s][A[A
+
+compute negative descriptors:  49%|████▉     | 24/49 [00:11<00:11,  2.19it/s][A[A
+
+compute negative descriptors:  51%|█████     | 25/49 [00:11<00:10,  2.20it/s][A[A
+
+compute negative descriptors:  53%|█████▎    | 26/49 [00:12<00:10,  2.19it/s][A[A
+
+compute negative descriptors:  55%|█████▌    | 27/49 [00:12<00:10,  2.19it/s][A[A
+
+compute negative descriptors:  57%|█████▋    | 28/49 [00:13<00:09,  2.20it/s][A[A
+
+compute negative descriptors:  59%|█████▉    | 29/49 [00:13<00:09,  2.20it/s][A[A
+
+compute negative descriptors:  61%|██████    | 30/49 [00:14<00:08,  2.18it/s][A[A
+
+compute negative descriptors:  63%|██████▎   | 31/49 [00:14<00:08,  2.19it/s][A[A
+
+compute negative descriptors:  65%|██████▌   | 32/49 [00:15<00:07,  2.17it/s][A[A
+
+compute negative descriptors:  67%|██████▋   | 33/49 [00:15<00:07,  2.19it/s][A[A
+
+compute negative descriptors:  69%|██████▉   | 34/49 [00:15<00:06,  2.20it/s][A[A
+
+compute negative descriptors:  71%|███████▏  | 35/49 [00:16<00:06,  2.20it/s][A[A
+
+compute negative descriptors:  73%|███████▎  | 36/49 [00:16<00:05,  2.19it/s][A[A
+
+compute negative descriptors:  76%|███████▌  | 37/49 [00:17<00:05,  2.19it/s][A[A
+
+compute negative descriptors:  78%|███████▊  | 38/49 [00:17<00:05,  2.18it/s][A[A
+
+compute negative descriptors:  80%|███████▉  | 39/49 [00:18<00:04,  2.19it/s][A[A
+
+compute negative descriptors:  82%|████████▏ | 40/49 [00:18<00:04,  2.20it/s][A[A
+
+compute negative descriptors:  84%|████████▎ | 41/49 [00:19<00:03,  2.21it/s][A[A
+
+compute negative descriptors:  86%|████████▌ | 42/49 [00:19<00:03,  2.22it/s][A[A
+
+compute negative descriptors:  88%|████████▊ | 43/49 [00:19<00:02,  2.23it/s][A[A
+
+compute negative descriptors:  90%|████████▉ | 44/49 [00:20<00:02,  2.23it/s][A[A
+
+compute negative descriptors:  92%|█████████▏| 45/49 [00:20<00:01,  2.24it/s][A[A
+
+compute negative descriptors:  94%|█████████▍| 46/49 [00:21<00:01,  2.24it/s][A[A
+
+compute negative descriptors:  96%|█████████▌| 47/49 [00:21<00:00,  2.25it/s][A[A
+
+compute negative descriptors:  98%|█████████▊| 48/49 [00:22<00:00,  2.24it/s][A[A
+
+compute negative descriptors: 100%|██████████| 49/49 [00:22<00:00,  2.25it/s][A[A
+
+compute negative descriptors: 50it [00:22,  2.79it/s]                        [A[A
+
+                                                     [A[A                                                       
+                                                                    [A   Epoch number:   0%|          | 0/30 [09:09<?, ?it/s]
+  Cache refresh:   0%|          | 1/442 [09:08<48:43:12, 397.72s/it][A
+
+     Train Iter:   0%|          | 0/50 [00:00<?, ?it/s][A[A
+
+                                                       [A[A  Cache refresh:   0%|          | 1/442 [09:18<68:25:06, 558.52s/it]
+   Epoch number:   0%|          | 0/30 [09:19<?, ?it/s]
+Traceback (most recent call last):
+  File "train.py", line 256, in <module>
+    train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device, epoch, opt, config, writer)
+  File "/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/training_tools/train_epoch.py", line 135, in train_epoch
+    vlad_encoding = model(data_input.to(device))
+  File "/home/m.maqboolbhutta/.conda/envs/patchnetvlad/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/models/netvlad.py", line 604, in forward
+    NB, x_cropped = self.SelectRegions(x)
+  File "/home/m.maqboolbhutta/.conda/envs/patchnetvlad/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/models/netvlad.py", line 491, in forward
+    graph_nodes = torch.zeros(N,NB,C,H,W).cuda()
+RuntimeError: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.

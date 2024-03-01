@@ -1,0 +1,47 @@
+usage: feature_extract.py [-h] [--config_path CONFIG_PATH] --dataset_file_path
+                          DATASET_FILE_PATH
+                          [--dataset_root_dir DATASET_ROOT_DIR]
+                          [--output_features_dir OUTPUT_FEATURES_DIR]
+                          [--nocuda] [--resume_path RESUME_PATH]
+feature_extract.py: error: unrecognized arguments: --method=netvlad
+usage: feature_extract.py [-h] [--config_path CONFIG_PATH] --dataset_file_path
+                          DATASET_FILE_PATH
+                          [--dataset_root_dir DATASET_ROOT_DIR]
+                          [--output_features_dir OUTPUT_FEATURES_DIR]
+                          [--nocuda] [--resume_path RESUME_PATH]
+feature_extract.py: error: unrecognized arguments: --method=netvlad
+Traceback (most recent call last):
+  File "feature_match.py", line 215, in <module>
+    main()
+  File "feature_match.py", line 207, in main
+    feature_match(dataset, device, opt, config)
+  File "feature_match.py", line 107, in feature_match
+    qFeat = np.load(input_query_global_features_prefix)
+  File "/home/m.maqboolbhutta/.conda/envs/patchnetvlad/lib/python3.8/site-packages/numpy/lib/npyio.py", line 417, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query/globalfeats.npy'
+usage: feature_extract.py [-h] [--config_path CONFIG_PATH] --dataset_file_path
+                          DATASET_FILE_PATH
+                          [--dataset_root_dir DATASET_ROOT_DIR]
+                          [--output_features_dir OUTPUT_FEATURES_DIR]
+                          [--nocuda] [--resume_path RESUME_PATH]
+feature_extract.py: error: unrecognized arguments: --method=netvlad
+usage: feature_extract.py [-h] [--config_path CONFIG_PATH] --dataset_file_path
+                          DATASET_FILE_PATH
+                          [--dataset_root_dir DATASET_ROOT_DIR]
+                          [--output_features_dir OUTPUT_FEATURES_DIR]
+                          [--nocuda] [--resume_path RESUME_PATH]
+feature_extract.py: error: unrecognized arguments: --method=netvlad
+Traceback (most recent call last):
+  File "feature_match.py", line 215, in <module>
+    main()
+  File "feature_match.py", line 207, in main
+    feature_match(dataset, device, opt, config)
+  File "feature_match.py", line 107, in feature_match
+    qFeat = np.load(input_query_global_features_prefix)
+  File "/home/m.maqboolbhutta/.conda/envs/patchnetvlad/lib/python3.8/site-packages/numpy/lib/npyio.py", line 417, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query/globalfeats.npy'
+/blue/hmedeiros/m.maqboolbhutta/codes/mapillary_sls/mapillary_sls/datasets/msls.py:217: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  self.pIdx = np.asarray(self.pIdx)
+slurmstepd: error: *** JOB 24887830 ON c0801a-s35 CANCELLED AT 2024-02-29T14:07:37 ***

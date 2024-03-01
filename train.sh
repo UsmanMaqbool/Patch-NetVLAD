@@ -13,17 +13,17 @@ if [ "$#" -lt 2 ]; then
 fi
 
 if [ "$#" -ne 3 ]; then
-    FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}-netvlad-triplet-cen-map-16-lr0_001"
+    FILES="/home/leo/usman_ws/models/patchnetvlad/${DATE}-netvlad-triplet-b24c100-lr001"
     DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/"
     CONFIG="patchnetvlad/configs/train.ini"
     CLUSTER_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
     OFFTHESHELF_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth"
 else
-    FILES="/home/m.maqboolbhutta/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
+    FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/${DATE}-netvlad-triplet-b24c100-lr001"
     DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/"
-    CONFIG="patchnetvlad/configs/train.ini"
+    CONFIG="patchnetvlad/configs/train-slurm.ini"
     CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
 fi
 

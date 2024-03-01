@@ -26,12 +26,13 @@
 
 #This is the python script to run in the pytorch environment
 
-DATASET=$1
-FILES=$2
+METHOD=$1
+DATASET=$2
+FILES=$3
 
-if [ $# -ne 2 ]
+if [ $# -ne 3 ]
   then
-    echo "Arguments error: <DATASET (mapillary|Pitts30k > <PATH of checkpoints>"
+    echo "Arguments error:<METHOD (netvlad/graphvlad)>  <DATASET (mapillary/Pitts30k > <PATH of checkpoints>"
     exit 1
 fi
 
@@ -57,7 +58,7 @@ echo "Other nodes: $NODES"
 #=======
 
 echo "Starting $SLURM_GPUS_PER_TASK process(es) on each node..."
-bash test-s.sh ${DATASET} ${FILES}
+bash test-s.sh ${METHOD} ${DATASET} ${FILES}
 
 ##TO RUN
 #./test.sh mapillary /home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26_21-46-27_mapillary_nopanos/Jan26_21-46-27_mapillary_nopanos/checkpoints/ | tee 26Jan2146.txt

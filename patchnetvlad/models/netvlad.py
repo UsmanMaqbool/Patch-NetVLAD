@@ -378,8 +378,8 @@ class SelectRegions(nn.Module):
         self.classes = 20
         self.p = 2
         self.q = 8
-        # self.encoderFile = "/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
-        self.encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+        self.encoderFile = "/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+        # self.encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
         self.Espnet = ESPNet(classes=self.classes, p=self.p, q = self.q, encoderFile=self.encoderFile) 
 
     def forward(self, x):
@@ -641,10 +641,10 @@ class GraphVLADPCA(nn.Module):
                 
         node_features_list = []
         neighborsFeat = []
-         
+        NB, x_size, x_cropped = self.SelectRegions(x)
+ 
         for i in range(NB+1):
             
-            NB, x_cropped = self.SelectRegions(x)
             vlad_x = self.net_vlad(x_cropped[i])
             
             # [IMPORTANT] normalize

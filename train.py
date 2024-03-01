@@ -125,7 +125,7 @@ if __name__ == "__main__":
         m_name = 'graphvlad'
     else:
         # Define a default value for m_name when the method is not 'netvlad'
-        m_name = 'embeded'
+        m_name = 'embednet'
     # m_name = 'embednet'
     # m_name = 'embednetpca'
     # m_name = 'graphvlad'

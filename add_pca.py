@@ -72,6 +72,7 @@ if __name__ == "__main__":
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
                         help='NetVLAD Off the Shelf VGG Weights.')
+    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad') 
 
     opt = parser.parse_args()
     print(opt)
@@ -98,12 +99,17 @@ if __name__ == "__main__":
 
     encoder_dim, encoder = get_backend()
       
-
+    if opt.method == 'graphvlad':
+        m_name = 'graphvlad'
+    else:
+        # Define a default value for m_name when the method is not 'netvlad'
+        m_name = 'embednet'
+        
     if opt.resume_path: # must resume for PCA
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)            
-             # for i in checkpoint['state_dict']['module.net_vlad.centroids']:
+            # for i in checkpoint['state_dict']:
             #     print(i)
             
             # Create a new state_dict without the 'module.' prefix
@@ -119,7 +125,8 @@ if __name__ == "__main__":
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
 
             # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-            model = create_model('graphvlad',encoder, pool_layer)
+            
+            model = create_model(m_name,encoder, pool_layer)
             
             # Load the new state_dict into your model
             model.load_state_dict(new_state_dict)

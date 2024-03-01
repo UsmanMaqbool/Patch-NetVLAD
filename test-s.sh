@@ -1,7 +1,8 @@
 #!/bin/sh
 PYTHON=${PYTHON:-"python3"}
-DATASET=$1
-BASEDir=$2
+METHOD=$1
+DATASET=$2
+BASEDir=$3
 FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
 # FILES=$(find "${BASEDir}" -type f -name "*.tar" ! -name '*WPCA4096*')
 
@@ -49,7 +50,9 @@ do
       --config_path=patchnetvlad/configs/train.ini \
       --resume_path=$RESUME \
       --dataset_root_dir=$dataset_root_dir \
-      --dataset_choice=$DATASET
+      --dataset_choice=$DATASET \
+      --method=${METHOD} 
+
   fi
 
   
@@ -60,7 +63,8 @@ do
   --dataset_file_path=mapillarysf_imageNames_index.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index \
-  --resume_path=${PCA_RESUME}
+  --resume_path=${PCA_RESUME} \
+  --method=${METHOD} 
 
   
   echo "Extracting Features of mapillarysf Query Images"
@@ -70,7 +74,8 @@ do
   --dataset_file_path=mapillarysf_imageNames_query.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query \
-  --resume_path=${PCA_RESUME}
+  --resume_path=${PCA_RESUME} \
+  --method=${METHOD} 
   
   echo "Performing Features Matching and Recall Result of mapillarysf"
   python feature_match.py \
@@ -89,7 +94,8 @@ do
   --dataset_file_path=mapillarycph_imageNames_index.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index \
-  --resume_path=${PCA_RESUME}
+  --resume_path=${PCA_RESUME} \
+  --method=${METHOD} 
 
   
   echo "Extracting Features of mapillarycph Query Images"
@@ -99,7 +105,8 @@ do
   --dataset_file_path=mapillarycph_imageNames_query.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query \
-  --resume_path=${PCA_RESUME}
+  --resume_path=${PCA_RESUME} \
+  --method=${METHOD} 
 
   echo "Performing Features Matching and Recall Result of mapillarycph"
   python feature_match.py \

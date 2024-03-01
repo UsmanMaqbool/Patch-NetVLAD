@@ -113,7 +113,7 @@ def main():
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--resume_path', type=str, default='',
                         help='Full path and name (with extension) to load checkpoint from, for resuming training.')
-
+    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')    
     opt = parser.parse_args()
     print(opt)
 
@@ -144,7 +144,14 @@ def main():
         if not isfile(resume_ckpt):
             from download_models import download_all_models
             download_all_models(ask_for_permission=True)
-
+    # must resume to do extraction
+    resume_ckpt = opt.resume_path
+    if opt.method == 'graphvlad':
+            m_name = 'graphvladpca'
+    else:
+        # Define a default value for m_name when the method is not 'netvlad'
+        m_name = 'embednetpca'
+        
     if isfile(resume_ckpt):
         print("=> loading checkpoint '{}'".format(resume_ckpt))
         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)
@@ -161,7 +168,7 @@ def main():
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
         
-        model = create_model('graphvladpca', encoder, pool_layer)
+        model = create_model(m_name, encoder, pool_layer)
         model.load_state_dict(checkpoint['state_dict'])
         
         if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

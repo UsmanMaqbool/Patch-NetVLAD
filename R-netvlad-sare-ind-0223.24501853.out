@@ -1,0 +1,3629 @@
+Fri Feb 23 13:02:35 EST 2024
+/home/m.maqboolbhutta/usman_ws/codes/patchnetvlad
+/home/m.maqboolbhutta/.conda/envs/patchnetvlad/bin/python
+Host: c1004a-s23
+Other nodes: 
+Starting  process(es) on each node...
+==========Starting Training=============
+Saving checkpoints at /home/m.maqboolbhutta/models/patchnetvlad/graphvlad-sare_ind-23-Feb
+========================================
+Namespace(cache_path='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/', cluster_path='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5', config_path='patchnetvlad/configs/train.ini', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/', identifier='mapillary_nopanos', loss='sare_ind', method='graphvlad', nEpochs=30, nocuda=False, resume_path='', save_every_epoch=True, save_path='/home/m.maqboolbhutta/models/patchnetvlad/graphvlad-sare_ind-23-Feb', start_epoch=0, threads=6)
+===> Building model
+===> Loading model
+Creating model graphvlad
+Encoder loaded!
+===> Loading dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+#Sideways [21262/441280]; #Night; [4666/441280]
+Forward and Day weighted with 1.0000
+Forward and Night weighted with 95.5735
+Sideways and Day weighted with 21.7544
+Sideways and Night weighted with 116.3279
+Exclude panoramas: True
+=====> cph
+=====> sf
+===> Training query set: 441280
+===> Evaluating on val set, query count: 740
+===> Training model
+>> Searching for hard negatives...
+==> Epoch[1](50/44128): Loss: 0.2420
+Allocated: 371.06 MB
+Cached:    33.76 GB
+==> Epoch[1](100/44128): Loss: 0.0962
+Allocated: 370.63 MB
+Cached:    33.76 GB
+>> Searching for hard negatives...
+==> Epoch[1](150/44128): Loss: 0.0093
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](200/44128): Loss: 0.0359
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](250/44128): Loss: 0.1440
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](300/44128): Loss: 0.0248
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](350/44128): Loss: 0.0367
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](400/44128): Loss: 0.2708
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](450/44128): Loss: 0.2000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](500/44128): Loss: 0.0678
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](550/44128): Loss: 0.0210
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](600/44128): Loss: 0.1101
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](650/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](700/44128): Loss: 0.0417
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](750/44128): Loss: 0.0902
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](800/44128): Loss: 0.3656
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](850/44128): Loss: 0.0208
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](900/44128): Loss: 0.0785
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](950/44128): Loss: 0.0679
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1000/44128): Loss: 0.0095
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1050/44128): Loss: 0.1065
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1100/44128): Loss: 0.0822
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1150/44128): Loss: 0.0391
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1200/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1250/44128): Loss: 0.0288
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1300/44128): Loss: 0.0389
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1350/44128): Loss: 0.0389
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](1400/44128): Loss: 0.2004
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](1450/44128): Loss: 0.0217
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1500/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1550/44128): Loss: 0.0726
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1600/44128): Loss: 0.0247
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1650/44128): Loss: 0.1260
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](1700/44128): Loss: 0.1290
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](1750/44128): Loss: 0.0085
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](1800/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](1850/44128): Loss: 0.0025
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](1900/44128): Loss: 0.0025
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](1950/44128): Loss: 0.0988
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](2000/44128): Loss: 0.0105
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](2050/44128): Loss: 0.2604
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2100/44128): Loss: 0.0306
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2150/44128): Loss: 0.3283
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2200/44128): Loss: 0.0273
+Allocated: 370.41 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2250/44128): Loss: 0.0327
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](2300/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](2350/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2400/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2450/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](2500/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](2550/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2600/44128): Loss: 0.0840
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2650/44128): Loss: 0.0017
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2700/44128): Loss: 0.0289
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2750/44128): Loss: 0.0187
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2800/44128): Loss: 0.1590
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2850/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](2900/44128): Loss: 0.0714
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](2950/44128): Loss: 0.0113
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3000/44128): Loss: 0.0031
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3050/44128): Loss: 0.0379
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3100/44128): Loss: 0.0127
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3150/44128): Loss: 0.1033
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](3200/44128): Loss: 0.0495
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](3250/44128): Loss: 0.1320
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3300/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3350/44128): Loss: 0.0017
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](3400/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](3450/44128): Loss: 0.0146
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3500/44128): Loss: 0.0287
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3550/44128): Loss: 0.0216
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3600/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3650/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3700/44128): Loss: 0.0244
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3750/44128): Loss: 0.0086
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3800/44128): Loss: 0.0009
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3850/44128): Loss: 0.0144
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](3900/44128): Loss: 0.0147
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](3950/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4000/44128): Loss: 0.0174
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4050/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4100/44128): Loss: 0.0019
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4150/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4200/44128): Loss: 0.0052
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4250/44128): Loss: 0.0412
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4300/44128): Loss: 0.0260
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4350/44128): Loss: 0.0047
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](4400/44128): Loss: 0.0130
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](4450/44128): Loss: 0.0356
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4500/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4550/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4600/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4650/44128): Loss: 0.0277
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4700/44128): Loss: 0.0008
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4750/44128): Loss: 0.0891
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](4800/44128): Loss: 0.0939
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](4850/44128): Loss: 0.0009
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](4900/44128): Loss: 0.0255
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](4950/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](5000/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](5050/44128): Loss: 0.0309
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5100/44128): Loss: 0.0135
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5150/44128): Loss: 0.0330
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5200/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5250/44128): Loss: 0.0164
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](5300/44128): Loss: 0.0028
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](5350/44128): Loss: 0.0052
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5400/44128): Loss: 0.0796
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5450/44128): Loss: 0.0126
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5500/44128): Loss: 0.0303
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5550/44128): Loss: 0.0035
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5600/44128): Loss: 0.0230
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5650/44128): Loss: 0.0045
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5700/44128): Loss: 0.0879
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5750/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5800/44128): Loss: 0.0065
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5850/44128): Loss: 0.0737
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](5900/44128): Loss: 0.0130
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](5950/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6000/44128): Loss: 0.0077
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6050/44128): Loss: 0.0067
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6100/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6150/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](6200/44128): Loss: 0.0034
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](6250/44128): Loss: 0.0045
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6300/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6350/44128): Loss: 0.0435
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6400/44128): Loss: 0.0224
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6450/44128): Loss: 0.0293
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6500/44128): Loss: 0.1163
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6550/44128): Loss: 0.0061
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6600/44128): Loss: 0.0070
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6650/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6700/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6750/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6800/44128): Loss: 0.0004
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6850/44128): Loss: 0.0056
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](6900/44128): Loss: 0.0016
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](6950/44128): Loss: 0.0113
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](7000/44128): Loss: 0.0745
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](7050/44128): Loss: 0.0216
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](7100/44128): Loss: 0.0003
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](7150/44128): Loss: 0.0573
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](7200/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](7250/44128): Loss: 0.0072
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](7300/44128): Loss: 0.0120
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](7350/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](7400/44128): Loss: 0.0674
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](7450/44128): Loss: 0.0092
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](7500/44128): Loss: 0.0018
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](7550/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](7600/44128): Loss: 0.0026
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](7650/44128): Loss: 0.0084
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](7700/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](7750/44128): Loss: 0.0039
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](7800/44128): Loss: 0.0283
+Allocated: 370.41 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](7850/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](7900/44128): Loss: 0.1375
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](7950/44128): Loss: 0.0142
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](8000/44128): Loss: 0.0500
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](8050/44128): Loss: 0.1260
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](8100/44128): Loss: 0.0072
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](8150/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](8200/44128): Loss: 0.0290
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](8250/44128): Loss: 0.0255
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](8300/44128): Loss: 0.0208
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](8350/44128): Loss: 0.0251
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](8400/44128): Loss: 0.0526
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](8450/44128): Loss: 0.0062
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](8500/44128): Loss: 0.0038
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](8550/44128): Loss: 0.0019
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](8600/44128): Loss: 0.0035
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](8650/44128): Loss: 0.0022
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](8700/44128): Loss: 0.2607
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](8750/44128): Loss: 0.0141
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](8800/44128): Loss: 0.0166
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](8850/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](8900/44128): Loss: 0.0096
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](8950/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9000/44128): Loss: 0.0021
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9050/44128): Loss: 0.0018
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9100/44128): Loss: 0.0404
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9150/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9200/44128): Loss: 0.1037
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9250/44128): Loss: 0.0521
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](9300/44128): Loss: 0.0161
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](9350/44128): Loss: 0.0146
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9400/44128): Loss: 0.0178
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9450/44128): Loss: 0.0073
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9500/44128): Loss: 0.0024
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9550/44128): Loss: 0.0148
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9600/44128): Loss: 0.0016
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9650/44128): Loss: 0.0045
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9700/44128): Loss: 0.0065
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9750/44128): Loss: 0.0249
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](9800/44128): Loss: 0.0382
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](9850/44128): Loss: 0.0060
+Allocated: 371.06 MB
+Cached:    33.92 GB
+==> Epoch[1](9900/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    33.93 GB
+>> Searching for hard negatives...
+==> Epoch[1](9950/44128): Loss: 0.0337
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10000/44128): Loss: 0.0214
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10050/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10100/44128): Loss: 0.0022
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10150/44128): Loss: 0.0062
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](10200/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](10250/44128): Loss: 0.0394
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10300/44128): Loss: 0.0019
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10350/44128): Loss: 0.0547
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10400/44128): Loss: 0.0102
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10450/44128): Loss: 0.0025
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10500/44128): Loss: 0.0007
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10550/44128): Loss: 0.0037
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](10600/44128): Loss: 0.0027
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](10650/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10700/44128): Loss: 0.0057
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10750/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10800/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10850/44128): Loss: 0.0125
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](10900/44128): Loss: 0.0367
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](10950/44128): Loss: 0.0212
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11000/44128): Loss: 0.0384
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11050/44128): Loss: 0.0123
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11100/44128): Loss: 0.0213
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11150/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11200/44128): Loss: 0.0695
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11250/44128): Loss: 0.0578
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11300/44128): Loss: 0.0163
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11350/44128): Loss: 0.0194
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11400/44128): Loss: 0.0000
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11450/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11500/44128): Loss: 0.0115
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11550/44128): Loss: 0.0135
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11600/44128): Loss: 0.0038
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11650/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11700/44128): Loss: 0.0152
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11750/44128): Loss: 0.0047
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11800/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11850/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](11900/44128): Loss: 0.0009
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](11950/44128): Loss: 0.0172
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12000/44128): Loss: 0.0013
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12050/44128): Loss: 0.0045
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12100/44128): Loss: 0.0043
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12150/44128): Loss: 0.0063
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12200/44128): Loss: 0.0028
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12250/44128): Loss: 0.0047
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](12300/44128): Loss: 0.0004
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](12350/44128): Loss: 0.0194
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12400/44128): Loss: 0.0019
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12450/44128): Loss: 0.0675
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12500/44128): Loss: 0.0060
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12550/44128): Loss: 0.0026
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12600/44128): Loss: 0.0529
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12650/44128): Loss: 0.0069
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12700/44128): Loss: 0.0008
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12750/44128): Loss: 0.0025
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12800/44128): Loss: 0.0195
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12850/44128): Loss: 0.0911
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](12900/44128): Loss: 0.0076
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](12950/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13000/44128): Loss: 0.0269
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13050/44128): Loss: 0.0095
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](13100/44128): Loss: 0.0044
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](13150/44128): Loss: 0.0399
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13200/44128): Loss: 0.0152
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13250/44128): Loss: 0.0293
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13300/44128): Loss: 0.0535
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13350/44128): Loss: 0.0022
+Allocated: 371.06 MB
+Cached:    33.92 GB
+==> Epoch[1](13400/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    33.93 GB
+>> Searching for hard negatives...
+==> Epoch[1](13450/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13500/44128): Loss: 0.0131
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13550/44128): Loss: 0.0009
+Allocated: 371.06 MB
+Cached:    33.92 GB
+==> Epoch[1](13600/44128): Loss: 0.0064
+Allocated: 370.85 MB
+Cached:    33.93 GB
+>> Searching for hard negatives...
+==> Epoch[1](13650/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13700/44128): Loss: 0.0281
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13750/44128): Loss: 0.0261
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13800/44128): Loss: 0.0030
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13850/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](13900/44128): Loss: 0.0012
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](13950/44128): Loss: 0.0014
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](14000/44128): Loss: 0.0011
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](14050/44128): Loss: 0.0025
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14100/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14150/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14200/44128): Loss: 0.0018
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14250/44128): Loss: 0.0030
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14300/44128): Loss: 0.0277
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14350/44128): Loss: 0.0833
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14400/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14450/44128): Loss: 0.0024
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14500/44128): Loss: 0.0016
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14550/44128): Loss: 0.0051
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14600/44128): Loss: 0.0004
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14650/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14700/44128): Loss: 0.0062
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14750/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14800/44128): Loss: 0.0052
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14850/44128): Loss: 0.0048
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](14900/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](14950/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15000/44128): Loss: 0.0045
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15050/44128): Loss: 0.0044
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15100/44128): Loss: 0.0033
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15150/44128): Loss: 0.0247
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15200/44128): Loss: 0.0341
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15250/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15300/44128): Loss: 0.0046
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15350/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15400/44128): Loss: 0.0304
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15450/44128): Loss: 0.0281
+Allocated: 371.06 MB
+Cached:    33.92 GB
+==> Epoch[1](15500/44128): Loss: 0.0444
+Allocated: 370.85 MB
+Cached:    33.93 GB
+>> Searching for hard negatives...
+==> Epoch[1](15550/44128): Loss: 0.0023
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15600/44128): Loss: 0.0093
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15650/44128): Loss: 0.0071
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15700/44128): Loss: 0.0010
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15750/44128): Loss: 0.0599
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](15800/44128): Loss: 0.0047
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](15850/44128): Loss: 0.0231
+Allocated: 371.06 MB
+Cached:    34.12 GB
+==> Epoch[1](15900/44128): Loss: 0.0019
+Allocated: 370.85 MB
+Cached:    34.12 GB
+>> Searching for hard negatives...
+==> Epoch[1](15950/44128): Loss: 0.0084
+Allocated: 371.06 MB
+Cached:    33.93 GB
+==> Epoch[1](16000/44128): Loss: 0.1203
+Allocated: 370.85 MB
+Cached:    33.93 GB
+>> Searching for hard negatives...
+==> Epoch[1](16050/44128): Loss: 0.0009
+Allocated: 371.06 MB
+Cached:    34.04 GB
+==> Epoch[1](16100/44128): Loss: 0.0312
+Allocated: 370.85 MB
+Cached:    34.04 GB
+>> Searching for hard negatives...
+==> Epoch[1](16150/44128): Loss: 0.0281
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](16200/44128): Loss: 0.0003
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](16250/44128): Loss: 0.2074
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](16300/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](16350/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](16400/44128): Loss: 0.0073
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](16450/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](16500/44128): Loss: 0.0136
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](16550/44128): Loss: 0.0058
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](16600/44128): Loss: 0.0026
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](16650/44128): Loss: 0.0021
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](16700/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](16750/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](16800/44128): Loss: 0.0018
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](16850/44128): Loss: 0.0470
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](16900/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](16950/44128): Loss: 0.0172
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17000/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17050/44128): Loss: 0.0014
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17100/44128): Loss: 0.0106
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17150/44128): Loss: 0.0646
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17200/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17250/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17300/44128): Loss: 0.0036
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17350/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17400/44128): Loss: 0.0036
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17450/44128): Loss: 0.0083
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17500/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17550/44128): Loss: 0.0070
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17600/44128): Loss: 0.0358
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17650/44128): Loss: 0.0068
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17700/44128): Loss: 0.0066
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17750/44128): Loss: 0.0288
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17800/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17850/44128): Loss: 0.0112
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](17900/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](17950/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18000/44128): Loss: 0.0134
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18050/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18100/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18150/44128): Loss: 0.0022
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18200/44128): Loss: 0.0007
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18250/44128): Loss: 0.0068
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18300/44128): Loss: 0.0060
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18350/44128): Loss: 0.0054
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18400/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18450/44128): Loss: 0.0525
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18500/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18550/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18600/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18650/44128): Loss: 0.0074
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18700/44128): Loss: 0.0087
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18750/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18800/44128): Loss: 0.0025
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18850/44128): Loss: 0.0494
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](18900/44128): Loss: 0.0029
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](18950/44128): Loss: 0.0038
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19000/44128): Loss: 0.0081
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19050/44128): Loss: 0.0022
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19100/44128): Loss: 0.0227
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19150/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19200/44128): Loss: 0.0011
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19250/44128): Loss: 0.0038
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19300/44128): Loss: 0.0299
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19350/44128): Loss: 0.0316
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19400/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19450/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19500/44128): Loss: 0.0180
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19550/44128): Loss: 0.0014
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19600/44128): Loss: 0.0391
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19650/44128): Loss: 0.0288
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19700/44128): Loss: 0.0351
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19750/44128): Loss: 0.0291
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19800/44128): Loss: 0.0070
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19850/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](19900/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](19950/44128): Loss: 0.0406
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20000/44128): Loss: 0.0086
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20050/44128): Loss: 0.1119
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20100/44128): Loss: 0.0116
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20150/44128): Loss: 0.0143
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20200/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20250/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20300/44128): Loss: 0.0029
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20350/44128): Loss: 0.0025
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20400/44128): Loss: 0.0029
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20450/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20500/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20550/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20600/44128): Loss: 0.0038
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20650/44128): Loss: 0.0306
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20700/44128): Loss: 0.0031
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20750/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20800/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20850/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](20900/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](20950/44128): Loss: 0.0130
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21000/44128): Loss: 0.0334
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21050/44128): Loss: 0.0019
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21100/44128): Loss: 0.0029
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21150/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21200/44128): Loss: 0.0426
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21250/44128): Loss: 0.0052
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21300/44128): Loss: 0.0469
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21350/44128): Loss: 0.0021
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21400/44128): Loss: 0.0076
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21450/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21500/44128): Loss: 0.0082
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21550/44128): Loss: 0.0154
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21600/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21650/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21700/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21750/44128): Loss: 0.0065
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21800/44128): Loss: 0.0245
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21850/44128): Loss: 0.0051
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](21900/44128): Loss: 0.0061
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](21950/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22000/44128): Loss: 0.0149
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22050/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22100/44128): Loss: 0.0021
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22150/44128): Loss: 0.0230
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22200/44128): Loss: 0.0062
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22250/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22300/44128): Loss: 0.0234
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22350/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22400/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22450/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22500/44128): Loss: 0.0063
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22550/44128): Loss: 0.0384
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22600/44128): Loss: 0.0096
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22650/44128): Loss: 0.0148
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22700/44128): Loss: 0.0045
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22750/44128): Loss: 0.0056
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22800/44128): Loss: 0.0009
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22850/44128): Loss: 0.0290
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](22900/44128): Loss: 0.0014
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](22950/44128): Loss: 0.0123
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23000/44128): Loss: 0.0209
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23050/44128): Loss: 0.0115
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23100/44128): Loss: 0.0030
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23150/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23200/44128): Loss: 0.0316
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23250/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23300/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23350/44128): Loss: 0.0129
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23400/44128): Loss: 0.0019
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23450/44128): Loss: 0.0113
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23500/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23550/44128): Loss: 0.0029
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23600/44128): Loss: 0.0016
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23650/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23700/44128): Loss: 0.0176
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23750/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23800/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23850/44128): Loss: 0.0042
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](23900/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](23950/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24000/44128): Loss: 0.0024
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24050/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24100/44128): Loss: 0.0239
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24150/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24200/44128): Loss: 0.0244
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24250/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24300/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24350/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24400/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24450/44128): Loss: 0.0014
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24500/44128): Loss: 0.0069
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24550/44128): Loss: 0.0055
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24600/44128): Loss: 0.0119
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24650/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24700/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24750/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24800/44128): Loss: 0.0348
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24850/44128): Loss: 0.0032
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](24900/44128): Loss: 0.0009
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](24950/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25000/44128): Loss: 0.0244
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25050/44128): Loss: 0.0029
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25100/44128): Loss: 0.0142
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25150/44128): Loss: 0.0055
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25200/44128): Loss: 0.0343
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25250/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25300/44128): Loss: 0.0206
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25350/44128): Loss: 0.0112
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25400/44128): Loss: 0.0134
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25450/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25500/44128): Loss: 0.0024
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25550/44128): Loss: 0.0119
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25600/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25650/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25700/44128): Loss: 0.0073
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25750/44128): Loss: 0.0124
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25800/44128): Loss: 0.0036
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25850/44128): Loss: 0.0046
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](25900/44128): Loss: 0.0169
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](25950/44128): Loss: 0.0017
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26000/44128): Loss: 0.0055
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26050/44128): Loss: 0.0043
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26100/44128): Loss: 0.0016
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26150/44128): Loss: 0.0023
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26200/44128): Loss: 0.0023
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26250/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26300/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26350/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26400/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26450/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26500/44128): Loss: 0.0062
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26550/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26600/44128): Loss: 0.0079
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26650/44128): Loss: 0.0323
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26700/44128): Loss: 0.0011
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26750/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26800/44128): Loss: 0.0020
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26850/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](26900/44128): Loss: 0.0026
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](26950/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27000/44128): Loss: 0.0013
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27050/44128): Loss: 0.0043
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27100/44128): Loss: 0.0032
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27150/44128): Loss: 0.0143
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27200/44128): Loss: 0.0039
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27250/44128): Loss: 0.0746
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27300/44128): Loss: 0.0332
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27350/44128): Loss: 0.0388
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27400/44128): Loss: 0.0008
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27450/44128): Loss: 0.0226
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27500/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27550/44128): Loss: 0.0014
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27600/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27650/44128): Loss: 0.0013
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27700/44128): Loss: 0.0014
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27750/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27800/44128): Loss: 0.0010
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27850/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](27900/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](27950/44128): Loss: 0.0295
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28000/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28050/44128): Loss: 0.0184
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28100/44128): Loss: 0.0007
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28150/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28200/44128): Loss: 0.0014
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28250/44128): Loss: 0.0007
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28300/44128): Loss: 0.0001
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28350/44128): Loss: 0.0089
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28400/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28450/44128): Loss: 0.0097
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28500/44128): Loss: 0.0039
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28550/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28600/44128): Loss: 0.0162
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28650/44128): Loss: 0.0082
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28700/44128): Loss: 0.0039
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28750/44128): Loss: 0.0057
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28800/44128): Loss: 0.0018
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28850/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](28900/44128): Loss: 0.0057
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](28950/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29000/44128): Loss: 0.0064
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29050/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29100/44128): Loss: 0.0069
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29150/44128): Loss: 0.0314
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29200/44128): Loss: 0.0006
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29250/44128): Loss: 0.0519
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29300/44128): Loss: 0.0534
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29350/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29400/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29450/44128): Loss: 0.0151
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29500/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29550/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29600/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29650/44128): Loss: 0.0427
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29700/44128): Loss: 0.0199
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29750/44128): Loss: 0.0142
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29800/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29850/44128): Loss: 0.0415
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](29900/44128): Loss: 0.0000
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](29950/44128): Loss: 0.0037
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30000/44128): Loss: 0.0013
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30050/44128): Loss: 0.0108
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30100/44128): Loss: 0.0035
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30150/44128): Loss: 0.0180
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30200/44128): Loss: 0.0065
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30250/44128): Loss: 0.0142
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30300/44128): Loss: 0.0004
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30350/44128): Loss: 0.0047
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30400/44128): Loss: 0.0082
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30450/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30500/44128): Loss: 0.0038
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30550/44128): Loss: 0.0091
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30600/44128): Loss: 0.0011
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30650/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30700/44128): Loss: 0.0501
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30750/44128): Loss: 0.0118
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30800/44128): Loss: 0.0020
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30850/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](30900/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](30950/44128): Loss: 0.0052
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31000/44128): Loss: 0.0134
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31050/44128): Loss: 0.0034
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31100/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31150/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31200/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31250/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31300/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31350/44128): Loss: 0.0237
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31400/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31450/44128): Loss: 0.0041
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31500/44128): Loss: 0.0102
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31550/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31600/44128): Loss: 0.0022
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31650/44128): Loss: 0.0053
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31700/44128): Loss: 0.0013
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31750/44128): Loss: 0.0060
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31800/44128): Loss: 0.0060
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31850/44128): Loss: 0.0127
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](31900/44128): Loss: 0.0083
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](31950/44128): Loss: 0.0145
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32000/44128): Loss: 0.0001
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32050/44128): Loss: 0.0055
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32100/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32150/44128): Loss: 0.0156
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32200/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32250/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32300/44128): Loss: 0.0013
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32350/44128): Loss: 0.0026
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32400/44128): Loss: 0.0019
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32450/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32500/44128): Loss: 0.0508
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32550/44128): Loss: 0.0081
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32600/44128): Loss: 0.0228
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32650/44128): Loss: 0.0065
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32700/44128): Loss: 0.0160
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32750/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32800/44128): Loss: 0.0085
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32850/44128): Loss: 0.0406
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](32900/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](32950/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33000/44128): Loss: 0.0118
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33050/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33100/44128): Loss: 0.0011
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33150/44128): Loss: 0.0161
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33200/44128): Loss: 0.0175
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33250/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33300/44128): Loss: 0.0040
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33350/44128): Loss: 0.0074
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33400/44128): Loss: 0.0015
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33450/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33500/44128): Loss: 0.0149
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33550/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33600/44128): Loss: 0.0075
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33650/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33700/44128): Loss: 0.0031
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33750/44128): Loss: 0.0019
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33800/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33850/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](33900/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](33950/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34000/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34050/44128): Loss: 0.0007
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34100/44128): Loss: 0.0091
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34150/44128): Loss: 0.0066
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34200/44128): Loss: 0.0103
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34250/44128): Loss: 0.0021
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34300/44128): Loss: 0.0029
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34350/44128): Loss: 0.0019
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34400/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34450/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34500/44128): Loss: 0.0104
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34550/44128): Loss: 0.0318
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34600/44128): Loss: 0.0004
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34650/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34700/44128): Loss: 0.0211
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34750/44128): Loss: 0.0074
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34800/44128): Loss: 0.0015
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34850/44128): Loss: 0.0026
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](34900/44128): Loss: 0.0069
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](34950/44128): Loss: 0.0448
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35000/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35050/44128): Loss: 0.0331
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35100/44128): Loss: 0.0018
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35150/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35200/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35250/44128): Loss: 0.0020
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35300/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35350/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35400/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35450/44128): Loss: 0.0030
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35500/44128): Loss: 0.0065
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35550/44128): Loss: 0.0294
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35600/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35650/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35700/44128): Loss: 0.0036
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35750/44128): Loss: 0.0222
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35800/44128): Loss: 0.0017
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35850/44128): Loss: 0.0111
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](35900/44128): Loss: 0.0111
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](35950/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36000/44128): Loss: 0.0211
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36050/44128): Loss: 0.0171
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36100/44128): Loss: 0.0082
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36150/44128): Loss: 0.0098
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36200/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36250/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36300/44128): Loss: 0.0009
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36350/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36400/44128): Loss: 0.0044
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36450/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36500/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36550/44128): Loss: 0.0077
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36600/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36650/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36700/44128): Loss: 0.0554
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36750/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36800/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36850/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](36900/44128): Loss: 0.0035
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](36950/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37000/44128): Loss: 0.0118
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37050/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37100/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37150/44128): Loss: 0.0007
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37200/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37250/44128): Loss: 0.0065
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37300/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37350/44128): Loss: 0.0631
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37400/44128): Loss: 0.0662
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37450/44128): Loss: 0.0023
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37500/44128): Loss: 0.0009
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37550/44128): Loss: 0.0173
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37600/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37650/44128): Loss: 0.0096
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37700/44128): Loss: 0.0012
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37750/44128): Loss: 0.0099
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37800/44128): Loss: 0.0035
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37850/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](37900/44128): Loss: 0.0024
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](37950/44128): Loss: 0.0071
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38000/44128): Loss: 0.0002
+Allocated: 370.25 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38050/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[1](38100/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[1](38150/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38200/44128): Loss: 0.0299
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38250/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38300/44128): Loss: 0.0011
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38350/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38400/44128): Loss: 0.0060
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38450/44128): Loss: 0.0136
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38500/44128): Loss: 0.0013
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38550/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38600/44128): Loss: 0.0013
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38650/44128): Loss: 0.0099
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38700/44128): Loss: 0.0079
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38750/44128): Loss: 0.0000
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38800/44128): Loss: 0.0008
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38850/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](38900/44128): Loss: 0.0047
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](38950/44128): Loss: 0.0088
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39000/44128): Loss: 0.0222
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39050/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39100/44128): Loss: 0.0023
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39150/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39200/44128): Loss: 0.0011
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39250/44128): Loss: 0.0101
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39300/44128): Loss: 0.0184
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39350/44128): Loss: 0.0039
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39400/44128): Loss: 0.0020
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39450/44128): Loss: 0.0050
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39500/44128): Loss: 0.0025
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39550/44128): Loss: 0.0087
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39600/44128): Loss: 0.0043
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39650/44128): Loss: 0.0120
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39700/44128): Loss: 0.0018
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39750/44128): Loss: 0.0017
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39800/44128): Loss: 0.0002
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39850/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](39900/44128): Loss: 0.0041
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](39950/44128): Loss: 0.0023
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40000/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40050/44128): Loss: 0.0019
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40100/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40150/44128): Loss: 0.0131
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40200/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40250/44128): Loss: 0.0211
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40300/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40350/44128): Loss: 0.0054
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40400/44128): Loss: 0.0029
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40450/44128): Loss: 0.0092
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40500/44128): Loss: 0.0007
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40550/44128): Loss: 0.0021
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40600/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40650/44128): Loss: 0.0036
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40700/44128): Loss: 0.0394
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40750/44128): Loss: 0.0097
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40800/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40850/44128): Loss: 0.0437
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](40900/44128): Loss: 0.0049
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](40950/44128): Loss: 0.0053
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41000/44128): Loss: 0.0195
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41050/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41100/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41150/44128): Loss: 0.0030
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41200/44128): Loss: 0.0015
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41250/44128): Loss: 0.0313
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41300/44128): Loss: 0.0014
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41350/44128): Loss: 0.0029
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41400/44128): Loss: 0.0216
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41450/44128): Loss: 0.0023
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41500/44128): Loss: 0.0048
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41550/44128): Loss: 0.0114
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41600/44128): Loss: 0.0104
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41650/44128): Loss: 0.0010
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41700/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41750/44128): Loss: 0.0144
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41800/44128): Loss: 0.0004
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41850/44128): Loss: 0.0049
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](41900/44128): Loss: 0.0014
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](41950/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42000/44128): Loss: 0.1072
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42050/44128): Loss: 0.0050
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42100/44128): Loss: 0.0005
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42150/44128): Loss: 0.0479
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42200/44128): Loss: 0.0001
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42250/44128): Loss: 0.0022
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42300/44128): Loss: 0.0011
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42350/44128): Loss: 0.0195
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42400/44128): Loss: 0.0011
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42450/44128): Loss: 0.0065
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42500/44128): Loss: 0.0037
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42550/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42600/44128): Loss: 0.0097
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42650/44128): Loss: 0.0117
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42700/44128): Loss: 0.0000
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42750/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42800/44128): Loss: 0.0012
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42850/44128): Loss: 0.0025
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](42900/44128): Loss: 0.0004
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](42950/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43000/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43050/44128): Loss: 0.0069
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43100/44128): Loss: 0.0131
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43150/44128): Loss: 0.0057
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43200/44128): Loss: 0.0013
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43250/44128): Loss: 0.0015
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43300/44128): Loss: 0.0202
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43350/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43400/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43450/44128): Loss: 0.0034
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43500/44128): Loss: 0.0129
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43550/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43600/44128): Loss: 0.0050
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43650/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43700/44128): Loss: 0.0007
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43750/44128): Loss: 0.0392
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43800/44128): Loss: 0.0292
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43850/44128): Loss: 0.0218
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](43900/44128): Loss: 0.0007
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](43950/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](44000/44128): Loss: 0.0006
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](44050/44128): Loss: 0.0027
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](44100/44128): Loss: 0.0011
+Allocated: 370.41 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[1](44150/44128): Loss: 0.0331
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[1](44200/44128): Loss: 0.0611
+Allocated: 370.63 MB
+Cached:    33.95 GB
+===> Epoch 1 Complete: Avg. Loss: 0.0168
+====> Extracting Features
+====> Building faiss index
+====> Calculating recall @ N
+====> Recall@1: 0.4878
+====> Recall@5: 0.6554
+====> Recall@10: 0.7095
+====> Recall@20: 0.7622
+====> Recall@50: 0.8297
+====> Recall@100: 0.8784
+>> Searching for hard negatives...
+==> Epoch[2](50/44128): Loss: 0.0263
+Allocated: 371.06 MB
+Cached:    33.79 GB
+==> Epoch[2](100/44128): Loss: 0.0003
+Allocated: 370.85 MB
+Cached:    33.79 GB
+>> Searching for hard negatives...
+==> Epoch[2](150/44128): Loss: 0.0013
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](200/44128): Loss: 0.0049
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](250/44128): Loss: 0.0172
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](300/44128): Loss: 0.0010
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](350/44128): Loss: 0.0060
+Allocated: 371.06 MB
+Cached:    33.92 GB
+==> Epoch[2](400/44128): Loss: 0.0023
+Allocated: 370.85 MB
+Cached:    33.93 GB
+>> Searching for hard negatives...
+==> Epoch[2](450/44128): Loss: 0.0036
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](500/44128): Loss: 0.0065
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](550/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](600/44128): Loss: 0.0075
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](650/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](700/44128): Loss: 0.0068
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](750/44128): Loss: 0.0065
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](800/44128): Loss: 0.0094
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](850/44128): Loss: 0.0013
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](900/44128): Loss: 0.0013
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](950/44128): Loss: 0.0059
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1000/44128): Loss: 0.0004
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1050/44128): Loss: 0.0061
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1100/44128): Loss: 0.0100
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1150/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1200/44128): Loss: 0.0024
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1250/44128): Loss: 0.0051
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1300/44128): Loss: 0.0071
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1350/44128): Loss: 0.1112
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1400/44128): Loss: 0.0017
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1450/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1500/44128): Loss: 0.0076
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1550/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1600/44128): Loss: 0.0015
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1650/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1700/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1750/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](1800/44128): Loss: 0.0031
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](1850/44128): Loss: 0.0054
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](1900/44128): Loss: 0.0003
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](1950/44128): Loss: 0.0285
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](2000/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](2050/44128): Loss: 0.0106
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](2100/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](2150/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](2200/44128): Loss: 0.0027
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](2250/44128): Loss: 0.0018
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](2300/44128): Loss: 0.0062
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](2350/44128): Loss: 0.0009
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](2400/44128): Loss: 0.0192
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](2450/44128): Loss: 0.0160
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](2500/44128): Loss: 0.0145
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](2550/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](2600/44128): Loss: 0.0246
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](2650/44128): Loss: 0.0161
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](2700/44128): Loss: 0.0183
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](2750/44128): Loss: 0.0008
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](2800/44128): Loss: 0.0010
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](2850/44128): Loss: 0.0046
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](2900/44128): Loss: 0.0032
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](2950/44128): Loss: 0.0002
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3000/44128): Loss: 0.0163
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3050/44128): Loss: 0.0041
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3100/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3150/44128): Loss: 0.0013
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3200/44128): Loss: 0.0008
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3250/44128): Loss: 0.0011
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](3300/44128): Loss: 0.0302
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](3350/44128): Loss: 0.0038
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3400/44128): Loss: 0.0018
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3450/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3500/44128): Loss: 0.0058
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3550/44128): Loss: 0.0001
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3600/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3650/44128): Loss: 0.0021
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3700/44128): Loss: 0.0018
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3750/44128): Loss: 0.0019
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](3800/44128): Loss: 0.0004
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](3850/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](3900/44128): Loss: 0.0045
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](3950/44128): Loss: 0.0060
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4000/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4050/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4100/44128): Loss: 0.0010
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4150/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4200/44128): Loss: 0.0062
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4250/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4300/44128): Loss: 0.0012
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4350/44128): Loss: 0.0003
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4400/44128): Loss: 0.0002
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4450/44128): Loss: 0.0105
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4500/44128): Loss: 0.0023
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4550/44128): Loss: 0.0024
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4600/44128): Loss: 0.0006
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4650/44128): Loss: 0.0017
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4700/44128): Loss: 0.0070
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4750/44128): Loss: 0.0117
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4800/44128): Loss: 0.0206
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4850/44128): Loss: 0.0007
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](4900/44128): Loss: 0.1240
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](4950/44128): Loss: 0.0504
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5000/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5050/44128): Loss: 0.0144
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5100/44128): Loss: 0.0014
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5150/44128): Loss: 0.0293
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5200/44128): Loss: 0.0025
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5250/44128): Loss: 0.0017
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5300/44128): Loss: 0.0004
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5350/44128): Loss: 0.0054
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](5400/44128): Loss: 0.0003
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](5450/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5500/44128): Loss: 0.0057
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5550/44128): Loss: 0.0048
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5600/44128): Loss: 0.0053
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5650/44128): Loss: 0.0007
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5700/44128): Loss: 0.0106
+Allocated: 370.63 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5750/44128): Loss: 0.0009
+Allocated: 371.06 MB
+Cached:    33.95 GB
+==> Epoch[2](5800/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    33.95 GB
+>> Searching for hard negatives...
+==> Epoch[2](5850/44128): Loss: 0.0006
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](5900/44128): Loss: 0.0001
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](5950/44128): Loss: 0.0016
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6000/44128): Loss: 0.0008
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6050/44128): Loss: 0.0012
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6100/44128): Loss: 0.0040
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6150/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6200/44128): Loss: 0.0008
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6250/44128): Loss: 0.0005
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6300/44128): Loss: 0.0019
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6350/44128): Loss: 0.0070
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6400/44128): Loss: 0.0003
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6450/44128): Loss: 0.0060
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6500/44128): Loss: 0.0006
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6550/44128): Loss: 0.0028
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6600/44128): Loss: 0.0107
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6650/44128): Loss: 0.0037
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6700/44128): Loss: 0.0146
+Allocated: 370.85 MB
+Cached:    34.06 GB
+>> Searching for hard negatives...
+==> Epoch[2](6750/44128): Loss: 0.0004
+Allocated: 371.06 MB
+Cached:    34.06 GB
+==> Epoch[2](6800/44128): Loss: 0.0062
+Allocated: 370.85 MB
+Cached:    34.06 GB

@@ -1,0 +1,18 @@
+Thu Feb 29 11:38:49 EST 2024
+/home/m.maqboolbhutta/usman_ws/codes/patchnetvlad
+/home/m.maqboolbhutta/.conda/envs/patchnetvlad/bin/python
+Host: c1110a-s11
+Other nodes: 
+Starting  process(es) on each node...
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar
+Building PCA Model of /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar file...
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar
+checkpoint_epoch2
+Skipping the addition of the PCA layer as /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar already exists.
+Building PCA Model of /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar file...
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar
+checkpoint_epoch1
+Adding PCA Layer

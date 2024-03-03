@@ -1,0 +1,74 @@
+Thu Feb 29 14:07:31 EST 2024
+/home/m.maqboolbhutta/usman_ws/codes/patchnetvlad
+/home/m.maqboolbhutta/.conda/envs/patchnetvlad/bin/python
+Host: c1110a-s23
+Other nodes: 
+Starting  process(es) on each node...
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar
+Building PCA Model of /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar file...
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar
+checkpoint_epoch2
+Skipping the addition of the PCA layer as /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar already exists.
+Extracting Features of mapillarysf Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_index.txt', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/', method='netvlad', nocuda=False, output_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index', resume_path='/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar')
+Parsing dataset...
+Done! Found 6315 images
+=> loading checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+Creating model graphvladpca
+=> loaded checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+Extracting Features of mapillarysf Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_query.txt', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/', method='netvlad', nocuda=False, output_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query', resume_path='/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar')
+Parsing dataset...
+Done! Found 242 images
+=> loading checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+Creating model graphvladpca
+=> loaded checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+Performing Features Matching and Recall Result of mapillarysf
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/', ground_truth_path=None, index_file_path='mapillarysf_imageNames_index.txt', index_input_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index', nocuda=False, posDistThr=None, query_file_path='mapillarysf_imageNames_query.txt', query_input_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query', result_save_folder='./patchnetvlad/results/mapillarysf')
+Parsing dataset...
+Done! Found 242 images
+Parsing dataset...
+Done! Found 6315 images
+Extracting Features of mapillarycph Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_index.txt', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/', method='netvlad', nocuda=False, output_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index', resume_path='/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar')
+Parsing dataset...
+Done! Found 12556 images
+=> loading checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+Creating model graphvladpca
+=> loaded checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+Extracting Features of mapillarycph Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_query.txt', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/', method='netvlad', nocuda=False, output_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query', resume_path='/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar')
+Parsing dataset...
+Done! Found 498 images
+=> loading checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+Creating model graphvladpca
+=> loaded checkpoint '/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+Performing Features Matching and Recall Result of mapillarycph
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/', ground_truth_path=None, index_file_path='mapillarycph_imageNames_index.txt', index_input_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index', nocuda=False, posDistThr=None, query_file_path='mapillarycph_imageNames_query.txt', query_input_features_dir='/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query', result_save_folder='./patchnetvlad/results/mapillarycph')
+Parsing dataset...
+Done! Found 498 images
+Parsing dataset...
+Done! Found 12556 images
+Recall Results of /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar file...
+Ignoring sequence length 3 for the im2im task. (Setting to 1)
+=====> cph
+=====> sf
+all_recall@1: 0.728
+all_recall@5: 0.814
+all_recall@10: 0.855
+all_recall@20: 0.886
+all_map@1: 0.728
+all_map@5: 0.529
+all_map@10: 0.466
+all_map@20: 0.448
+Building PCA Model of /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar file...
+/home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-28-Feb/Feb28_12-07-34_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar
+checkpoint_epoch1
+Adding PCA Layer

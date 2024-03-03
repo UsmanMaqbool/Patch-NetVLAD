@@ -1,0 +1,9 @@
+Thu Feb 22 12:29:56 EST 2024
+/home/m.maqboolbhutta/usman_ws/codes/patchnetvlad
+/home/m.maqboolbhutta/.conda/envs/patchnetvlad/bin/python
+Host: c0903a-s17
+Other nodes: 
+Starting  process(es) on each node...
+==========Starting Training=============
+Saving checkpoints at /home/m.maqboolbhutta/models/patchnetvlad/graphvlad-sare_ind-22-Feb
+========================================

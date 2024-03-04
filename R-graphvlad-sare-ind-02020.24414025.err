@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "train.py", line 60, in <module>
-    from patchnetvlad.models.models_generic import get_backend, get_model, create_model
-  File "/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/models/models_generic.py", line 33, in <module>
-    from codes.patchnetvlad.patchnetvlad.models.netvlad import NetVLAD
-ModuleNotFoundError: No module named 'codes'

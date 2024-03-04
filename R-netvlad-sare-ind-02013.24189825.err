@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "train.py", line 200, in <module>
-    model = create_model(m_name, encoder, pool_layer)
-  File "/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/models/models_generic.py", line 104, in create_model
-    nn_model = models.create(name, encoder, pool_layer)
-  File "/blue/hmedeiros/m.maqboolbhutta/codes/patchnetvlad/patchnetvlad/models/__init__.py", line 52, in create
-    raise KeyError("Unknown model:", name)
-KeyError: ('Unknown model:', 'embeded')

@@ -57,7 +57,7 @@ from patchnetvlad.training_tools.val import val
 from patchnetvlad.training_tools.get_clusters import get_clusters
 from patchnetvlad.training_tools.tools import save_checkpoint
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_segmentation_model, create_model_graphvlad
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import trange
@@ -197,10 +197,30 @@ if __name__ == "__main__":
             pool_layer.init_params(clsts, traindescs)
             del clsts, traindescs
             
-            model = create_model(m_name, encoder, pool_layer)
+                # Semantic Segmentation
+                # classes = 20
+                # p = 2
+                # q = 8
+                # encoderFile = "/orange/hmedeiros/m.maqboolbhutta/dataset/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+                # # encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+
+                # # self.Espnet = ESPNet(classes=self.classes, p=self.p, q = self.q, encoderFile=self.encoderFile) 
+                # segmentation_model = models.create('espnet', classes=classes, p=p, q = q, encoderFile=encoderFile)
+            if m_name=='graphvlad':
+                print('===> Loading segmentation model')
+                encoder = encoder.to(device)
+                pool_layer = pool_layer.to(device)
+                segmentation_model = get_segmentation_model()
+                segmentation_model = encoder.to(device)
+                model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
+            else:   
+                model = create_model(m_name, encoder, pool_layer)
 
     isParallel = False
+    # print(next(model.parameters()).device)
     if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:
+        # model = nn.DataParallel(model)
+        device_ids = [0, 1]  # Assuming you want to use GPU 0 and GPU 1
         model = nn.DataParallel(model)
         isParallel = True
 
@@ -220,10 +240,18 @@ if __name__ == "__main__":
 
     # criterion = nn.TripletMarginLoss(margin=float(config['train']['margin']) ** 0.5, p=2, reduction='sum').to(device)
     criterion = opt.loss
+    print('===> Setting loss function to', criterion)
     model = model.to(device)
 
+    parameters = model.module.parameters()
+
+    # Now you can iterate over parameters
+    for param in parameters:
+        print(param.device)
+        
     if opt.resume_path:
         optimizer.load_state_dict(checkpoint['optimizer'])
+        
 
     print('===> Loading dataset(s)')
     exlude_panos_training = not config['train'].getboolean('includepanos')

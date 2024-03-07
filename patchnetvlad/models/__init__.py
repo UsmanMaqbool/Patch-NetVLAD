@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from .vgg import *
 from .netvlad import *
-
+from .espnet import *
 
 __factory = {
     'vgg16': vgg16,
@@ -11,6 +11,7 @@ __factory = {
     'embednetpca': EmbedNetPCA,
     'graphvlad': GraphVLAD,
     'graphvladpca': GraphVLADPCA,
+    'espnet': ESPNet,
 }
 
 

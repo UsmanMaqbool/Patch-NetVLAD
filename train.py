@@ -57,7 +57,7 @@ from patchnetvlad.training_tools.val import val
 from patchnetvlad.training_tools.get_clusters import get_clusters
 from patchnetvlad.training_tools.tools import save_checkpoint
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_segmentation_model, create_model_graphvlad
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import trange
@@ -197,7 +197,15 @@ if __name__ == "__main__":
             pool_layer.init_params(clsts, traindescs)
             del clsts, traindescs
             
-            model = create_model(m_name, encoder, pool_layer)
+            if m_name=='graphvlad':
+                print('===> Loading segmentation model')
+                encoder = encoder.to(device)
+                pool_layer = pool_layer.to(device)
+                segmentation_model = get_segmentation_model()
+                segmentation_model = encoder.to(device)
+                model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
+            else:   
+                model = create_model(m_name, encoder, pool_layer)
 
     isParallel = False
     if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

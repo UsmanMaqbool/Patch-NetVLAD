@@ -64,6 +64,15 @@ def get_backend():
     enc = models.create(arch, train_layers='conv5', cut_at_pooling=True)
     return enc_dim, enc
 
+def get_segmentation_model():
+    classes = 20
+    p = 2
+    q = 8
+    # encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+    encoderFile = "/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+    model = models.create('espnet', classes=classes, p=p, q=q, encoderFile=encoderFile)
+    
+    return model
 def get_model(encoder, encoder_dim, config, append_pca_layer=False):
     # config['global_params'] is passed as config
     nn_model = nn.Module()
@@ -103,3 +112,9 @@ def create_model(name, encoder, pool_layer):
     print("Creating model %s" % name)
     nn_model = models.create(name, encoder, pool_layer)
     return nn_model
+def create_model_graphvlad(name, encoder, pool_layer, segmentation_model):
+    print("Creating model %s" % name)
+    nn_model = models.create(name, encoder, pool_layer, segmentation_model)
+    return nn_model
+
+

@@ -68,7 +68,8 @@ def get_segmentation_model():
     classes = 20
     p = 2
     q = 8
-    encoderFile = "/orange/hmedeiros/m.maqboolbhutta/dataset/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+    encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+    # encoderFile = "/orange/hmedeiros/m.maqboolbhutta/dataset/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
     model = models.create('espnet', classes=classes, p=p, q=q, encoderFile=encoderFile)
     
     return model

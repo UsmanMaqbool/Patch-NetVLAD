@@ -243,11 +243,6 @@ if __name__ == "__main__":
     print('===> Setting loss function to', criterion)
     model = model.to(device)
 
-    parameters = model.module.parameters()
-
-    # Now you can iterate over parameters
-    for param in parameters:
-        print(param.device)
         
     if opt.resume_path:
         optimizer.load_state_dict(checkpoint['optimizer'])

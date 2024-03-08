@@ -1,0 +1,29 @@
+==========Starting Training=============
+Saving checkpoints at /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_joint-08-Mar-cen-map-16-lr0_001
+========================================
+Namespace(config_path='patchnetvlad/configs/train.ini', cache_path='/home/leo/usman_ws/datasets/2015netVLAD/official/', save_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_joint-08-Mar-cen-map-16-lr0_001', resume_path='', cluster_path='/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', identifier='mapillary_nopanos', nEpochs=30, start_epoch=0, save_every_epoch=True, threads=6, nocuda=False, loss='sare_joint', method='graphvlad')
+===> Building model
+===> Loading model
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvlad
+===> Loading dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix

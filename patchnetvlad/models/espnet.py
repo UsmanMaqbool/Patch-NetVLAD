@@ -310,7 +310,7 @@ class ESPNet_Encoder(nn.Module):
         classifier = self.classifier(output2_cat)
 
         return classifier
-        
+       
 class ESPNet(nn.Module):
     '''
     This class defines the ESPNet network
@@ -326,13 +326,13 @@ class ESPNet(nn.Module):
         '''
         super().__init__()
         self.encoder = ESPNet_Encoder(classes, p, q)
-        if encoderFile != None:
+        if encoderFile is not None:
             self.encoder.load_state_dict(torch.load(encoderFile))
             print('Encoder loaded!')
         # load the encoder modules
-        self.modules = []
-        for i, m in enumerate(self.encoder.children()):
-            self.modules.append(m)
+        self.my_modules = nn.ModuleList()
+        for m in self.encoder.children():
+            self.my_modules.append(m)
 
         # light-weight decoder
         self.level3_C = C(128 + 3, classes, 1, 1)
@@ -347,10 +347,10 @@ class ESPNet(nn.Module):
         self.classifier = nn.ConvTranspose2d(classes, classes, 2, stride=2, padding=0, output_padding=0, bias=False)
 
     def _init_weights(self, module):
-            if isinstance(module, nn.Linear):
-                module.weight.data.normal_(mean=0.0, std=1.0)
-            if module.bias is not None:
-                module.bias.data.zero_()
+        if isinstance(module, nn.Linear):
+            module.weight.data.normal_(mean=0.0, std=1.0)
+        if module.bias is not None:
+            module.bias.data.zero_()
 
     def forward(self, input):
         '''
@@ -358,32 +358,32 @@ class ESPNet(nn.Module):
         :return: transformed feature map
         '''
         # print("first: ", input.shape)
-        output0 = self.modules[0](input)
-        inp1 = self.modules[1](input)
-        inp2 = self.modules[2](input)
+        output0 = self.my_modules[0](input)
+        inp1 = self.my_modules[1](input)
+        inp2 = self.my_modules[2](input)
 
-        output0_cat = self.modules[3](torch.cat([output0, inp1], 1))
-        output1_0 = self.modules[4](output0_cat)  # down-sampled
+        output0_cat = self.my_modules[3](torch.cat([output0, inp1], 1))
+        output1_0 = self.my_modules[4](output0_cat)  # down-sampled
         # print("second: ", output1_0.shape)
 
-        for i, layer in enumerate(self.modules[5]):
+        for i, layer in enumerate(self.my_modules[5]):
             if i == 0:
                 output1 = layer(output1_0)
             else:
                 output1 = layer(output1)
 
-        output1_cat = self.modules[6](torch.cat([output1, output1_0, inp2], 1))
+        output1_cat = self.my_modules[6](torch.cat([output1, output1_0, inp2], 1))
 
-        output2_0 = self.modules[7](output1_cat)  # down-sampled
-        for i, layer in enumerate(self.modules[8]):
+        output2_0 = self.my_modules[7](output1_cat)  # down-sampled
+        for i, layer in enumerate(self.my_modules[8]):
             if i == 0:
                 output2 = layer(output2_0)
             else:
                 output2 = layer(output2)
 
-        output2_cat = self.modules[9](torch.cat([output2_0, output2], 1)) # concatenate for feature map width expansion
+        output2_cat = self.my_modules[9](torch.cat([output2_0, output2], 1)) # concatenate for feature map width expansion
 
-        output2_c = self.up_l3(self.br(self.modules[10](output2_cat))) #RUM
+        output2_c = self.up_l3(self.br(self.my_modules[10](output2_cat))) #RUM
 
         output1_C = self.level3_C(output1_cat) # project to C-dimensional space
         # print (output1_C.shape," ", output2_c.shape)

@@ -89,7 +89,8 @@ if __name__ == "__main__":
     parser.add_argument('--threads', type=int, default=6, help='Number of threads for each data loader to use')
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
-    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')               
+    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')
+    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file')               
 
     opt = parser.parse_args()
     print(opt)
@@ -148,11 +149,7 @@ if __name__ == "__main__":
 
             config['global_params']['num_clusters'] = str(new_state_dict['net_vlad.centroids'].shape[0])
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
-
-            # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
-            
-
-            
+      
             model = create_model(m_name, encoder, pool_layer)
             
             # Load the new state_dict into your model
@@ -199,10 +196,7 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                encoder = encoder.to(device)
-                pool_layer = pool_layer.to(device)
-                segmentation_model = get_segmentation_model()
-                segmentation_model = encoder.to(device)
+                segmentation_model = get_segmentation_model(opt.esp_encoder)
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)

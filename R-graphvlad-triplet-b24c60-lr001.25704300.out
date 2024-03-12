@@ -1,0 +1,55 @@
+Tue Mar 12 09:43:52 EDT 2024
+/home/m.maqboolbhutta/usman_ws/codes/patchnetvlad
+/home/m.maqboolbhutta/.conda/envs/patchnetvlad/bin/python
+Host: c0910a-s23
+Other nodes: 
+Starting  process(es) on each node...
+==========Starting Training=============
+Saving checkpoints at /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-12-Mar-cen-map-16-lr0_001
+========================================
+Namespace(cache_path='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/', cluster_path='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5', config_path='patchnetvlad/configs/train-slurm.ini', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/', esp_encoder='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth', identifier='mapillary_nopanos', loss='triplet', method='graphvlad', nEpochs=30, nocuda=False, resume_path='', save_every_epoch=True, save_path='/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-12-Mar-cen-map-16-lr0_001', start_epoch=0, threads=6)
+===> Building model
+===> Loading model
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvlad
+===> Loading dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+#Sideways [21262/441280]; #Night; [4666/441280]
+Forward and Day weighted with 1.0000
+Forward and Night weighted with 95.5735
+Sideways and Day weighted with 21.7544
+Sideways and Night weighted with 116.3279
+Exclude panoramas: True
+=====> cph
+=====> sf
+===> Training query set: 441280
+===> Evaluating on val set, query count: 740
+===> Training model
+>> Searching for hard negatives...
+>> Searching for hard negatives...
+==> Epoch[1](50/18387): Loss: 0.1126
+Allocated: 504.94 MB
+Cached:    10.45 GB

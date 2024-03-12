@@ -353,22 +353,24 @@ class GraphVLAD(nn.Module):
         gvlad = torch.add(gvlad,vlad_x)        
         return gvlad.view(-1,vlad_x.shape[1])
 class GraphVLADPCA(nn.Module):
-    def __init__(self, base_model, net_vlad, dim=4096):
+    def __init__(self, base_model, net_vlad, esp_net, dim=4096):
         super(GraphVLADPCA, self).__init__()
         self.base_model = base_model
+        self.esp_net = esp_net
         self.net_vlad = net_vlad
-        self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
+        self.SelectRegions = SelectRegions()
+        self.applyGNN = applyGNN()
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()
     def forward(self, x):
         node_features_list = []
         neighborsFeat = []
-        NB, x_size, x_cropped = self.SelectRegions(x)
+        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
         for i in range(NB+1):
             vlad_x = self.net_vlad(x_cropped[i])
             vlad_x = F.normalize(vlad_x, p=2, dim=2)  
-            vlad_x = vlad_x.view(x.size(0), -1)  
+            vlad_x = vlad_x.view(x_size, -1)  
             vlad_x = F.normalize(vlad_x, p=2, dim=1)  
             neighborsFeat.append(vlad_x)
         node_features_list.append(neighborsFeat[NB])

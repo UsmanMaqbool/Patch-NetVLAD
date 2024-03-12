@@ -12,7 +12,6 @@ __factory = {
     'embednetpca': EmbedNetPCA,
     'graphvlad': GraphVLAD,
     'graphvladpca': GraphVLADPCA,
-    'espnet': ESPNet,
 }
 
 

@@ -57,7 +57,7 @@ from patchnetvlad.training_tools.val import val
 from patchnetvlad.training_tools.get_clusters import get_clusters
 from patchnetvlad.training_tools.tools import save_checkpoint
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_segmentation_model, create_model_graphvlad
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, create_model_graphvlad
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import trange
@@ -199,17 +199,20 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                encoder = encoder.to(device)
-                pool_layer = pool_layer.to(device)
-                segmentation_model = get_segmentation_model()
-                segmentation_model = encoder.to(device)
-                model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
+                # encoder = encoder.to(device)
+                # pool_layer = pool_layer.to(device)
+                # segmentation_model = get_segmentation_model()
+                # segmentation_model = segmentation_model.to(device)
+                # encoderFile = "/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+                encoderFile = "/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+                model = create_model_graphvlad(m_name, encoder, pool_layer,encoderFile)
             else:   
                 model = create_model(m_name, encoder, pool_layer)
 
     isParallel = False
     if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:
-        model = nn.DataParallel(model)
+        print("Let's use", torch.cuda.device_count(), "GPUs!")
+        model = nn.DataParallel(model) 
         isParallel = True
 
     if config['train']['optim'] == 'ADAM':

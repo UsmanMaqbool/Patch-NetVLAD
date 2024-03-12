@@ -1,0 +1,15 @@
+Mon Mar 11 18:32:59 EDT 2024
+/home/m.maqboolbhutta/usman_ws/codes/patchnetvlad
+/home/m.maqboolbhutta/.conda/envs/patchnetvlad/bin/python
+Host: c1004a-s11
+Other nodes: 
+Starting  process(es) on each node...
+==========Starting Training=============
+Saving checkpoints at /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-11-Mar-cen-map-16-lr0_001
+========================================
+Namespace(cache_path='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/', cluster_path='/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5', config_path='patchnetvlad/configs/train-slurm.ini', dataset_root_dir='/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/', identifier='mapillary_nopanos', loss='triplet', method='graphvlad', nEpochs=30, nocuda=False, resume_path='', save_every_epoch=True, save_path='/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-11-Mar-cen-map-16-lr0_001', start_epoch=0, threads=6)
+===> Building model
+===> Loading model
+===> Loading segmentation model
+Creating model graphvlad
+Encoder loaded!

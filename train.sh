@@ -20,7 +20,7 @@ if [ "$#" -ne 3 ]; then
     CLUSTER_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
     OFFTHESHELF_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth"
 else
-    FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/${DATE}-netvlad-triplet-b24c60-lr001"
+    FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}-cen-map-16-lr0_001"
     DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/"
     CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/"
     CONFIG="patchnetvlad/configs/train-slurm.ini"

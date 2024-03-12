@@ -265,6 +265,8 @@ class applyGNN(nn.Module):
     def forward(self, x):
         gvlad = self.graph(x)
         return gvlad
+
+
 class SelectRegions(nn.Module):
     def __init__(self):
         super(SelectRegions, self).__init__()
@@ -326,20 +328,24 @@ class SelectRegions(nn.Module):
         del graph_nodes
         return NB, x.size(0), x_cropped
 class GraphVLAD(nn.Module):
-    def __init__(self, base_model, net_vlad, esp_net):
+    def __init__(self, base_model, net_vlad, encoderFile=None):
         super(GraphVLAD, self).__init__()
         self.base_model = base_model
-        self.esp_net = esp_net
         self.net_vlad = net_vlad
         self.SelectRegions = SelectRegions()
         self.applyGNN = applyGNN()
+        
+        self.classes = 20
+        self.p = 2
+        self.q = 8
+        self.espnet = ESPNet(classes=self.classes, p=self.p, q = self.q, encoderFile=encoderFile) # Instantiate ESPNet model
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()
     def forward(self, x):
         node_features_list = []
         neighborsFeat = []
-        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
+        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.espnet)
         for i in range(NB+1):
             vlad_x = self.net_vlad(x_cropped[i])
             vlad_x = F.normalize(vlad_x, p=2, dim=2)  

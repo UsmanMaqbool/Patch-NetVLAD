@@ -199,10 +199,10 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                encoder = encoder.to(device)
-                pool_layer = pool_layer.to(device)
+                # encoder = encoder.to(device)
+                # pool_layer = pool_layer.to(device)
                 segmentation_model = get_segmentation_model()
-                segmentation_model = encoder.to(device)
+                # segmentation_model = encoder.to(device)
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)

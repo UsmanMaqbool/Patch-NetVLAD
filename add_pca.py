@@ -43,7 +43,7 @@ import numpy as np
 
 from patchnetvlad.training_tools.tools import pca
 from patchnetvlad.tools.datasets import input_transform
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model, Flatten, L2Norm
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_segmentation_model, create_model_graphvlad, Flatten, L2Norm
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 from tqdm.auto import tqdm
@@ -73,6 +73,7 @@ if __name__ == "__main__":
     parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
                         help='NetVLAD Off the Shelf VGG Weights.')
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad') 
+    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file')
 
     opt = parser.parse_args()
     print(opt)
@@ -126,7 +127,12 @@ if __name__ == "__main__":
 
             # model = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
             
-            model = create_model(m_name,encoder, pool_layer)
+            if m_name=='graphvlad':
+                print('===> Loading segmentation model')
+                segmentation_model = get_segmentation_model(opt.esp_encoder)
+                model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
+            else:   
+                model = create_model(m_name, encoder, pool_layer)
             
             # Load the new state_dict into your model
             model.load_state_dict(new_state_dict)

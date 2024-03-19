@@ -360,6 +360,7 @@ class GraphVLADPCA(nn.Module):
         self.net_vlad = net_vlad
         self.SelectRegions = SelectRegions()
         self.applyGNN = applyGNN()
+        self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()

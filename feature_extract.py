@@ -45,7 +45,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 import numpy as np
 from patchnetvlad.tools.datasets import PlaceDataset
-from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_pca_encoding
+from patchnetvlad.models.models_generic import get_backend, get_model, create_model, get_pca_encoding, get_segmentation_model, create_model_graphvlad
 from patchnetvlad.tools import PATCHNETVLAD_ROOT_DIR
 
 
@@ -113,7 +113,8 @@ def main():
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--resume_path', type=str, default='',
                         help='Full path and name (with extension) to load checkpoint from, for resuming training.')
-    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')    
+    parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')   
+    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file') 
     opt = parser.parse_args()
     print(opt)
 
@@ -168,7 +169,16 @@ def main():
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)
         
-        model = create_model(m_name, encoder, pool_layer)
+                    
+        if m_name=='graphvladpca':
+            print('===> Loading segmentation model')
+            segmentation_model = get_segmentation_model(opt.esp_encoder)
+            model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
+        else:   
+            model = create_model(m_name, encoder, pool_layer)
+        
+        
+        
         model.load_state_dict(checkpoint['state_dict'])
         
         if int(config['global_params']['nGPU']) > 1 and torch.cuda.device_count() > 1:

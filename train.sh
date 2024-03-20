@@ -41,7 +41,8 @@ $PYTHON -u train.py --save_every_epoch \
   --loss=${LOSS} \
   --method=${METHOD} \
   --esp_encoder=${ESP_ENCODER} \
-  --cluster_path=${CLUSTER_PATH} 
+  --cluster_path=${CLUSTER_PATH} \
+  --threads=24
 
 
 #   --resume_path=/home/leo/usman_ws/models/patchnetvlad/graphvlad-triplet-20-Feb-netvlad-triplet-cen-map-16-lr0_001/Feb20_09-18-06_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar

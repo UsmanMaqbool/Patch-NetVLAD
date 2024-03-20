@@ -127,10 +127,7 @@ if __name__ == "__main__":
     else:
         # Define a default value for m_name when the method is not 'netvlad'
         m_name = 'embednet'
-    # m_name = 'embednet'
-    # m_name = 'embednetpca'
-    # m_name = 'graphvlad'
-            
+
     if opt.resume_path: # if already started training earlier and continuing
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
@@ -234,7 +231,7 @@ if __name__ == "__main__":
                          exclude_panos=exlude_panos_training)
 
     validation_dataset = MSLS(opt.dataset_root_dir, mode='val', transform=input_transform(),
-                              bs=int(config['train']['cachebatchsize']), threads=opt.threads,
+                              bs=int(config['train']['batchsize']), threads=opt.threads,
                               margin=float(config['train']['margin']), posDistThr=25)
 
     print('===> Training query set:', len(train_dataset.qIdx))

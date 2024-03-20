@@ -131,3 +131,481 @@ Exclude panoramas: True
 ===> Do inference to extract features and save them.
 ====> Extracting Features
 Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 8192 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+Extracting Features of mapillarysf Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 6315 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarysf Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 242 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarysf
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarysf_imageNames_query.txt', index_file_path='mapillarysf_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarysf', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 242 images
+Parsing dataset...
+Done! Found 6315 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarysf/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Extracting Features of mapillarycph Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 12556 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarycph Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 498 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarycph
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarycph_imageNames_query.txt', index_file_path='mapillarycph_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarycph', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 498 images
+Parsing dataset...
+Done! Found 12556 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Recall Results of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar file...
+Ignoring sequence length 3 for the im2im task. (Setting to 1)
+=====> cph
+=====> sf
+all_recall@1: 0.716
+all_recall@5: 0.815
+all_recall@10: 0.849
+all_recall@20: 0.872
+all_map@1: 0.716
+all_map@5: 0.521
+all_map@10: 0.461
+all_map@20: 0.447
+Building PCA Model of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar file...
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar
+checkpoint_epoch2
+Adding PCA Layer
+Namespace(config_path='patchnetvlad/configs/train.ini', resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', dataset_choice='mapillary', threads=6, nocuda=False, vd16_offtheshelf_path=None, method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+===> Building model
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvlad
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar'
+===> Loading PCA dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 8192 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+Extracting Features of mapillarysf Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 6315 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarysf Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 242 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarysf
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarysf_imageNames_query.txt', index_file_path='mapillarysf_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarysf', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 242 images
+Parsing dataset...
+Done! Found 6315 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarysf/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Extracting Features of mapillarycph Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 12556 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarycph Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 498 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarycph
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarycph_imageNames_query.txt', index_file_path='mapillarycph_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarycph', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 498 images
+Parsing dataset...
+Done! Found 12556 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Recall Results of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar file...
+Ignoring sequence length 3 for the im2im task. (Setting to 1)
+=====> cph
+=====> sf
+all_recall@1: 0.716
+all_recall@5: 0.815
+all_recall@10: 0.849
+all_recall@20: 0.872
+all_map@1: 0.716
+all_map@5: 0.521
+all_map@10: 0.461
+all_map@20: 0.447
+Building PCA Model of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar file...
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar
+checkpoint_epoch4
+Adding PCA Layer
+Namespace(config_path='patchnetvlad/configs/train.ini', resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', dataset_choice='mapillary', threads=6, nocuda=False, vd16_offtheshelf_path=None, method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+===> Building model
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvlad
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4.pth.tar'
+===> Loading PCA dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 8192 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+Extracting Features of mapillarysf Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 6315 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarysf Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 242 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarysf
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarysf_imageNames_query.txt', index_file_path='mapillarysf_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarysf', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 242 images
+Parsing dataset...
+Done! Found 6315 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarysf/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Extracting Features of mapillarycph Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 12556 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarycph Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 498 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarycph
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarycph_imageNames_query.txt', index_file_path='mapillarycph_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarycph', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 498 images
+Parsing dataset...
+Done! Found 12556 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Recall Results of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch4_WPCA4096.pth.tar file...
+Ignoring sequence length 3 for the im2im task. (Setting to 1)
+=====> cph
+=====> sf
+all_recall@1: 0.689
+all_recall@5: 0.791
+all_recall@10: 0.826
+all_recall@20: 0.859
+all_map@1: 0.689
+all_map@5: 0.488
+all_map@10: 0.428
+all_map@20: 0.415
+Building PCA Model of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar file...
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar
+checkpoint_epoch1
+Adding PCA Layer
+Namespace(config_path='patchnetvlad/configs/train.ini', resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', dataset_choice='mapillary', threads=6, nocuda=False, vd16_offtheshelf_path=None, method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+===> Building model
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvlad
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar'
+===> Loading PCA dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features
+===> Compute PCA, takes a while
+PCA for 10000 points of dimension 8192 to PCA dimension 4096
+Compute 4096 eigenvectors
+===> Add PCA Whiten
+Done
+Extracting Features of mapillarysf Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 6315 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarysf Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarysf_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 242 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarysf
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarysf_imageNames_query.txt', index_file_path='mapillarysf_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarysf', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 242 images
+Parsing dataset...
+Done! Found 6315 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarysf/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Extracting Features of mapillarycph Index Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_index.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 12556 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Extracting Features of mapillarycph Query Images
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_file_path='mapillarycph_imageNames_query.txt', dataset_root_dir='/home/leo/usman_ws/datasets/', output_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', nocuda=False, resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar', method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+Parsing dataset...
+Done! Found 498 images
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvladpca
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar'
+====> Extracting Features
+
+
+Done. Finished extracting and saving features
+Performing Features Matching and Recall Result of mapillarycph
+Namespace(config_path='patchnetvlad/configs/performance.ini', dataset_root_dir='/home/leo/usman_ws/datasets/', query_file_path='mapillarycph_imageNames_query.txt', index_file_path='mapillarycph_imageNames_index.txt', query_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query', index_input_features_dir='/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index', ground_truth_path=None, result_save_folder='./patchnetvlad/results/mapillarycph', posDistThr=None, nocuda=False)
+Parsing dataset...
+Done! Found 498 images
+Parsing dataset...
+Done! Found 12556 images
+====> Building faiss index
+Writing results to ./patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt
+Finished matching features.
+No ground truth was provided; not calculating recalls.
+Done
+Recall Results of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-14-Mar-cen-map-16-lr0_001/Mar14_09-16-18_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar file...
+Ignoring sequence length 3 for the im2im task. (Setting to 1)
+=====> cph
+=====> sf
+all_recall@1: 0.659
+all_recall@5: 0.788
+all_recall@10: 0.820
+all_recall@20: 0.849
+all_map@1: 0.659
+all_map@5: 0.457
+all_map@10: 0.393
+all_map@20: 0.378

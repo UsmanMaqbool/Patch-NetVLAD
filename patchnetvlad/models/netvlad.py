@@ -350,8 +350,9 @@ class GraphVLAD(nn.Module):
         node_features_list.append(torch.concat(neighborsFeat[0:NB],0))
         neighborsFeat = []
         gvlad = self.applyGNN(node_features_list)
-        gvlad = torch.add(gvlad,vlad_x)        
-        return gvlad.view(-1,vlad_x.shape[1])
+        gvlad = torch.add(gvlad,vlad_x)
+        gvlad = gvlad.view(-1,vlad_x.shape[1])
+        return gvlad
 class GraphVLADPCA(nn.Module):
     def __init__(self, base_model, net_vlad, esp_net, dim=4096):
         super(GraphVLADPCA, self).__init__()

@@ -1,0 +1,41 @@
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/model_best.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/checkpoint_epoch1.pth.tar
+Building PCA Model of /home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/model_best.pth.tar file...
+/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/model_best_WPCA4096.pth.tar
+model_best
+Adding PCA Layer
+Namespace(config_path='patchnetvlad/configs/train.ini', resume_path='/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/model_best.pth.tar', dataset_root_dir='/home/leo/usman_ws/datasets/mapillary_sls/', dataset_choice='mapillary', threads=6, nocuda=False, vd16_offtheshelf_path=None, method='graphvlad', esp_encoder='/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth')
+===> Building model
+=> loading checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/model_best.pth.tar'
+===> Loading segmentation model
+Encoder loaded!
+Creating model graphvlad
+=> loaded checkpoint '/home/leo/usman_ws/models/patchnetvlad/graphvlad-sare_ind-19-Mar-cen-map-16-lr0_001/Mar19_18-12-36_mapillary_nopanos/checkpoints/model_best.pth.tar'
+===> Loading PCA dataset(s)
+Exclude panoramas: True
+=====> trondheim
+=====> london
+=====> boston
+=====> melbourne
+=====> amsterdam
+=====> helsinki
+=====> tokyo
+=====> toronto
+=====> saopaulo
+=====> moscow
+=====> zurich
+=====> paris
+=====> bangkok
+=====> budapest
+=====> austin
+=====> berlin
+=====> ottawa
+=====> phoenix
+=====> goa
+=====> amman
+=====> nairobi
+=====> manila
+===> Do inference to extract features and save them.
+====> Extracting Features
+Compute 10000 features

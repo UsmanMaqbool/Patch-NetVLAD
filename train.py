@@ -64,6 +64,9 @@ from tqdm.auto import trange
 
 from patchnetvlad.training_tools.msls import MSLS
 
+import cProfile
+import pstats
+import io
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Patch-NetVLAD-train')
@@ -82,7 +85,7 @@ if __name__ == "__main__":
                         help='Root directory of dataset')
     parser.add_argument('--identifier', type=str, default='mapillary_nopanos',
                         help='Description of this model, e.g. mapillary_nopanos_vgg16_netvlad')
-    parser.add_argument('--nEpochs', type=int, default=30, help='number of epochs to train for')
+    parser.add_argument('--nEpochs', type=int, default=1, help='number of epochs to train for')
     parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                         help='manual epoch number (useful on restarts)')
     parser.add_argument('--save_every_epoch', action='store_true', help='Flag to set a separate checkpoint file for each new epoch')
@@ -94,7 +97,10 @@ if __name__ == "__main__":
 
     opt = parser.parse_args()
     print(opt)
-
+    
+    pr = cProfile.Profile()
+    pr.enable()
+    
     configfile = opt.config_path
     assert os.path.isfile(configfile)
     config = configparser.ConfigParser()
@@ -284,5 +290,12 @@ if __name__ == "__main__":
 
     torch.cuda.empty_cache()  # garbage clean GPU memory, a bug can occur when Pytorch doesn't automatically clear the
     # memory after runs
-
+    
+    pr.disable()
+    s = io.StringIO()
+    sortby = 'cumulative'
+    ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+    ps.print_stats()
+    print(s.getvalue())
+    
     print('Done')

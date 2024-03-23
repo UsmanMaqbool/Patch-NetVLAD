@@ -30,6 +30,13 @@ import torch.nn.init as init
 from torchvision import transforms
 from .espnet import *
 from torchvision.ops import masks_to_boxes
+
+import cProfile
+import pstats
+import io
+
+
+
 class NetVLAD(nn.Module):
     """NetVLAD layer implementation"""
     def __init__(self, num_clusters=16, dim=128,
@@ -269,6 +276,7 @@ class SelectRegions(nn.Module):
     def __init__(self):
         super(SelectRegions, self).__init__()
     def forward(self, x, base_model, espnet):
+
         sizeH = x.shape[2]
         sizeW = x.shape[3]
         if sizeH%2 != 0:
@@ -278,6 +286,8 @@ class SelectRegions(nn.Module):
 
         # with torch.no_grad():
         #     b_out = espnet(x)
+        pr = cProfile.Profile()
+        pr.enable()
         b_out = espnet(x)
 
 
@@ -291,6 +301,19 @@ class SelectRegions(nn.Module):
             boxes_t = masks_to_boxes(masks.to(torch.float32))
             rr_boxes = torch.argsort(torch.argsort(obj_i,descending=True)) 
             boxes = boxes_t/16
+            
+        mask = b_out.max(1)[1]
+        boxes = torch.empty((len(mask), 4))  # Preallocate memory for boxes
+
+        for jj in range(len(mask)):
+            single_label_mask = mask[jj]
+            obj_ids, obj_i = single_label_mask.unique(return_counts=True)
+            obj_ids = obj_ids[1:]
+            obj_i = obj_i[1:]
+            masks = single_label_mask == obj_ids[:, None, None]
+            boxes_t = masks_to_boxes(masks.to(torch.float32))
+            boxes[jj] = boxes_t.div_(16)  # Use in-place division    
+            
         _, _, H, W = x.shape
         patch_mask = torch.zeros((H, W)).cuda()
         x = base_model(x)   
@@ -327,7 +350,15 @@ class SelectRegions(nn.Module):
             graph_nodes[Nx] = aa[0]
         x_cropped = graph_nodes.view(NB,N,C,H,W)
         x_cropped = torch.cat((graph_nodes.view(NB,N,C,H,W), x.unsqueeze(0)))
+        
         del graph_nodes
+        pr.disable()
+        s = io.StringIO()
+        sortby = 'cumulative'
+        ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+        ps.print_stats()
+        print(s.getvalue())
+        exit()
         return NB, x.size(0), x_cropped
 class GraphVLAD(nn.Module):
     def __init__(self, base_model, net_vlad, esp_net):

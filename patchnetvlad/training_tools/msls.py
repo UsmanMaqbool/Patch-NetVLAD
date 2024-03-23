@@ -41,7 +41,7 @@ import random
 import sys
 import itertools
 from tqdm import tqdm
-
+import code
 
 default_cities = {
     'train': ["trondheim", "london", "boston", "melbourne", "amsterdam", "helsinki",
@@ -147,11 +147,13 @@ class MSLS(Dataset):
                 # load query data
                 qData = pd.read_csv(join(root_dir, subdir, city, 'query', 'postprocessed.csv'), index_col=0)
                 qDataRaw = pd.read_csv(join(root_dir, subdir, city, 'query', 'raw.csv'), index_col=0)
-
+                qData = qData[:50]
+                qDataRaw = qDataRaw[:50]
                 # load database data
                 dbData = pd.read_csv(join(root_dir, subdir, city, 'database', 'postprocessed.csv'), index_col=0)
                 dbDataRaw = pd.read_csv(join(root_dir, subdir, city, 'database', 'raw.csv'), index_col=0)
-
+                dbData = dbData[:50]
+                dbDataRaw = dbDataRaw[:50]
                 # arange based on task
                 qSeqKeys, qSeqIdxs = self.arange_as_seq(qData, join(root_dir, subdir, city, 'query'), seq_length_q)
                 dbSeqKeys, dbSeqIdxs = self.arange_as_seq(dbData, join(root_dir, subdir, city, 'database'),
@@ -282,14 +284,57 @@ class MSLS(Dataset):
             sys.exit()
 
         # cast to np.arrays for indexing during training
+        
+        # self.qIdx = np.asarray(self.qIdx)
+        # self.qImages = np.asarray(self.qImages)
+        # self.pIdx = np.asarray(self.pIdx)
+        # self.nonNegIdx = np.asarray(self.nonNegIdx)
+        # self.dbImages = np.asarray(self.dbImages)
+        # self.sideways = np.asarray(self.sideways)
+        # self.night = np.asarray(self.night)
         self.qIdx = np.asarray(self.qIdx)
-        self.qImages = np.asarray(self.qImages)
-        self.pIdx = np.asarray(self.pIdx)
-        self.nonNegIdx = np.asarray(self.nonNegIdx)
-        self.dbImages = np.asarray(self.dbImages)
-        self.sideways = np.asarray(self.sideways)
-        self.night = np.asarray(self.night)
+        print("Shape of qIdx: ", self.qIdx.shape)
 
+        self.qImages = np.asarray(self.qImages)
+        print("Shape of qImages: ", self.qImages.shape)
+
+        self.pIdx = np.asarray(self.pIdx)
+        print("Shape of pIdx: ", self.pIdx.shape)
+
+        self.nonNegIdx = np.asarray(self.nonNegIdx)
+        print("Shape of nonNegIdx: ", self.nonNegIdx.shape)
+
+        self.dbImages = np.asarray(self.dbImages)
+        print("Shape of dbImages: ", self.dbImages.shape)
+
+        self.sideways = np.asarray(self.sideways)
+        print("Shape of sideways: ", self.sideways.shape)
+
+        self.night = np.asarray(self.night)
+        print("Shape of night: ", self.night.shape)
+        
+        # Shape of qIdx:  (441280,)
+        # Shape of qImages:  (502704,)
+        # Shape of nonNegIdx:  (441280,)
+        # Shape of dbImages:  (915202,)
+        # Shape of sideways:  (21262,)
+        # Shape of night:  (4666,)
+
+        
+        
+        
+        
+        # self.qIdx =      self.qIdx[0:]
+        # self.qImages =   self.qImages[0:5027]
+        # self.pIdx =      self.pIdx[0:]
+        # self.nonNegIdx = self.nonNegIdx[0:]
+        # self.dbImages =  self.dbImages[0:9152]
+        # self.sideways =  self.sideways[0:212]
+        # self.night =     self.night[0:46]
+        
+        
+        
+        
         # decide device type ( important for triplet mining )
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.threads = threads

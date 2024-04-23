@@ -94,7 +94,8 @@ if __name__ == "__main__":
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')
     parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file')               
-
+    parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
+                        help='NetVLAD Off the Shelf VGG Weights.')
     opt = parser.parse_args()
     print(opt)
     
@@ -124,8 +125,8 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    # encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(opt.vd16_offtheshelf_path)
+    # encoder_dim, encoder = get_backend()
 
     # Set m_name based on the selected method
     if opt.method == 'graphvlad':
@@ -192,10 +193,9 @@ if __name__ == "__main__":
 
         with h5py.File(initcache, mode='r') as h5:
             
-            clsts = h5.get("centroids")[...]
-            traindescs = h5.get("descriptors")[...]
-            pool_layer.init_params(clsts, traindescs)
-            del clsts, traindescs
+            pool_layer.clsts = h5.get("centroids")[...]
+            pool_layer.traindescs = h5.get("descriptors")[...]
+            pool_layer._init_params()
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')

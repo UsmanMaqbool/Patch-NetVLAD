@@ -132,7 +132,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             data_input = torch.cat([query, positives, negatives])
 
             data_input = data_input.to(device)
-            vlad_encoding = model(data_input.to(device))
+            _, vlad_encoding = model(data_input.to(device))
 
             optimizer.zero_grad()
 

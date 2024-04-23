@@ -30,116 +30,6 @@ import torch.nn.init as init
 from torchvision import transforms
 from .espnet import *
 from torchvision.ops import masks_to_boxes
-
-import cProfile
-import pstats
-import io
-
-
-
-class NetVLAD(nn.Module):
-    """NetVLAD layer implementation"""
-    def __init__(self, num_clusters=16, dim=128,
-                 normalize_input=True, vladv2=False, use_faiss=True):
-        """
-        Args:
-            num_clusters : int
-                The number of clusters
-            dim : int
-                Dimension of descriptors
-            normalize_input : bool
-                If true, descriptor-wise L2 normalization is applied to input.
-            vladv2 : bool
-                If true, use vladv2 otherwise use vladv1
-        """
-        super().__init__()
-        self.num_clusters = num_clusters
-        self.dim = dim
-        self.alpha = 0
-        self.vladv2 = vladv2
-        self.normalize_input = normalize_input
-        self.conv = nn.Conv2d(dim, num_clusters, kernel_size=(1, 1), bias=vladv2)
-        self.centroids = nn.Parameter(torch.rand(num_clusters, dim))
-        self.use_faiss = use_faiss
-    def init_params(self, clsts, traindescs):
-        if not self.vladv2:
-            clstsAssign = clsts / np.linalg.norm(clsts, axis=1, keepdims=True)
-            dots = np.dot(clstsAssign, traindescs.T)
-            dots.sort(0)
-            dots = dots[::-1, :]  
-            self.alpha = (-np.log(0.01) / np.mean(dots[0, :] - dots[1, :])).item()
-            self.centroids = nn.Parameter(torch.from_numpy(clsts))
-            self.conv.weight = nn.Parameter(torch.from_numpy(self.alpha * clstsAssign).unsqueeze(2).unsqueeze(3))
-            self.conv.bias = None
-        else:
-            if not self.use_faiss:
-                knn = NearestNeighbors(n_jobs=-1)
-                knn.fit(traindescs)
-                del traindescs
-                ds_sq = np.square(knn.kneighbors(clsts, 2)[1])
-                del knn
-            else:
-                index = faiss.IndexFlatL2(traindescs.shape[1])
-                index.add(traindescs)
-                del traindescs
-                ds_sq = np.square(index.search(clsts, 2)[1])
-                del index
-            self.alpha = (-np.log(0.01) / np.mean(ds_sq[:, 1] - ds_sq[:, 0])).item()
-            self.centroids = nn.Parameter(torch.from_numpy(clsts))
-            del clsts, ds_sq
-            self.conv.weight = nn.Parameter(
-                (2.0 * self.alpha * self.centroids).unsqueeze(-1).unsqueeze(-1)
-            )
-            self.conv.bias = nn.Parameter(
-                - self.alpha * self.centroids.norm(dim=1)
-            )
-    def forward(self, x):
-        N, C = x.shape[:2]
-        if self.normalize_input:
-            x = F.normalize(x, p=2, dim=1)  
-        soft_assign = self.conv(x).view(N, self.num_clusters, -1)
-        soft_assign = F.softmax(soft_assign, dim=1)
-        x_flatten = x.view(N, C, -1)
-        residual = x_flatten.expand(self.num_clusters, -1, -1, -1).permute(1, 0, 2, 3) - \
-            self.centroids.expand(x_flatten.size(-1), -1, -1).permute(1, 2, 0).unsqueeze(0)
-        residual *= soft_assign.unsqueeze(2)
-        vlad = residual.sum(dim=-1)
-        return vlad
-class EmbedNet(nn.Module):
-    def __init__(self, base_model, net_vlad):
-        super(EmbedNet, self).__init__()
-        self.base_model = base_model
-        self.net_vlad = net_vlad
-    def _init_params(self):
-        self.base_model._init_params()
-        self.net_vlad._init_params()
-    def forward(self, x):
-        x = self.base_model(x)
-        vlad_x = self.net_vlad(x)
-        vlad_x = F.normalize(vlad_x, p=2, dim=2)  
-        vlad_x = vlad_x.view(x.size(0), -1)  
-        vlad_x = F.normalize(vlad_x, p=2, dim=1)  
-        return vlad_x
-class EmbedNetPCA(nn.Module):
-    def __init__(self, base_model, net_vlad, dim=4096):
-        super(EmbedNetPCA, self).__init__()
-        self.base_model = base_model
-        self.net_vlad = net_vlad
-        self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
-    def _init_params(self):
-        self.base_model._init_params()
-        self.net_vlad._init_params()
-    def forward(self, x):
-        x = self.base_model(x)
-        vlad_x = self.net_vlad(x)
-        vlad_x = F.normalize(vlad_x, p=2, dim=2)  
-        vlad_x = vlad_x.view(x.size(0), -1)  
-        vlad_x = F.normalize(vlad_x, p=2, dim=1)  
-        N, D = vlad_x.size()
-        vlad_x = vlad_x.view(N, D, 1, 1)
-        vlad_x = self.pca_layer(vlad_x).view(N, -1)
-        vlad_x = F.normalize(vlad_x, p=2, dim=-1)  
-        return vlad_x
 class NeighborAggregator(nn.Module):
     def __init__(self, input_dim, output_dim,
                  use_bias=False, aggr_method="mean"):
@@ -261,11 +151,202 @@ class GraphSage(nn.Module):
         return 'in_features={}, num_neighbors_list={}'.format(
             self.input_dim, self.num_neighbors_list
         )
+class NetVLAD(nn.Module):
+    """NetVLAD layer implementation"""
+
+    def __init__(self, num_clusters=64, dim=512, alpha=100.0, normalize_input=True):
+        """
+        Args:
+            num_clusters : int
+                The number of clusters
+            dim : int
+                Dimension of descriptors
+            alpha : float
+                Parameter of initialization. Larger value is harder assignment.
+            normalize_input : bool
+                If true, descriptor-wise L2 normalization is applied to input.
+        """
+        super(NetVLAD, self).__init__()
+        self.num_clusters = num_clusters
+        self.dim = dim
+        self.alpha = alpha
+        self.normalize_input = normalize_input
+        self.conv = nn.Conv2d(dim, num_clusters, kernel_size=(1, 1), bias=False)
+        self.centroids = nn.Parameter(torch.rand(num_clusters, dim), requires_grad=True)
+
+        self.clsts = None
+        self.traindescs = None
+        
+
+
+
+
+    def _init_params(self):
+        clstsAssign = self.clsts / np.linalg.norm(self.clsts, axis=1, keepdims=True)
+        dots = np.dot(clstsAssign, self.traindescs.T)
+        dots.sort(0)
+        dots = dots[::-1, :] # sort, descending
+
+        self.alpha = (-np.log(0.01) / np.mean(dots[0,:] - dots[1,:])).item()
+        self.centroids.data.copy_(torch.from_numpy(self.clsts))
+        self.conv.weight.data.copy_(torch.from_numpy(self.alpha*clstsAssign).unsqueeze(2).unsqueeze(3))
+
+    def forward(self, x):
+        N, C = x.shape[:2]
+        
+        if self.normalize_input:
+            x = F.normalize(x, p=2, dim=1)  # across descriptor dim
+
+        # soft-assignment
+        soft_assign = self.conv(x).view(N, self.num_clusters, -1)
+        soft_assign = F.softmax(soft_assign, dim=1)
+
+        x_flatten = x.view(N, C, -1)
+
+        # calculate residuals to each clusters in one loop
+        residual = x_flatten.expand(self.num_clusters, -1, -1, -1).permute(1, 0, 2, 3) - \
+            self.centroids.expand(x_flatten.size(-1), -1, -1).permute(1, 2, 0).unsqueeze(0)
+        residual *= soft_assign.unsqueeze(2)
+        vlad = residual.sum(dim=-1)
+
+        return vlad
+class EmbedNet(nn.Module):
+    def __init__(self, base_model, net_vlad):
+        super(EmbedNet, self).__init__()
+        self.base_model = base_model
+        self.net_vlad = net_vlad
+    def _init_params(self):
+        self.base_model._init_params()
+        self.net_vlad._init_params()
+    def forward(self, x):
+        pool_x, x = self.base_model(x)
+        vlad_x = self.net_vlad(x)
+        vlad_x = F.normalize(vlad_x, p=2, dim=2)  
+        vlad_x = vlad_x.view(x.size(0), -1)  
+        vlad_x = F.normalize(vlad_x, p=2, dim=1)  
+        return pool_x, vlad_x
+class EmbedNetPCA(nn.Module):
+    def __init__(self, base_model, net_vlad, dim=4096):
+        super(EmbedNetPCA, self).__init__()
+        self.base_model = base_model
+        self.net_vlad = net_vlad
+        self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
+    def _init_params(self):
+        self.base_model._init_params()
+        self.net_vlad._init_params()
+    def forward(self, x):
+        _, x = self.base_model(x)
+        vlad_x = self.net_vlad(x)
+        vlad_x = F.normalize(vlad_x, p=2, dim=2)  
+        vlad_x = vlad_x.view(x.size(0), -1)  
+        vlad_x = F.normalize(vlad_x, p=2, dim=1)  
+        N, D = vlad_x.size()
+        vlad_x = vlad_x.view(N, D, 1, 1)
+        vlad_x = self.pca_layer(vlad_x).view(N, -1)
+        vlad_x = F.normalize(vlad_x, p=2, dim=-1)  
+        return vlad_x
+class EmbedRegionNet(nn.Module):
+    def __init__(self, base_model, net_vlad, tuple_size=1):
+        super(EmbedRegionNet, self).__init__()
+        self.base_model = base_model
+        self.net_vlad = net_vlad
+        self.tuple_size = tuple_size
+
+    def _init_params(self):
+        self.base_model._init_params()
+        self.net_vlad._init_params()
+
+    def _compute_region_sim(self, feature_A, feature_B):
+        # feature_A: B*C*H*W
+        # feature_B: (B*(1+neg_num))*C*H*W
+
+        def reshape(x):
+            # re-arrange local features for aggregating quarter regions
+            N, C, H, W = x.size()
+            x = x.view(N, C, 2, int(H/2), 2, int(W/2))
+            x = x.permute(0,1,2,4,3,5).contiguous()
+            x = x.view(N, C, -1, int(H/2), int(W/2))
+            return x
+
+        feature_A = reshape(feature_A)
+        feature_B = reshape(feature_B)
+
+        # compute quarter-region features
+        def aggregate_quarter(x):
+            N, C, B, H, W = x.size()
+            x = x.permute(0,2,1,3,4).contiguous()
+            x = x.view(-1,C,H,W)
+            vlad_x = self.net_vlad(x) # (N*B)*64*512
+            _, cluster_num, feat_dim = vlad_x.size()
+            vlad_x = vlad_x.view(N,B,cluster_num,feat_dim)
+            return vlad_x
+
+        vlad_A_quarter = aggregate_quarter(feature_A)
+        vlad_B_quarter = aggregate_quarter(feature_B)
+
+        # compute half-region features
+        def quarter_to_half(vlad_x):
+            return torch.stack((vlad_x[:,0]+vlad_x[:,1], vlad_x[:,2]+vlad_x[:,3], \
+                                vlad_x[:,0]+vlad_x[:,2], vlad_x[:,1]+vlad_x[:,3]), dim=1).contiguous()
+
+        vlad_A_half = quarter_to_half(vlad_A_quarter)
+        vlad_B_half = quarter_to_half(vlad_B_quarter)
+
+        # compute global-image features
+        def quarter_to_global(vlad_x):
+            return vlad_x.sum(1).unsqueeze(1).contiguous()
+
+        vlad_A_global = quarter_to_global(vlad_A_quarter)
+        vlad_B_global = quarter_to_global(vlad_B_quarter)
+
+        def norm(vlad_x):
+            N, B, C, _ = vlad_x.size()
+            vlad_x = F.normalize(vlad_x, p=2, dim=3)  # intra-normalization
+            vlad_x = vlad_x.view(N, B, -1)  # flatten
+            vlad_x = F.normalize(vlad_x, p=2, dim=2)  # L2 normalize
+            return vlad_x
+
+        vlad_A = torch.cat((vlad_A_global, vlad_A_half, vlad_A_quarter), dim=1)
+        vlad_B = torch.cat((vlad_B_global, vlad_B_half, vlad_B_quarter), dim=1)
+        vlad_A = norm(vlad_A)
+        vlad_B = norm(vlad_B)
+
+        _, B, L = vlad_B.size()
+        vlad_A = vlad_A.view(self.tuple_size,-1,B,L)
+        vlad_B = vlad_B.view(self.tuple_size,-1,B,L)
+
+        score = torch.bmm(vlad_A.expand_as(vlad_B).view(-1,B,L), vlad_B.view(-1,B,L).transpose(1,2))
+        score = score.view(self.tuple_size,-1,B,B)
+
+        return score, vlad_A, vlad_B
+
+    def _forward_train(self, x):
+        B, C, H, W = x.size()
+        x = x.view(self.tuple_size, -1, C, H, W)
+
+        anchors = x[:, 0].unsqueeze(1).contiguous().view(-1,C,H,W) # B*C*H*W
+        pairs = x[:, 1:].view(-1,C,H,W) # (B*(1+neg_num))*C*H*W
+
+        return self._compute_region_sim(anchors, pairs)
+
+    def forward(self, x):
+        pool_x, _, x = self.base_model(x)
+
+        if (not self.training):
+            vlad_x = self.net_vlad(x)
+            # normalize
+            vlad_x = F.normalize(vlad_x, p=2, dim=2)  # intra-normalization
+            vlad_x = vlad_x.view(x.size(0), -1)  # flatten
+            vlad_x = F.normalize(vlad_x, p=2, dim=1)  # L2 normalize
+            return pool_x, vlad_x
+
+        return self._forward_train(x)
+
 class applyGNN(nn.Module):
     def __init__(self):
         super(applyGNN, self).__init__()
         self.input_dim = 4096 
-        self.hidden_dim = [2048,4096]
+        self.hidden_dim = [2048,2048]
         self.num_neighbors_list = [5]
         self.graph = GraphSage(input_dim=self.input_dim, hidden_dim=self.hidden_dim,
                   num_neighbors_list=self.num_neighbors_list)
@@ -276,7 +357,6 @@ class SelectRegions(nn.Module):
     def __init__(self):
         super(SelectRegions, self).__init__()
     def forward(self, x, base_model, espnet):
-
         sizeH = x.shape[2]
         sizeW = x.shape[3]
         if sizeH%2 != 0:
@@ -284,11 +364,9 @@ class SelectRegions(nn.Module):
         if sizeW%2 != 0:
             x = F.pad(input=x, pad=(1,2), mode='constant', value=0)
 
-        # with torch.no_grad():
-        #     b_out = espnet(x)
-        pr = cProfile.Profile()
-        pr.enable()
-        b_out = espnet(x)
+        with torch.no_grad():
+            b_out = espnet(x)
+        # b_out = espnet(x)
 
 
         mask = b_out.max(1)[1]   
@@ -301,23 +379,9 @@ class SelectRegions(nn.Module):
             boxes_t = masks_to_boxes(masks.to(torch.float32))
             rr_boxes = torch.argsort(torch.argsort(obj_i,descending=True)) 
             boxes = boxes_t/16
-            
-        mask = b_out.max(1)[1]
-        boxes = torch.empty((len(mask), 4))  # Preallocate memory for boxes
-
-        for jj in range(len(mask)):
-            single_label_mask = mask[jj]
-            obj_ids, obj_i = single_label_mask.unique(return_counts=True)
-            obj_ids = obj_ids[1:]
-            obj_i = obj_i[1:]
-            masks = single_label_mask == obj_ids[:, None, None]
-            boxes_t = masks_to_boxes(masks.to(torch.float32))
-            boxes[jj] = boxes_t.div_(16)  # Use in-place division    
-            
         _, _, H, W = x.shape
         patch_mask = torch.zeros((H, W)).cuda()
-        x = base_model(x)   
-        # print("x464: ", x.shape)
+        pool_x, x = base_model(x)   
         N, C, H, W = x.shape
         bb_x = [[int(W/4), int(H/4), int(3*W/4),int(3*H/4)],
                 [0, 0, int(W/3),H], 
@@ -331,7 +395,7 @@ class SelectRegions(nn.Module):
             img_nodes = []
             for idx in range(len(boxes)):
                 for b_idx in range(len(rr_boxes)):
-                    if idx == rr_boxes[b_idx] and obj_i[b_idx] > 5000 and len(img_nodes) < NB:
+                    if idx == rr_boxes[b_idx] and obj_i[b_idx] > 10000 and len(img_nodes) < NB-2:
                         patch_mask = patch_mask*0
                         patch_mask[single_label_mask == obj_ids[b_idx]] = 1
                         patch_maskr = rsizet(patch_mask.unsqueeze(0))
@@ -350,16 +414,8 @@ class SelectRegions(nn.Module):
             graph_nodes[Nx] = aa[0]
         x_cropped = graph_nodes.view(NB,N,C,H,W)
         x_cropped = torch.cat((graph_nodes.view(NB,N,C,H,W), x.unsqueeze(0)))
-        
         del graph_nodes
-        pr.disable()
-        s = io.StringIO()
-        sortby = 'cumulative'
-        ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-        ps.print_stats()
-        print(s.getvalue())
-        exit()
-        return NB, x.size(0), x_cropped
+        return pool_x, NB, x.size(0), x_cropped
 class GraphVLAD(nn.Module):
     def __init__(self, base_model, net_vlad, esp_net):
         super(GraphVLAD, self).__init__()
@@ -374,7 +430,7 @@ class GraphVLAD(nn.Module):
     def forward(self, x):
         node_features_list = []
         neighborsFeat = []
-        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
+        pool_x, NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
         for i in range(NB+1):
             vlad_x = self.net_vlad(x_cropped[i])
             vlad_x = F.normalize(vlad_x, p=2, dim=2)  
@@ -386,8 +442,9 @@ class GraphVLAD(nn.Module):
         neighborsFeat = []
         gvlad = self.applyGNN(node_features_list)
         gvlad = torch.add(gvlad,vlad_x)
+        # print(vlad_x.shape[1])
         gvlad = gvlad.view(-1,vlad_x.shape[1])
-        return gvlad
+        return pool_x, gvlad
 class GraphVLADPCA(nn.Module):
     def __init__(self, base_model, net_vlad, esp_net, dim=4096):
         super(GraphVLADPCA, self).__init__()
@@ -421,3 +478,4 @@ class GraphVLADPCA(nn.Module):
         gvlad = self.pca_layer(gvlad).view(N, -1)
         gvlad = F.normalize(gvlad, p=2, dim=-1)  
         return gvlad
+    

@@ -13,11 +13,16 @@
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
 #SBATCH --nodes=1 
-#SBATCH --gpus-per-node=a100:4   
+#SBATCH --gpus-per-node=a100:8   
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=40    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --cpus-per-task=48    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
-#SBATCH --mem-per-cpu=8gb
+#SBATCH --mem-per-cpu=8GB
+#SBATCH --distribution=cyclic:cyclic
+
+## To RUN
+# sbatch --j graphvlad-v8-c16-mapillary-4k2k2k ./train-slurm.sh graphvlad triplet
+####################################################################################################
 
 
 
@@ -33,14 +38,13 @@ fi
 METHOD="$1"
 LOSS="$2"
 
-
 # LOAD PYTORCH SOFTWARE ENVIRONMENT
 #==================================
 
 ## You can load a software environment or use a singularity container.
 ## CONTAINER="singularity exec --nv /path/to/container.sif" (--nv option is to enable gpu)
 module purge
-module load conda/22.11.1
+module load conda/24.1.2 
 conda activate patchnetvlad
 
 

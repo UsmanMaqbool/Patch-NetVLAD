@@ -55,7 +55,6 @@ class VGG(nn.Module):
     def _init_params(self):
         # optional load pretrained weights from matconvnet
         if (self.matconvnet is not None):
-            print("matconvnet weights loaded")
             self.base.load_state_dict(torch.load(self.matconvnet))
             self.pretrained = True
 

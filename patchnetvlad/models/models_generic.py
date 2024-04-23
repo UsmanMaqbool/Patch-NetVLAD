@@ -55,13 +55,12 @@ def get_pca_encoding(model, vlad_encoding):
 # def get_backend():
 #     enc_dim = 512
 #     arch = 'vgg16'
-#     enc = models.create(arch, train_layers='conv5',  pretrained=True, cut_at_pooling=True)
+#     enc = models.create(arch, train_layers='conv5', cut_at_pooling=True)
 #     return enc_dim, enc
-
-def get_backend():
+def get_backend(matconvnet_path):
     enc_dim = 512
     arch = 'vgg16'
-    enc = models.create(arch, train_layers='conv5', cut_at_pooling=True)
+    enc = models.create(arch, train_layers='conv5', matconvnet=matconvnet_path)
     return enc_dim, enc
 
 def get_segmentation_model(encoderFile):
@@ -77,10 +76,8 @@ def get_model(encoder, encoder_dim, config, append_pca_layer=False):
     nn_model.add_module('encoder', encoder)
 
     if config['pooling'].lower() == 'netvlad':
-        nn_model = models.create('netvlad', num_clusters=int(config['num_clusters']), dim=encoder_dim, vladv2=config.getboolean('vladv2'))
-        # net_vlad = NetVLAD(num_clusters=int(config['num_clusters']), dim=encoder_dim,
-        #                    vladv2=config.getboolean('vladv2'))
-        # nn_model.add_module('pool', net_vlad)
+        nn_model = models.create('netvlad', num_clusters=int(config['num_clusters']), dim=encoder_dim)
+        
     elif config['pooling'].lower() == 'patchnetvlad':
         net_vlad = PatchNetVLAD(num_clusters=int(config['num_clusters']), dim=encoder_dim,
                                 vladv2=config.getboolean('vladv2'),

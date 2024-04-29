@@ -45,7 +45,7 @@ $PYTHON -u train.py --save_every_epoch \
   --method=${METHOD} \
   --esp_encoder=${ESP_ENCODER} \
   --cluster_path=${CLUSTER_PATH} \
-  --threads=24 \
+  --threads=6 \
   --vd16_offtheshelf_path=${OFFTHESHELF_PATH}
 
 

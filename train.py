@@ -64,9 +64,6 @@ from tqdm.auto import trange
 
 from patchnetvlad.training_tools.msls import MSLS
 
-import cProfile
-import pstats
-import io
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Patch-NetVLAD-train')
@@ -85,7 +82,7 @@ if __name__ == "__main__":
                         help='Root directory of dataset')
     parser.add_argument('--identifier', type=str, default='mapillary_nopanos',
                         help='Description of this model, e.g. mapillary_nopanos_vgg16_netvlad')
-    parser.add_argument('--nEpochs', type=int, default=1, help='number of epochs to train for')
+    parser.add_argument('--nEpochs', type=int, default=5, help='number of epochs to train for')
     parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                         help='manual epoch number (useful on restarts)')
     parser.add_argument('--save_every_epoch', action='store_true', help='Flag to set a separate checkpoint file for each new epoch')
@@ -98,10 +95,7 @@ if __name__ == "__main__":
                         help='NetVLAD Off the Shelf VGG Weights.')
     opt = parser.parse_args()
     print(opt)
-    
-    pr = cProfile.Profile()
-    pr.enable()
-    
+
     configfile = opt.config_path
     assert os.path.isfile(configfile)
     config = configparser.ConfigParser()
@@ -134,7 +128,6 @@ if __name__ == "__main__":
     else:
         # Define a default value for m_name when the method is not 'netvlad'
         m_name = 'embednet'
-
     if opt.resume_path: # if already started training earlier and continuing
         if isfile(opt.resume_path):
             print("=> loading checkpoint '{}'".format(opt.resume_path))
@@ -291,11 +284,15 @@ if __name__ == "__main__":
     torch.cuda.empty_cache()  # garbage clean GPU memory, a bug can occur when Pytorch doesn't automatically clear the
     # memory after runs
     
-    pr.disable()
-    s = io.StringIO()
-    sortby = 'cumulative'
-    ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-    ps.print_stats()
-    print(s.getvalue())
-    
     print('Done')
+    
+    ## Profile
+#     Ordered by: cumulative time
+
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1  379.132  379.132 112351.929 112351.929 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/training_tools/train_epoch.py:95(train_epoch)
+# 110879682/208725  103.978    0.000 78236.896    0.375 /home/leo/anaconda3/envs/patchnetvlad/lib/python3.9/site-packages/torch/nn/modules/module.py:1188(_call_impl)
+#    208725    8.873    0.000 78234.663    0.375 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/models/netvlad.py:430(forward)
+#    208725 23407.667    0.112 77916.501    0.373 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/models/netvlad.py:359(forward)
+#       442   10.303    0.023 43274.028   97.905 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/training_tools/msls.py:421(update_subcache)
+#    417450 33762.880    0.081 33762.880    0.081 {method 'cuda' of 'torch._C._TensorBase' objects}

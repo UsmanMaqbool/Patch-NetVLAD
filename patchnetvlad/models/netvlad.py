@@ -460,7 +460,7 @@ class GraphVLADPCA(nn.Module):
     def forward(self, x):
         node_features_list = []
         neighborsFeat = []
-        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
+        _, NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
         for i in range(NB+1):
             vlad_x = self.net_vlad(x_cropped[i])
             vlad_x = F.normalize(vlad_x, p=2, dim=2)  

@@ -129,7 +129,7 @@ def main():
 
     device = torch.device("cuda" if cuda else "cpu")
 
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(None)
 
     if not os.path.isfile(opt.dataset_file_path):
         opt.dataset_file_path = join(PATCHNETVLAD_ROOT_DIR, 'dataset_imagenames', opt.dataset_file_path)

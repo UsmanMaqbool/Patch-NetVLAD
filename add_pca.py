@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     print('===> Building model')
 
-    encoder_dim, encoder = get_backend()
+    encoder_dim, encoder = get_backend(None)
       
     if opt.method == 'graphvlad':
         m_name = 'graphvlad'
@@ -199,7 +199,7 @@ if __name__ == "__main__":
 
         for iteration, (input_data, indices) in enumerate(tqdm(data_loader)):
             input_data = input_data.to(device)
-            vlad_encoding = model(input_data.to(device))
+            _ ,vlad_encoding = model(input_data.to(device))
             out_vectors = vlad_encoding.detach().cpu().numpy()
             # this allows for randomly shuffled inputs
             for idx, out_vector in enumerate(out_vectors):

@@ -19,6 +19,7 @@ else
     exit 1
 fi
 
+ESP_ENCODER="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
 
 for RESUME in $FILES
 do
@@ -51,7 +52,8 @@ do
       --resume_path=$RESUME \
       --dataset_root_dir=$dataset_root_dir \
       --dataset_choice=$DATASET \
-      --method=${METHOD} 
+      --method=${METHOD} \
+      --esp_encoder=${ESP_ENCODER}
 
   fi
 
@@ -64,7 +66,8 @@ do
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index \
   --resume_path=${PCA_RESUME} \
-  --method=${METHOD} 
+  --method=${METHOD} \
+  --esp_encoder=${ESP_ENCODER}
 
   
   echo "Extracting Features of mapillarysf Query Images"
@@ -75,7 +78,8 @@ do
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query \
   --resume_path=${PCA_RESUME} \
-  --method=${METHOD} 
+  --method=${METHOD} \
+  --esp_encoder=${ESP_ENCODER}
   
   echo "Performing Features Matching and Recall Result of mapillarysf"
   python feature_match.py \
@@ -95,7 +99,8 @@ do
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index \
   --resume_path=${PCA_RESUME} \
-  --method=${METHOD} 
+  --method=${METHOD} \
+  --esp_encoder=${ESP_ENCODER}
 
   
   echo "Extracting Features of mapillarycph Query Images"
@@ -106,7 +111,8 @@ do
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query \
   --resume_path=${PCA_RESUME} \
-  --method=${METHOD} 
+  --method=${METHOD} \
+  --esp_encoder=${ESP_ENCODER}
 
   echo "Performing Features Matching and Recall Result of mapillarycph"
   python feature_match.py \
@@ -118,7 +124,7 @@ do
   --index_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index \
   --result_save_folder=./patchnetvlad/results/mapillarycph
 
-cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/results/mapillarysf//NetVLAD_predictions.txt > patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt
+cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/results/mapillarysf/NetVLAD_predictions.txt > patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt
 
 python ./patchnetvlad/training_tools/convert_kapture_to_msls.py patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 

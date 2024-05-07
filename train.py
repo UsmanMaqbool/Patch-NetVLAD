@@ -147,7 +147,12 @@ if __name__ == "__main__":
             config['global_params']['num_clusters'] = str(new_state_dict['net_vlad.centroids'].shape[0])
             pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
       
-            model = create_model(m_name, encoder, pool_layer)
+            if m_name=='graphvlad':
+                print('===> Loading segmentation model')
+                segmentation_model = get_segmentation_model(opt.esp_encoder)
+                model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
+            else:   
+                model = create_model(m_name, encoder, pool_layer)
             
             # Load the new state_dict into your model
             model.load_state_dict(new_state_dict)

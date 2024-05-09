@@ -23,16 +23,19 @@ ESP_ENCODER="/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
 for RESUME in $FILES
 do
   echo "Building PCA Model of $RESUME file..."
-  # take action on each file. $f store current file name
-
-  filename=$(basename $RESUME .pth.tar)
-  PCA_RESUME="${BASEDir}${filename}"
-  PCA_RESUME="${PCA_RESUME}_WPCA4096.pth.tar"
-
-  echo "$PCA_RESUME"
-
   # Extracting the directory and filename without extension
   dir=$(dirname "$RESUME")
+
+
+  # take action on each file. $f store current file name
+  filename=$(basename $RESUME .pth.tar)
+  # Generating the new filename
+  echo "filename: $filename"
+  PCA_RESUME="${dir}/${filename}"
+  PCA_RESUME="${PCA_RESUME}_WPCA4096.pth.tar"
+  echo "PCA_Resume Path: $PCA_RESUME"
+
+
   filename=$(basename "$RESUME" .pth.tar)
 
   # Extracting the date and identifier from the path
@@ -97,7 +100,7 @@ do
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
   --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index \
   --resume_path=${PCA_RESUME} \
-  --method=${METHOD}  \
+  --method=${METHOD} \
   --esp_encoder=${ESP_ENCODER}
 
   
@@ -109,7 +112,7 @@ do
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
   --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query \
   --resume_path=${PCA_RESUME} \
-  --method=${METHOD}  \
+  --method=${METHOD} \
   --esp_encoder=${ESP_ENCODER}
 
   echo "Performing Features Matching and Recall Result of mapillarycph"

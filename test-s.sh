@@ -24,21 +24,25 @@ ESP_ENCODER="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-enc
 for RESUME in $FILES
 do
   echo "Building PCA Model of $RESUME file..."
-  # take action on each file. $f store current file name
-
-  filename=$(basename $RESUME .pth.tar)
-  PCA_RESUME="${BASEDir}${filename}"
-  PCA_RESUME="${PCA_RESUME}_WPCA4096.pth.tar"
-
-  echo "$PCA_RESUME"
-
-  # Extracting the directory and filename without extension
+ # Extracting the directory and filename without extension
   dir=$(dirname "$RESUME")
+
+
+  # take action on each file. $f store current file name
+  filename=$(basename $RESUME .pth.tar)
+  # Generating the new filename
+  echo "filename: $filename"
+  PCA_RESUME="${dir}/${filename}"
+  PCA_RESUME="${PCA_RESUME}_WPCA4096.pth.tar"
+  echo "PCA_Resume Path: $PCA_RESUME"
+
+
   filename=$(basename "$RESUME" .pth.tar)
 
   # Extracting the date and identifier from the path
   date_and_identifier=$(basename "$(dirname "$dir")")
   echo "$filename"
+
 
   # Generating the new filename
   SAVEFILENAME="${date_and_identifier}-${filename}"

@@ -47,4 +47,4 @@ $PYTHON -u train.py --save_every_epoch \
   --cluster_path=${CLUSTER_PATH} \
   --threads=6 \
   --vd16_offtheshelf_path=${OFFTHESHELF_PATH} \
-  --resume_path=/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-lr0.01-30-Apr/Apr30_23-29-01_mapillary_nopanos/checkpoints/checkpoint_epoch2.pth.tar
+  --resume_path=/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-lr0.01-07-May/May07_11-02-35_mapillary_nopanos/checkpoints/checkpoint_epoch3.pth.tar

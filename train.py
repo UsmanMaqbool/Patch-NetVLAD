@@ -241,8 +241,9 @@ if __name__ == "__main__":
     print('===> Training query set:', len(train_dataset.qIdx))
     print('===> Evaluating on val set, query count:', len(validation_dataset.qIdx))
     print('===> Training model')
+    lr_str = str(float(config['train']['lr'])).replace('.', '_')
     writer = SummaryWriter(
-        log_dir=join(opt.save_path, datetime.now().strftime('%b%d_%H-%M-%S') + '_' + opt.identifier))
+        log_dir=join(opt.save_path+'-lr-'+lr_str, datetime.now().strftime('%b%d_%H-%M-%S') + '_' + opt.identifier))
 
     # write checkpoints in logdir
     logdir = writer.file_writer.get_logdir()

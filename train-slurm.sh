@@ -8,7 +8,7 @@
 #SBATCH --job-name=
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=m.maqboolbhutta@ufl.edu
-#SBATCH --time=72:00:00
+#SBATCH --time=55:00:00
 #SBATCH --partition=gpu
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
@@ -29,7 +29,7 @@
 allowed_arguments_list1=("netvlad" "graphvlad")
 allowed_arguments_list2=("triplet" "sare_ind" "sare_joint")
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -lt 2 ]; then
     echo "Arguments error: <METHOD (netvlad|graphvlad>"
     echo "Arguments error: <LOSS_TYPE (triplet|sare_ind|sare_joint)>"
     exit 1
@@ -37,6 +37,7 @@ fi
 
 METHOD="$1"
 LOSS="$2"
+RESUMEPATH="$3"
 
 # LOAD PYTORCH SOFTWARE ENVIRONMENT
 #==================================
@@ -60,4 +61,4 @@ echo "Other nodes: $NODES"
 # PYTHON SCRIPT
 #==============
 echo "Starting $SLURM_GPUS_PER_TASK process(es) on each node..."
-bash train.sh ${METHOD} ${LOSS} Slurm
+bash train-s.sh ${METHOD} ${LOSS} ${RESUMEPATH}

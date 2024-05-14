@@ -13,14 +13,13 @@ if [ "$#" -lt 2 ]; then
     exit 1
 fi
 
-FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
-DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
-CASHE_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/"
-CONFIG="patchnetvlad/configs/train.ini"
-CLUSTER_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
-ESP_ENCODER="/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
-OFFTHESHELF_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/vd16_offtheshelf_conv5_3_max.pth"
-
+FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
+DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/"
+CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/"
+CONFIG="patchnetvlad/configs/train-slurm.ini"
+ESP_ENCODER="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5"
+OFFTHESHELF_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/vd16_offtheshelf_conv5_3_max.pth"
 
 # Check if the checkpoint path argument is provided
 if [ -z "$RESUMEPATH" ]; then

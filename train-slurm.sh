@@ -8,14 +8,14 @@
 #SBATCH --job-name=
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=m.maqboolbhutta@ufl.edu
-#SBATCH --time=70:00:00
+#SBATCH --time=55:00:00
 #SBATCH --partition=gpu
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
 #SBATCH --nodes=1 
-#SBATCH --gpus-per-node=a100:8   
+#SBATCH --gpus-per-node=a100:4   
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=48    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --cpus-per-task=30    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
 #SBATCH --mem-per-cpu=12GB
 #SBATCH --distribution=cyclic:cyclic

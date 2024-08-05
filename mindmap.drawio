@@ -1,0 +1,54 @@
+<mxfile host="65bd71144e">
+    <diagram id="FR22GxbZn_tMUIc5bymM" name="Page-1">
+        <mxGraphModel dx="971" dy="581" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="7" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=7;strokeWidth=3;jumpSize=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="120" y="70" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="&lt;p style=&quot;line-height: 0%;&quot;&gt;&lt;font data-font-src=&quot;https://fontlibrary.org//face/cmu-serif&quot; style=&quot;font-size: 7px;&quot;&gt;PatchNetVLAD&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=middle;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="80" width="50" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font data-font-src=&quot;https://fontlibrary.org//face/cmu-serif&quot;&gt;Running on PC2&lt;/font&gt;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=7;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="190" width="65" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="edgeStyle=none;jumpSize=0;html=1;strokeWidth=3;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=7;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=default;curved=1;" edge="1" parent="1" source="3" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=none;curved=1;jumpSize=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=8;" edge="1" parent="1" source="8" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;curved=1;jumpSize=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=8;" edge="1" parent="1" source="8" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;p style=&quot;line-height: 30%;&quot;&gt;&lt;font&gt;&lt;span style=&quot;font-size: 7px;&quot;&gt;VGG initialization&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=middle;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="77.5" width="60" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=none;curved=1;jumpSize=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=3;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=8;" edge="1" parent="1" source="9" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;No initialization&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontFamily=CMUSerifRoman;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;rounded=1;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="130" width="60" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;SARE-JOINT&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontFamily=CMUSerifRoman;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="180" width="60" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;font data-font-src=&quot;https://fontlibrary.org//face/cmu-serif&quot;&gt;Running on Cluster&lt;/font&gt;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=7;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="140" width="65" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;SARE-JOINT&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontFamily=CMUSerifRoman;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="130" width="60" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;font data-font-src=&quot;https://fontlibrary.org//face/cmu-serif&quot;&gt;Running on PC&lt;/font&gt;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=CMUSerifRoman;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;fontSize=7;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="90" width="65" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;SARE-IND&lt;/font&gt;" style="whiteSpace=wrap;html=1;fontFamily=CMUSerifRoman;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;fontSource=https%3A%2F%2Ffontlibrary.org%2F%2Fface%2Fcmu-serif;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="80" width="60" height="10" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

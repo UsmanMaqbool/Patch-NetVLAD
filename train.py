@@ -90,10 +90,11 @@ if __name__ == "__main__":
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')
-    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file')               
+    parser.add_argument('--fast-scnn', type=str, default='', help='Path to Fast SCNN encoder file')
     parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
                         help='NetVLAD Off the Shelf VGG Weights.')
     opt = parser.parse_args()
+
     print(opt)
 
     configfile = opt.config_path
@@ -149,7 +150,8 @@ if __name__ == "__main__":
       
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                segmentation_model = get_segmentation_model(opt.esp_encoder)
+                segmentation_model = get_segmentation_model()
+                segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)
@@ -167,7 +169,7 @@ if __name__ == "__main__":
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
         
-        initcache = join(opt.cache_path, 'centroids', 'vgg16_' + 'mapillary_' + config['train'][
+        initcache = join(opt.cache_path, 'vgg16_' + 'mapillary_' + config['train'][
                                       'num_clusters'] + '_desc_cen.hdf5')
 
         
@@ -197,7 +199,7 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                segmentation_model = get_segmentation_model(opt.esp_encoder)
+                segmentation_model = get_segmentation_model(opt.fast_scnn)
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)
@@ -292,13 +294,3 @@ if __name__ == "__main__":
     
     print('Done')
     
-    ## Profile
-#     Ordered by: cumulative time
-
-#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-#         1  379.132  379.132 112351.929 112351.929 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/training_tools/train_epoch.py:95(train_epoch)
-# 110879682/208725  103.978    0.000 78236.896    0.375 /home/leo/anaconda3/envs/patchnetvlad/lib/python3.9/site-packages/torch/nn/modules/module.py:1188(_call_impl)
-#    208725    8.873    0.000 78234.663    0.375 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/models/netvlad.py:430(forward)
-#    208725 23407.667    0.112 77916.501    0.373 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/models/netvlad.py:359(forward)
-#       442   10.303    0.023 43274.028   97.905 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/training_tools/msls.py:421(update_subcache)
-#    417450 33762.880    0.081 33762.880    0.081 {method 'cuda' of 'torch._C._TensorBase' objects}

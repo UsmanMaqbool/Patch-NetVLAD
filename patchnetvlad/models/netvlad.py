@@ -28,8 +28,11 @@ import faiss
 import numpy as np
 import torch.nn.init as init
 from torchvision import transforms
-from .espnet import *
 from torchvision.ops import masks_to_boxes
+from .espnet import *
+from .visualize import get_color_pallete, save_image
+from PIL import Image
+
 class NeighborAggregator(nn.Module):
     def __init__(self, input_dim, output_dim,
                  use_bias=False, aggr_method="mean"):
@@ -330,7 +333,7 @@ class EmbedRegionNet(nn.Module):
         return self._compute_region_sim(anchors, pairs)
 
     def forward(self, x):
-        pool_x, _, x = self.base_model(x)
+        pool_x, x = self.base_model(x)
 
         if (not self.training):
             vlad_x = self.net_vlad(x)
@@ -354,96 +357,192 @@ class applyGNN(nn.Module):
         gvlad = self.graph(x)
         return gvlad
 class SelectRegions(nn.Module):
-    def __init__(self):
+    def __init__(self, NB, Mask):
         super(SelectRegions, self).__init__()
-    def forward(self, x, base_model, espnet):
+        self.NB = NB
+        self.mask = Mask
+        
+    def relabel(self, img):
+        """
+        This function relabels the predicted labels so that cityscape dataset can process
+        :param img: The image array to be relabeled
+        :return: The relabeled image array
+        """
+        ### Road 0 + Sidewalk 1
+        img[img == 1] = 1
+        img[img == 0] = 1
+
+        ### building 2 + wall 3 + fence 4
+        img[img == 2] = 2
+        img[img == 3] = 2
+        img[img == 4] = 2
+
+        ### vegetation 8 + Terrain 9
+        img[img == 9] = 3
+        img[img == 8] = 3
+
+        ### Pole 5 + Traffic Light 6 + Traffic Signal 7
+        img[img == 7] = 4
+        img[img == 6] = 4
+        img[img == 5] = 4
+        
+        ### Sky 10
+        img[img == 10] = 5
+        
+        ## Rider 12 + motorcycle 17 + bicycle 18
+        img[img == 18] = 255
+        img[img == 17] = 255
+        img[img == 12] = 255
+
+
+        # cars 13 + truck 14 + bus 15 + train 16
+        img[img == 16] = 255
+        img[img == 15] = 255
+        img[img == 14] = 255
+        img[img == 13] = 255
+
+        ## Person
+        img[img == 11] = 255
+
+        ### Don't need, make these 255
+        ## Background
+        img[img == 19] = 255
+
+        return img                          
+    
+    def forward(self, x, base_model, fastscnn): 
+        
+        ## debug
+        # save_image(x[0], 'output-image.png')
+        # mask = get_color_pallete(pred_g_merge[0].cpu().numpy())
+        # mask.save('output.png')
         sizeH = x.shape[2]
         sizeW = x.shape[3]
-        if sizeH%2 != 0:
-            x = F.pad(input=x, pad=(0,0,1,2), mode='constant', value=0)
-        if sizeW%2 != 0:
-            x = F.pad(input=x, pad=(1,2), mode='constant', value=0)
+        
+        # Pad if height or width is odd
+        if sizeH % 2 != 0:
+            x = F.pad(input=x, pad=(0, 0, 1, 2), mode="constant", value=0)
+        if sizeW % 2 != 0:
+            x = F.pad(input=x, pad=(1, 2), mode="constant", value=0)
 
+        # Forward pass through fastscnn without gradients
         with torch.no_grad():
-            b_out = espnet(x)
-        # b_out = espnet(x)
+            outputs = fastscnn(x)
 
-
-        mask = b_out.max(1)[1]   
-        for jj in range(len(mask)):  
-            single_label_mask = mask[jj]
-            obj_ids, obj_i = single_label_mask.unique(return_counts=True)
-            obj_ids = obj_ids[1:] 
-            obj_i = obj_i[1:]
-            masks = single_label_mask == obj_ids[:, None, None]
-            boxes_t = masks_to_boxes(masks.to(torch.float32))
-            rr_boxes = torch.argsort(torch.argsort(obj_i,descending=True)) 
-            boxes = boxes_t/16
-        _, _, H, W = x.shape
-        patch_mask = torch.zeros((H, W)).cuda()
-        pool_x, x = base_model(x)   
+        # save_image(x[0], 'output-image.png')
+        # Forward pass through base_model
+        pool_x, x = base_model(x)
         N, C, H, W = x.shape
-        bb_x = [[int(W/4), int(H/4), int(3*W/4),int(3*H/4)],
-                [0, 0, int(W/3),H], 
-                [0, 0, W,int(H/3)], 
-                [int(2*W/3), 0, W,H], 
-                [0, int(2*H/3), W,H]]
-        NB = 5
-        graph_nodes = torch.zeros(N,NB,C,H,W).cuda()
-        rsizet = transforms.Resize((H,W)) 
-        for Nx in range(N):    
-            img_nodes = []
-            for idx in range(len(boxes)):
-                for b_idx in range(len(rr_boxes)):
-                    if idx == rr_boxes[b_idx] and obj_i[b_idx] > 10000 and len(img_nodes) < NB-2:
-                        patch_mask = patch_mask*0
-                        patch_mask[single_label_mask == obj_ids[b_idx]] = 1
-                        patch_maskr = rsizet(patch_mask.unsqueeze(0))
-                        patch_maskr = patch_maskr.squeeze(0)
-                        boxesd = boxes.to(torch.long)
-                        x_min,y_min,x_max,y_max = boxesd[b_idx]
-                        c_img = x[Nx][:, y_min:y_max,x_min:x_max]
-                        resultant = rsizet(c_img)
-                        img_nodes.append(resultant.unsqueeze(0))
-                        break                    
-            if len(img_nodes) < NB:
-                for i in range(len(bb_x)-len(img_nodes)):
-                    x_cropped =  x[Nx][: ,bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]
-                    img_nodes.append(rsizet(x_cropped.unsqueeze(0)))
-            aa = torch.stack(img_nodes,1)
-            graph_nodes[Nx] = aa[0]
-        x_cropped = graph_nodes.view(NB,N,C,H,W)
-        x_cropped = torch.cat((graph_nodes.view(NB,N,C,H,W), x.unsqueeze(0)))
-        del graph_nodes
-        return pool_x, NB, x.size(0), x_cropped
+        
+        # Initialize graph nodes tensor
+        graph_nodes = torch.zeros(N, self.NB, C, H, W).cuda()
+        rsizet = transforms.Resize((H, W))
+        
+        # Process the output of fastscnn to get predicted labels
+        pred_all = torch.argmax(outputs[0], 1)
+        # mask = get_color_pallete(pred_all[0].cpu().numpy(), 'citys')
+        # mask.save('output.png')
+        
+        
+        # pred_all_c = torch.argmax(outputs[0], 1).squeeze(0).cpu().data.numpy()
+        # mask = get_color_pallete(pred_all_c[0], 'citys')
+        # mask.save('output.png')
+        
+        
+        pred_all = self.relabel(pred_all)
+
+        # mask = get_color_pallete(pred_all[0].cpu().numpy(), 'citys')
+        # mask.save('output-m.png')
+        for img_i in range(N):
+            all_label_mask = pred_all[img_i]
+            labels_all, label_count_all = all_label_mask.unique(return_counts=True)
+            
+            mask_t = label_count_all >= 10000
+            labels = labels_all[mask_t]
+            
+            # Create masks for each label and convert them to bounding boxes
+            masks = all_label_mask == labels[:, None, None]
+            regions = masks_to_boxes(masks.to(torch.float32))
+            boxes = (regions / 16).to(torch.long)
+            all_label_mask = rsizet(all_label_mask.unsqueeze(0)).squeeze(0)
+
+            sub_nodes = []
+            pre_l2 = x[img_i]
+            
+            if self.mask:
+                for i, label in enumerate(labels):
+                    binary_mask = (all_label_mask == label).float()
+                    embed_image = (pre_l2 * binary_mask) + pre_l2
+                sub_nodes.append(embed_image.unsqueeze(0))
+
+            # sub_nodes.append(filterd_img.unsqueeze(0))
+            # Add more patches by cropping predefined regions if needed
+            if len(sub_nodes) < self.NB:
+                bb_x = [
+                    [0, 0, int(2 * W / 3), H],
+                    [int(W / 3), 0, W, H],
+                    [0, 0, W, int(2 * H / 3)],
+                    [0, int(H / 3), W, H],
+                    [int(W / 4), int(H / 4), int(3 * W / 4), int(3 * H / 4)],
+                ]
+                for i in range(len(bb_x) - len(sub_nodes)):
+                    x_nodes = embed_image[:, bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]
+                    sub_nodes.append(rsizet(x_nodes.unsqueeze(0)))
+
+            # Stack the cropped patches and store them in graph_nodes
+            aa = torch.stack(sub_nodes, 1)
+            graph_nodes[img_i] = aa[0]
+
+        # Reshape and concatenate graph_nodes with the original tensor x
+        x_nodes = graph_nodes.view(self.NB, N, C, H, W)
+        x_nodes = torch.cat((x_nodes, x.unsqueeze(0)))
+        
+        # Clean up
+        del graph_nodes, sub_nodes, pred_all, labels_all, label_count_all, masks, regions, boxes, all_label_mask
+        
+        return pool_x, x.size(0), x_nodes
 class GraphVLAD(nn.Module):
-    def __init__(self, base_model, net_vlad, esp_net):
+    def __init__(self, base_model, net_vlad, fastscnn, NB):
         super(GraphVLAD, self).__init__()
         self.base_model = base_model
-        self.esp_net = esp_net
+        self.fastscnn = fastscnn
         self.net_vlad = net_vlad
-        self.SelectRegions = SelectRegions()
+        
+        self.NB = NB
+        self.mask = True
+                
         self.applyGNN = applyGNN()
+        self.SelectRegions = SelectRegions(self.NB, self.mask)
+
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()
+
     def forward(self, x):
         node_features_list = []
+        pool_x, x_size, x_nodes = self.SelectRegions(x, self.base_model, self.fastscnn)
+        
         neighborsFeat = []
-        pool_x, NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
-        for i in range(NB+1):
-            vlad_x = self.net_vlad(x_cropped[i])
-            vlad_x = F.normalize(vlad_x, p=2, dim=2)  
-            vlad_x = vlad_x.view(x_size, -1)  
-            vlad_x = F.normalize(vlad_x, p=2, dim=1)  
+        for i in range(self.NB + 1):
+            vlad_x = self.net_vlad(x_nodes[i])
+            vlad_x = F.normalize(vlad_x, p=2, dim=2)
+            vlad_x = vlad_x.view(x_size, -1)
+            vlad_x = F.normalize(vlad_x, p=2, dim=1)
             neighborsFeat.append(vlad_x)
-        node_features_list.append(neighborsFeat[NB])
-        node_features_list.append(torch.concat(neighborsFeat[0:NB],0))
-        neighborsFeat = []
+        
+        node_features_list.append(neighborsFeat[self.NB])
+        node_features_list.append(torch.cat(neighborsFeat[0:self.NB], 0))
+        
+        # Clear neighborsFeat to free up memory
+        del neighborsFeat
+        
         gvlad = self.applyGNN(node_features_list)
-        gvlad = torch.add(gvlad,vlad_x)
-        # print(vlad_x.shape[1])
-        gvlad = gvlad.view(-1,vlad_x.shape[1])
+        gvlad = torch.add(gvlad, vlad_x)
+        gvlad = gvlad.view(-1, vlad_x.shape[1])
+        
+        # Clear node_features_list to free up memory
+        del node_features_list
+        
         return pool_x, gvlad
 class GraphVLADPCA(nn.Module):
     def __init__(self, base_model, net_vlad, esp_net, dim=4096):
@@ -460,7 +559,7 @@ class GraphVLADPCA(nn.Module):
     def forward(self, x):
         node_features_list = []
         neighborsFeat = []
-        _, NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
+        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
         for i in range(NB+1):
             vlad_x = self.net_vlad(x_cropped[i])
             vlad_x = F.normalize(vlad_x, p=2, dim=2)  
@@ -477,5 +576,125 @@ class GraphVLADPCA(nn.Module):
         gvlad = gvlad.view(N, D, 1, 1)
         gvlad = self.pca_layer(gvlad).view(N, -1)
         gvlad = F.normalize(gvlad, p=2, dim=-1)  
-        return gvlad
-    
+        return gvlad   
+class GraphVLADEmbedRegion(nn.Module):
+    def __init__(self, base_model, net_vlad, tuple_size, fastscnn, NB):
+        super(GraphVLADEmbedRegion, self).__init__()
+        self.base_model = base_model
+        self.net_vlad = net_vlad
+        self.tuple_size = tuple_size
+        self.fastscnn = fastscnn
+        
+        self.NB = NB
+        self.applyGNN = applyGNN()
+        self.mask = True
+
+        self.SelectRegions = SelectRegions(self.NB, self.mask)
+        
+    def _init_params(self):
+        self.base_model._init_params()
+        self.net_vlad._init_params()
+
+    def _compute_region_sim(self, feature_A, feature_B):
+        # feature_A: B*C*H*W
+        # feature_B: (B*(1+neg_num))*C*H*W
+
+        def reshape(x):
+            # re-arrange local features for aggregating quarter regions
+            N, C, H, W = x.size()
+            x = x.view(N, C, 2, int(H/2), 2, int(W/2))
+            x = x.permute(0,1,2,4,3,5).contiguous()
+            x = x.view(N, C, -1, int(H/2), int(W/2))
+            return x
+
+        feature_A = reshape(feature_A)
+        feature_B = reshape(feature_B)
+
+        # compute quarter-region features
+        def aggregate_quarter(x):
+            N, C, B, H, W = x.size()
+            x = x.permute(0,2,1,3,4).contiguous()
+            x = x.view(-1,C,H,W)
+            vlad_x = self.net_vlad(x) # (N*B)*64*512
+            _, cluster_num, feat_dim = vlad_x.size()
+            vlad_x = vlad_x.view(N,B,cluster_num,feat_dim)
+            return vlad_x
+
+        vlad_A_quarter = aggregate_quarter(feature_A)
+        vlad_B_quarter = aggregate_quarter(feature_B)
+
+        # compute half-region features
+        def quarter_to_half(vlad_x):
+            return torch.stack((vlad_x[:,0]+vlad_x[:,1], vlad_x[:,2]+vlad_x[:,3], \
+                                vlad_x[:,0]+vlad_x[:,2], vlad_x[:,1]+vlad_x[:,3]), dim=1).contiguous()
+
+        vlad_A_half = quarter_to_half(vlad_A_quarter)
+        vlad_B_half = quarter_to_half(vlad_B_quarter)
+
+        # compute global-image features
+        def quarter_to_global(vlad_x):
+            return vlad_x.sum(1).unsqueeze(1).contiguous()
+
+        vlad_A_global = quarter_to_global(vlad_A_quarter)
+        vlad_B_global = quarter_to_global(vlad_B_quarter)
+
+        def norm(vlad_x):
+            N, B, C, _ = vlad_x.size()
+            vlad_x = F.normalize(vlad_x, p=2, dim=3)  # intra-normalization
+            vlad_x = vlad_x.view(N, B, -1)  # flatten
+            vlad_x = F.normalize(vlad_x, p=2, dim=2)  # L2 normalize
+            return vlad_x
+
+        vlad_A = torch.cat((vlad_A_global, vlad_A_half, vlad_A_quarter), dim=1)
+        vlad_B = torch.cat((vlad_B_global, vlad_B_half, vlad_B_quarter), dim=1)
+        vlad_A = norm(vlad_A)
+        vlad_B = norm(vlad_B)
+
+        _, B, L = vlad_B.size()
+        vlad_A = vlad_A.view(self.tuple_size,-1,B,L)
+        vlad_B = vlad_B.view(self.tuple_size,-1,B,L)
+
+        score = torch.bmm(vlad_A.expand_as(vlad_B).view(-1,B,L), vlad_B.view(-1,B,L).transpose(1,2))
+        score = score.view(self.tuple_size,-1,B,B)
+
+        return score, vlad_A, vlad_B
+
+    def _forward_train(self, x):
+        B, C, H, W = x.size()
+        x = x.view(self.tuple_size, -1, C, H, W)
+
+        anchors = x[:, 0].unsqueeze(1).contiguous().view(-1,C,H,W) # B*C*H*W
+        pairs = x[:, 1:].view(-1,C,H,W) # (B*(1+neg_num))*C*H*W
+
+        return self._compute_region_sim(anchors, pairs)
+
+    def forward(self, x):
+        if (not self.training):
+            node_features_list = []
+            neighborsFeat = []
+
+            pool_x, x_size, x_nodes = self.SelectRegions(x, self.base_model, self.fastscnn)
+
+
+            for i in range(self.NB+1):
+                vlad_x = self.net_vlad(x_nodes[i])
+                vlad_x = F.normalize(vlad_x, p=2, dim=2)  
+                vlad_x = vlad_x.view(x_size, -1)  
+                vlad_x = F.normalize(vlad_x, p=2, dim=1)  
+                neighborsFeat.append(vlad_x)
+                
+            node_features_list.append(neighborsFeat[self.NB])
+            node_features_list.append(torch.concat(neighborsFeat[0:self.NB],0))
+            del neighborsFeat
+            gvlad = self.applyGNN(node_features_list)
+            gvlad = torch.add(gvlad,vlad_x)
+            gvlad = gvlad.view(-1,vlad_x.shape[1])
+            
+            # Clear node_features_list to free up memory
+            del node_features_list
+        
+            return pool_x, gvlad
+        else:
+            pool_x, x = self.base_model(x)
+            return self._forward_train(x)
+        

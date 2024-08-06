@@ -104,6 +104,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
 
     nBatches = (len(train_dataset.qIdx) + int(config['train']['batchsize']) - 1) // int(config['train']['batchsize'])
 
+    ## Start Epochs here
     for subIter in trange(train_dataset.nCacheSubset, desc='Cache refresh'.rjust(15), position=1):
         pool_size = encoder_dim
         if config['global_params']['pooling'].lower() == 'netvlad':

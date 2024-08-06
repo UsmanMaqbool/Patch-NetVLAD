@@ -291,14 +291,4 @@ if __name__ == "__main__":
     # memory after runs
     
     print('Done')
-    
-    ## Profile
-#     Ordered by: cumulative time
-
-#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-#         1  379.132  379.132 112351.929 112351.929 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/training_tools/train_epoch.py:95(train_epoch)
-# 110879682/208725  103.978    0.000 78236.896    0.375 /home/leo/anaconda3/envs/patchnetvlad/lib/python3.9/site-packages/torch/nn/modules/module.py:1188(_call_impl)
-#    208725    8.873    0.000 78234.663    0.375 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/models/netvlad.py:430(forward)
-#    208725 23407.667    0.112 77916.501    0.373 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/models/netvlad.py:359(forward)
-#       442   10.303    0.023 43274.028   97.905 /home/leo/usman_ws/codes/Patch-NetVLAD/patchnetvlad/training_tools/msls.py:421(update_subcache)
-#    417450 33762.880    0.081 33762.880    0.081 {method 'cuda' of 'torch._C._TensorBase' objects}
+   

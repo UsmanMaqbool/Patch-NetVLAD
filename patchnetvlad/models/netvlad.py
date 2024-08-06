@@ -330,7 +330,7 @@ class EmbedRegionNet(nn.Module):
         return self._compute_region_sim(anchors, pairs)
 
     def forward(self, x):
-        pool_x, _, x = self.base_model(x)
+        pool_x, x = self.base_model(x)
 
         if (not self.training):
             vlad_x = self.net_vlad(x)

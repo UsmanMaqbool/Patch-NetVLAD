@@ -147,13 +147,13 @@ class MSLS(Dataset):
                 # load query data
                 qData = pd.read_csv(join(root_dir, subdir, city, 'query', 'postprocessed.csv'), index_col=0)
                 qDataRaw = pd.read_csv(join(root_dir, subdir, city, 'query', 'raw.csv'), index_col=0)
-                # qData = qData[:50]
-                # qDataRaw = qDataRaw[:50]
+                qData = qData[:50]
+                qDataRaw = qDataRaw[:50]
                 # load database data
                 dbData = pd.read_csv(join(root_dir, subdir, city, 'database', 'postprocessed.csv'), index_col=0)
                 dbDataRaw = pd.read_csv(join(root_dir, subdir, city, 'database', 'raw.csv'), index_col=0)
-                # dbData = dbData[:50]
-                # dbDataRaw = dbDataRaw[:50]
+                dbData = dbData[:50]
+                dbDataRaw = dbDataRaw[:50]
                 # arange based on task
                 qSeqKeys, qSeqIdxs = self.arange_as_seq(qData, join(root_dir, subdir, city, 'query'), seq_length_q)
                 dbSeqKeys, dbSeqIdxs = self.arange_as_seq(dbData, join(root_dir, subdir, city, 'database'),

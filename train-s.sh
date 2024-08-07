@@ -16,7 +16,7 @@ if [ "$#" -lt 3 ]; then
 fi
 
 FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/fastscnn-v2/${ARCH}-${METHOD}-${LOSS}-${DATE}"
-DATASET_DIR="/home/leo/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
+DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
 CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/"
 CONFIG="patchnetvlad/configs/train-slurm.ini"
 FAST_SCNN="/home/m.maqboolbhutta/usman_ws/datasets/official/fast-scnn/fast_scnn_citys.pth"

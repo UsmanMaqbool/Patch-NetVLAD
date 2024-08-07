@@ -9,6 +9,13 @@
 Save all the dataset file to `Mapillary_Street_Level_Sequences` folder. 
 it must have `msls_checksums.md5`,  `test` and  `train_val` folders and 
 ```sh
+# copy to server
+rsync -ah --progress -e 'ssh -p 2222' mapillary_sls m.maqboolbhutta@hpg.rc.ufl.edu:/home/m.maqboolbhutta/usman_ws/datasets/
+# extract into Mapillary_Street_Level_Sequences
+unzip msls_image_vol_1.zip -d Mapillary_Street_Level_Sequences/
+for file in msls_images_vol_*.zip; do unzip "$file" -d Mapillary_Street_Level_Sequences && rm "$file"; done
+unzip msls_metadata.zip -d Mapillary_Street_Level_Sequences/
+unzip msls_patch_v1.1.zip -d Mapillary_Street_Level_Sequences/
 /home/leo/usman_ws/datasets/Mapillary_Street_Level_Sequences
 ├── LICENSE.txt
 ├── msls_checksums.md5
@@ -33,7 +40,8 @@ Open the train.sh file and change the paths
 
 #SLURM
 sbatch --j netvlad-triplet-8Jab train-slurm.sh netvlad triplet
-sbatch --j graphvlad-triplet-b24c60-lr001 train-slurm.sh graphvlad triplet
+# Aug7,24
+sbatch --j graphvlad-triplet-b48c80-lr001 train-slurm.sh graphvlad vgg16 triplet
 ## if has checkpoints
 sbatch --j graphvlad-triplet-b50c80-lr001 train-slurm.sh graphvlad triplet /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-lr0.01-08-May/May08_21-38-20_mapillary_nopanos/checkpoints/checkpoint_epoch5.pth.tar
 ```

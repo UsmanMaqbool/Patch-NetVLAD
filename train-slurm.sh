@@ -36,8 +36,9 @@ if [ "$#" -lt 2 ]; then
 fi
 
 METHOD="$1"
-LOSS="$2"
-RESUMEPATH="$3"
+ARCH="$2"
+LOSS="$3"
+RESUMEPATH="$4"
 
 # LOAD PYTORCH SOFTWARE ENVIRONMENT
 #==================================
@@ -61,4 +62,4 @@ echo "Other nodes: $NODES"
 # PYTHON SCRIPT
 #==============
 echo "Starting $SLURM_GPUS_PER_TASK process(es) on each node..."
-bash train-s.sh ${METHOD} ${LOSS} ${RESUMEPATH}
+bash train-s.sh ${METHOD} ${ARCH} ${LOSS} ${RESUMEPATH}

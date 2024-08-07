@@ -29,7 +29,6 @@ import numpy as np
 import torch.nn.init as init
 from torchvision import transforms
 from torchvision.ops import masks_to_boxes
-from .espnet import *
 from .visualize import get_color_pallete, save_image
 from PIL import Image
 
@@ -520,7 +519,7 @@ class GraphVLAD(nn.Module):
 
     def forward(self, x):
         node_features_list = []
-        pool_x, x_size, x_nodes = self.SelectRegions(x, self.base_model, self.fastscnn)
+        _, x_size, x_nodes = self.SelectRegions(x, self.base_model, self.fastscnn)
         
         neighborsFeat = []
         for i in range(self.NB + 1):
@@ -543,40 +542,53 @@ class GraphVLAD(nn.Module):
         # Clear node_features_list to free up memory
         del node_features_list
         
-        return pool_x, gvlad
+        return _, gvlad
 class GraphVLADPCA(nn.Module):
-    def __init__(self, base_model, net_vlad, esp_net, dim=4096):
+    def __init__(self, base_model, net_vlad, fastscnn, NB, dim=4096):
         super(GraphVLADPCA, self).__init__()
         self.base_model = base_model
-        self.esp_net = esp_net
+        self.fastscnn = fastscnn
         self.net_vlad = net_vlad
-        self.SelectRegions = SelectRegions()
+        self.NB = NB
+        self.mask = True
+                
         self.applyGNN = applyGNN()
+        self.SelectRegions = SelectRegions(self.NB, self.mask)
+        
         self.pca_layer = nn.Conv2d(net_vlad.centroids.shape[0]*net_vlad.centroids.shape[1], dim, 1, stride=1, padding=0)
     def _init_params(self):
         self.base_model._init_params()
         self.net_vlad._init_params()
     def forward(self, x):
         node_features_list = []
+        _, x_size, x_nodes = self.SelectRegions(x, self.base_model, self.fastscnn)
+        
         neighborsFeat = []
-        NB, x_size, x_cropped = self.SelectRegions(x, self.base_model, self.esp_net)
-        for i in range(NB+1):
-            vlad_x = self.net_vlad(x_cropped[i])
-            vlad_x = F.normalize(vlad_x, p=2, dim=2)  
-            vlad_x = vlad_x.view(x_size, -1)  
-            vlad_x = F.normalize(vlad_x, p=2, dim=1)  
+        for i in range(self.NB + 1):
+            vlad_x = self.net_vlad(x_nodes[i])
+            vlad_x = F.normalize(vlad_x, p=2, dim=2)
+            vlad_x = vlad_x.view(x_size, -1)
+            vlad_x = F.normalize(vlad_x, p=2, dim=1)
             neighborsFeat.append(vlad_x)
-        node_features_list.append(neighborsFeat[NB])
-        node_features_list.append(torch.concat(neighborsFeat[0:NB],0))
-        neighborsFeat = []
+        
+        node_features_list.append(neighborsFeat[self.NB])
+        node_features_list.append(torch.cat(neighborsFeat[0:self.NB], 0))
+        
+        # Clear neighborsFeat to free up memory
+        del neighborsFeat
+        
         gvlad = self.applyGNN(node_features_list)
-        gvlad = torch.add(gvlad,vlad_x)        
-        gvlad = gvlad.view(-1,vlad_x.shape[1])
+        gvlad = torch.add(gvlad, vlad_x)
+        gvlad = gvlad.view(-1, vlad_x.shape[1])
+        
+        # Clear node_features_list to free up memory
+        del node_features_list
+        
         N, D = gvlad.size()
         gvlad = gvlad.view(N, D, 1, 1)
         gvlad = self.pca_layer(gvlad).view(N, -1)
         gvlad = F.normalize(gvlad, p=2, dim=-1)  
-        return gvlad   
+        return gvlad  
 class GraphVLADEmbedRegion(nn.Module):
     def __init__(self, base_model, net_vlad, tuple_size, fastscnn, NB):
         super(GraphVLADEmbedRegion, self).__init__()

@@ -4,6 +4,10 @@
 - [x] change the normlaization
 - [x] create new cluster
 
+### Clustering
+use netvlad for creating the cluster trained in mapilary dataset
+`./train.sh netvlad triplet`
+
 ### Training
 
 
@@ -21,7 +25,8 @@ Open the train.sh file and change the paths
 
 #SLURM
 sbatch --j netvlad-triplet-8Jab train-slurm.sh netvlad triplet
-sbatch --j graphvlad-triplet-b24c60-lr001 train-slurm.sh graphvlad triplet
+### Aug 5
+sbatch --j graphvlad-sare-ind-b48c80-lr001 train-slurm.sh graphvlad vgg16 sare_ind
 ## if has checkpoints
 sbatch --j graphvlad-triplet-b50c80-lr001 train-slurm.sh graphvlad triplet /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/graphvlad-triplet-lr0.01-08-May/May08_21-38-20_mapillary_nopanos/checkpoints/checkpoint_epoch5.pth.tar
 
@@ -107,7 +112,7 @@ sbatch launch-slurm-test.sh mappillary /blue/hmedeiros/m.maqboolbhutta/models/pa
 ```sh
 ## Hipergator
 ssh -L 7000:localhost:6007 m.maqboolbhutta@hpg.rc.ufl.edu
-module load conda/24.1.2 && conda activate patchnetvlad && tensorboard --logdir=/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/ --port=6007
+module load conda/24.1.2 && conda activate patchnetvlad && tensorboard --port=6007 --logdir=home/m.maqboolbhutta/usman_ws/models/patchnetvlad/fastscnn-v2/
 ## PC
 tensorboard --logdir=patchnetvlad
 

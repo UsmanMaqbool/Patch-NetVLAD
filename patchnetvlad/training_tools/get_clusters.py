@@ -71,8 +71,9 @@ def get_clusters(cluster_set, model, encoder_dim, device, opt, config):
 
             for iteration, (input_data, indices) in enumerate(tqdm(cluster_data_loader, desc='Iter'.rjust(15)), 1):
                 input_data = input_data.to(device)
-                image_descriptors = model(input_data).view(input_data.size(0), encoder_dim, -1).permute(0, 2, 1)
-                torch.Size([20, 64, 512])
+                _, image_descriptors = model(input_data)
+                image_descriptors = image_descriptors.view(input_data.size(0), encoder_dim, -1).permute(0, 2, 1)
+                # torch.Size([20, 64, 512])
                 #torch.Size([20, 1200, 512]), torch.Size([20, 512, 30, 40])
                 image_descriptors = F.normalize(image_descriptors, p=2, dim=2) # we L2-norm descriptors before vlad so
                 # need to L2-norm here as well

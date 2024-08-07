@@ -114,7 +114,7 @@ def main():
     parser.add_argument('--resume_path', type=str, default='',
                         help='Full path and name (with extension) to load checkpoint from, for resuming training.')
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')   
-    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file') 
+    parser.add_argument('--fast-scnn', type=str, default='', help='Path to Fast SCNN encoder file')
     opt = parser.parse_args()
     print(opt)
 
@@ -172,7 +172,8 @@ def main():
                     
         if m_name=='graphvladpca':
             print('===> Loading segmentation model')
-            segmentation_model = get_segmentation_model(opt.esp_encoder)
+            segmentation_model = get_segmentation_model()
+            segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
             model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
         else:   
             model = create_model(m_name, encoder, pool_layer)

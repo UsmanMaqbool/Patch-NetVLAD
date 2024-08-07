@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
         pool_layer = get_model(encoder, encoder_dim, config['global_params'], append_pca_layer=False)       
         
-        initcache = join(opt.cache_path, 'vgg16_' + 'mapillary_' + config['train'][
+        initcache = join(opt.cache_path, 'centroids', 'vgg16_' + 'mapillary_' + config['train'][
                                       'num_clusters'] + '_desc_cen.hdf5')
 
         
@@ -179,17 +179,15 @@ if __name__ == "__main__":
                     shutil.copyfile(opt.cluster_path, initcache)
                     print("===> Loading Cluster Centroids from '{}'".format(opt.cluster_path))
             else:
-                raise FileNotFoundError("=> no cluster data found at '{}'".format(opt.cluster_path))
-        else:
-            print('===> Finding cluster centroids')
-
-            print('===> Loading dataset(s) for clustering')
-            train_dataset = MSLS(opt.dataset_root_dir, mode='test', cities='train', transform=input_transform(),
-                                 bs=int(config['train']['cachebatchsize']), threads=opt.threads,
-                                 margin=float(config['train']['margin']))
-            encoder = encoder.to(device)
-            print('===> Calculating descriptors and clusters')
-            get_clusters(train_dataset, encoder, encoder_dim, device, opt, config)
+                print("=> no cluster data found at '{}'".format(initcache))
+                print('===> Finding cluster centroids')
+                print('====> Loading dataset(s) for clustering')
+                train_dataset = MSLS(opt.dataset_root_dir, mode='test', cities='train', transform=input_transform(),
+                                    bs=int(config['train']['cachebatchsize']), threads=opt.threads,
+                                    margin=float(config['train']['margin']))
+                encoder = encoder.to(device)
+                print('=====> Calculating descriptors and clusters')
+                get_clusters(train_dataset, encoder, encoder_dim, device, opt, config)
 
         with h5py.File(initcache, mode='r') as h5:
             
@@ -199,7 +197,8 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                segmentation_model = get_segmentation_model(opt.fast_scnn)
+                segmentation_model = get_segmentation_model()
+                segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)

@@ -10,14 +10,14 @@ echo "${FILES}"
 
 ## Dataset path [Change according to yours]
 if [ "$DATASET" = "mapillary" ]; then
-  dataset_root_dir=/home/leo/usman_ws/datasets/mapillary_sls/
+  dataset_root_dir=/home/leo/usman_ws/datasets/Mapillary_Street_Level_Sequences/
 elif [ "$DATASET" = "pitts" ]; then
   dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k/
 else
     echo "Invalid dataset choice"
     exit 1
 fi
-ESP_ENCODER="/home/leo/usman_ws/datasets/espnet-encoder/espnet_p_2_q_8.pth"
+FAST_SCNN="/home/leo/usman_ws/datasets/official/fast-scnn/fast_scnn_citys.pth"
 
 
 for RESUME in $FILES
@@ -55,7 +55,7 @@ do
       --dataset_root_dir=$dataset_root_dir \
       --dataset_choice=$DATASET \
       --method=${METHOD} \
-      --esp_encoder=${ESP_ENCODER}
+      --fast-scnn=${FAST_SCNN}
   fi
 
   
@@ -65,10 +65,10 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarysf_imageNames_index.txt \
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
-  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
+  --output_features_dir=/home/leo/usman_ws/models/patchnetvlad/features/mapillarysf_index \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast-scnn=${FAST_SCNN} \
 
   
   echo "Extracting Features of mapillarysf Query Images"
@@ -77,10 +77,10 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarysf_imageNames_query.txt \
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
-  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
+  --output_features_dir=/home/leo/usman_ws/models/patchnetvlad/features/mapillarysf_query \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast-scnn=${FAST_SCNN} \
   
   echo "Performing Features Matching and Recall Result of mapillarysf"
   python feature_match.py \
@@ -88,8 +88,8 @@ do
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
   --query_file_path=mapillarysf_imageNames_query.txt \
   --index_file_path=mapillarysf_imageNames_index.txt \
-  --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_query \
-  --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarysf_index \
+  --query_input_features_dir /home/leo/usman_ws/models/patchnetvlad/features/mapillarysf_query \
+  --index_input_features_dir /home/leo/usman_ws/models/patchnetvlad/features/mapillarysf_index \
   --result_save_folder=./patchnetvlad/results/mapillarysf
 
   echo "Extracting Features of mapillarycph Index Images"
@@ -98,10 +98,10 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarycph_imageNames_index.txt \
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
-  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarycph_index \
+  --output_features_dir=/home/leo/usman_ws/models/patchnetvlad/features/mapillarycph_index \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast-scnn=${FAST_SCNN} \
 
   
   echo "Extracting Features of mapillarycph Query Images"
@@ -110,10 +110,10 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarycph_imageNames_query.txt \
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
-  --output_features_dir=/home/leo/usman_ws/models/patch-netvlad/mapillarycph_query \
+  --output_features_dir=/home/leo/usman_ws/models/patchnetvlad/features/mapillarycph_query \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast-scnn=${FAST_SCNN} \
 
   echo "Performing Features Matching and Recall Result of mapillarycph"
   python feature_match.py \
@@ -121,8 +121,8 @@ do
   --dataset_root_dir=/home/leo/usman_ws/datasets/ \
   --query_file_path=mapillarycph_imageNames_query.txt \
   --index_file_path=mapillarycph_imageNames_index.txt \
-  --query_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarycph_query \
-  --index_input_features_dir /home/leo/usman_ws/models/patch-netvlad/mapillarycph_index \
+  --query_input_features_dir /home/leo/usman_ws/models/patchnetvlad/features/mapillarycph_query \
+  --index_input_features_dir /home/leo/usman_ws/models/patchnetvlad/features/mapillarycph_index \
   --result_save_folder=./patchnetvlad/results/mapillarycph
 
 cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/results/mapillarysf//NetVLAD_predictions.txt > patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt
@@ -130,7 +130,7 @@ cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/resul
 python ./patchnetvlad/training_tools/convert_kapture_to_msls.py patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
 echo "Recall Results of $PCA_RESUME file..."
-python /home/leo/usman_ws/codes/mapillary_sls/evaluate.py --msls-root=/home/leo/usman_ws/datasets/mapillary_sls/ --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
+python /home/leo/usman_ws/codes/mapillary_sls/evaluate.py --msls-root=$dataset_root_dir --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
 
 done

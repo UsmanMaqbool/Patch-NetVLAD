@@ -131,12 +131,12 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             nNeg = torch.sum(negCounts)
             data_input = torch.cat([query, positives, negatives])
 
-            data_input = data_input.to(device)
             _, vlad_encoding = model(data_input.to(device))
-
+            # print(vlad_encoding.shape)
             optimizer.zero_grad()
 
             vladQ, vladP, vladN = torch.split(vlad_encoding, [B, B, nNeg])
+            
             # calculate loss for each Query, Positive, Negative triplet
             # due to potential difference in number of negatives have to
             # do it per query, per negative
@@ -144,7 +144,6 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             N = int(1 + 1 + int(config['train']['nNeg']))
 
             for i, negCount in enumerate(negCounts):
-
                 c = torch.cat((vladQ[i: i + 1], vladP[i: i + 1], vladN[i*negCount:(i+1)*negCount]), dim=0)
                 loss += get_loss(c, config, criterion, 1, N).to(device)
 

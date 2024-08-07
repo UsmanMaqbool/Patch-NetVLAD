@@ -14,7 +14,7 @@ if [ "$#" -lt 2 ]; then
 fi
 
 FILES="/home/leo/usman_ws/models/patchnetvlad/${METHOD}-${LOSS}-${DATE}"
-DATASET_DIR="/home/leo/usman_ws/datasets/mapillary_sls/"
+DATASET_DIR="/home/leo/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
 CASHE_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/"
 CONFIG="patchnetvlad/configs/train.ini"
 CLUSTER_PATH="/home/leo/usman_ws/datasets/2015netVLAD/official/centroids/vgg16_mapillary_16_desc_cen.hdf5"

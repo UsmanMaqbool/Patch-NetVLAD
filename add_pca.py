@@ -73,7 +73,7 @@ if __name__ == "__main__":
     parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
                         help='NetVLAD Off the Shelf VGG Weights.')
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad') 
-    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file')
+    parser.add_argument('--fast-scnn', type=str, default='', help='Path to Fast SCNN encoder file')
 
     opt = parser.parse_args()
     print(opt)
@@ -129,7 +129,8 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                segmentation_model = get_segmentation_model(opt.esp_encoder)
+                segmentation_model = get_segmentation_model()
+                segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)

@@ -425,8 +425,7 @@ class SelectRegions(nn.Module):
             x = F.pad(input=x, pad=(1, 2), mode="constant", value=0)
 
         # Forward pass through fastscnn without gradients
-        with torch.no_grad():
-            outputs = fastscnn(x)
+        outputs = fastscnn(x)
 
         # save_image(x[0], 'output-image.png')
         # Forward pass through base_model

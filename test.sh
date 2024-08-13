@@ -3,7 +3,7 @@ PYTHON=${PYTHON:-"python3"}
 METHOD=$1
 DATASET=$2
 BASEDir=$3
-FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
+FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*' | sort -r)
 # FILES=$(find "${BASEDir}" -type f -name "*.tar" ! -name '*WPCA4096*')
 
 echo "${FILES}"

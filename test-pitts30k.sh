@@ -1,21 +1,16 @@
 #!/bin/sh
 PYTHON=${PYTHON:-"python3"}
 METHOD=$1
-DATASET=$2
-BASEDir=$3
+BASEDir=$2
 FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
 
 echo "${FILES}"
 
 ## Dataset path [Change according to yours]
-if [ "$DATASET" = "mapillary" ]; then
-  dataset_root_dir=/home/leo/usman_ws/datasets/Mapillary_Street_Level_Sequences/
-elif [ "$DATASET" = "pitts" ]; then
-  dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k/
-else
-    echo "Invalid dataset choice"
-    exit 1
-fi
+dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k/
+
+
+
 FAST_SCNN="/home/leo/usman_ws/datasets/official/fast-scnn/fast_scnn_citys.pth"
 
 
@@ -48,10 +43,10 @@ do
       echo "Building PCA Model of $RESUME file..."
       echo "Adding PCA Layer"
       python add_pca.py \
-      --config_path=patchnetvlad/configs/train.ini \
+      --config_path=patchnetvlad/configs/test-fast.ini \
       --resume_path=$RESUME \
       --dataset_root_dir=$dataset_root_dir \
-      --dataset_choice=$DATASET \
+      --dataset_choice="pitts" \
       --method=${METHOD} \
       --fast-scnn=${FAST_SCNN}
   fi
@@ -130,7 +125,6 @@ do
   --method=${METHOD} \
   --result_save_folder=./patchnetvlad/results/tokyo247
  
-
 done
 
 

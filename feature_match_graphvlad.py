@@ -156,8 +156,10 @@ def feature_match(eval_set, device, opt, config):
     if opt.ground_truth_path is not None:
         print('Calculating recalls using ground truth.')
         gt = eval_set.get_positives()
-
-        global_recalls = compute_recall(gt, predictions, eval_set.numQ, n_values, 'NetVLAD')
+        if opt.method == 'graphvlad':
+            global_recalls = compute_recall(gt, predictions, eval_set.numQ, n_values, 'GraphVLAD')
+        else:
+            global_recalls = compute_recall(gt, predictions, eval_set.numQ, n_values, 'NetVLAD')
 
         write_recalls_output(opt, global_recalls, None, n_values)
     else:

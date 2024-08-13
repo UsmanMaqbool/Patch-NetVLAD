@@ -1,6 +1,8 @@
 
 ## PatchNetVLAD
 
+
+
 ## TODO
 - [x] change the normlaization
 - [x] create new cluster

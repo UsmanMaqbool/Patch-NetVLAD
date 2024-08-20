@@ -41,14 +41,14 @@ def input_transform(resize=(480, 640)):
         return transforms.Compose([
             transforms.Resize(resize),
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.48501960784313836, 0.4579568627450961, 0.4076039215686255],
-                                    std=[0.00392156862745098, 0.00392156862745098, 0.00392156862745098]),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225]),
         ])
     else:
         return transforms.Compose([
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.48501960784313836, 0.4579568627450961, 0.4076039215686255],
-                                    std=[0.00392156862745098, 0.00392156862745098, 0.00392156862745098]),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225]),
         ])
 
 

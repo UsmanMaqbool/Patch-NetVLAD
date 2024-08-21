@@ -19,7 +19,7 @@ FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/fastscnn-v3/${ARCH}-${
 DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
 CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/"
 CONFIG="patchnetvlad/configs/train-slurm.ini"
-FAST_SCNN="/home/m.maqboolbhutta/usman_ws/datasets/official/fast-scnn/official/fast_scnn_citys.pth"
+FAST_SCNN="/home/m.maqboolbhutta/usman_ws/datasets/official/fast_scnn/official/fast_scnn_citys.pth"
 CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/centroids/vgg16_mapillary_16_desc_cen.hdf5"
 OFFTHESHELF_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/openibl-init/vd16_offtheshelf_conv5_3_max.pth"
 
@@ -44,7 +44,7 @@ $PYTHON -u train.py --save_every_epoch \
   --dataset_root_dir=${DATASET_DIR} \
   --loss=${LOSS} \
   --method=${METHOD} \
-  --fast-scnn=${FAST_SCNN} \
+  --fast_scnn=${FAST_SCNN} \
   --cluster_path=${CLUSTER_PATH} \
   --threads=6 \
   --vd16_offtheshelf_path=${OFFTHESHELF_PATH} \

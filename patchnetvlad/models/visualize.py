@@ -2,7 +2,9 @@
 from PIL import Image
 import torch
 from torchvision import transforms
-
+import os
+import cv2
+import numpy as np
 __all__ = ['get_color_pallete']
 
 
@@ -133,3 +135,153 @@ def save_image(tensor_image, file_name):
 
     # Save the image
     image_pil.save(file_name)
+    
+
+def save_batch_images(batch, base_dir='visualization'):
+    """
+    Save a batch of PyTorch tensors as image files.
+
+    Args:
+    batch (torch.Tensor): The batch of image tensors to save.
+    base_dir (str): The base directory to save the images to.
+    """
+    # Ensure the base directory exists
+    if not os.path.exists(base_dir):
+        os.makedirs(base_dir)
+    
+    # Loop through each image in the batch
+    for i in range(batch.size(0)):
+        # Create a directory for each image
+        img_dir = os.path.join(base_dir, str(i))
+        if not os.path.exists(img_dir):
+            os.makedirs(img_dir)
+        
+        # Save the image to the corresponding directory
+        save_image(batch[i], os.path.join(img_dir, 's-1-image.png'))
+
+def save_batch_masks(pred_batch, file_name, base_dir='visualization'):
+    """
+    Save a batch of masks to image files.
+
+    Args:
+    pred_batch (torch.Tensor): The batch of predictions.
+    base_dir (str): The base directory to save the masks to.
+    """
+    # Ensure the base directory exists
+    if not os.path.exists(base_dir):
+        os.makedirs(base_dir)
+    
+    # Loop through each prediction in the batch
+    for i in range(pred_batch.size(0)):
+        # Generate the mask for each prediction
+        mask = get_color_pallete(pred_batch[i].cpu().numpy(), 'citys')
+        
+        # Create a directory for each mask
+        img_dir = os.path.join(base_dir, str(i))
+        if not os.path.exists(img_dir):
+            os.makedirs(img_dir)
+        
+        # Save the mask to the corresponding directory
+        mask.save(os.path.join(img_dir, file_name))
+
+def save_image_with_heatmap(tensor_image, pre_l2, img_i, file_name='image_with_heatmap.png', patch_idx=None):
+    """
+    Save a PyTorch tensor as an image file with an overlaid heatmap.
+
+    Args:
+    tensor_image (torch.Tensor): The original image tensor to save.
+    pre_l2 (torch.Tensor): The tensor containing activations to generate the heatmap.
+    file_name (str): The name of the file to save the image to.
+    """
+    # Define the inverse normalization
+    inv_normalize = transforms.Normalize(
+        mean=[-123.5, -116.75, -103.95],
+        std=[255, 255, 255]
+    )
+
+    # Move the tensor to CPU if it's on GPU
+    tensor_image = tensor_image.cpu()
+
+    # Apply the inverse normalization
+    tensor_image = inv_normalize(tensor_image)
+
+    # Clip the image to be in the range [0, 1]
+    tensor_image = torch.clamp(tensor_image, 0, 1)
+
+    # Convert from (C, H, W) to (H, W, C) and to numpy array
+    image = tensor_image.permute(1, 2, 0).numpy()
+
+    # Convert to a PIL image
+    image_pil = Image.fromarray((image * 255).astype('uint8'))
+
+    # Convert the PIL image to a format compatible with OpenCV
+    img = np.array(image_pil)
+
+    # Compute the mean activations from pre_l2
+    mean_activations = torch.mean(pre_l2.squeeze(), dim=0).cpu().numpy()
+
+    # Normalize the activations
+    mean_activations = (mean_activations - np.min(mean_activations)) / (np.max(mean_activations) - np.min(mean_activations))
+
+    # Get the dimensions of the original image
+    height, width, _ = img.shape
+
+    # Resize the heatmap to match the original image size
+    heatmap = cv2.resize(mean_activations, (width, height))
+
+    # Convert heatmap to an 8-bit format and apply a color map
+    heatmap = np.uint8(255 * heatmap)
+    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_TURBO)
+
+    # Convert the original image to BGR (OpenCV format)
+    original_img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+    # Overlay the heatmap on the original image
+    overlayed_img = cv2.addWeighted(original_img, 0.6, heatmap, 0.4, 0)
+
+    ## to store the patches
+    H, W, _ = overlayed_img.shape
+    bb_x = [
+        [0, 0, int(2 * W / 3), H], 
+        [int(W / 3), 0, W, H], 
+        [0, 0, W, int(2 * H / 3)], 
+        [0, int(H / 3), W, H], 
+        [int(W / 4), int(H / 4), int(3 * W / 4), int(3 * H / 4)]
+    ]
+
+    
+    if patch_idx == None:
+        # Save the resulting image
+        directory = f'visualization/{img_i}'
+        full_file_name = os.path.join(directory, file_name)
+        # Save the resulting image
+        cv2.imwrite(full_file_name, overlayed_img)
+        print(f"Saved image to {full_file_name}")
+    else:
+        # Save the resulting image
+        directory = f'visualization/{img_i}'
+        full_file_name = os.path.join(directory, file_name)
+        # Save the resulting image
+        cv2.imwrite(full_file_name, overlayed_img[bb_x[patch_idx][1]:bb_x[patch_idx][3], bb_x[patch_idx][0]:bb_x[patch_idx][2], :])        
+        print(f"Saved image to {full_file_name}")
+    
+def save_x_nodes_patches(x_nodes, img_i, patch_idx):
+    """
+    Save a single image patch from the x_nodes tensor.
+
+    Args:
+    x_nodes (torch.Tensor): The tensor containing the image patch to save.
+    img_i (int or str): The index of the image, used for naming the directory.
+    patch_idx (int): The index of the patch, used for naming the file.
+    """
+    # Define the directory and ensure it exists
+    directory = os.path.join('visualization', str(img_i))
+    os.makedirs(directory, exist_ok=True)
+
+    # Define the filename for each patch
+    patch_file_name = f'patch_{patch_idx}.png'  # Customize the naming pattern as needed
+    
+    # Save the image patch
+    save_image(x_nodes, os.path.join(directory, patch_file_name))
+
+    print(f"Saved patch {patch_idx} to {os.path.join(directory, patch_file_name)}")

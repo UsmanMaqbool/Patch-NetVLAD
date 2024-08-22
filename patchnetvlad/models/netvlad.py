@@ -29,10 +29,6 @@ import numpy as np
 import torch.nn.init as init
 from torchvision import transforms
 from torchvision.ops import masks_to_boxes
-from .visualize import get_color_pallete, save_batch_images, save_batch_masks, save_image_with_heatmap,     save_x_nodes_patches
-from PIL import Image
-import matplotlib.pyplot as plt
-import os
 class NeighborAggregator(nn.Module):
     def __init__(self, input_dim, output_dim,
                  use_bias=False, aggr_method="mean"):
@@ -463,8 +459,6 @@ class SelectRegions(nn.Module):
                 sub_nodes.append(embed_image.unsqueeze(0))
 
             if len(sub_nodes) < self.NB:
-                if self.visualize:
-                    save_image_with_heatmap(tensor_image=xx[img_i], pre_l2=embed_image, img_i=img_i, file_name='embed_image.png')
                 bb_x = [
                     [0, 0, int(2 * W / 3), H],
                     [int(W / 3), 0, W, H],

@@ -17,7 +17,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=40    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
-#SBATCH --mem-per-cpu=8GB
+#SBATCH --mem-per-cpu=16GB
 #SBATCH --distribution=cyclic:cyclic
 
 ## To RUN

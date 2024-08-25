@@ -382,7 +382,6 @@ class SelectRegions(nn.Module):
         img[img == 7] = 4
         img[img == 6] = 4
         img[img == 5] = 4
-        img[img == 19] = 4
         
         ### Sky 10
         img[img == 10] = 5
@@ -421,7 +420,9 @@ class SelectRegions(nn.Module):
         if sizeW % 2 != 0:
             x = F.pad(input=x, pad=(1, 2), mode="constant", value=0)
 
-        outputs = fastscnn(x)
+        # Forward pass through fastscnn without gradients
+        with torch.no_grad():
+            outputs = fastscnn(x)
 
         # Forward pass through base_model
         pool_x, x = base_model(x)

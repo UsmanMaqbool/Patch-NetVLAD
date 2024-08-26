@@ -69,6 +69,7 @@ def val(eval_set, model, encoder_dim, device, opt, config, writer, epoch_num=0, 
                 feat[indices.detach().numpy(), :] = vlad_encoding.detach().cpu().numpy()
 
                 del input_data, vlad_encoding
+                torch.cuda.empty_cache()  # Free up memory
 
     del test_data_loader_queries, test_data_loader_dbs
 

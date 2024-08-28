@@ -88,10 +88,7 @@ def val(eval_set, model, encoder_dim, device, opt, config, writer, epoch_num=0, 
 
             # Clear memory
             del input_data, vlad_encoding        
-            
-        
                 
-
     del test_data_loader_queries, test_data_loader_dbs
 
     tqdm.write('====> Building faiss index')

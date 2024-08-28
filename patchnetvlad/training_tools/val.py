@@ -61,15 +61,36 @@ def val(eval_set, model, encoder_dim, device, opt, config, writer, epoch_num=0, 
         qFeat = np.empty((len(eval_set_queries), pool_size), dtype=np.float32)
         dbFeat = np.empty((len(eval_set_dbs), pool_size), dtype=np.float32)
 
-        for feat, test_data_loader in zip([qFeat, dbFeat], [test_data_loader_queries, test_data_loader_dbs]):
-            for iteration, (input_data, indices) in \
-                    enumerate(tqdm(test_data_loader, position=pbar_position, leave=False, desc='Test Iter'.rjust(15)), 1):
-                input_data = input_data.to(device)
-                _, vlad_encoding = model(input_data.to(device))
-                feat[indices.detach().numpy(), :] = vlad_encoding.detach().cpu().numpy()
+        # Loop for query features
+        for input_data, indices in tqdm(test_data_loader_queries, position=pbar_position, leave=False, desc='Test Iter'.rjust(15)):
+            # Move input to device
+            input_data = input_data.to(device)
+            
+            # Model forward pass to obtain VLAD encoding
+            _, vlad_encoding = model(input_data)
 
-                del input_data, vlad_encoding
-                torch.cuda.empty_cache()  # Free up memory
+            # Move data to CPU and store in query feature array
+            qFeat[indices.cpu().numpy()] = vlad_encoding.cpu().numpy()
+
+            # Clear memory
+            del input_data, vlad_encoding
+
+        # Loop for database features
+        for input_data, indices in tqdm(test_data_loader_dbs, position=pbar_position, leave=False, desc='Test Iter'.rjust(15)):
+            # Move input to device
+            input_data = input_data.to(device)
+            
+            # Model forward pass to obtain VLAD encoding
+            _, vlad_encoding = model(input_data)
+
+            # Move data to CPU and store in database feature array
+            dbFeat[indices.cpu().numpy()] = vlad_encoding.cpu().numpy()
+
+            # Clear memory
+            del input_data, vlad_encoding        
+            
+        
+                
 
     del test_data_loader_queries, test_data_loader_dbs
 

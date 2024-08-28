@@ -462,7 +462,8 @@ class SelectRegions(nn.Module):
                     [0, 0, int(2 * W / 3), H],
                     [int(W / 3), 0, W, H],
                     [0, 0, W, int(2 * H / 3)],
-                    [0, int(H / 3), W, H]
+                    [0, int(H / 3), W, H],
+                    [int(W / 4), int(H / 4), int(3 * W / 4), int(3 * H / 4)]
                 ]
                 for i in range(len(bb_x) - len(sub_nodes)):
                     x_nodes = embed_image[:, bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]

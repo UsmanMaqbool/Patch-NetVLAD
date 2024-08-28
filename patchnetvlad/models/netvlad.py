@@ -378,7 +378,7 @@ class SelectRegions(nn.Module):
         img[img == 9] = 3
         img[img == 8] = 3
 
-        ### Pole 5 + Traffic Light 6 + Traffic Signal 7 + Background
+        ### Pole 5 + Traffic Light 6 + Traffic Signal
         img[img == 7] = 4
         img[img == 6] = 4
         img[img == 5] = 4
@@ -441,9 +441,6 @@ class SelectRegions(nn.Module):
             all_label_mask = pred_all[img_i]
             labels_all, label_count_all = all_label_mask.unique(return_counts=True)
             
-            mask_t = label_count_all >= 10000
-            labels = labels_all[mask_t]
-            
             # Create masks for each label and convert them to bounding boxes
             masks = all_label_mask == labels_all[:, None, None]
             all_label_mask = rsizet(all_label_mask.unsqueeze(0)).squeeze(0)
@@ -457,6 +454,7 @@ class SelectRegions(nn.Module):
                     binary_mask = (all_label_mask == label).float()
                     embed_image = (pre_l2 * binary_mask) + pre_l2
                     
+                embed_image = F.normalize(embed_image, p=2, dim=2)    
                 sub_nodes.append(embed_image.unsqueeze(0))
 
             if len(sub_nodes) < self.NB:
@@ -464,8 +462,7 @@ class SelectRegions(nn.Module):
                     [0, 0, int(2 * W / 3), H],
                     [int(W / 3), 0, W, H],
                     [0, 0, W, int(2 * H / 3)],
-                    [0, int(H / 3), W, H],
-                    [int(W / 4), int(H / 4), int(3 * W / 4), int(3 * H / 4)],
+                    [0, int(H / 3), W, H]
                 ]
                 for i in range(len(bb_x) - len(sub_nodes)):
                     x_nodes = embed_image[:, bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]

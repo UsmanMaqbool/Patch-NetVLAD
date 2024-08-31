@@ -411,6 +411,10 @@ class SelectRegions(nn.Module):
     
     def forward(self, x, base_model, fastscnn): 
         
+        ## debug
+        # save_image(x[0], 'output-image.png')
+        # mask = get_color_pallete(pred_g_merge[0].cpu().numpy())
+        # mask.save('output.png')
         sizeH = x.shape[2]
         sizeW = x.shape[3]
         
@@ -424,63 +428,53 @@ class SelectRegions(nn.Module):
         with torch.no_grad():
             outputs = fastscnn(x)
 
-        # Forward pass through base_model
-        pool_x, x = base_model(x)
+        mask = outputs.max(1)[1]   
+        for jj in range(len(mask)):  
+            single_label_mask = mask[jj]
+            obj_ids, obj_i = single_label_mask.unique(return_counts=True)
+            obj_ids = obj_ids[1:] 
+            obj_i = obj_i[1:]
+            masks = single_label_mask == obj_ids[:, None, None]
+            boxes_t = masks_to_boxes(masks.to(torch.float32))
+            rr_boxes = torch.argsort(torch.argsort(obj_i,descending=True)) 
+            boxes = boxes_t/16
+        _, _, H, W = x.shape
+        patch_mask = torch.zeros((H, W)).cuda()
+        pool_x, x = base_model(x)   
         N, C, H, W = x.shape
-        
-        # Initialize graph nodes tensor
-        graph_nodes = torch.zeros(N, self.NB, C, H, W).cuda()
-        rsizet = transforms.Resize((H, W))
-        
-        # Process the output of fastscnn to get predicted labels
-        pred_all = torch.argmax(outputs[0], 1)
-        
-        pred_all = self.relabel(pred_all)
-
-        for img_i in range(N):
-            all_label_mask = pred_all[img_i]
-            labels_all, label_count_all = all_label_mask.unique(return_counts=True)
-            
-            # Create masks for each label and convert them to bounding boxes
-            masks = all_label_mask == labels_all[:, None, None]
-            all_label_mask = rsizet(all_label_mask.unsqueeze(0)).squeeze(0)
-
-            sub_nodes = []
-            pre_l2 = x[img_i]
-
-            
-            if self.mask:
-                for i, label in enumerate(labels_all):
-                    binary_mask = (all_label_mask == label).float()
-                    embed_image = (pre_l2 * binary_mask) + pre_l2
-                    
-                embed_image = F.normalize(embed_image, p=2, dim=2)    
-                sub_nodes.append(embed_image.unsqueeze(0))
-
-            if len(sub_nodes) < self.NB:
-                bb_x = [
-                    [0, 0, int(2 * W / 3), H],
-                    [int(W / 3), 0, W, H],
-                    [0, 0, W, int(2 * H / 3)],
-                    [0, int(H / 3), W, H],
-                    [int(W / 4), int(H / 4), int(3 * W / 4), int(3 * H / 4)]
-                ]
-                for i in range(len(bb_x) - len(sub_nodes)):
-                    x_nodes = embed_image[:, bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]
-                    sub_nodes.append(rsizet(x_nodes.unsqueeze(0)))
-                    
-            # Stack the cropped patches and store them in graph_nodes
-            aa = torch.stack(sub_nodes, 1)
-            graph_nodes[img_i] = aa[0]
-
-        # Reshape and concatenate graph_nodes with the original tensor x
-        x_nodes = graph_nodes.view(self.NB, N, C, H, W)
-        x_nodes = torch.cat((x_nodes, x.unsqueeze(0)))
-        
-        # Clean up
-        del graph_nodes, sub_nodes, pred_all, labels_all, label_count_all, masks, all_label_mask
-        
-        return pool_x, x.size(0), x_nodes
+        bb_x = [[int(W/4), int(H/4), int(3*W/4),int(3*H/4)],
+                [0, 0, int(W/3),H], 
+                [0, 0, W,int(H/3)], 
+                [int(2*W/3), 0, W,H], 
+                [0, int(2*H/3), W,H]]
+        NB = 5
+        graph_nodes = torch.zeros(N,NB,C,H,W).cuda()
+        rsizet = transforms.Resize((H,W)) 
+        for Nx in range(N):    
+            img_nodes = []
+            for idx in range(len(boxes)):
+                for b_idx in range(len(rr_boxes)):
+                    if idx == rr_boxes[b_idx] and obj_i[b_idx] > 10000 and len(img_nodes) < NB-2:
+                        patch_mask = patch_mask*0
+                        patch_mask[single_label_mask == obj_ids[b_idx]] = 1
+                        patch_maskr = rsizet(patch_mask.unsqueeze(0))
+                        patch_maskr = patch_maskr.squeeze(0)
+                        boxesd = boxes.to(torch.long)
+                        x_min,y_min,x_max,y_max = boxesd[b_idx]
+                        c_img = x[Nx][:, y_min:y_max,x_min:x_max]
+                        resultant = rsizet(c_img)
+                        img_nodes.append(resultant.unsqueeze(0))
+                        break                    
+            if len(img_nodes) < NB:
+                for i in range(len(bb_x)-len(img_nodes)):
+                    x_cropped =  x[Nx][: ,bb_x[i][1]:bb_x[i][3], bb_x[i][0]:bb_x[i][2]]
+                    img_nodes.append(rsizet(x_cropped.unsqueeze(0)))
+            aa = torch.stack(img_nodes,1)
+            graph_nodes[Nx] = aa[0]
+        x_cropped = graph_nodes.view(NB,N,C,H,W)
+        x_cropped = torch.cat((graph_nodes.view(NB,N,C,H,W), x.unsqueeze(0)))
+        del graph_nodes
+        return pool_x, NB, x.size(0), x_cropped
 class GraphVLAD(nn.Module):
     def __init__(self, base_model, net_vlad, fastscnn, NB):
         super(GraphVLAD, self).__init__()

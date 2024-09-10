@@ -13,7 +13,7 @@
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
 #SBATCH --nodes=1 
-#SBATCH --gpus-per-node=a100:4  
+#SBATCH --gpus-per-node=a100:8  
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
@@ -46,7 +46,7 @@ RESUMEPATH="$4"
 ## You can load a software environment or use a singularity container.
 ## CONTAINER="singularity exec --nv /path/to/container.sif" (--nv option is to enable gpu)
 module purge
-module load conda/24.1.2 
+module load conda/24.3.0
 conda activate patchnetvlad
 
 

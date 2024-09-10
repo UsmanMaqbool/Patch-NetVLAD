@@ -114,8 +114,8 @@ def save_image(tensor_image, file_name):
     """
     # Define the inverse normalize transform
     inv_normalize = transforms.Normalize(
-        mean=[-0.485/0.229, -0.456/0.224, -0.406/0.225],
-        std=[1/0.229, 1/0.224, 1/0.225]
+        mean=[-123.5, -116.75, -103.95],
+        std=[255, 255, 255]
     )
 
     # Move the tensor to CPU if it's on GPU

@@ -15,7 +15,7 @@ if [ "$#" -lt 3 ]; then
     exit 1
 fi
 
-FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/0905-s1/${ARCH}-${METHOD}-${LOSS}-${DATE}"
+FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/0910-s1/${ARCH}-${METHOD}-${LOSS}-${DATE}"
 DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
 CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/"
 CONFIG="patchnetvlad/configs/train-slurm.ini"

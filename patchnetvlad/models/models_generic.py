@@ -63,8 +63,15 @@ def get_backend(matconvnet_path):
     enc = models.create(arch, train_layers='conv5', matconvnet=matconvnet_path)
     return enc_dim, enc
 
-def get_segmentation_model():
-    model = models.create('fastscnn', num_classes=19)
+# def get_segmentation_model():
+#     model = models.create('fastscnn', num_classes=19)
+#     return model
+
+def get_segmentation_model(encoderFile):
+    classes = 20
+    p = 2
+    q = 8
+    model = models.create('espnet', classes=classes, p=p, q=q, encoderFile=encoderFile)
     return model
 
 def get_model(encoder, encoder_dim, config, append_pca_layer=False):

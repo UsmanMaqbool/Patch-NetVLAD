@@ -131,6 +131,7 @@ def train_epoch(train_dataset, model, optimizer, criterion, encoder_dim, device,
             nNeg = torch.sum(negCounts)
             data_input = torch.cat([query, positives, negatives])
 
+            data_input = data_input.to(device)
             _, vlad_encoding = model(data_input.to(device))
             # print(vlad_encoding.shape)
             optimizer.zero_grad()

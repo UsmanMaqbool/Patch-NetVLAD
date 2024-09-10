@@ -90,7 +90,7 @@ if __name__ == "__main__":
     parser.add_argument('--nocuda', action='store_true', help='If true, use CPU only. Else use GPU.')
     parser.add_argument('--loss', type=str, default='triplet', help="[triplet|sare_ind|sare_joint]")
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')
-    parser.add_argument('--fast_scnn', type=str, default='', help='Path to Fast SCNN encoder file')
+    parser.add_argument('--esp_encoder', type=str, default='', help='Path to ESPNet encoder file') 
     parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
                         help='NetVLAD Off the Shelf VGG Weights.')
     opt = parser.parse_args()
@@ -150,8 +150,9 @@ if __name__ == "__main__":
       
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                segmentation_model = get_segmentation_model()
-                segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
+                # segmentation_model = get_segmentation_model()
+                # segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
+                segmentation_model = get_segmentation_model(opt.esp_encoder)
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)
@@ -197,8 +198,9 @@ if __name__ == "__main__":
             
             if m_name=='graphvlad':
                 print('===> Loading segmentation model')
-                segmentation_model = get_segmentation_model()
-                segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
+                # segmentation_model = get_segmentation_model()
+                # segmentation_model.load_state_dict(torch.load(opt.fast_scnn))
+                segmentation_model = get_segmentation_model(opt.esp_encoder)
                 model = create_model_graphvlad(m_name, encoder, pool_layer, segmentation_model)
             else:   
                 model = create_model(m_name, encoder, pool_layer)

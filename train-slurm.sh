@@ -8,17 +8,16 @@
 #SBATCH --job-name=
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=m.maqboolbhutta@ufl.edu
-#SBATCH --time=72:00:00
+#SBATCH --time=90:00:00
 #SBATCH --partition=gpu
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
 #SBATCH --nodes=1 
-#SBATCH --gpus-per-node=a100:4  
+#SBATCH --gpus-per-node=a100:8   
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --cpus-per-task=24    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
-#SBATCH --mem-per-cpu=8GB
-#SBATCH --distribution=cyclic:cyclic
+#SBATCH --mem-per-cpu=16GB
 
 ## To RUN
 # sbatch --j graphvlad-v8-c16-mapillary-4k2k2k ./train-slurm.sh graphvlad triplet
@@ -46,7 +45,7 @@ RESUMEPATH="$4"
 ## You can load a software environment or use a singularity container.
 ## CONTAINER="singularity exec --nv /path/to/container.sif" (--nv option is to enable gpu)
 module purge
-module load conda/24.1.2 
+module load conda/24.3.0 
 conda activate patchnetvlad
 
 

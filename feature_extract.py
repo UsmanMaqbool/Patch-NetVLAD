@@ -114,7 +114,7 @@ def main():
     parser.add_argument('--resume_path', type=str, default='',
                         help='Full path and name (with extension) to load checkpoint from, for resuming training.')
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad')   
-    parser.add_argument('--fast-scnn', type=str, default='', help='Path to Fast SCNN encoder file')
+    parser.add_argument('--fast_scnn', type=str, default='', help='Path to Fast SCNN encoder file')
     opt = parser.parse_args()
     print(opt)
 

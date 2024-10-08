@@ -15,11 +15,11 @@ if [ "$#" -lt 3 ]; then
     exit 1
 fi
 
-FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/0910-s1/${ARCH}-${METHOD}-${LOSS}-${DATE}"
+FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/1004-s1/${ARCH}-${METHOD}-${LOSS}-${DATE}"
 DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
 CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/"
 CONFIG="patchnetvlad/configs/train-slurm.ini"
-FAST_SCNN="/home/m.maqboolbhutta/usman_ws/datasets/official/fast_scnn/official/fast_scnn_citys.pth"
+FAST_SCNN="/home/m.maqboolbhutta/usman_ws/datasets/official/fast_scnn/fast_scnn_citys.pth"
 CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/centroids/vgg16_mapillary_16_desc_cen.hdf5"
 OFFTHESHELF_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/openibl-init/vd16_offtheshelf_conv5_3_max.pth"
 
@@ -32,10 +32,6 @@ else
     CHECKPOINT_PATH=$RESUMEPATH
 fi
 
-
-echo "==========Starting Training============="
-echo "Saving checkpoints at ${FILES}"
-echo "========================================"
 
 $PYTHON -u train.py --save_every_epoch \
   --config_path=${CONFIG} \

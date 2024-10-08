@@ -8,20 +8,21 @@
 #SBATCH --job-name=
 #SBATCH --mail-type=END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=m.maqboolbhutta@ufl.edu
-#SBATCH --time=72:00:00
+#SBATCH --time=100:00:00
 #SBATCH --partition=gpu
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
 #SBATCH --nodes=1 
-#SBATCH --gpus-per-node=a100:8  
+#SBATCH --gpus-per-node=a100:4  
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --cpus-per-task=16    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
 #SBATCH --mem-per-cpu=8GB
 #SBATCH --distribution=cyclic:cyclic
 
 ## To RUN
-# sbatch --j graphvlad-v8-c16-mapillary-4k2k2k ./train-slurm.sh graphvlad triplet
+# sbatch --j 1008-s1 train-slurm.sh graphvlad vgg16 sare_ind /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/1004-s1/vgg16-graphvlad-sare_ind-04-Oct-lr-0_01/Oct04_10-36-12_mapillary_nopanos/checkpoints/checkpoint_epoch6.pth.tar
+
 ####################################################################################################
 
 

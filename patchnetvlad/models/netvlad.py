@@ -460,9 +460,18 @@ class SelectRegions(nn.Module):
         for img_i in range(N):
             all_label_mask = pred_all[img_i]
             labels_all, label_count_all = all_label_mask.unique(return_counts=True)
+            ## remove 255 labels
+            labels_all = labels_all[:-1]
+            label_count_all = label_count_all[:-1]
+
+            # Sort the filtered counts in descending order and get the sorted indices
+            sorted_counts, sorted_indices = torch.sort(label_count_all, descending=True)
             
-            mask_t = label_count_all >= 10000
-            labels = labels_all[mask_t][:-1]
+            # Reorder the filtered labels based on the sorted indices
+            sorted_labels = labels_all[sorted_indices]
+            # Apply the mask after sorting
+            mask_t = sorted_counts >= 10000
+            labels = sorted_labels[mask_t]
 
 
             # Create masks for each label and convert them to bounding boxes
@@ -475,33 +484,20 @@ class SelectRegions(nn.Module):
             if self.visualize:
                 save_image_with_heatmap(tensor_image=xx[img_i], pre_l2=pre_l2, img_i=img_i)
 
-            # if self.mask:
-            #     for i, label in enumerate(labels):
-            #         binary_mask = (all_label_mask == label).float()
-            #         embed_image = (pre_l2 * binary_mask) + embed_image
-            #         if self.visualize:
-            #             embed_file_name = f'embed_{i}.png'  # Customize the naming pattern as needed
-            #             save_image_with_heatmap(tensor_image=xx[img_i], pre_l2=embed_image, img_i=img_i, file_name=embed_file_name)
-            #     embed_image = F.normalize(embed_image, p=2, dim=2)    
-            #     if self.visualize:
-            #         embed_file_name = f'embed_normlalized{i}.png'  # Customize the naming pattern as needed
-            #         save_image_with_heatmap(tensor_image=xx[img_i], pre_l2=embed_image, img_i=img_i, file_name=embed_file_name)
-            
+           
             ### Crop regions
             regions = masks_to_boxes(masks.to(torch.float32))
             boxes = (regions / 16).to(torch.long)
             
             # sub_nodes.append(embed_image.unsqueeze(0))
-            if self.mask:
-                for i, _ in enumerate(labels):
-                    x_min, y_min, x_max, y_max = boxes[i]
-                    # binary_mask = (all_label_mask == label).float()
-                    embed_image_c = rsizet(pre_l2[:, y_min:y_max, x_min:x_max])
-                    if self.visualize:
-                        embed_file_name = f'embed_{i}.png'  # Customize the naming pattern as needed
-                        x_min, y_min, x_max, y_max = regions[i].to(torch.long)
-                        save_image_with_heatmap(tensor_image=xx[img_i][:, y_min:y_max, x_min:x_max], pre_l2=embed_image_c, img_i=img_i, file_name=embed_file_name)
-                    sub_nodes.append(embed_image_c.unsqueeze(0))
+            for i, _ in enumerate(labels[:min(2, len(labels))]):
+                x_min, y_min, x_max, y_max = boxes[i]
+                embed_image_c = rsizet(pre_l2[:, y_min:y_max, x_min:x_max])
+                if self.visualize:
+                    embed_file_name = f'embed_{i}.png'  # Customize the naming pattern as needed
+                    x_min, y_min, x_max, y_max = regions[i].to(torch.long)
+                    save_image_with_heatmap(tensor_image=xx[img_i][:, y_min:y_max, x_min:x_max], pre_l2=embed_image_c, img_i=img_i, file_name=embed_file_name)
+                sub_nodes.append(embed_image_c.unsqueeze(0))
 
             if len(sub_nodes) < self.NB:
                 if self.visualize:
@@ -568,8 +564,10 @@ class GraphVLAD(nn.Module):
         del neighborsFeat
         
         gvlad = self.applyGNN(node_features_list)
+        gvlad = F.normalize(gvlad, p=2, dim=1)
 
         gvlad = torch.add(gvlad, vlad_x)
+        gvlad = F.normalize(gvlad, p=2, dim=1)
 
         gvlad = gvlad.view(-1, vlad_x.shape[1])
         
@@ -622,7 +620,7 @@ class GraphVLADPCA(nn.Module):
         gvlad = gvlad.view(N, D, 1, 1)
         gvlad = self.pca_layer(gvlad).view(N, -1)
         gvlad = F.normalize(gvlad, p=2, dim=-1)  
-        return gvlad  
+        return gvlad 
 class GraphVLADEmbedRegion(nn.Module):
     def __init__(self, base_model, net_vlad, tuple_size, fastscnn, NB):
         super(GraphVLADEmbedRegion, self).__init__()
@@ -700,7 +698,7 @@ class GraphVLADEmbedRegion(nn.Module):
         vlad_A = vlad_A.view(self.tuple_size,-1,B,L)
         vlad_B = vlad_B.view(self.tuple_size,-1,B,L)
 
-        score = torch.bmm(vlad_A.expand_as(vlad_B).view(-1,B,L), vlad_B.view(-1,B,L).transpose(1,2))
+        score = torch.bmm(vlad_A.expand_as(vlad_B).reshape(-1,B,L), vlad_B.reshape(-1,B,L).transpose(1,2))
         score = score.view(self.tuple_size,-1,B,B)
 
         return score, vlad_A, vlad_B
@@ -709,8 +707,8 @@ class GraphVLADEmbedRegion(nn.Module):
         B, C, H, W = x.size()
         x = x.view(self.tuple_size, -1, C, H, W)
 
-        anchors = x[:, 0].unsqueeze(1).contiguous().view(-1,C,H,W) # B*C*H*W
-        pairs = x[:, 1:].view(-1,C,H,W) # (B*(1+neg_num))*C*H*W
+        anchors = x[:, 0].unsqueeze(1).contiguous().reshape(-1,C,H,W) # B*C*H*W
+        pairs = x[:, 1:].reshape(-1,C,H,W) # (B*(1+neg_num))*C*H*W
 
         return self._compute_region_sim(anchors, pairs)
 
@@ -733,7 +731,11 @@ class GraphVLADEmbedRegion(nn.Module):
             node_features_list.append(torch.concat(neighborsFeat[0:self.NB],0))
             del neighborsFeat
             gvlad = self.applyGNN(node_features_list)
+            gvlad = F.normalize(gvlad, p=2, dim=1)
+
             gvlad = torch.add(gvlad,vlad_x)
+            gvlad = F.normalize(gvlad, p=2, dim=1)
+
             gvlad = gvlad.view(-1,vlad_x.shape[1])
             
             # Clear node_features_list to free up memory
@@ -743,4 +745,6 @@ class GraphVLADEmbedRegion(nn.Module):
         else:
             pool_x, x = self.base_model(x)
             return self._forward_train(x)
+        
+
         

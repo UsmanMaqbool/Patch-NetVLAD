@@ -42,7 +42,7 @@ fi
 ## You can load a software environment or use a singularity container.
 ## CONTAINER="singularity exec --nv /path/to/container.sif" (--nv option is to enable gpu)
 module purge
-module load conda/24.1.2 
+module load conda/24.3.0 
 conda activate patchnetvlad
 
 

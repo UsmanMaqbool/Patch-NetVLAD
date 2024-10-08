@@ -82,7 +82,7 @@ if __name__ == "__main__":
                         help='Root directory of dataset')
     parser.add_argument('--identifier', type=str, default='mapillary_nopanos',
                         help='Description of this model, e.g. mapillary_nopanos_vgg16_netvlad')
-    parser.add_argument('--nEpochs', type=int, default=30, help='number of epochs to train for')
+    parser.add_argument('--nEpochs', type=int, default=15, help='number of epochs to train for')
     parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                         help='manual epoch number (useful on restarts)')
     parser.add_argument('--save_every_epoch', action='store_true', help='Flag to set a separate checkpoint file for each new epoch')
@@ -245,6 +245,8 @@ if __name__ == "__main__":
     lr_str = str(float(config['train']['lr'])).replace('.', '_')
     writer = SummaryWriter(
         log_dir=join(opt.save_path+'-lr-'+lr_str, datetime.now().strftime('%b%d_%H-%M-%S') + '_' + opt.identifier))
+
+    print(f"Checkpoints will be saved to: {writer.file_writer.get_logdir()}")
 
     # write checkpoints in logdir
     logdir = writer.file_writer.get_logdir()

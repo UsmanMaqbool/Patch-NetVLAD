@@ -73,7 +73,7 @@ if __name__ == "__main__":
     parser.add_argument('--vd16_offtheshelf_path', type=str, default=None,
                         help='NetVLAD Off the Shelf VGG Weights.')
     parser.add_argument('--method', type=str, default='netvlad', choices=['netvlad', 'graphvlad'],help='netvlad | graphvlad') 
-    parser.add_argument('--fast-scnn', type=str, default='', help='Path to Fast SCNN encoder file')
+    parser.add_argument('--fast_scnn', type=str, default='', help='Path to Fast SCNN encoder file')
 
     opt = parser.parse_args()
     print(opt)

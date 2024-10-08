@@ -3,14 +3,14 @@ PYTHON=${PYTHON:-"python3"}
 METHOD=$1
 DATASET=$2
 BASEDir=$3
-FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*')
+FILES=$(find "${BASEDir}" -maxdepth 1 -type f -name "*.tar" ! -name '*WPCA4096*' | sort -r)
 # FILES=$(find "${BASEDir}" -type f -name "*.tar" ! -name '*WPCA4096*')
 
 echo "${FILES}"
 
 ## Dataset path [Change according to yours]
 if [ "$DATASET" = "mapillary" ]; then
-  dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/
+  dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/
 
 elif [ "$DATASET" = "pitts" ]; then
   dataset_root_dir=/home/leo/usman_ws/datasets/2015netVLAD/Pittsburgh250k/
@@ -19,7 +19,7 @@ else
     exit 1
 fi
 
-ESP_ENCODER="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
+FAST_SCNN="/home/m.maqboolbhutta/usman_ws/datasets/official/fast_scnn/fast_scnn_citys.pth"
 
 for RESUME in $FILES
 do
@@ -57,7 +57,7 @@ do
       --dataset_root_dir=$dataset_root_dir \
       --dataset_choice=$DATASET \
       --method=${METHOD} \
-      --esp_encoder=${ESP_ENCODER}
+      --fast_scnn=${FAST_SCNN}
 
   fi
 
@@ -71,7 +71,7 @@ do
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast_scnn=${FAST_SCNN}
 
   
   echo "Extracting Features of mapillarysf Query Images"
@@ -83,7 +83,7 @@ do
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast_scnn=${FAST_SCNN}
   
   echo "Performing Features Matching and Recall Result of mapillarysf"
   python feature_match.py \
@@ -104,7 +104,7 @@ do
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast_scnn=${FAST_SCNN}
 
   
   echo "Extracting Features of mapillarycph Query Images"
@@ -116,7 +116,7 @@ do
   --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
-  --esp_encoder=${ESP_ENCODER}
+  --fast_scnn=${FAST_SCNN}
 
   echo "Performing Features Matching and Recall Result of mapillarycph"
   python feature_match.py \
@@ -133,11 +133,6 @@ cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/resul
 python ./patchnetvlad/training_tools/convert_kapture_to_msls.py patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
 echo "Recall Results of $PCA_RESUME file..."
-python /home/m.maqboolbhutta/usman_ws/codes/mapillary_sls/evaluate.py --msls-root=/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/  --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
-
+python /home/m.maqboolbhutta/usman_ws/codes/mapillary_sls/evaluate.py --msls-root=/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/  --cities=cph,sf --prediction=patchnetvlad/results/PatchNetVLAD_predictions_combined_msls.txt
 
 done
-
-
-##TO RUN
-#./test.sh mapillary /home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26_21-46-27_mapillary_nopanos/Jan26_21-46-27_mapillary_nopanos/checkpoints/ | tee 26Jan2146.txt

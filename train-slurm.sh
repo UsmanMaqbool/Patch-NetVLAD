@@ -21,7 +21,7 @@
 #SBATCH --distribution=cyclic:cyclic
 
 ## To RUN
-# sbatch --j graphvlad-v8-c16-mapillary-4k2k2k ./train-slurm.sh graphvlad triplet
+# sbatch --j netvlad-triplet-1015-s1 ./train-slurm.sh netvlad triplet
 ####################################################################################################
 
 
@@ -45,7 +45,7 @@ RESUMEPATH="$3"
 ## You can load a software environment or use a singularity container.
 ## CONTAINER="singularity exec --nv /path/to/container.sif" (--nv option is to enable gpu)
 module purge
-module load conda/24.1.2 
+module load conda/24.3.0
 conda activate patchnetvlad
 
 

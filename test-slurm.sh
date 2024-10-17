@@ -13,15 +13,18 @@
 #SBATCH --output=R-%x.%j.out
 #SBATCH --error=R-%x.%j.err
 #SBATCH --nodes=1 
-#SBATCH --gpus-per-node=a100:2   
+#SBATCH --gpus-per-node=a100:1   
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --cpus-per-task=4    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
 #SBATCH --mem-per-cpu=4gb
 
 
+##TO RUN
+# sbatch --j 1008-s1-test test-slurm.sh graphvlad mapillary /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/1008-s1-sare-ind/vgg16-graphvlad-sare_ind-08-Oct-lr-0_0005/Oct08_08-18-28_mapillary_nopanos/checkpoints/
 
-# PYTHON SCRIPT
+
+# sbatch --j Feb06_14-07-48-test test-slurm.sh mapillary /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-06-Feb/Feb06_14-07-48_mapillary_nopanos/checkpoints
 #==============
 
 #This is the python script to run in the pytorch environment
@@ -60,8 +63,3 @@ echo "Other nodes: $NODES"
 echo "Starting $SLURM_GPUS_PER_TASK process(es) on each node..."
 bash test-s.sh ${METHOD} ${DATASET} ${FILES}
 
-##TO RUN
-#./test.sh mapillary /home/leo/usman_ws/models/patchnetvlad/hipergator-Jan26_21-46-27_mapillary_nopanos/Jan26_21-46-27_mapillary_nopanos/checkpoints/ | tee 26Jan2146.txt
-
-
-# sbatch --j Feb06_14-07-48-test test-slurm.sh mapillary /home/m.maqboolbhutta/models/patchnetvlad/netvlad-triplet-06-Feb/Feb06_14-07-48_mapillary_nopanos/checkpoints

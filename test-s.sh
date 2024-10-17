@@ -68,7 +68,7 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarysf_imageNames_index.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
-  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index \
+  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features1/mapillarysf_index \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
   --fast_scnn=${FAST_SCNN}
@@ -80,7 +80,7 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarysf_imageNames_query.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
-  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query \
+  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features1/mapillarysf_query \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
   --fast_scnn=${FAST_SCNN}
@@ -91,8 +91,8 @@ do
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --query_file_path=mapillarysf_imageNames_query.txt \
   --index_file_path=mapillarysf_imageNames_index.txt \
-  --query_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_query \
-  --index_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features/mapillarysf_index \
+  --query_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features1/mapillarysf_query \
+  --index_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features1/mapillarysf_index \
   --result_save_folder=./patchnetvlad/results/mapillarysf
 
   echo "Extracting Features of mapillarycph Index Images"
@@ -101,7 +101,7 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarycph_imageNames_index.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
-  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index \
+  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features1/mapillarycph_index \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
   --fast_scnn=${FAST_SCNN}
@@ -113,7 +113,7 @@ do
   --config_path patchnetvlad/configs/performance.ini \
   --dataset_file_path=mapillarycph_imageNames_query.txt \
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
-  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query \
+  --output_features_dir=/home/m.maqboolbhutta/usman_ws/models/features1/mapillarycph_query \
   --resume_path=${PCA_RESUME} \
   --method=${METHOD} \
   --fast_scnn=${FAST_SCNN}
@@ -124,8 +124,8 @@ do
   --dataset_root_dir=/home/m.maqboolbhutta/usman_ws/datasets/ \
   --query_file_path=mapillarycph_imageNames_query.txt \
   --index_file_path=mapillarycph_imageNames_index.txt \
-  --query_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_query \
-  --index_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features/mapillarycph_index \
+  --query_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features1/mapillarycph_query \
+  --index_input_features_dir /home/m.maqboolbhutta/usman_ws/models/features1/mapillarycph_index \
   --result_save_folder=./patchnetvlad/results/mapillarycph
 
 cat patchnetvlad/results/mapillarycph/NetVLAD_predictions.txt patchnetvlad/results/mapillarysf/NetVLAD_predictions.txt > patchnetvlad/results/PatchNetVLAD_predictions_combined_mapval.txt

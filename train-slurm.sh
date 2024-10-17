@@ -21,7 +21,7 @@
 #SBATCH --distribution=cyclic:cyclic
 
 ## To RUN
-# sbatch --j 1008-s1 train-slurm.sh graphvlad vgg16 sare_ind /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/1004-s1/vgg16-graphvlad-sare_ind-04-Oct-lr-0_01/Oct04_10-36-12_mapillary_nopanos/checkpoints/checkpoint_epoch6.pth.tar
+# sbatch --j 1015-s1-sare-ind-graphvlad train-slurm.sh graphvlad vgg16 sare_ind /home/m.maqboolbhutta/usman_ws/models/patchnetvlad/1004-s1/vgg16-graphvlad-sare_ind-04-Oct-lr-0_01/Oct04_10-36-12_mapillary_nopanos/checkpoints/checkpoint_epoch6.pth.tar
 
 ####################################################################################################
 

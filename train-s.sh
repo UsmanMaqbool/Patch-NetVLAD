@@ -14,8 +14,8 @@ if [ "$#" -lt 2 ]; then
 fi
 
 FILES="/home/m.maqboolbhutta/usman_ws/models/patchnetvlad/1015-s1/${METHOD}-${LOSS}-${DATE}"
-DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/mapillary_sls/"
-CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/"
+DATASET_DIR="/home/m.maqboolbhutta/usman_ws/datasets/Mapillary_Street_Level_Sequences/"
+CASHE_PATH="/home/m.maqboolbhutta/usman_ws/datasets/official/patchnetvlad/"
 CONFIG="patchnetvlad/configs/train-slurm.ini"
 ESP_ENCODER="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/espnet-encoder/espnet_p_2_q_8.pth"
 CLUSTER_PATH="/home/m.maqboolbhutta/usman_ws/datasets/netvlad-official/centroids/vgg16_mapillary_16_desc_cen.hdf5"

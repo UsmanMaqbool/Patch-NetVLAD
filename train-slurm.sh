@@ -15,13 +15,13 @@
 #SBATCH --nodes=1 
 #SBATCH --gpus-per-node=a100:4   
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=30    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --cpus-per-task=16    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --constraint=a100
-#SBATCH --mem-per-cpu=12GB
+#SBATCH --mem-per-cpu=8GB
 #SBATCH --distribution=cyclic:cyclic
 
 ## To RUN
-# sbatch --j netvlad-triplet-1015-s1 ./train-slurm.sh netvlad triplet
+# sbatch --j netvlad-triplet-1015-s2 ./train-slurm.sh netvlad triplet
 ####################################################################################################
 
 

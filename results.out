@@ -1,0 +1,50 @@
+===> Epoch 1 Complete: Avg. Loss: 0.0348
+====> Extracting Features
+====> Building faiss index
+====> Calculating recall @ N
+====> Recall@1: 0.4581
+====> Recall@5: 0.6149
+====> Recall@10: 0.6676
+====> Recall@20: 0.7311
+====> Recall@50: 0.7986
+====> Recall@100: 0.8446
+/home/leo/usman_ws/models/patchnetvlad/hipergator/1015-s1/netvlad-triplet-15-Oct-lr-0_001/Oct15_23-26-58_mapillary_nopanos/checkpoints/checkpoint_epoch1_WPCA4096.pth.tar
+all_recall@1: 0.712
+all_recall@5: 0.823
+all_recall@10: 0.847
+all_recall@20: 0.874
+all_map@1: 0.712
+all_map@5: 0.524
+all_map@10: 0.459
+all_map@20: 0.442
+
+===> Epoch 2 Complete: Avg. Loss: 0.0141
+====> Extracting Features
+====> Building faiss index
+====> Calculating recall @ N
+====> Recall@1: 0.4851
+====> Recall@5: 0.6135
+====> Recall@10: 0.6973
+====> Recall@20: 0.7500
+====> Recall@50: 0.8108
+====> Recall@100: 0.8676
+/home/leo/usman_ws/models/patchnetvlad/hipergator/1015-s1/netvlad-triplet-15-Oct-lr-0_001/Oct15_23-26-58_mapillary_nopanos/checkpoints/checkpoint_epoch2_WPCA4096.pth.tar
+all_recall@1: 0.736
+all_recall@5: 0.846
+all_recall@10: 0.865
+all_recall@20: 0.889
+all_map@1: 0.736
+all_map@5: 0.541
+all_map@10: 0.480
+all_map@20: 0.462
+
+===> Epoch 3 Complete: Avg. Loss: 0.0102
+====> Extracting Features
+====> Building faiss index
+====> Calculating recall @ N
+====> Recall@1: 0.5135
+====> Recall@5: 0.6649
+====> Recall@10: 0.7176
+====> Recall@20: 0.7824
+====> Recall@50: 0.8432
+====> Recall@100: 0.8757
